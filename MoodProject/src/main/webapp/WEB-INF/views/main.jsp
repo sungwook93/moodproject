@@ -38,11 +38,11 @@
 			<!-- 깃연습용 주석 5 -->
 			<!-- 깃연습용 주석 6 -->
 			<!-- 깃연습용 주석 7 -->
-<<<<<<< HEAD
+
 			<!-- 깃연습용 주석 9 -->
-=======
+
 			<!-- 깃연습용 주석 8 -->
->>>>>>> 94094a09e4dbaa496f52d368b7340329ddf9e776
+
 			<jsp:include page ="./common/topMenu.jsp"></jsp:include>
 			
 			<table style="width:1500px; height:900px; margin-left:auto; margin-right:auto;">

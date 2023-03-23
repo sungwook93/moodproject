@@ -31,7 +31,7 @@
 			</style>
 		</head>
 		<body>
-			
+			<!-- 깃연습용 주석 -->
 			<jsp:include page ="./common/topMenu.jsp"></jsp:include>
 			
 			<table style="width:1500px; height:900px; margin-left:auto; margin-right:auto;">

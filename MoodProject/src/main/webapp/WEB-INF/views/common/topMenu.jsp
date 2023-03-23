@@ -71,7 +71,7 @@
             <div class="title">
                 <h2>Login</h2>
             </div>
-            <div class="close-area"><strong>X</strong></div>
+            <div class="close-area">X</div>
             <div style="padding-top:20px;"><h4>ID</h4></div>
             <div class="content"><input type = "text" class = "form-control" id = "loginUserID" name ="userID" maxlength="20" placeholder="아이디"/></div>
             <div><h4>PASSWORD</h4></div>

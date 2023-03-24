@@ -31,18 +31,7 @@
 			</style>
 		</head>
 		<body>
-			<!-- 깃연습용 주석 -->
-			<!-- 깃연습용 주석 2 -->
-			<!-- 깃연습용 주석 3 -->
-			<!-- 깃연습용 주석 4 -->
-			<!-- 깃연습용 주석 5 -->
-			<!-- 깃연습용 주석 6 -->
-			<!-- 깃연습용 주석 7 -->
 
-			<!-- 깃연습용 주석 8 -->
-			<!-- 깃연습용 주석 10 -->
-			<!-- 깃연습용 주석 11 -->
-			<!-- 깃연습용 주석 13 -->
 			<jsp:include page ="./common/topMenu.jsp"></jsp:include>
 			
 			<table style="width:1500px; height:900px; margin-left:auto; margin-right:auto;">

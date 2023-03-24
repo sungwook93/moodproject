@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.member">
+
+	<resultMap id = "memberResult" type = "com.edu.member.dto.MemberDTO">
+		<result property = "userID" column = "userID"/>
+		<result property = "pwd" column = "pwd"/>
+		<result property = "address1" column = "address1"/>
+		<result property = "address2" column = "address2"/>
+		<result property = "postnum" column = "postnum"/>
+		<result property = "name" column = "name"/>
+		<result property = "age" column = "age"/>
+		<result property = "phone" column = "phone"/>
+		<result property = "hp" column = "hp"/>
+		<result property = "gender" column = "gender"/>
+		<result property = "email" column = "email"/>
+		<result property = "joinDate" column = "joinDate"/>
+		<result property = "grade" column = "grade"/>
+	</resultMap>
+	
+	
+	<!-- 아이디 중복 검사 : 입력한 아이디가 존재하는지 알아낸다. -->
+	<select id = "idCheck" parameterType = "com.edu.member.dto.MemberDTO" resultType ="Integer">
+		<![CDATA[
+			select count(*)
+			from t_member
+			where userID = #{userID}
+		]]>
+	</select>
+	
+
+</mapper>

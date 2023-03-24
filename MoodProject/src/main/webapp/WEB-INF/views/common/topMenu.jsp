@@ -47,9 +47,9 @@
       <li>
         <a href="#">Gift</a>
         <ul class="submenu">
-          <li><a href="#">black</a></li>
-          <li><a href="#">gray</a></li>
-          <li><a href="#">white</a></li>
+          <li><a href="/product/productList?product_color=white&page=1">white</a></li>
+          <li><a href="/product/productList?product_color=black&page=1">black</a></li>
+          <li><a href="/product/productList?product_color=gray&page=1">gray</a></li>
         </ul>
       </li>
       <li>

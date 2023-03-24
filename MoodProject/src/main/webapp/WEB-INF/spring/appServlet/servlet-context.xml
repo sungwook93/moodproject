@@ -25,6 +25,7 @@
 	
 	<context:component-scan base-package="com.edu.main" />
 	<context:component-scan base-package="com.edu.member" />
+	<context:component-scan base-package="com.edu.product" />
 
 	
 	<!-- AOP 설정 -->

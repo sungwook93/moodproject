@@ -23,7 +23,7 @@ public class ProductController {
 		
 		
 		return mav;
-	}
+	}//end - public ModelAndView productList()throws Exception
 	
 	
 }

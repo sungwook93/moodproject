@@ -39,7 +39,8 @@
 				<label for="id" class="col-sm-5 control-label">아이디</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="userID" name="userID" maxlength="20" placeholder="아이디 입력"/>
-					<strong style = "color: red;">&nbsp;&nbsp;ID 중복 여부를 확인해주세요.</strong>
+					<strong id="idcheckmsg" style = "color: red;">&nbsp;&nbsp;ID 중복 여부를 확인해주세요.</strong>
+					<strong><span id ="confirmMsgID"></span></strong>
 				</div>
 				<div class = "col-sm-2">
 					<!-- 아이디 중복검사 -->
@@ -50,7 +51,7 @@
 			<div class="form-group">
 				<label for="pwd" class="col-sm-5 control-label">비밀번호</label>
 				<div class="col-sm-3">
-					<input type="password" class="form-control" id="pwd" name="pwd" maxlength="20" placeholder="비밀번호 입력"/>
+					<li><input type="password" class="form-control" id="pwd" name="pwd" maxlength="20" placeholder="비밀번호 입력"/></li>
 				</div>
 			</div>
 			<div class="form-group">
@@ -93,7 +94,7 @@
 			<div class="form-group">
 				<label for="phone" class="col-sm-5 control-label">Phone</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="phone" name="phone" maxlength="20" placeholder="휴대폰 번호"
+					<input type="text" class="form-control" id="phone" name="phone" maxlength="13" placeholder="휴대폰 번호"
 					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" onKeyup="inputPhoneNumber();" maxlength="13"/>
 				</div>
 			</div>
@@ -130,6 +131,29 @@
 			</div>
 			
 		</form>
+			<div  id="joinInfo">
+					<strong>[사용자 개인 정보 수집 및 이용 안내]</strong>
+					<h5>
+					정보통신망법 제50조와 동법시행령 61조
+					<br>
+					정보통신망 이용촉진 및 정보보호 등에 관한 법률  제50조(영리목적의 광고성 정보 전송 제한) 
+					<br>① 누구든지 전자적 전송매체를 이용하여 영리목적의 광고성 정보를 전송하려면 그 수신자의 명시적인 사전 동의를 받아야 한다. 
+					<br>다만, 다음 각 호의 어느 하나에 해당하는 경우에는 사전 동의를 받지 아니한다. <개정 2016. 3. 22., 2020. 6. 9.>
+					<br>1. 재화등의 거래관계를 통하여 수신자로부터 직접 연락처를 수집한 자가 대통령령으로 정한 기간 이내에 자신이 처리하고 수신자와 거래한 것과 같은 종류의 재화등에 대한 영리목적의 광고성 정보를 전송하려는 경우
+					<br>정보통신망 이용촉진 및 정보보호 등에 관한 법률 시행령 제61조 (영리목적의 광고성 정보 전송기준) ① 법 제50조제1항제1호에서 “대통령령으로 정한 기간”이란 해당 재화등의 거래가 종료된 날부터 6개월을 말한다. <개정 2014. 11. 28.>
+					
+					</h5>
+					<div class="joinCheckbox">
+						<label>
+							<input type="checkbox" id="agreements" name="agreements" >
+						</label> 정보통신망법 제50조와 동법시행령 61조의 개인정보 수집 및 이용에 동의합니다.
+					</div>
+			</div>
+			<div id="joinButtonBox" class="form-group">
+				<button type="reset" form="loginForm"  class="form-control ">re-enter</button>
+				<button type="button" class="cancel form-control">cancel</button>
+				<button type="submit" form="loginForm" id="memberFormsubmit" name="checkButton" class=" form-control"  >submit</button>
+			</div>
 		</div>
 		
 		

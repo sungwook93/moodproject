@@ -51,7 +51,7 @@
 			<div class="form-group">
 				<label for="pwd" class="col-sm-5 control-label">비밀번호</label>
 				<div class="col-sm-3">
-					<li><input type="password" class="form-control" id="pwd" name="pwd" maxlength="20" placeholder="비밀번호 입력"/></li>
+					<li><input type="password" class="form-control" id="pwdpwd" name="pwd" maxlength="20" placeholder="비밀번호 입력"/></li>
 				</div>
 			</div>
 			<div class="form-group">

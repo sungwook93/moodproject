@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edu.common.util.PageMaker;
 import com.edu.common.util.ProductCriteria;
 import com.edu.product.dto.ProductDTO;
 import com.edu.product.service.ProductService;
@@ -35,6 +36,21 @@ public class ProductController {
 		
 		//상품타입에 해당하는 상품 리스트를 가져와서 model에 담는다.
 		List<ProductDTO> productList = productService.productList(pCri);
+		mav.addObject("prodcutList", productList);
+		System.out.println("productList = " + productList);
+		
+		//넘어온 현재 페이지와 해당 상품 전체 데이터 갯수를 pageMaker에 세팅하고 model담는다.
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(pCri);
+		pageMaker.setTotalCount(productService.totalCount(pCri));
+		System.out.println("totalCount: " + pageMaker.getTotalCount());
+		mav.addObject("pageMaker", pageMaker);
+		
+		//상품 색상, 검색 키워드를 담아서 보내준다(script 처리를 위해)
+		mav.addObject("color", pCri.getProduct_color());
+		if(pCri.getKeyword() != null) {
+			mav.addObject("keyword", pCri.getKeyword());
+		}
 		
 		mav.setViewName("/product/productList");
 		

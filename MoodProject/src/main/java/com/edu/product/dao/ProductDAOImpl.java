@@ -23,11 +23,20 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	private static String Namespace = "con.edu.product";
 	
+	// 여러가지 조건에 맞는 상품리스트 발급
 	@Override
 	public List<ProductDTO> productList(ProductCriteria pCri) throws Exception {
 		logger.info("ProductDAOImpl의 productTypeList 불러오기....");
 		
 		return sqlSession.selectList(Namespace + ".typeList", pCri);
+	}
+	
+	// 여러가지 조건에 맞는 상품리스트의 전체 수를 보내준다.
+	@Override
+	public int totalCount(ProductCriteria pCri) throws Exception {
+		logger.info("ProductDAOImpl의 totalCount 불러오기....");
+		
+		return sqlSession.selectOne(Namespace + ".totalCount", pCri);
 	}
 
 	

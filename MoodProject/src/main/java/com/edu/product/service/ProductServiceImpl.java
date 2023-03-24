@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	ProductDAO productDAO;
 	
-	
+	// 여러가지 조건에 맞는 상품리스트 발급
 	@Override
 	public List<ProductDTO> productList(ProductCriteria pCri) throws Exception {
 		logger.info("ProductServiceImpl의 productList 불러오기....");
@@ -27,4 +27,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.productList(pCri);
 	}
 
+	// 여러가지 조건에 맞는 상품리스트의 전체 수를 보내준다.
+	@Override
+	public int totalCount(ProductCriteria pCri) throws Exception {
+		logger.info("ProductServiceImpl의 totalCount 불러오기....");
+		
+		return productDAO.totalCount(pCri);
+	}
+
+	
+	
 }

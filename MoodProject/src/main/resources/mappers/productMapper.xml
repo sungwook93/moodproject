@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.edu.product">
+
+	<!-- 정렬조건 -->
+	<sql id="array">
+		<if test="array_type != null">
+			<if test="array_type == 'b'.toString()">
+				
+			</if>
+			<if test="array_type == 'l'.toString()">
+				
+			</if>
+			<if test="array_type == 'c'.toString()">
+				
+			</if>
+		</if>
+	</sql>
+	
+	<!-- 검색조건 -->
+	<sql id="search">
+		<if test="searchType != null">
+			And product_name LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
+	
+	<!-- Type별 List 불러오기 + 정렬 + 검색 -->
+	<select id="typeList" parameterType="com.edu.common.util.ProductCriteria" resultType="com.edu.product.dto.ProductDTO">
+		<![CDATA[
+		select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg
+		from (select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg,
+		row_number() over( 
+			order by product_date DESC
+		) as rNum from t_product where product_color = #{product_color}
+		]]>	
+		<include refid="search"/>
+		<![CDATA[
+		) bpd
+		where rNUM BETWEEN (#{perPageNum} * #{page} - 8) and (#{perPageNum} * #{page}) 
+		]]>
+	</select>
+	
+	<!-- Type + 전체 별 전체 데이터 갯수 -->
+	<select id="totalCount" parameterType="com.edu.common.util.ProductCriteria" resultType="Integer">
+		<![CDATA[
+			select count(*) from t_product where product_color = #{product_type} and 1=1
+		]]>
+		<include refid="search"/>
+	</select>
+	
+
+</mapper>

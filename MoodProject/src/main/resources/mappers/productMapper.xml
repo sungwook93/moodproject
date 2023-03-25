@@ -5,20 +5,6 @@
    
 <mapper namespace="com.edu.product">
 
-	<!-- 정렬조건 -->
-	<sql id="array">
-		<if test="array_type != null">
-			<if test="array_type == 'b'.toString()">
-				
-			</if>
-			<if test="array_type == 'l'.toString()">
-				
-			</if>
-			<if test="array_type == 'c'.toString()">
-				
-			</if>
-		</if>
-	</sql>
 	
 	<!-- 검색조건 -->
 	<sql id="search">
@@ -46,9 +32,16 @@
 	<!-- Type + 전체 별 전체 데이터 갯수 -->
 	<select id="totalCount" parameterType="com.edu.common.util.ProductCriteria" resultType="Integer">
 		<![CDATA[
-			select count(*) from t_product where product_color = #{product_type} and 1=1
+			select count(*) from t_product where product_color = #{product_color} and 1=1
 		]]>
 		<include refid="search"/>
+	</select>
+	
+	<!-- 리스트에 쓰일 대표이미지 가져오기 -->
+	<select id="ImageName" parameterType="String" resultType="String">
+		<![CDATA[
+			select images01 from t_images where product_code = #{product_code}
+		]]>
 	</select>
 	
 

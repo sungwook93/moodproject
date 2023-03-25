@@ -25,19 +25,18 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	//카테고리에 따른(상품 타입) 상품 리스트 페이지 이동 + 정렬 방식에 따른 상품 리스트 데이터 함께 넘기기기기
+	//카테고리에 따른(상품 타입) 상품 리스트 페이지 이동 + 정렬 방식에 따른 상품 리스트 데이터 함께 넘기기
 	@RequestMapping(value="productList", method=RequestMethod.GET)
 	public ModelAndView productList(ProductCriteria pCri)throws Exception{		
 		logger.info("ProductController의 productList 불러오기....");
-		System.out.println("상품타입: " + pCri.getProduct_type() + "상품색상: " + pCri.getProduct_color() + ", 현재페이지: " + pCri.getPage() 
-							+ ", 정렬타입: " + pCri.getArray_type());
+		System.out.println("상품색상: " + pCri.getProduct_color() + ", 현재페이지: " + pCri.getPage());
 		
 		ModelAndView mav = new ModelAndView(); 
 		
 		//상품타입에 해당하는 상품 리스트를 가져와서 model에 담는다.
 		List<ProductDTO> productList = productService.productList(pCri);
-		mav.addObject("prodcutList", productList);
-		System.out.println("productList = " + productList);
+		mav.addObject("productList", productList);
+		System.out.println("productList mav: " + productList);
 		
 		//넘어온 현재 페이지와 해당 상품 전체 데이터 갯수를 pageMaker에 세팅하고 model담는다.
 		PageMaker pageMaker = new PageMaker();

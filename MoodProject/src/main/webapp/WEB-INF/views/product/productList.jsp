@@ -3,6 +3,7 @@
 <%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"	uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%	request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<script src="https://kit.fontawesome.com/2367b3dda5.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<link href="${contextPath}/resources/css/product.css" rel="stylesheet" type="text/css">
 	<script src="${contextPath}/resources/js/product.js"></script>
@@ -24,7 +23,72 @@
 	<!-- 상단 메뉴 -->
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
+	<h2 align="center">${color}</h2>
+
 	<!-- 상품 출력 -->
+			<div class = "container producbox">
+				<table>
+					<tr class="productList">
+						<c:forEach items="${productList}" var="product" begin="0" end ="2">
+									<td>
+										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">
+										<a href="#"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
+										<a href="#"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
+										<a href="#">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										</div>
+									</td>
+						</c:forEach>
+					<tr class="productList">
+						<c:forEach items="${productList}" var="product" begin="3" end ="5">
+									<td>
+										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">
+										<a href="#"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
+										<a href="#"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
+										<a href="#">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										</div>
+									</td>
+						</c:forEach>
+					</tr>
+					<tr class="productList">
+						<c:forEach items="${productList}" var="product" begin="6" end ="8">
+									<td>
+										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">
+										<a href="#"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
+										<a href="#"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
+										<a href="#">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										</div>
+									</td>
+						</c:forEach>
+					</tr>
+				</table>
+			</div>
 	
+			<!-- 페이징 처리 -->
+			<div class="container producbox" id="pagingunderbar">
+				<div align="center">
+					<ul class="btn-group pagination">
+						<c:if test="${pageMaker.prev }">
+							<li>
+								<!-- c:url URL에 자동으로 Context Path 를 붙여주는 테그 -->
+								<a href="<c:url value='/product/productList?product_color=${color}&page=${pageMaker.startPage-1}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
+							</li>
+						</c:if>
+						<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
+							<li>
+								<a href="<c:url value='/product/productList?product_color=${color}&page=${pageNum}'/>"><i>${pageNum}</i></a>
+							</li>
+						</c:forEach>
+						<c:if test="${pageMaker.next }">
+							<li>
+								<a href="<c:url value='/product/productList?product_color=${color}&page=${pageMaker.endPage + 1}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
+							</li>
+						</c:if>
+					</ul>
+				</div>
+			</div>
+			
+			
+			<!-- 하단 메뉴바 -->
+			<jsp:include page = "../common/footer.jsp" flush = "false"/>	
 </body>
 </html>

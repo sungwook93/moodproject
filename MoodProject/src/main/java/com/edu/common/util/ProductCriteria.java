@@ -1,6 +1,10 @@
 package com.edu.common.util;
 
 public class ProductCriteria extends Criteria {
+	/*
+	private int page; //현재 페이지 번호
+	private int perPageNum;	//한 페이지당 보여줄 게시글의 갯순
+	*/
 	
 	private String product_type;	//상품 타입
 	private String product_color;  //상품 색상

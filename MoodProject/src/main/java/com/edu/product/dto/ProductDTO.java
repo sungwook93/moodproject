@@ -17,7 +17,7 @@ public class ProductDTO {
 	private int star_sum; //상품 별점 합계
 	private int review_count; //리뷰 등록 갯수
 	private float star_avg; //상품 별점 평균
-	private String imgae; //상품 대표 이미지
+	
 	
 	public String getProduct_code() {
 		return product_code;
@@ -79,13 +79,15 @@ public class ProductDTO {
 	public void setStar_avg(float star_avg) {
 		this.star_avg = star_avg;
 	}
-	public String getImgae() {
-		return imgae;
-	}
-	public void setImgae(String imgae) {
-		this.imgae = imgae;
-	}
 	
+	@Override
+	public String toString() {
+		return "ProductDTO [product_code=" + product_code + ", product_type=" + product_type + ", product_color="
+				+ product_color + ", product_size=" + product_size + ", product_price=" + product_price
+				+ ", product_date=" + product_date + ", product_name=" + product_name + ", star_sum=" + star_sum
+				+ ", review_count=" + review_count + ", star_avg=" + star_avg + "]";
+	}
+
 	
 	
 }

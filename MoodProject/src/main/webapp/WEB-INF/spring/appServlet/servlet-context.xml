@@ -26,6 +26,7 @@
 	<context:component-scan base-package="com.edu.main" />
 	<context:component-scan base-package="com.edu.member" />
 	<context:component-scan base-package="com.edu.product" />
+	<context:component-scan base-package="com.edu.common" />
 
 	
 	<!-- AOP 설정 -->
@@ -53,7 +54,7 @@
 	<!-- 파일 업로드를 위한 경로 설정 -->
 	<!-- String uploadPath = new java.lang.String("c:/data/upload"); -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="c:/data/upload"/>
+		<beans:constructor-arg value="c:\\data\\upload"/>
 	</beans:bean>
 	
 	

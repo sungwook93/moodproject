@@ -21,7 +21,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static String Namespace = "con.edu.product";
+	private static String Namespace = "com.edu.product";
 	
 	// 여러가지 조건에 맞는 상품리스트 발급
 	@Override
@@ -37,6 +37,13 @@ public class ProductDAOImpl implements ProductDAO {
 		logger.info("ProductDAOImpl의 totalCount 불러오기....");
 		
 		return sqlSession.selectOne(Namespace + ".totalCount", pCri);
+	}
+
+	// 리스트에 쓰일 대표이미지를 가지고 온다.(ImageController에서)
+	@Override
+	public String ImageName(String name) throws Exception {
+		logger.info("ProductDAOImpl의 대표이미지 불러오기....");
+		return sqlSession.selectOne(Namespace + ".ImageName", name);
 	}
 
 	

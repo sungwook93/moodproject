@@ -24,6 +24,19 @@
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
 	<h2 align="center">${color}</h2>
+	
+	<input type="hidden" id="color" value="${color}"/>
+	<!-- 상품 정렬 -->
+	<div class="typebox" >
+		<div class="listbox">
+			<select class="form-control" id="arrayOption" onchange="arrayOption(this)">
+				<option>선택하세요</option>
+				<option value="bed">침실</option>
+				<option value="bath">화장실</option>
+				<option value="living">거실</option>
+			</select>
+		</div>
+	</div>
 
 	<!-- 상품 출력 -->
 			<div class = "container producbox">
@@ -70,17 +83,17 @@
 						<c:if test="${pageMaker.prev }">
 							<li>
 								<!-- c:url URL에 자동으로 Context Path 를 붙여주는 테그 -->
-								<a href="<c:url value='/product/productList?product_color=${color}&page=${pageMaker.startPage-1}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${product_type}&page=${pageMaker.startPage-1}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 						</c:if>
 						<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
 							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&page=${pageNum}'/>"><i>${pageNum}</i></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${product_type}&page=${pageNum}'/>"><i>${pageNum}</i></a>
 							</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next }">
 							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&page=${pageMaker.endPage + 1}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${product_type}&page=${pageMaker.endPage + 1}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 						</c:if>
 					</ul>

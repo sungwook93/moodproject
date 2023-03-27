@@ -14,26 +14,31 @@
 	</sql>
 	
 	<!-- Type별 List 불러오기 + 정렬 + 검색 -->
-	<select id="typeList" parameterType="com.edu.common.util.ProductCriteria" resultType="com.edu.product.dto.ProductDTO">
-		<![CDATA[
+	<select id="typeList" parameterType="Map" resultType="com.edu.product.dto.ProductDTO">
 		select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg
 		from (select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg,
 		row_number() over( 
 			order by product_date DESC
 		) as rNum from t_product where product_color = #{product_color}
-		]]>	
+									   and product_type in  
+								<foreach collection="arrShopList" item="item" open="(" close=")" separator=",">
+								 #{item}
+								</foreach>
+		
 		<include refid="search"/>
-		<![CDATA[
 		) bpd
 		where rNUM BETWEEN (#{perPageNum} * #{page} - 8) and (#{perPageNum} * #{page}) 
-		]]>
 	</select>
 	
 	<!-- Type + 전체 별 전체 데이터 갯수 -->
-	<select id="totalCount" parameterType="com.edu.common.util.ProductCriteria" resultType="Integer">
-		<![CDATA[
-			select count(*) from t_product where product_color = #{product_color} and 1=1
-		]]>
+	<select id="totalCount" parameterType="Map" resultType="Integer">
+
+			select count(*) from t_product where product_color = #{product_color} 
+										    and product_type in  
+											<foreach collection="arrShopList" item="item" open="(" close=")" separator=",">
+											 #{item}
+											</foreach>
+										   	and 1=1
 		<include refid="search"/>
 	</select>
 	

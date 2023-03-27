@@ -2,7 +2,7 @@ package com.edu.board.dto;
 
 import java.sql.Timestamp;
 
-public class boardDTO {
+public class BoardDTO {
 	
 	private int qan_bno;
 	private String qna_subject;

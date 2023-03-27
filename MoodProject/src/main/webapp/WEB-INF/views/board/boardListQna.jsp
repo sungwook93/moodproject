@@ -13,7 +13,7 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
-			
+			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
 		</head>
 		<body>
 			<!-- 로그인 확인용 -->
@@ -24,8 +24,9 @@
 			
 			<!-- 상단 메뉴 -->
 			<jsp:include page="../common/topMenu.jsp" flush="false"/>
+			
+			<hr/>
 			<div id="mainTitle">
-				<hr/>
 				<div id="boardTitle">
 					<a href="/board/boardList?page=1" id="selectedA">Q & A</a>
 					<a href="/other/boardListFqa">Review</a>
@@ -35,9 +36,10 @@
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">
-					<button type="button" class="btn btn-secondary" onclick="fn_isLogOnQL();"><strong>QnA 작성하기</strong></button>
+					<button type="button" class="btn btn-secondary" onclick="fn_isLogOnQL();" style = "float : right;" ><strong>QnA 작성하기</strong></button>
+					<br/>	
 				</div>
-				
+				<br/>
 				<div>
 					<!-- 글 목록 -->
 					<table id="boardTable">
@@ -88,9 +90,9 @@
 							</select>
 						</div>
 						<div id="boardSearchBoxDiv">
-							<input type="text" id="searchKeyword" value="${keyword}"/>
-							<button id="searchBtn" class="glyphicon glyphicon-search"></button>
+							<input type="text" id="searchKeyword" value="${keyword}" style = "background-color: #d4c6bb;"/>
 						</div>
+							<button id="searchBtn" class="glyphicon glyphicon-search" style = "background-color: #d4c6bb;"></button>
 					</div>
 					
 					<br/>

@@ -124,7 +124,7 @@ public class MemberControllerImpl implements MemberController {
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/login.do", method=RequestMethod.POST)
-		public ModelAndView login(MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request,
+		public ModelAndView login(MemberDTO member, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {   //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
 			
 			System.out.println("MemberControllerImpl 로그인 처리 시작.....");
@@ -134,9 +134,10 @@ public class MemberControllerImpl implements MemberController {
 			
 			// 아이디 값이 없이 넘어온 경우에는 돌려보낸다.
 			if(member.getUserID().equals("") || member.getUserID() == null) {
-				rAttr.addAttribute("result", "loginIdEmpty");
+				mav.addObject("result", "loginIdEmpty");
 				//mav.setViewName("redirect:/member/loginForm.do");	
-				mav.setViewName("redirect:/main.do");
+				mav.setViewName("/main");
+				return mav;
 			}
 			
 			// 로그인한 정보를 가지고 데이터베이스에 존재하는지 처리를 하고, 그 결과를 가져온다.
@@ -159,23 +160,22 @@ public class MemberControllerImpl implements MemberController {
 				    //session.setAttribute("member1OrderDetail",    orderDetailList);
 				    //System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList);
 					
-					mav.setViewName("redirect:/main.do");	// 메인화면으로 이동한다.
+					mav.setViewName("/main");	// 메인화면으로 이동한다.
 					
 				} else { 	// 아이디는 있는데 비밀번호가 틀린 경우
 							// 메시지를 가지고 로그인 화면으로 이동한다.
-					rAttr.addAttribute("result", "PasswordFailed");
+					mav.addObject("result", "PasswordFailed");
 					//mav.setViewName("redirect:/member/loginForm.do");	
-					mav.setViewName("redirect:/main.do");	
+					mav.setViewName("/main");	// 메인화면으로 이동한다.
 				}
 				
 			} else {	// 로그인한 아이디가 존재하지 않으면 
 						// 로그인 실패 메시지를 가지고 로그인 화면으로 이동한다.
-				rAttr.addAttribute("result", "loginFailed");
+				mav.addObject("result", "loginFailed");
 				//mav.setViewName("redirect:/member/loginForm.do");	
-				mav.setViewName("/member/main.do");	// 회원가입화면
+				mav.setViewName("/main");	// 메인화면으로 이동한다.
 				
 			}
-			
 			return mav;
 		}
 		

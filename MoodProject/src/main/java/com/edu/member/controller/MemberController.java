@@ -32,7 +32,7 @@ public interface MemberController {
 	// 로그인 처리
 	//-----------------------------------------------------------------------------------------------------------
 	public ModelAndView login(@ModelAttribute("member") MemberDTO member,
-			RedirectAttributes rAttr, 
+			
 			HttpServletRequest request, HttpServletResponse response) //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
 			throws Exception;
 				

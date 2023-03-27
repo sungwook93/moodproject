@@ -2,22 +2,8 @@
  *	
  */
  $(document).ready(function() {
- 
- 	$("#submit21").on("click", function(){
- 		//alert("1");
- 		
-		var result = $("#result").val;
-		
-		if(result.equals("loginIdEmpty")) {
-			alert(result);
-		}
-		if(result.equals("loginFailed")) {
-			alert(result);
-		}
-		if(result.equals("PasswordFailed")) {
-			alert(result);
-		}
-	});
+ 	
+ 	
 	
 	
 	//datepicker 달력 

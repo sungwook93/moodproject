@@ -27,16 +27,22 @@
 	
 	<input type="hidden" id="color" value="${color}"/>
 	<!-- 상품 정렬 -->
-	<div class="typebox" >
-		<div class="listbox">
-			<select class="form-control" id="arrayOption" onchange="arrayOption(this)">
-				<option>선택하세요</option>
-				<option value="bed">침실</option>
-				<option value="bath">화장실</option>
-				<option value="living">거실</option>
-			</select>
+		<div>
+			<div id="productlistbox">
+				<label><input type="checkbox" name="type" value="bed">침실</label>
+				<label><input type="checkbox" name="type" value="living">거실</label>
+				<label><input type="checkbox" name="type" value="bath">욕실</label>
+				<button onclick='getCheckboxValue()'>확인</button>
+			</div>
+			<div>
+				<select class = "form-control" id="arrayOption">
+						<option value = "r" <c:if test="${array_type=='r'}">selected</c:if>>최신순</option>
+						<option value = "o" <c:if test="${array_type=='o'}">selected</c:if>>오래된 순</option>
+						<option value = "p" <c:if test="${array_type=='p'}">selected</c:if>>인기순</option>
+				</select>
+			</div>
 		</div>
-	</div>
+	
 
 	<!-- 상품 출력 -->
 			<div class = "container producbox">

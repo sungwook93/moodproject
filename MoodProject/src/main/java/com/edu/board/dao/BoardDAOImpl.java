@@ -45,9 +45,16 @@ public class BoardDAOImpl implements BoardDAO {
 		List<BoardDTO> boardList = sqlSession.selectList(Namespace + ".totalList");
 		
 		return boardList;
-		
-		
+			
 	}
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록 처리 하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int boardRegister(BoardDTO boardDTO) throws Exception {
+		
+		return sqlSession.insert(Namespace + ".boardRegister", boardDTO);
+	}	
 
 }

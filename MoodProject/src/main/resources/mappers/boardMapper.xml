@@ -52,4 +52,13 @@
 		]]>
 	</select>
 	
+	<!-- 게시글 등록 처리하기 -->
+	<select id = "boardRegister" parameterType = "com.edu.board.dto.BoardDTO">
+		<![CDATA[
+			insert into t_board(qna_bno, qna_subject, qna_content, userID, qna_regDate, qna_readCount)
+			select ifnull(max(qna_bno), 0) +1, #{qna_subject}, #{qna_content}, #{userID}, now(), 0 from t_board;
+		]]>
+	</select>
+	
+	
 </mapper>

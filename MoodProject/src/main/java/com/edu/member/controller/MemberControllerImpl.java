@@ -136,6 +136,7 @@ public class MemberControllerImpl implements MemberController {
 			if(member.getUserID().equals("") || member.getUserID() == null) {
 				rAttr.addAttribute("result", "loginIdEmpty");
 				//mav.setViewName("redirect:/member/loginForm.do");	
+				mav.setViewName("redirect:/main.do");
 			}
 			
 			// 로그인한 정보를 가지고 데이터베이스에 존재하는지 처리를 하고, 그 결과를 가져온다.

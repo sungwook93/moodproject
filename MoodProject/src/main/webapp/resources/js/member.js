@@ -3,25 +3,19 @@
  */
  $(document).ready(function() {
  
- 	$("#submit").on("click", function(){
- 		alert("1");
+ 	$("#submit21").on("click", function(){
+ 		//alert("1");
  		
 		var result = $("#result").val;
 		
 		if(result.equals("loginIdEmpty")) {
-			
 			alert(result);
-			location.href = "link"; //메인페이지로 이동
 		}
 		if(result.equals("loginFailed")) {
-	
 			alert(result);
-			location.href = "link"; //메인페이지로 이동
 		}
 		if(result.equals("PasswordFailed")) {
-	
 			alert(result);
-			location.href = "link"; //메인페이지로 이동
 		}
 	});
 	

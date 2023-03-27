@@ -53,6 +53,22 @@ public class BoardController {
 	}
 
 	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록화면 불러오기
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/boardRegisterForm", method = RequestMethod.GET)
+	public ModelAndView boardRegisterForm(SearchCriteria sCri) throws Exception {
+		
+		logger.info("BoardController 게시글 등록화면");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("boardList", boardService.boardList(sCri));
+		mav.setViewName("/board/boardRegisterForm");
+		
+		return mav;	
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 등록 처리 하기
 	//-----------------------------------------------------------------------------------------------------------
 	@ResponseBody

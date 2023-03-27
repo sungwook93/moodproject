@@ -63,7 +63,7 @@
       <li>
         <a href="#">Board</a>
         <ul class="submenu">
-          <li><a href="/board/boardListQna">Q & A</a></li>
+          <li><a href="/board/boardList?page=1">Q & A</a></li>
           <li><a href="#">Review</a></li>
         </ul>
       </li>

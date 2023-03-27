@@ -74,7 +74,7 @@
 </div>
 
     <!-- 로그인 모달창 -->
-    <div class = "container" id="loginFormBox">
+    <div id="loginFormBox">
 		<form class = "form-horizontal" method = "post" action = "/member/login.do">
 	    <div id="modal" class="modal-overlay">
 	        <div class="modal-window">

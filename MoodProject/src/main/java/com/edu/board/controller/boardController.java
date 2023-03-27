@@ -24,12 +24,12 @@ public class boardController {
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 등록 화면 불러오기
 	//-----------------------------------------------------------------------------------------------------------	
-	@RequestMapping(value = "/boardRegisterForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/boardListQna", method = RequestMethod.GET)
 	public String boardRegisterForm() throws Exception {
 		
 		logger.info("BoardController 게시글 화면 불러오기() 시작");
 		
-		return "/board/boardRegisterForm";
+		return "/board/boardListQna";
 		
 	} // End - 게시글 화면 불러오기
 	

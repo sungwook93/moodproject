@@ -55,7 +55,7 @@
       <li>
         <a href="#">Board</a>
         <ul class="submenu">
-          <li><a href="#">Q & A</a></li>
+          <li><a href="/board/boardRegisterForm">Q & A</a></li>
           <li><a href="#">Review</a></li>
         </ul>
       </li>

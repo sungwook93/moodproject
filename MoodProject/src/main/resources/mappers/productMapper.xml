@@ -14,6 +14,7 @@
 	</sql>
 	
 	<!-- Type별 List 불러오기 + 정렬 + 검색 -->
+	<!-- foreach 같은 문장에 CDATA를 쓰면 안먹힌다 주의!!! 이것때문에 엄청고생 -->
 	<select id="typeList" parameterType="Map" resultType="com.edu.product.dto.ProductDTO">
 		select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg
 		from (select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg,
@@ -21,7 +22,7 @@
 			order by product_date DESC
 		) as rNum from t_product where product_color = #{product_color}
 									   and product_type in  
-								<foreach collection="arrShopList" item="item" open="(" close=")" separator=",">
+								<foreach collection="typeList" item="item" open="(" close=")" separator=",">
 								 #{item}
 								</foreach>
 		
@@ -35,7 +36,7 @@
 
 			select count(*) from t_product where product_color = #{product_color} 
 										    and product_type in  
-											<foreach collection="arrShopList" item="item" open="(" close=")" separator=",">
+											<foreach collection="typeList" item="item" open="(" close=")" separator=",">
 											 #{item}
 											</foreach>
 										   	and 1=1

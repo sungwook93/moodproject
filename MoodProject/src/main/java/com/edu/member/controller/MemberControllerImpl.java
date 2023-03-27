@@ -164,14 +164,14 @@ public class MemberControllerImpl implements MemberController {
 							// 메시지를 가지고 로그인 화면으로 이동한다.
 					rAttr.addAttribute("result", "PasswordFailed");
 					//mav.setViewName("redirect:/member/loginForm.do");	
-					mav.setViewName("redirect:/");	
+					mav.setViewName("redirect:/main.do");	
 				}
 				
 			} else {	// 로그인한 아이디가 존재하지 않으면 
 						// 로그인 실패 메시지를 가지고 로그인 화면으로 이동한다.
 				rAttr.addAttribute("result", "loginFailed");
 				//mav.setViewName("redirect:/member/loginForm.do");	
-				mav.setViewName("/member/memberForm");	// 회원가입화면
+				mav.setViewName("/member/main.do");	// 회원가입화면
 				
 			}
 			

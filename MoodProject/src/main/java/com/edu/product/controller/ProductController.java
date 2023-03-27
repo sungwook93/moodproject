@@ -38,16 +38,18 @@ public class ProductController {
 		
 		ModelAndView mav = new ModelAndView(); 
 		
+		// map 형식을 담기위해 설정해둔다. 이유는 type쪽을 배열로 넘겨주기위해서 가공을 해야한다.
+		// type을 배열로 담을려는 이유는 mapper에 where in을 넣어야 하는데 mybatis 부분의 where in은 foreach를 써야하므로
+		// 문자열을 배열로 바꾼다.
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("product_color", pCri.getProduct_color());
 		param.put("perPageNum", 9);
 		param.put("page", pCri.getPage());
 			
-		
-		String arrShopList[] = null;
-		arrShopList = pCri.getProduct_type().split(",");
-
-		param.put("arrShopList", arrShopList);				
+		//들어오는 문자열을 배열로 만들고 map에다가 담아준다.
+		String typeList[] = null;
+		typeList = pCri.getProduct_type().split(",");
+		param.put("typeList", typeList);				
 		
 	
 		//상품조건에 해당하는 상품 리스트를 가져와서 model에 담는다.

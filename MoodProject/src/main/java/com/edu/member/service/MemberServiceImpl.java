@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.edu.member.dao.MemberDAO;
@@ -34,4 +35,25 @@ public class MemberServiceImpl implements MemberService {
 			
 		return result;
 	}	
+	//-----------------------------------------------------------------------------------------------------------
+	// 로그인 처리
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public MemberDTO login(MemberDTO memberDTO) throws DataAccessException {
+			
+		logger.info("MemberServiceImpl login() 시작");
+
+		return memberDAO.loginByID(memberDTO);
+	}
+		
+	//-----------------------------------------------------------------------------------------------------------
+	// 회원가입 처리하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int addMember(MemberDTO memberDTO) throws DataAccessException {
+
+		logger.info("MemberServiceImpl 회원가입 처리하기() 시작 : " + memberDTO);
+		return memberDAO.addMember(memberDTO);
+
+	} // End - 회원가입 처리하기()
 }

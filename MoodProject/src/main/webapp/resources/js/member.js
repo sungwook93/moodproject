@@ -2,6 +2,30 @@
  *	
  */
  $(document).ready(function() {
+ 
+ 	$("#submit").on("click", function(){
+ 		alert("1");
+ 		
+		var result = $("#result").val;
+		
+		if(result.equals("loginIdEmpty")) {
+			
+			alert(result);
+			location.href = "link"; //메인페이지로 이동
+		}
+		if(result.equals("loginFailed")) {
+	
+			alert(result);
+			location.href = "link"; //메인페이지로 이동
+		}
+		if(result.equals("PasswordFailed")) {
+	
+			alert(result);
+			location.href = "link"; //메인페이지로 이동
+		}
+	});
+	
+	
 	//datepicker 달력 
 	$("#age").datepicker();
 	
@@ -131,6 +155,19 @@
 		
 		
 	});
+	
+	$(".cancel").on("click", function(){ //취소 버튼을 눌렀을 때
+		location.href = "/main.do"; //메인페이지로 이동
+	});
+	
+	//아이디 입력 시 한글입력 안되게 처리
+	$("input[name=userID]").keyup(function(event){ 
+		if (!(event.keyCode >=37 && event.keyCode<=40)) {
+			var inputVal = $(this).val();
+			$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+		}
+	});
+	
 });
 
 //아이디 중복 검사 함수

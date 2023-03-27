@@ -29,4 +29,29 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		return sqlSession.selectOne(Namespace + ".idCheck", memberDTO);
 	}
+	//-----------------------------------------------------------------------------------------------------------
+	// 로그인 처리
+	//-----------------------------------------------------------------------------------------------------------	
+	@Override
+	public MemberDTO loginByID(MemberDTO memberDTO) throws DataAccessException {
+			
+		MemberDTO memDTO = sqlSession.selectOne(Namespace + ".loginByID", memberDTO);
+		return memDTO;
+	}
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 회원가입 처리하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int addMember(MemberDTO memberDTO) throws DataAccessException {
+
+		logger.info("MemberDAOImpl 회원가입 처리하기() 시작 : " + memberDTO);
+			
+		System.out.println("MemberDAOImpl 회원가입 처리하기() 시작 : " + memberDTO);
+			
+		int result = sqlSession.insert(Namespace + ".addMember", memberDTO);
+		System.out.println("MemberDAOImpl 회원가입 처리하기() 결과 : " + result);
+		return result;
+			
+	} // End - 회원가입 처리하기
 }

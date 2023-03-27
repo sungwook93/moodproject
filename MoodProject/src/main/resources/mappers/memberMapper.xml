@@ -31,5 +31,20 @@
 		]]>
 	</select>
 	
+	<!-- 로그인 처리 -->
+	<select id = "loginByID" parameterType="com.edu.member.dto.MemberDTO" resultType="com.edu.member.dto.MemberDTO">
+		<![CDATA[
+		SELECT * FROM t_member WHERE userID = #{userID};
+		]]>
+	</select>
+	
+	<!-- 회원 가입 처리 -->
+	<insert id="addMember" parameterType="com.edu.member.dto.MemberDTO">
+		<![CDATA[
+			INSERT INTO t_member 
+					(userID, 	pwd,  address1, address2, postnum, name, age, phone, gender, email, joinDate, grade)
+			VALUES	(#{userID},	#{pwd}, #{address1}, #{address2}, #{postnum}, #{name}, #{age}, #{phone}, #{gender}, #{email}, sysdate(), 0);
+		]]>
+	</insert>
 
 </mapper>

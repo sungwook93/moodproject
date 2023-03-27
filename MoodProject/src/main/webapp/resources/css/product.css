@@ -4,7 +4,7 @@
 .container {
 	min-height: 500px;
 }
-.arraybox {
+.typebox {
    justify-content: center;   
    width : 10%;
    height: 20px;

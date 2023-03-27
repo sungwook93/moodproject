@@ -12,6 +12,7 @@ public class ProductCriteria extends Criteria {
 	private String searchType; //검색 조건
 	private String keyword; // 검색 키워드
 	
+	
 	public String getProduct_type() {
 		return product_type;
 	}

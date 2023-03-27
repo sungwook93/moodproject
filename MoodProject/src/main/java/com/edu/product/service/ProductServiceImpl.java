@@ -1,6 +1,7 @@
 package com.edu.product.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,18 +22,18 @@ public class ProductServiceImpl implements ProductService {
 	
 	// 여러가지 조건에 맞는 상품리스트 발급
 	@Override
-	public List<ProductDTO> productList(ProductCriteria pCri) throws Exception {
+	public List<ProductDTO> productList(Map<String, Object> param) throws Exception {
 		logger.info("ProductServiceImpl의 productList 불러오기....");
 		
-		return productDAO.productList(pCri);
+		return productDAO.productList(param);
 	}
 
 	// 여러가지 조건에 맞는 상품리스트의 전체 수를 보내준다.
 	@Override
-	public int totalCount(ProductCriteria pCri) throws Exception {
+	public int totalCount(Map<String, Object> param) throws Exception {
 		logger.info("ProductServiceImpl의 totalCount 불러오기....");
 		
-		return productDAO.totalCount(pCri);
+		return productDAO.totalCount(param);
 	}
 
 	

@@ -43,7 +43,7 @@
 		</c:choose>	
 	</div>
 	<br/>
-	
+	<!-- 주석 -->
 	<div id="nav3">
 		<ul class="menu">
       	<li>

@@ -36,7 +36,7 @@
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">
-					<button type="button" class="btn btn-secondary" onclick="fn_isLogOnQL();" style = "float : right;" ><strong>QnA 작성하기</strong></button>
+					<button type="button" class="btn btn-secondary" onclick="location.href='/board/boardRegisterForm'" style = "float : right;" ><strong>QnA 작성하기</strong></button>
 					<br/>	
 				</div>
 				<br/>

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.board.dao.BoardDAO;
@@ -50,7 +51,39 @@ public class BoardController {
 		return mav;		
 		
 	}
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록화면 불러오기
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/boardRegisterForm", method = RequestMethod.GET)
+	public ModelAndView boardRegisterForm(SearchCriteria sCri) throws Exception {
+		
+		logger.info("BoardController 게시글 등록화면");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("boardList", boardService.boardList(sCri));
+		mav.setViewName("/board/boardRegisterForm");
+		
+		return mav;	
+	}
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록 처리 하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "/boardRegister", method = RequestMethod.POST)
+	public String boardRegister(BoardDTO boardDTO) throws Exception {
+		
+		logger.info("boardController 게시글 등록하기" + boardDTO);
+		
+		if(boardService.boardRegister(boardDTO) ==1) {
+			return "Y";
+		}else {
+			return "N";
+		}
+		
+	}	
 	
 	
 }

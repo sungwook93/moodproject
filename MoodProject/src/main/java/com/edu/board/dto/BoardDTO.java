@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class BoardDTO {
 	
-	private int qan_bno;
+	private int qna_bno;
 	private String qna_subject;
 	private String userID;
 	private String qna_content;
@@ -12,11 +12,11 @@ public class BoardDTO {
 	private int qna_readCount;
 	private String qna_yn;
 	
-	public int getQan_bno() {
-		return qan_bno;
+	public int getQna_bno() {
+		return qna_bno;
 	}
-	public void setQan_bno(int qan_bno) {
-		this.qan_bno = qan_bno;
+	public void setQna_bno(int qna_bno) {
+		this.qna_bno = qna_bno;
 	}
 	public String getQna_subject() {
 		return qna_subject;
@@ -57,10 +57,12 @@ public class BoardDTO {
 	
 	@Override
 	public String toString() {
-		return "boardDTO [qan_bno=" + qan_bno + ", qna_subject=" + qna_subject + ", userID=" + userID + ", qna_content="
+		return "BoardDTO [qna_bno=" + qna_bno + ", qna_subject=" + qna_subject + ", userID=" + userID + ", qna_content="
 				+ qna_content + ", qna_regDate=" + qna_regDate + ", qna_readCount=" + qna_readCount + ", qna_yn="
 				+ qna_yn + "]";
 	}
+	
+	
 	
 	
 	

@@ -32,3 +32,12 @@
 	background-color: white;
 	border-radius:30px;
 }
+
+/*mypage*/
+#memInfo{
+	text-align:center;
+}
+button {
+	border:none;
+	background-color: #d4c6bb;
+}

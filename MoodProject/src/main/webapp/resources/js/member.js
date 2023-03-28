@@ -148,6 +148,74 @@
 		}
 	});
 	
+	// 회원 정보 수정 버튼을 눌렀을 경우(userID = "submit") - update에서
+	$("#Updatesubmit").on("click", function(){
+	
+		
+		if($("#pwd").val()==""){
+			alert("비밀번호를 입력하셔야 합니다.");
+			$("#pwd").focus();
+			return false;
+		}
+		if($("#pwd").val().length < 4){
+			alert("비밀번호 확인는 최소 4자리 이상을 입력하셔야 합니다.");
+			$("#pwd").focus();
+			return false;
+		}
+		
+		if($("#repwd").val()==""){
+			alert("비밀번호 확인을 입력하셔야 합니다.");
+			$("#repwd").focus();
+			return false;
+		}
+		if($("#repwd").val().length < 4){
+			alert("비밀번호 확인은 최소 4자리 이상을 입력하셔야 합니다.");
+			$("#repwd").focus();
+			return false;
+		}
+		if($("#pwd").val() != $("#repwd").val() ){
+			alert("비밀번호와 비밀번호 확인이 맞지 않습니다. 다시입력해주세요");
+			$("#pwd").focus();
+			return false;	
+		}
+		
+		if($("#name").val()==""){
+			alert("이름을 입력하셔야 합니다.");
+			$("#name").focus();
+			return false;
+		}
+		
+		if($("#address1").val()==""){
+			alert("주소를 입력해야합니다.");
+			$("#address1").focus();
+			return false;
+		}
+		if($("#address2").val()==""){
+			alert("주소를 입력해야합니다.");
+			$("#address2").focus();
+			return false;
+		}
+		
+		if($("#phone").val()==""){
+			alert("핸드폰번호를 입력하셔야 합니다.");
+			$("#phone").focus();
+			return false;
+		}
+		
+		if($("#age").val()==""){
+			alert("나이를 입력하셔야 합니다.");
+			$("#age").focus();
+			return false;
+		}
+		
+		if($("#email").val()==""){
+			alert("이메일을 입력하셔야 합니다.");
+			$("#email").focus();
+			return false;
+		}
+		
+	});
+	
 });
 
 //아이디 중복 검사 함수
@@ -299,3 +367,12 @@ function daumZipCode() {
 		popupName:	'postcodePopup'
 	});		
 }
+//회원정보 수정 버튼 관련
+$(document).ready(function() {
+		
+		$("#updatepage").click(function (){
+  			$("#updatepage").css("display", "none");
+  			$("#updateinfo").css("display", "inline");
+  			 document.getElementById("txt").readOnly=true;
+  		});
+});

@@ -33,5 +33,15 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDAO.boardListTotalCount(sCri);
 	}
-
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 등록 처리 하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int boardRegister(BoardDTO boardDTO) throws Exception {
+		
+		return boardDAO.boardRegister(boardDTO);
+	}
+	
+	
 }

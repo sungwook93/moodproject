@@ -54,4 +54,17 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 			
 	} // End - 회원가입 처리하기
+	
+	//----------------------------------------------------------------------------------------------------------
+	// 마이페이지 아이디에 해당하는 마이페이지의 내용(비밀번호, 이름 등)을 수정 요청하기
+	//----------------------------------------------------------------------------------------------------------	
+	@Override
+	public int memberUpdate(MemberDTO memberDTO) {
+			
+		logger.info("MemberDAOImpl 게시글 번호에 해당하는 게시글 내용(제목, 글쓴이, 내용) 수정하기() 시작");
+			
+		return sqlSession.update(Namespace + ".update", memberDTO);
+		
+	} // End - 게시글 번호에 해당하는 게시글의 내용(제목, 글쓴이, 내용)을 수정 요청하기	
+
 }

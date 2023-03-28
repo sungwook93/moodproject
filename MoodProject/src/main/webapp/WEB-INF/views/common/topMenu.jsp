@@ -55,9 +55,9 @@
       <li>
         <a href="#">Gift</a>
         <ul class="submenu">
-          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1">white</a></li>
-          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1">black</a></li>
-          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1">gray</a></li>
+          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r">white</a></li>
+          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r">black</a></li>
+          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r">gray</a></li>
         </ul>
       </li>
       <li>

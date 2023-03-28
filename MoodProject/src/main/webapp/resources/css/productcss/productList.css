@@ -35,18 +35,6 @@
 	height: 20px;
 	margin: auto;
 }
-/*select array option*/
-  li {
-  	list-style:none;
-  }
- #arrayOption2 {
- 	display:none;
- 	padding:0;
- }
- .pdsmarray:hover {
- 	background-color:#dcdcdc;
- 	color:#464646;
- }
 /**/
 .productlist {
 	margin-bottom:60px;
@@ -69,3 +57,45 @@
 .productList a {
 	color: #000;
 }
+
+/*상품 검색 및 상품 정렬*/
+
+
+#keywordbox{
+	text-align: center;
+	border: 1px solid #ccc;  	
+}
+#keyword{
+	width: 630px;
+	height: 50px;
+}
+#keywordbutton{
+	width: 75px;
+	height: 50px;
+	background-color: green;
+	color: white;
+}
+	
+#typebox{
+
+	margin: 0 auto;
+	text-align: center;
+	width: 630px;
+}
+
+#colorcheckbox{
+	float:left;
+	margin-right:50px;
+}
+
+#typecheckbox{
+	float:left;
+	margin-right:50px;
+}
+#productradio{
+	float:left;
+	
+}
+
+
+

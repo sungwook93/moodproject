@@ -42,11 +42,18 @@ public class ProductController {
 		// type을 배열로 담을려는 이유는 mapper에 where in을 넣어야 하는데 mybatis 부분의 where in은 foreach를 써야하므로
 		// 문자열을 배열로 바꾼다.
 		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("product_color", pCri.getProduct_color());
 		param.put("perPageNum", 9);
 		param.put("page", pCri.getPage());
-			
+		param.put("array_type", pCri.getArray_type());
+		param.put("keyword", pCri.getKeyword());
+		
 		//들어오는 문자열을 배열로 만들고 map에다가 담아준다.
+		//color
+		String colorList[] = null;
+		colorList = pCri.getProduct_color().split(",");
+		param.put("colorList", colorList);
+		
+		//type
 		String typeList[] = null;
 		typeList = pCri.getProduct_type().split(",");
 		param.put("typeList", typeList);				
@@ -66,9 +73,10 @@ public class ProductController {
 		mav.addObject("pageMaker", pageMaker);
 		
 		
-		//상품 색상, 검색 키워드, 상품 타입를 담아서 보내준다(script 처리를 위해)
+		//상품 색상, 검색 키워드, 상품 타입를 담아서 보내준다(page 처리를 위해)
 		mav.addObject("color", pCri.getProduct_color());
-		mav.addObject("product_type" , pCri.getProduct_type());
+		mav.addObject("type" , pCri.getProduct_type());
+		mav.addObject("array" , pCri.getArray_type());
 		if(pCri.getKeyword() != null) {
 			mav.addObject("keyword", pCri.getKeyword());
 		}

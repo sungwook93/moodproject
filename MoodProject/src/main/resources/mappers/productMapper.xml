@@ -8,8 +8,23 @@
 	
 	<!-- 검색조건 -->
 	<sql id="search">
-		<if test="searchType != null">
+		<if test="keyword != null">
 			And product_name LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
+	
+	<!-- 정렬조건 -->
+	<sql id="array">
+		<if test="array_type != null">
+			<if test="array_type == 'r'.toString()">
+				ORDER BY product_date DESC
+			</if>
+			<if test="array_type == 'l'.toString()">
+				ORDER BY product_price
+			</if>
+			<if test="array_type == 'h'.toString()">
+				ORDER BY product_price DESC
+			</if>
 		</if>
 	</sql>
 	
@@ -19,9 +34,12 @@
 		select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg
 		from (select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg,
 		row_number() over( 
-			order by product_date DESC
-		) as rNum from t_product where product_color = #{product_color}
-									   and product_type in  
+			<include refid="array"/>
+		) as rNum from t_product where product_color in
+								<foreach collection="colorList" item="color" open="(" close=")" separator=",">
+									#{color}
+								</foreach>
+								 and product_type in  
 								<foreach collection="typeList" item="item" open="(" close=")" separator=",">
 								 #{item}
 								</foreach>
@@ -34,7 +52,10 @@
 	<!-- Type + 전체 별 전체 데이터 갯수 -->
 	<select id="totalCount" parameterType="Map" resultType="Integer">
 
-			select count(*) from t_product where product_color = #{product_color} 
+			select count(*) from t_product where product_color in
+											<foreach collection="colorList" item="color" open="(" close=")" separator=",">
+												#{color}
+											</foreach>
 										    and product_type in  
 											<foreach collection="typeList" item="item" open="(" close=")" separator=",">
 											 #{item}

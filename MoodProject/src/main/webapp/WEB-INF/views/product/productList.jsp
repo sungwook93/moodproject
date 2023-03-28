@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"	uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%	request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
@@ -15,7 +17,7 @@
 	
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<link href="${contextPath}/resources/css/product.css" rel="stylesheet" type="text/css">
+	<link href="${contextPath}/resources/css/productcss/productList.css" rel="stylesheet" type="text/css">
 	<script src="${contextPath}/resources/js/product.js"></script>
 </head>
 <body>
@@ -23,25 +25,36 @@
 	<!-- 상단 메뉴 -->
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
-	<h2 align="center">${color}</h2>
+	<c:set var = "color" value = "${color}"/>
+	<c:set var = "type" value = "${type}"/>
 	
-	<input type="hidden" id="color" value="${color}"/>
-	<!-- 상품 정렬 -->
-		<div>
-			<div id="productlistbox">
-				<label><input type="checkbox" name="type" value="bed">침실</label>
-				<label><input type="checkbox" name="type" value="living">거실</label>
-				<label><input type="checkbox" name="type" value="bath">욕실</label>
-				<button onclick='getCheckboxValue()'>확인</button>
+	<!-- 상품 검색 및 상품 정렬 -->
+	
+			<div id="keywordbox">
+				<input type="text" id="keyword" placeholder="상품을 입력해주리렵니까?"><button onclick='getCheckboxValue()' id="keywordbutton">확인</button>
 			</div>
-			<div>
-				<select class = "form-control" id="arrayOption">
-						<option value = "r" <c:if test="${array_type=='r'}">selected</c:if>>최신순</option>
-						<option value = "o" <c:if test="${array_type=='o'}">selected</c:if>>오래된 순</option>
-						<option value = "p" <c:if test="${array_type=='p'}">selected</c:if>>인기순</option>
-				</select>
+	
+		<div id="typebox">
+			<div id="colorcheckbox">
+				<p>색상</p>
+				<label><input type="checkbox" name="color" value="white" <c:if test="${fn:contains(color, 'white')}">checked</c:if>>white</label>
+				<label><input type="checkbox" name="color" value="black" <c:if test="${fn:contains(color, 'black')}">checked</c:if>>black</label>
+				<label><input type="checkbox" name="color" value="gray" <c:if test="${fn:contains(color, 'gray')}">checked</c:if>>gray</label>
+			</div>
+			<div id="typecheckbox">
+				<p>제품</p>
+				<label><input type="checkbox" name="type" value="bed" <c:if test="${fn:contains(type, 'bed')}">checked</c:if>>침실</label>
+				<label><input type="checkbox" name="type" value="living" <c:if test="${fn:contains(type, 'living')}">checked</c:if>>거실</label>
+				<label><input type="checkbox" name="type" value="bath" <c:if test="${fn:contains(type, 'bath')}">checked</c:if>>욕실</label>
+			</div>
+			<div id="productradio">
+				<p>정렬</p>
+				<label><input type="radio" name="array" value="l" <c:if test="${array=='l'}">checked</c:if>>낮은 가격순</label>
+				<label><input type="radio" name="array" value="h" <c:if test="${array=='h'}">checked</c:if>>높은 가격순</label>
+				<label><input type="radio" name="array" value="r" <c:if test="${array=='r'}">checked</c:if>>최신순</label>
 			</div>
 		</div>
+	
 	
 
 	<!-- 상품 출력 -->
@@ -89,17 +102,17 @@
 						<c:if test="${pageMaker.prev }">
 							<li>
 								<!-- c:url URL에 자동으로 Context Path 를 붙여주는 테그 -->
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${product_type}&page=${pageMaker.startPage-1}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.startPage-1}&array_type=${array}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 						</c:if>
 						<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
 							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${product_type}&page=${pageNum}'/>"><i>${pageNum}</i></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageNum}&array_type=${array}'/>"><i>${pageNum}</i></a>
 							</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next }">
 							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${product_type}&page=${pageMaker.endPage + 1}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.endPage + 1}&array_type=${array}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 						</c:if>
 					</ul>

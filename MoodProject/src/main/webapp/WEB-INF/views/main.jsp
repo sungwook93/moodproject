@@ -40,9 +40,9 @@
 					<td><a href="/main.do"><img style="width:500px;  height:450px;" src="${contextPath}../resources/images/main2.png"/></a></td>
 				</tr>
 				<tr>
-					<td><a href="/main.do"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main3.png"/></a></td>
-					<td><a href="/main.do"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main4.png"/></a></td>
-					<td><a href="/main.do"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main5.png"/></a></td>
+					<td><a href="/product/productList?product_color=white,black,gray&product_type=living&page=1&array_type=r"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main3.png"/></a></td>
+					<td><a href="/product/productList?product_color=white,black,gray&product_type=bed&page=1&array_type=r"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main4.png"/></a></td>
+					<td><a href="/product/productList?product_color=white,black,gray&product_type=bath&page=1&array_type=r"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main5.png"/></a></td>
 				</tr>
 			</table>
 			

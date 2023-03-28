@@ -41,4 +41,14 @@ public interface MemberController {
 	//-----------------------------------------------------------------------------------------------------------
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
 		
+	//마이페이지 불러오기
+	public ModelAndView myPageForm(HttpServletRequest request,HttpServletResponse response) throws Exception;
+	
+	//----------------------------------------------------------------------------------------------------------
+	// 마이페이지 아이디에 해당하는 마이페이지의 내용(비밀번호, 이름 등)을 수정 요청하기
+	//----------------------------------------------------------------------------------------------------------
+	public ModelAndView memberUpdate(@ModelAttribute("memberDTO") MemberDTO memberDTO,
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	
 }

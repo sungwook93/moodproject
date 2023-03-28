@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -197,6 +198,42 @@ public class MemberControllerImpl implements MemberController {
 			return mav;
 			
 		} // End - 로그아웃 처리
+		
+		// 마이페이지 화면 불러오기
+		//-----------------------------------------------------------------------------------------------------------
+		@Override
+		@RequestMapping(value="/myPageForm.do", method=RequestMethod.GET)
+		public ModelAndView myPageForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+			logger.info("MemberControllerImpl 마이페이지 화면 불러오기() 시작");
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("/member/myPageForm");	// 회원가입화면
+			return mav;
+		} // End - 마이페이지 화면 불러오기()
+		
+		//----------------------------------------------------------------------------------------------------------
+		// 마이페이지 아이디에 해당하는 마이페이지의 내용(비밀번호, 이름 등)을 수정 요청하기
+		//----------------------------------------------------------------------------------------------------------
+		@ResponseBody
+		@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.POST)
+		public ModelAndView memberUpdate(@ModelAttribute("memberDTO") MemberDTO memberDTO,
+				HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+			// 세션값 받기
+			HttpSession session = request.getSession();
+			session.setAttribute("member1", 	memberDTO);
+			session.setAttribute("isLogOn", true);
+			logger.info("MemberControllerImpl 아이디에 해당하는 회원 정보 수정하기() 시작");
+			
+			
+			int result = memberService.memberUpdate(memberDTO);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("/member/myPageForm");
+			return mav;
+			
+			
+		} // End - 게시글 번호에 해당하는 게시글의 내용(제목, 글쓴이, 내용)을 수정 요청하기
 		
 }
 //<!-- Google tag (gtag.js) -->

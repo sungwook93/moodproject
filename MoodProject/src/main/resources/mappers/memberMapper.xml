@@ -46,5 +46,12 @@
 			VALUES	(#{userID},	#{pwd}, #{address1}, #{address2}, #{postnum}, #{name}, #{age}, #{phone}, #{gender}, #{email}, sysdate(), 0);
 		]]>
 	</insert>
-
+	<!-- 마이페이지 회원정보 수정하기 -->
+	<update id="update" parameterType="com.edu.member.dto.MemberDTO">
+		<![CDATA[
+		UPDATE t_member 
+		SET		pwd = #{pwd}, address1 = #{address1}, address2 = #{address2}, postnum = #{postnum}, name = #{name}, age = #{age}, phone = #{phone}, gender = #{gender}, email = #{email}
+		WHERE	userID = #{userID}
+		]]>
+	</update>
 </mapper>

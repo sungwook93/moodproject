@@ -35,7 +35,7 @@
 	<div id="nav2">
 		<c:choose>
 			<c:when test="${isLogOn==true && member1 != null}"><!-- MemberControllerImpl에 세션에 담김 -->
-				<li><a href="/member/logout.do">로그아웃</a><a href="#">마이페이지</a></li>
+				<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li>
 			</c:when>
 			<c:otherwise> <!-- 로그인 안했을시 login join이보이는부분 -->
 				<li><a style="width:160px;" id="loginbtn">login</a><a style="width:160px;"href="${contextPath}/member/memberForm.do" >join</a></li>

@@ -2,6 +2,7 @@
  * 상품 관련 자바스크립트
  */
  
+ // 검색 관련 자바 스크립트
  function getCheckboxValue(){
  	
  	// 선택된 color목록 가져오기
@@ -38,5 +39,13 @@
  	
  	location.href="/product/productList?product_color="+color+"&product_type="+type+"&page=1"+"&array_type="+array + "&keyword=" + keyword;
  
- 
+}
+
+// 검색창 관련 스크립트
+function fn_checkbox(){
+ 	if($('#typebox').css('display') == 'none'){
+      $('#typebox').show();
+    }else{
+      $('#typebox').hide();
+    }
 }

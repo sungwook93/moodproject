@@ -71,5 +71,17 @@
 		]]>
 	</select>
 	
+	<!-- 상품 상페 정보 불러오기 -->
+	<select id="productDetail" parameterType="String" resultType="com.edu.product.dto.ProductDTO">
+		SELECT * FROM t_product WHERE product_code = #{product_code};
+	</select>
+	
+	<!-- 상품 이미지 리스트 -->
+	<select id="ImagesName" parameterType="String" resultType="com.edu.product.dto.ImagesDTO">
+		Select * from t_images where product_code = #{product_code};
+	</select>
+	
+	
+	
 
 </mapper>

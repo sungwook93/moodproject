@@ -50,8 +50,9 @@ public class ImageController {
 		
 		
 		//받아온 값을 이미지테이블에서 메인 이미지이름을 받아온다.
+		if(name.length() == 4) { //상품코드가 넘어오면 이미지 파일명을 찾으러 간다.
 		name = productDAO.ImageName(name);
-		
+		}
 		
 		System.out.println("파일 이름: " + name);
 		

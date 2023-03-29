@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.common.util.PageMaker;
 import com.edu.common.util.ProductCriteria;
+import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 import com.edu.product.service.ProductService;
 
@@ -73,10 +74,11 @@ public class ProductController {
 		mav.addObject("pageMaker", pageMaker);
 		
 		
-		//상품 색상, 검색 키워드, 상품 타입를 담아서 보내준다(page 처리를 위해)
+		//상품 색상, 검색 키워드, 상품 타입, 상품수를 담아서 보내준다(page 처리를 위해)
 		mav.addObject("color", pCri.getProduct_color());
 		mav.addObject("type" , pCri.getProduct_type());
 		mav.addObject("array" , pCri.getArray_type());
+		mav.addObject("totalCount", pageMaker.getTotalCount());
 		if(pCri.getKeyword() != null) {
 			mav.addObject("keyword", pCri.getKeyword());
 		}
@@ -85,6 +87,39 @@ public class ProductController {
 		
 		return mav;
 	}//end - public ModelAndView productList()throws Exception
+	
+	//상품 상세페이지 이동
+	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
+	public ModelAndView productDetail(String product_code)throws Exception{
+		
+		System.out.println("productcontroller productDetail 불러오기" + product_code);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//상품 코드에 해당하는 상제정보를 model에 담는다
+		ProductDTO productDTO = productService.productDetail(product_code);
+		mav.addObject("productDTO", productDTO);
+		
+		//이미지의 이름을 담을 리스트를 만든다. 상품상세페이지에 foreach 를 돌리기위해
+		List<String> imagesList = new ArrayList<String>();
+		
+		//상품코드에 해당하는 이미지 이름을 가져온다.
+		ImagesDTO imagesDTO = productService.ImagesName(product_code);
+		// 이미지 이름을 imagesList리스트에 담는다.
+		if(imagesDTO.getImages01() != null) imagesList.add(imagesDTO.getImages01());
+		if(imagesDTO.getImages02() != null) imagesList.add(imagesDTO.getImages02());
+		if(imagesDTO.getImages03() != null) imagesList.add(imagesDTO.getImages03());
+		if(imagesDTO.getImages04() != null) imagesList.add(imagesDTO.getImages04());
+		
+		//상품 코드에 해당하는 이미지리스트를 model에 담아준다.
+		mav.addObject("imagesList", imagesList);
+		
+		//정보를 보낼 주소를 세팅한다.
+		mav.setViewName("/product/productDetail");
+		
+		return mav;
+	}
+	
 	
 	
 }

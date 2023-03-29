@@ -30,10 +30,9 @@
 	
 	<!-- 상품 검색 및 상품 정렬 -->
 	
-			<div id="keywordbox">
-				<input type="text" id="keyword" placeholder="상품을 입력해주리렵니까?"><button onclick='getCheckboxValue()' id="keywordbutton">확인</button>
-			</div>
-	
+		<div id="keywordbox">
+			<input type="text" id="keyword" value="${keyword}" placeholder="상품을 입력해주리렵니까?" onclick="fn_checkbox()"><button onclick='getCheckboxValue()' id="keywordbutton">확인</button>
+		</div>
 		<div id="typebox">
 			<div id="colorcheckbox">
 				<label id="naming" for="color">색상:</label>
@@ -55,7 +54,8 @@
 			</div>
 		</div>
 	
-	
+		<h1><c:if test="${totalCount == 0 }">해당 상품이 없습니다.</c:if></h1>
+
 
 	<!-- 상품 출력 -->
 			<div class = "container producbox">
@@ -102,17 +102,17 @@
 						<c:if test="${pageMaker.prev }">
 							<li>
 								<!-- c:url URL에 자동으로 Context Path 를 붙여주는 테그 -->
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.startPage-1}&array_type=${array}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.startPage-1}&array_type=${array}&keyword=${keyword}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
 							</li>
 						</c:if>
 						<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
 							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageNum}&array_type=${array}'/>"><i>${pageNum}</i></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageNum}&array_type=${array}&keyword=${keyword}'/>"><i>${pageNum}</i></a>
 							</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next }">
 							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.endPage + 1}&array_type=${array}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
+								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.endPage + 1}&array_type=${array}&keyword=${keyword}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
 							</li>
 						</c:if>
 					</ul>

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.edu.common.util.ProductCriteria;
+import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 import com.edu.product.service.ProductServiceImpl;
 
@@ -48,6 +49,22 @@ public class ProductDAOImpl implements ProductDAO {
 		logger.info("ProductDAOImpl의 대표이미지 불러오기....");
 		return sqlSession.selectOne(Namespace + ".ImageName", name);
 	}
+
+	// 상품코드에 맞는 정보를 가져온다.
+	@Override
+	public ProductDTO productDetail(String product_code) throws Exception {
+		System.out.println("ProductDAOImpl의 productDetail 불러오기....");
+		
+		return sqlSession.selectOne(Namespace + ".productDetail",product_code);
+	}
+
+	// 상품코드에 맞는 이미지이름을 가져온다.
+	@Override
+	public ImagesDTO ImagesName(String product_code) throws Exception {
+		System.out.println("ProductDAOImpl의 ImagesName 불러오기....");
+		return sqlSession.selectOne(Namespace + ".ImagesName",product_code );
+	}
+	
 
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.edu.common.util.ProductCriteria;
 import com.edu.product.dao.ProductDAO;
+import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 
 @Service("productService")
@@ -34,6 +35,21 @@ public class ProductServiceImpl implements ProductService {
 		logger.info("ProductServiceImpl의 totalCount 불러오기....");
 		
 		return productDAO.totalCount(param);
+	}
+	
+	// 상품코드에 맞는 정보를 가져온다.
+	@Override
+	public ProductDTO productDetail(String product_code) throws Exception {
+		System.out.println("ProductServiceImpl의 productDetail 불러오기....");
+		return productDAO.productDetail(product_code);
+	}
+	
+	// 상품코드에 맞는 이미지이름을 가져온다.
+	@Override
+	public ImagesDTO ImagesName(String product_code) throws Exception {
+		System.out.println("ProductServiceImpl의 ImagesName 불러오기....");
+		
+		return productDAO.ImagesName(product_code);
 	}
 
 	

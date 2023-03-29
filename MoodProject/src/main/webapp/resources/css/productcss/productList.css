@@ -63,7 +63,8 @@
 
 #keywordbox{
 	text-align: center;
-	
+	margin-bottom:10px;
+
 }
 #keyword{
 	width: 650px;
@@ -71,6 +72,7 @@
 	padding-left: 10px;
 	margin-right: 10px;
 	border: none;
+	outline: none;
 }
 #keywordbutton{
 	width: 75px;
@@ -82,9 +84,11 @@
 }
 	
 #typebox{
-	margin: 0 auto;
+	margin:auto;
 	text-align: center;
 	width: 730px;
+	height: 30px;
+	display: none;
 }
 
 #colorcheckbox{

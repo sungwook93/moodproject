@@ -6,6 +6,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import com.edu.common.util.ProductCriteria;
+import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 
 public interface ProductDAO {
@@ -19,5 +20,10 @@ public interface ProductDAO {
 	// 리스트에 쓰일 대표이미지를 가지고 온다.(ImageController에서)
 	public String ImageName(String name)throws Exception;
 	
+	// 상품코드에 맞는 정보를 가져온다.
+	public ProductDTO productDetail(String product_code)throws Exception;
+	
+	// 상품코드에 맞는 이미지이름을 가져온다.
+	public ImagesDTO ImagesName(String product_code)throws Exception;
 	
 }

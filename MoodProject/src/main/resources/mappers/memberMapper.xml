@@ -54,4 +54,12 @@
 		WHERE	userID = #{userID}
 		]]>
 	</update>
+	
+	<!-- 아이디에 해당하는 회원 정보 삭제하기 -->
+	<delete id="deleteMember" parameterType="String">
+		<![CDATA[
+			DELETE FROM	t_member
+			WHERE	userID = #{userID}
+		]]>
+	</delete>
 </mapper>

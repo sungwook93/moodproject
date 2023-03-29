@@ -70,5 +70,14 @@ public class MemberServiceImpl implements MemberService {
 		
 	} // End - 게시글 번호에 해당하는 게시글의 내용(제목, 글쓴이, 내용)을 수정 요청하기	
 
-		
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 삭제하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int removeMember(String userID) throws DataAccessException {
+
+		logger.info("MemberServiceImpl 아이디에 해당하는 회원 정보 삭제하기() 시작");
+		return memberDAO.deleteMember(userID);
+
+	} // End - 아이디에 해당하는 회원 정보 삭제하기()	
 }

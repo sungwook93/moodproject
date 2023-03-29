@@ -43,5 +43,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.boardRegister(boardDTO);
 	}
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 상세페이지 보여주기 
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public BoardDTO boardDetail(int qna_bno) throws Exception {
+		
+		return boardDAO.boardDetail(qna_bno);
+	}
 	
 }

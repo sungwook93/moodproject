@@ -56,5 +56,24 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.insert(Namespace + ".boardRegister", boardDTO);
 	}	
-
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 상세페이지 보여주기 
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public BoardDTO boardDetail(int qna_bno) throws Exception {
+		
+		return sqlSession.selectOne(Namespace + ".detail", qna_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 조회수 증가
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public void updateReadCount(int qna_bno) throws Exception {
+		
+		sqlSession.update(Namespace + ".updateReadCount", qna_bno);
+	}	
+	
+	
 }

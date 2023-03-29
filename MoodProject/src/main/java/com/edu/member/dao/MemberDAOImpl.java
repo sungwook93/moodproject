@@ -66,5 +66,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.update(Namespace + ".update", memberDTO);
 		
 	} // End - 게시글 번호에 해당하는 게시글의 내용(제목, 글쓴이, 내용)을 수정 요청하기	
-
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 삭제하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int deleteMember(String userID) throws DataAccessException {
+		int result = sqlSession.delete(Namespace + ".deleteMember", userID);
+		return result;
+	} // End - // 아이디에 해당하는 회원 정보 삭제하기
 }

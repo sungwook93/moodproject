@@ -384,34 +384,16 @@ $(document).ready(function() {
   		});
 });
 
-//회원탈퇴 모달창 열기
-$(document).ready(function() {
- //----------------------------------------------------------------------------------------------------------
- // 로그인 모달창 띄우긴
- //----------------------------------------------------------------------------------------------------------
-		
-  	const membermodal = document.getElementById("membermodal")
-        function modalOn() {
-            membermodal.style.display = "flex"
-        }
-        function isModalOn() {
-            return membermodal.style.display === "flex"
-        }
-        function modalOff() {
-            membermodal.style.display = "none"
-        }
-        
-        const closeBtn = membermodal.querySelector(".close-area")
-        closeBtn.addEventListener("click", e => {
-            modalOff();
-    })
-	
-	$("#registerbtn").click(function() {
-		$("#membermodal.modal-overlay").css ({
-			"display" : "flex"
-		});
-	});
 
+$(document).ready(function() {
+	$("#registerbtn").click(function() {
+		$("#membermodal").show();
+	});
+	$(".memberclose-area").click(function() {
+		$('#membermodal').hide();
+	});
+	
+	
 });
 
 

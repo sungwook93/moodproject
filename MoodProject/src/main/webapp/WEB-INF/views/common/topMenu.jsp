@@ -2,7 +2,7 @@
 <%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="${contextPath}/resources/css/topmenu.css" rel="stylesheet" type="text/css">
-<script src="${contextPath}/resources/js/member.js"></script>
+
 			
 <!-- 로그인 확인용 -->
 <script src="${contextPath}/resources/js/isLogOn.js"></script>
@@ -91,7 +91,7 @@
 		            <div><h4>PASSWORD</h4></div>
 		            <div class="content"><input type = "password" class = "form-control" id = "pwd" name ="pwd" maxlength="20" placeholder="비밀번호"/></div>
 	            </div> 
-	            <div class="content form-group" style="padding-top:80px;">
+	            <div class="content form-group" style="margin-top:50px;">
 	            	<button type = "reset" class = "btn btn-light">Re-enter</button>
 					<button type = "submit" class = "btn btn-light" id = "submit">Login</button>
 					<button type = "button" class = "btn btn-light">Join</button>

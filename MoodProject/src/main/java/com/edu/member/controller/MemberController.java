@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -50,5 +51,10 @@ public interface MemberController {
 	public ModelAndView memberUpdate(@ModelAttribute("memberDTO") MemberDTO memberDTO,
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 삭제하기 -- 개인계정
+	//-----------------------------------------------------------------------------------------------------------
+	public ModelAndView removeMember(@RequestParam("userID") String userID, 	
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

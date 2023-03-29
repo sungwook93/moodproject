@@ -235,6 +235,33 @@ public class MemberControllerImpl implements MemberController {
 			
 		} // End - 게시글 번호에 해당하는 게시글의 내용(제목, 글쓴이, 내용)을 수정 요청하기
 		
+		
+		//-----------------------------------------------------------------------------------------------------------
+		// 아이디에 해당하는 회원 정보 삭제하기 - 개인계정
+		//-----------------------------------------------------------------------------------------------------------
+		@Override
+		@RequestMapping(value = "/removeMember.do", method = RequestMethod.POST)
+		public ModelAndView removeMember(String userID, HttpServletRequest request, HttpServletResponse response)
+				throws Exception {
+			
+			logger.info("MemberControllerImpl 아이디에 해당하는 회원 정보 삭제하기기() 시작");
+			logger.info("JSP에서 넘겨준 회원아이디 : " + userID);
+			
+			
+			// 탈퇴하면 세션을 없앤다
+			HttpSession session = request.getSession();
+			session.removeAttribute("member1");
+			session.removeAttribute("isLogOn");
+			
+			request.setCharacterEncoding("UTF-8");
+
+			int result = memberService.removeMember(userID);
+			//ModelAndView mav = new ModelAndView("/member/unregisterForm");
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("result", "removeMember");
+			mav.setViewName("/main");
+			return mav;
+		}//End - 아이디에 해당하는 회원 정보 삭제하기
 }
 //<!-- Google tag (gtag.js) -->
 //<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NRHYLJTPK"></script>

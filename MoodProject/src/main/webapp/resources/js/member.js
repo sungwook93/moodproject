@@ -383,3 +383,62 @@ $(document).ready(function() {
   			document.getElementById('email').readOnly = false; 
   		});
 });
+
+//회원탈퇴 모달창 열기
+$(document).ready(function() {
+ //----------------------------------------------------------------------------------------------------------
+ // 로그인 모달창 띄우긴
+ //----------------------------------------------------------------------------------------------------------
+		
+  	const membermodal = document.getElementById("membermodal")
+        function modalOn() {
+            membermodal.style.display = "flex"
+        }
+        function isModalOn() {
+            return membermodal.style.display === "flex"
+        }
+        function modalOff() {
+            membermodal.style.display = "none"
+        }
+        
+        const closeBtn = membermodal.querySelector(".close-area")
+        closeBtn.addEventListener("click", e => {
+            modalOff();
+    })
+	
+	$("#registerbtn").click(function() {
+		$("#membermodal.modal-overlay").css ({
+			"display" : "flex"
+		});
+	});
+
+});
+
+
+
+
+//회원 탈퇴 버튼을 눌렀을 때 - 개인
+function fn_removeMyMember(userID){
+if(!confirm("회원 정보를 삭제하시겠습니까?")) {
+   alert("회원 정보 삭제를 취소하셨습니다.");
+} else { // 삭제를 동의하면 삭제에 대한 url요청을 한다.
+	if($("#pwdpwd").val() != $("#repwd").val() ){
+	document.getElementById('removeuserbtn').setAttribute("type", "button");
+		 alert("비밀번호가 일치하지 않습니다. 다시입력해주세요");
+			$("#repwd").focus();
+			return false;	
+	} else if($("#pwdpwd").val() =='' ) {
+	document.getElementById('removeuserbtn').setAttribute("type", "button");
+			 alert("비밀번호를 입력해주세요");
+			$("#pwdpwd").focus();
+			return false;	
+	
+	} else {
+		document.getElementById('removeuserbtn').setAttribute("type", "submit");
+		 alert("회원탈퇴에 성공하셨습니다. 이용해주셔서 감사합니다.");
+		   //location.href = "/member/removeMember.do?userID=" + userID;
+		  location.href="/main.do";		
+	}  
+	         
+   }
+}  

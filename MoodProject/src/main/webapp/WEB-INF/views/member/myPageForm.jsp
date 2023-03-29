@@ -125,13 +125,53 @@
 			<div class="form-group" id="mypagebuttonbox">
 				
 				<button type="submit" id="updateinfo" style="display:none;">수정하기</button>
-				<button type="button">회원탈퇴</button>
+				<button type="button" id="registerbtn">회원탈퇴</button>
 			</div>
 		</form>
-	</div>		
+	</div>
+	
+	<!-- 회원탈퇴 비밀번호확인 모달창 -->
+	<div id="loginFormBox">
+		<form class = "form-horizontal" method = "post" action = "${contextPath}/member/removeMember.do">
+	    <div id="membermodal" class="modal-overlay">	
+	        <div class="modal-window">
+	            <div class="title form-group">
+	                <h2>회원탈퇴</h2>
+	            </div>
+	            <div class="close-area">X</div>
+	            
+	            <div class = "form-group">
+		            <div style="padding-top:20px;"><h4>ID</h4></div>
+		            <div class="content"><input type = "text" class = "form-control" id = "loginUserID" name ="userID" maxlength="20" value="${member1.userID}" readonly/></div>
+		        </div>
+		        <div class = "form-group">    
+		            <div><h4>PASSWORD</h4></div>
+		            <div class="content"><input type = "password" class = "form-control" id = "pwdpwd" name ="pwdpwd" maxlength="20" placeholder="비밀번호"/></div>
+	            </div> 
+	             <div class = "form-group">    
+		            <div><h4>REPASSWORD</h4></div>
+		            <div class="content"><input type = "password" class = "form-control" id = "repwd" name ="repwd" maxlength="20" placeholder="비밀번호"/></div>
+	            </div> 
+	            <div class="content form-group" style="padding-top:80px;">
+					<button type="button" class = "btn btn-light" id="removeuserbtn" onclick = "fn_removeMyMember('${member1.userID}')">회원탈퇴</button>
+	            </div>
+	        </div>
+	   	</div>
+	   	</form>
+	  </div>		
 	
 	
 	<jsp:include page ="../common/footer.jsp"></jsp:include>
+	
+	<c:choose>
+		<c:when test = "${result == 'removeMember' }">
+			<script>
+			window.onload = function(){
+				alert("\n회원탈퇴가 완료되었습니다.");
+			}
+			</script>
+		</c:when>
+	</c:choose>
 </body>
 </html>
 

@@ -60,7 +60,8 @@
     	$('#qna_content').summernote({
             height: 300,                
             minHeight: null,             
-            maxHeight: null,             
+            maxHeight: null,
+            disableResizeEditor: true,            
             focus: true,                  
             lang: "ko-KR",					
             placeholder: '내용을 등록합니다.',	

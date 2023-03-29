@@ -9,16 +9,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>상품 검색 결과 페이지</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
+	
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<link href="${contextPath}/resources/css/productcss/productList.css" rel="stylesheet" type="text/css">
 	<script src="${contextPath}/resources/js/product.js"></script>
+	
+	<style>
+	* {
+		font-family: 'Sunflower', sans-serif;
+	}	
+	</style>
 </head>
 <body>
 
@@ -30,7 +41,7 @@
 	
 	<!-- 상품 검색 및 상품 정렬 -->
 	
-		<div id="keywordbox">
+		<div id="keywordbox" style="font-family: 'Sunflower', sans-serif;">
 			<input type="text" id="keyword" value="${keyword}" placeholder="상품을 입력해주리렵니까?" onclick="fn_checkbox()"><button onclick='getCheckboxValue()' id="keywordbutton">확인</button>
 		</div>
 		<div id="typebox">

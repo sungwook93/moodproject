@@ -22,7 +22,7 @@
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
 	<div class="container">
-			<div id="imagebox">
+			<div  id="imagebox">
 				<div>
 					<img src="/image/displayImage?name=${productDTO.product_code}" id="mainImg"/>
 				</div>

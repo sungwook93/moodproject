@@ -57,4 +57,6 @@ public interface MemberController {
 	public ModelAndView removeMember(@RequestParam("userID") String userID, 	
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
+	//관리자페이지불러오기
+	public ModelAndView adminForm(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

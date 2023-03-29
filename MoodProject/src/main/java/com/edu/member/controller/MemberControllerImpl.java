@@ -262,6 +262,20 @@ public class MemberControllerImpl implements MemberController {
 			mav.setViewName("/main");
 			return mav;
 		}//End - 아이디에 해당하는 회원 정보 삭제하기
+
+		//-----------------------------------------------------------------------------------------------------------
+		// 회원가입 화면 불러오기
+		//-----------------------------------------------------------------------------------------------------------
+		@Override
+		@RequestMapping(value="/adminForm.do", method=RequestMethod.GET)
+		public ModelAndView adminForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+			logger.info("MemberControllerImpl 회원가입 화면 불러오기() 시작");
+					
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("/member/adminForm");	// 회원가입화면
+			return mav;
+		} // End - 회원가입 화면 불러오기()
 }
 //<!-- Google tag (gtag.js) -->
 //<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NRHYLJTPK"></script>

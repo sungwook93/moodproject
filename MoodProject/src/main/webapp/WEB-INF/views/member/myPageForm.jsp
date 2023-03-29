@@ -25,7 +25,7 @@
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			<link href="${contextPath}/resources/css/member.css" rel="stylesheet" type="text/css">
 			<script src="${contextPath}/resources/js/member.js"></script>	
-
+			
 </head>
 <body>
 	<jsp:include page ="../common/topMenu.jsp"></jsp:include>
@@ -131,14 +131,14 @@
 	</div>
 	
 	<!-- 회원탈퇴 비밀번호확인 모달창 -->
-	<div id="loginFormBox">
+	<div id="removememberFormbox">
 		<form class = "form-horizontal" method = "post" action = "${contextPath}/member/removeMember.do">
-	    <div id="membermodal" class="modal-overlay">	
-	        <div class="modal-window">
+	    <div id="membermodal" class="membermodal-overlay">	
+	        <div class="membermodal-window">
 	            <div class="title form-group">
 	                <h2>회원탈퇴</h2>
 	            </div>
-	            <div class="close-area">X</div>
+	            <div class="memberclose-area">X</div>
 	            
 	            <div class = "form-group">
 		            <div style="padding-top:20px;"><h4>ID</h4></div>
@@ -152,7 +152,7 @@
 		            <div><h4>REPASSWORD</h4></div>
 		            <div class="content"><input type = "password" class = "form-control" id = "repwd" name ="repwd" maxlength="20" placeholder="비밀번호"/></div>
 	            </div> 
-	            <div class="content form-group" style="padding-top:80px;">
+	            <div class="content form-group">
 					<button type="button" class = "btn btn-light" id="removeuserbtn" onclick = "fn_removeMyMember('${member1.userID}')">회원탈퇴</button>
 	            </div>
 	        </div>

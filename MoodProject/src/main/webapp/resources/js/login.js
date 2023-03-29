@@ -22,6 +22,7 @@
     })
 	
 	$("#loginbtn").click(function() {
+	
 		$("#modal.modal-overlay").css ({
 			"display" : "flex"
 		});

@@ -63,24 +63,28 @@
 
 #keywordbox{
 	text-align: center;
-	border: 1px solid #ccc;  	
+	
 }
 #keyword{
-	width: 630px;
+	width: 650px;
 	height: 50px;
+	padding-left: 10px;
+	margin-right: 10px;
+	border: none;
 }
 #keywordbutton{
 	width: 75px;
 	height: 50px;
-	background-color: green;
+	background-color: peru;
 	color: white;
+	border: none;
+	
 }
 	
 #typebox{
-
 	margin: 0 auto;
 	text-align: center;
-	width: 630px;
+	width: 730px;
 }
 
 #colorcheckbox{

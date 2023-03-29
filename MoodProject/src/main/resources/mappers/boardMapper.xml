@@ -59,6 +59,19 @@
 			select ifnull(max(qna_bno), 0) +1, #{qna_subject}, #{qna_content}, #{userID}, now(), 0 from t_board;
 		]]>
 	</select>
+
+	<!-- 게시글 상세페이지 보여주기 -->
+	<select id="detail"  parameterType="int" resultType="com.edu.board.dto.BoardDTO">
+		<![CDATA[
+		SELECT * FROM t_board WHERE qna_bno = #{qna_bno};
+		]]>
+	</select>
 	
+	<!-- 조회수 증가 -->
+	<update id="updateReadCount" parameterType="int">
+		<![CDATA[
+		UPDATE t_board SET qna_readCount = qna_readCount + 1 WHERE qna_bno = #{qna_bno};
+		]]>
+	</update>	
 	
 </mapper>

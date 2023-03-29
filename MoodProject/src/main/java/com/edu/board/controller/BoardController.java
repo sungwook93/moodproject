@@ -85,5 +85,25 @@ public class BoardController {
 		
 	}	
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 상세페이지 보여주기 
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
+	public ModelAndView boardDetail(int qna_bno, Integer flag) throws Exception {
+		
+		logger.info("boardController 게시글 상세페이지 보여주기");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		if(flag == null) {
+			boardDAO.updateReadCount(qna_bno);
+		}
+			
+		mav.addObject(boardService.boardDetail(qna_bno));
+		
+		return mav;
+		
+		
+	}
 	
 }

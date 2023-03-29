@@ -34,7 +34,7 @@
 	<div class="container">
 		<form class="form-horizontal" method="post" id="memInfo" name="memInfo" action="${contextPath}/member/memberUpdate.do">
 			<div class="form-group">
-				<button type="button" id="updatepage"><h4>정보수정하기</h4></button>
+				<button type="button" id="updatepage"><h4>정보수정하기 수정페이지에서 우편번호받기</h4></button>
 			</div>
 			<div class="form-group">
 				
@@ -48,7 +48,7 @@
 				비밀번호
 				</label>
 				<div class="col-sm-2">
-				<input type="text" class="form-control" id="pwd" name="pwd" maxlength="20" value="${member1.pwd}" readonly/>
+				<input type="text" class="form-control" id="pwdpwd" name="pwd" maxlength="20" value="${member1.pwd}" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -131,3 +131,4 @@
 	<jsp:include page ="../common/footer.jsp"></jsp:include>
 </body>
 </html>
+

@@ -13,7 +13,17 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
-				
+			<!-- include libraries(jQuery, bootstrap) -->
+			<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+			<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+			
+			<!-- include summernote css/js-->
+			<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
+			<script src="${contextPath}/resources/js/board.js"></script>		
+			
 		</head>
 		<body>
 			<!-- 상단 메뉴 -->

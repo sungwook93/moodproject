@@ -76,7 +76,7 @@
 					<input type = "text" class = "form-control" name = "postnum" id = "postnum" readonly/>
 				</div>
 				<div class="col-sm-2">	
-					<input type = "button" class = "form-control postBtn" onclick = "daumZipCode()" value = "우편번호 검색"/>
+					<input type = "button" id="searchpostnum" class = "form-control postBtn" onclick = "daumZipCode()" value = "우편번호 검색"/>
 				</div>
 			</div>
 			<div class="form-group">

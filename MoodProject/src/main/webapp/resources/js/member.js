@@ -373,10 +373,9 @@ $(document).ready(function() {
 		$("#updatepage").click(function (){
   			$("#updatepage").css("display", "none");
   			$("#updateinfo").css("display", "inline");
+  			$("#searchpostnum").css("display", "inline");
   			document.getElementById('pwdpwd').readOnly = false; 
   			document.getElementById('name').readOnly = false; 
-  			document.getElementById('postnum').readOnly = false; 
-  			document.getElementById('address1').readOnly = false; 
   			document.getElementById('address2').readOnly = false; 
   			document.getElementById('phone').readOnly = false; 
   			document.getElementById('age').readOnly = false; 

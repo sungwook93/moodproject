@@ -41,3 +41,9 @@ button {
 	border:none;
 	background-color: #d4c6bb;
 }
+#searchpostnum {
+	width:130px;
+}
+#idCheck {
+	width:130px;
+}

@@ -66,6 +66,9 @@
 				<div class="col-sm-2">
 				<input type="text" class="form-control" id="postnum" name="postnum" maxlength="20" value="${member1.postnum}" readonly/>
 				</div>
+				<div class="col-sm-2">	
+					<input type = "button" style="display:none;" id="searchpostnum" class = "form-control postBtn" onclick = "daumZipCode()" value = "우편번호 검색"/>
+				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-5 control-label">

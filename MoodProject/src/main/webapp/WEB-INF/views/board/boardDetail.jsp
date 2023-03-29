@@ -149,6 +149,10 @@
 		
 		</body>
 		<script>
+		$('#qna_content').summernote({
+			disableResizeEditor: true,
+			height: 300,
+		});
 		$('#qna_content').summernote('disable');
 		</script>
 		

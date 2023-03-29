@@ -64,9 +64,9 @@
 						<c:forEach items="${productList}" var="product" begin="0" end ="2">
 									<td>
 										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">
-										<a href="#"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
-										<a href="#"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
-										<a href="#">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										<a href="/product/productDetail?product_code=${product.product_code}"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
+										<a href="/product/productDetail?product_code=${product.product_code}"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
+										<a href="/product/productDetail?product_code=${product.product_code}">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
 										</div>
 									</td>
 						</c:forEach>
@@ -74,9 +74,9 @@
 						<c:forEach items="${productList}" var="product" begin="3" end ="5">
 									<td>
 										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">
-										<a href="#"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
-										<a href="#"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
-										<a href="#">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										<a href="/product/productDetail?product_code=${product.product_code}"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
+										<a href="/product/productDetail?product_code=${product.product_code}"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
+										<a href="/product/productDetail?product_code=${product.product_code}">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
 										</div>
 									</td>
 						</c:forEach>
@@ -85,9 +85,9 @@
 						<c:forEach items="${productList}" var="product" begin="6" end ="8">
 									<td>
 										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;">
-										<a href="#"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
-										<a href="#"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
-										<a href="#">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										<a href="/product/productDetail?product_code=${product.product_code}"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
+										<a href="/product/productDetail?product_code=${product.product_code}"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
+										<a href="/product/productDetail?product_code=${product.product_code}">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
 										</div>
 									</td>
 						</c:forEach>

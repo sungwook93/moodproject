@@ -22,6 +22,8 @@
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
 	<div class="container">
+		<div id="topbox">
+			<!-- 상품 이미지 부분 -->
 			<div id="imagebox">
 				<div>
 					<img src="/image/displayImage?name=${productDTO.product_code}" id="mainImg"/>
@@ -38,9 +40,11 @@
 					</table>
 				</div>
 			</div>
+			<!-- 상품 정보 부분 -->
 			<div id="productdetailbox">
 				
 			</div>
+		</div>
 	</div>
 
 

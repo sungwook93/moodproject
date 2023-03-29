@@ -1,5 +1,36 @@
 @charset "UTF-8";
 
-#imagebox{
+.container{
 	border: 1px solid black;
+	text-align:left;
+}
+
+
+/* 이미지 css*/
+#imagebox{
+	margin-left:100px;
+	margin-right: 50px;
+	border: 1px solid black;
+	width: 450px;
+	height: 550px;
+	display: inline-block;
+}
+
+#mainImg{
+	width: 420px;
+	margin-bottom: 15px;
+}
+
+#subImg{
+	width: 100px;
+	margin-right: 5px;
+}
+
+/* 상품상세 */
+#productdetailbox{
+	width: 300px;
+	height: 550px;
+	border: 1px solid black;
+	display: inline-block;
+
 }

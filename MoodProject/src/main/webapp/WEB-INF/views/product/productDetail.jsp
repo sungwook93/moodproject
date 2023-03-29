@@ -22,22 +22,25 @@
 	<jsp:include page="../common/topMenu.jsp" flush="false"/>
 	
 	<div class="container">
-		<div id="imagebox">
-			<div>
-				<img src="/image/displayImage?name=${productDTO.product_code}" id="mainImg"/>
+			<div id="imagebox">
+				<div>
+					<img src="/image/displayImage?name=${productDTO.product_code}" id="mainImg"/>
+				</div>
+				<div>
+					<table>
+						<tr>
+							<c:forEach items="${imagesList}" var="images">
+								<td>
+									<img src="/image/displayImage?name=${images}" id="subImg"/>
+								</td>
+							</c:forEach>
+						</tr>
+					</table>
+				</div>
 			</div>
-			<div>
-				<table>
-					<tr>
-						<c:forEach items="${imagesList}" var="images">
-							<td>
-								<img src="/image/displayImage?name=${images}" id="subImg"/>
-							</td>
-						</c:forEach>
-					</tr>
-				</table>
+			<div id="productdetailbox">
+				
 			</div>
-		</div>
 	</div>
 
 

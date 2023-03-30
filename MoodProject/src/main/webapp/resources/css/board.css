@@ -15,7 +15,9 @@
 	margin-top: 30px;
 	margin-bottom: 50px;
 	text-align: center;
+	font-family: 'Sunflower', sans-serif;
 }
+
 
 #boardTitle a {
 	font-size: 30px;
@@ -56,10 +58,24 @@
 .boardNo {
 	width: 5%;
 	text-align: center;
+	font-family: 'Sunflower', sans-serif;
 }
 .boardTitle {
-	width: 25%;
+	width: 60%;
+
 }
+
+.boardDate {
+	text-align: center;
+	width : 25%;
+	font-family: 'Sunflower', sans-serif;
+}
+.boardUser {
+	width: 15%
+	text-align: center;
+	font-family: 'Sunflower', sans-serif;
+}
+
 .boardTitle a {
 	color: #000;
 }

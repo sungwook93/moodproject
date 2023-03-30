@@ -12,24 +12,13 @@
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-			
-			<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>	
-	
-			
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
-			<!-- include libraries(jQuery, bootstrap) -->
-			<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-			<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-			<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-			
-			 <!-- summernote api  -->
-            <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-            
 			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
-			
-			
+			<script src="${contextPath}/resources/js/board.js"></script>
+			<!-- font -->
+		   <link rel="preconnect" href="https://fonts.googleapis.com">
+		   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		   <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
 		</head>
 		<body>
 			<!-- 로그인 확인용 -->
@@ -63,33 +52,22 @@
 							<tr>
 								<th class="boardNo">No</th>
 						    	<th class="boardTitle">제목</th>
-						    	<th class="boardTitle">내용</th>
 						    	<th>작성자</th>
-						    	<th class="boardTitle">작성일자</th>
+						    	<th class="boardDate">작성일자</th>
 						    	<th class="boardNo">조회수</th>
 							</tr>
 						</thead>
 						<tbody>	
 							<c:forEach var="board" items="${boardList}">
 								<tr>
-									<td class="boardNo">${board.qna_bno}</td>
-									<td class="boardTitle">
-										<a href="/board/boardDetail?qna_bno=${board.qna_bno}">
-											<c:choose>
-				                                <c:when test="${board.qna_subject.length() > 10}">${board.qna_subject.substring(0, 11)} ⋯</c:when>
-				                                <c:otherwise>${board.qna_subject}</c:otherwise>
-			                                </c:choose>
-										</a>
-									</td>
-									<td class="boardTitle">
-										<c:choose>
-			                                <c:when test="${board.qna_content.length() > 15}">${board.qna_content.substring(0, 16)} ⋯</c:when>
-			                                <c:otherwise>${board.qna_content}</c:otherwise>
-		                                </c:choose>
-									</td>
-									<td>${board.userID}</td>
-									<td class="boardTitle"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일 a hh시 mm분 ss초"/></td>
+									<td class="boardNo">${board.qna_bno}</td>  
+									<td class="boardTitle"><div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}</div></td>  
+									<td class="boardUser">${board.userID}</td>
+									<td class="boardDate"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일 a hh시 mm분 ss초"/></td>
 									<td class="boardNo"><fmt:formatNumber value="${board.qna_readCount}" pattern="#,###"/></td>
+								</tr>
+								<tr style = "display:none;">
+									<td colspan="5" style = "border: 1px solid black; padding: 10px 40px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -145,6 +123,10 @@
 			<!-- 하단 메뉴바 -->
 			<jsp:include page = "../common/footer.jsp" flush = "false"/>
 		</body>
+		<script>
+		$('#qna_content').summernote('pasteHTML', data);
+		</script>
+		
 	</html>
 
 

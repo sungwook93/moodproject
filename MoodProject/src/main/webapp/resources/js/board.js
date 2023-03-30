@@ -1,7 +1,6 @@
 /**
  * 
  */
- 
  //----------------------------------------------------------------------------------------------------------
  // 게시글 등록 하기
  //----------------------------------------------------------------------------------------------------------
@@ -40,6 +39,7 @@
 		url:		"/board/boardRegister",
 		data:		{qna_subject:qna_subject, userID:userID, qna_content:qna_content},
 		success:	function(data) {
+		alert(1);
 			if(data == "Y") {
 				alert("게시글을 등록하였습니다.");
 				// 게시글 등록이 완료되면, 게시글 목록 화면으로 이동한다.
@@ -58,17 +58,17 @@
  //----------------------------------------------------------------------------------------------------------
     $(document).ready(function() {
     	$('#qna_content').summernote({
+            disableResizeEditor: true,
             height: 300,                
             minHeight: null,             
-            maxHeight: null,
-            disableResizeEditor: true,            
+            maxHeight: null,             
             focus: true,                  
             lang: "ko-KR",					
             placeholder: '내용을 등록합니다.',	
              toolbar: [
 	          ['fontname', ['fontname']],
 	          ['fontsize', ['fontsize']],
-	          ['font', ['bold', 'underline', 'clear']],
+	          ['font', ['bold', 'underline', 'italic', 'clear']],
 	          ['color', ['color']],
 	          ['para', ['ul', 'ol']],
 	          ['insert', ['link', 'picture']],
@@ -164,3 +164,17 @@
             return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
         });
     }
+ 
+//게시글 테이블에서 제목을 눌렀을 때 밑에 내용이 나오게 하기    
+$(document).ready(function() {
+    
+	$(".boardSubjcet").click(function() {
+		
+		var subject = $(this);
+		
+		//누른 요소의 td위 tr의 바로 다음 tr을 보여준다.
+		subject.parent().parent().next().fadeToggle(500); 
+		
+	});
+ });   
+    

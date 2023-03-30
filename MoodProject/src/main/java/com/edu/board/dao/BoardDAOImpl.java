@@ -75,5 +75,12 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update(Namespace + ".updateReadCount", qna_bno);
 	}	
 	
-	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 수정
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int boardUpdate(BoardDTO boardDTO) throws Exception {
+		
+		return sqlSession.update(Namespace + ".update", boardDTO);
+	}	
 }

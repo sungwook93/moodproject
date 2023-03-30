@@ -82,10 +82,7 @@
 										</a>
 									</td>
 									<td class="boardTitle">
-										<c:choose>
-			                                <c:when test="${board.qna_content.length() > 15}">${board.qna_content.substring(0, 16)} ⋯</c:when>
-			                                <c:otherwise>${board.qna_content}</c:otherwise>
-		                                </c:choose>
+										<div id="contentcss">${board.qna_content}</div>
 									</td>
 									<td>${board.userID}</td>
 									<td class="boardTitle"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일 a hh시 mm분 ss초"/></td>
@@ -146,7 +143,6 @@
 			<jsp:include page = "../common/footer.jsp" flush = "false"/>
 		</body>
 	</html>
-
 
 
 

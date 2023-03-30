@@ -96,4 +96,15 @@ button {
 		.btn-light {
 			color:black;
 		}
+/*관리자 페이지*/
+#adminproducttable {
+	border:1px solid black;
+	display:inline-block;
+}
+#adminproducttable tr td {
+	border:1px solid black;
+}
+#adminarea {
+	text-align:center;
+}
   

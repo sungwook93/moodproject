@@ -39,7 +39,9 @@
 				<td>상품이름</td>
 				<td>이미지</td>
 			</tr>
-			
+			<c:forEach var="board" items="${boardList}">
+				
+			</c:forEach>
 			<tr>
 				<td>상품번호</td>
 				<td>상품이름</td>

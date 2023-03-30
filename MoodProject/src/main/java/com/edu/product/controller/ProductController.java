@@ -98,7 +98,7 @@ public class ProductController {
 		
 		//상품 코드에 해당하는 상제정보를 model에 담는다
 		ProductDTO productDTO = productService.productDetail(product_code);
-		mav.addObject("productDTO", productDTO);
+		mav.addObject("product", productDTO);
 		
 		//이미지의 이름을 담을 리스트를 만든다. 상품상세페이지에 foreach 를 돌리기위해
 		List<String> imagesList = new ArrayList<String>();

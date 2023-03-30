@@ -43,9 +43,41 @@
 
 // 검색창 관련 스크립트
 function fn_checkbox(){
+	//검색창 보이게하고 안보이게 하기
  	if($('#typebox').css('display') == 'none'){
       $('#typebox').show();
     }else{
       $('#typebox').hide();
     }
 }
+
+// 수량설정
+function count(type){
+	// 결과값 변수 설정
+	//alert("확인");
+	let number = document.getElementById('product_amount').innerText;
+	let price = document.getElementById('price').value;
+	//alert(price);
+	
+	price = parseInt(price);
+	// 더하기/빼기
+	if(type == 'plus'){
+		number = parseInt(number) + 1;
+	}else if(type == 'minus' && number != '1'){
+		number = parseInt(number) - 1;
+	}
+	
+	// 결과값 세팅
+	document.getElementById('product_amount').innerText = number;
+	totalprice = number*price;
+	//alert(totalprice);
+	
+	//정규식을 이용해서 금액을 돌려준다.
+	document.getElementById('totalprice2').innerText = (totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
+}
+
+
+ $(document).ready(function() {
+ 	alert("확인");
+ 	
+});

@@ -242,7 +242,7 @@ public class MemberControllerImpl implements MemberController {
 		// 아이디에 해당하는 회원 정보 삭제하기 - 개인계정
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
-		@RequestMapping(value = "/removeMember.do", method = RequestMethod.POST)
+		@RequestMapping(value = "/removeMember.do", method = RequestMethod.GET)
 		public ModelAndView removeMember(String userID, HttpServletRequest request, HttpServletResponse response)
 				throws Exception {
 			

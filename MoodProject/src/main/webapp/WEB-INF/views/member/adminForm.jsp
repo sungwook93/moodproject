@@ -60,20 +60,17 @@
 			<tr class="thead">
 				<td style="width:10%;">회원아이디</td>
 				<td style="width:50%;">등록일자</td>
-				<td style="width:10%;"></td>
+				<td>관리자여부</td>
+				<td style="width:10%;">회원삭제</td>
 			</tr>
-			<c:forEach var="member" items="${memberList}">
+			<c:forEach var="member" items="${memberList}" varStatus="status">
 			<tr>
-				<td>${member.userID}</td>
+				<td id="userIDval">${member.userID}</td>
 				<td>${member.joinDate}</td>
-				<td><input type="checkbox" ></td>
+				<td>${member.grade}</td>
+				<td><button type="button" id="listRemoveBtn" class="btn btn-sm" onclick="fn_removeMember('${member.userID}');" >삭제</button></td>
 			</tr>
 			</c:forEach>
-			<tr>
-				<td></td>
-				<td></td>
-				<td colspan="1"><button type="button" onclick="fn_admindeleteuser();">삭제</button></td>
-			</tr>
 		</table>
 		
 		<!-- 게시글 관련 테이블 -->

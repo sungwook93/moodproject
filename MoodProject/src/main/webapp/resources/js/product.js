@@ -77,7 +77,32 @@ function count(type){
 }
 
 
- $(document).ready(function() {
- 	alert("확인");
- 	
+//이미지 속성을 이용한 메인이미지 바꾸기
+$(function(){
+
+	//1번째 사진
+  $("#img1").hover(function(){
+  //서브이미지 사진 속성값을 가져온다.
+   let img1 = $("#img1").attr("src");
+   //메인이미지에 서브이미지 속성값을 넣는다.
+   $("#mainImg").attr("src",img1);
+  });
+  //2번째 사진
+  $("#img2").hover(function(){
+   let img2 = $("#img2").attr("src");
+   $("#mainImg").attr("src",img2);
+  });
+  //3번째 사진
+  $("#img3").hover(function(){
+   let img3 = $("#img3").attr("src");
+   $("#mainImg").attr("src",img3);
+  });
+  //4번째 사진
+  $("#img4").hover(function(){
+   let img4 = $("#img4").attr("src");
+   $("#mainImg").attr("src",img4);
+  });
+  
 });
+
+

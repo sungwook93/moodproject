@@ -3,6 +3,10 @@
 
 <link href="${contextPath}/resources/css/topmenu.css" rel="stylesheet" type="text/css">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
+
 			
 <!-- 로그인 확인용 -->
 <script src="${contextPath}/resources/js/isLogOn.js"></script>
@@ -24,7 +28,7 @@
 	<input type="hidden" id="userIDT" value="${member1.userID}"/>
 </div>
 
-<div class="navbar" id="myNav">
+<div class="navbar" id="myNav" style="font-family: 'Sunflower', sans-serif;">
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
 		<br/>

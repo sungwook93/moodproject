@@ -34,14 +34,27 @@
 					<img src="/image/displayImage?name=${product.product_code}" id="mainImg"/>
 				</div>
 				<div>
-					<table>
+					<table id="subImg3">
 						<tr>
-							<c:forEach items="${imagesList}" var="images">
-								<td>
-									<img src="/image/displayImage?name=${images}" id="subImg"/>
+								<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
+									<img src="/image/displayImage?name=${imagesList.images01}" id="img1" class="subImg"/>
+								</td></c:if>
+								<c:if test="${imagesList.images02 != null}" >
+								<td class="subImg1">
+									<img src="/image/displayImage?name=${imagesList.images02}" id="img2" class="subImg"/>
 								</td>
-							</c:forEach>
-						</tr>
+								</c:if>
+								<c:if test="${imagesList.images03 != null}" >
+								<td class="subImg1">
+									<img src="/image/displayImage?name=${imagesList.images03}" id="img3" class="subImg"/>
+								</td>
+								</c:if>
+								<c:if test="${imagesList.images04 != null}" >
+								<td class="subImg1">
+									<img src="/image/displayImage?name=${imagesList.images04}" id="img4" class="subImg"/>
+								</td>
+								</c:if>
+							</tr>
 					</table>
 				</div>
 			</div>
@@ -79,6 +92,7 @@
 					<span id="totalprice1">총구매가&nbsp&nbsp&nbsp</span>
 					<span id="totalprice2"><fmt:formatNumber value="${product.product_price}" pattern="#,###,###원"/></span>
 				</div>
+				<!-- 장바구니 주문 버튼 -->
 				<div id="buttonbox">
 					<div>
 						<input type="button" id="cartbutton" value="장바구니">
@@ -92,6 +106,7 @@
 	</div>
 
 	<input type="hidden" id="price" value="${product.product_price}">
+
 	
 	<jsp:include page ="../common/footer.jsp"></jsp:include>
 

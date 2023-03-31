@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt"	uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <%	request.setCharacterEncoding("UTF-8"); %>
+<c:set var="now" value="<%=new java.util.Date()%>" /><!-- 현재시간 -->
+<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></c:set> 
 
 <!DOCTYPE html>
 	<html>
@@ -15,7 +17,8 @@
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
 			<script src="${contextPath}/resources/js/board.js"></script>
-			<!-- font -->
+		   
+		   <!-- font -->
 		   <link rel="preconnect" href="https://fonts.googleapis.com">
 		   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		   <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
@@ -38,6 +41,11 @@
 				</div>
 			</div>
 			
+			<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="nowfmtTime" scope="request"/>
+			<fmt:parseNumber value="${board.qna_regDate / (1000*60*60*24)}" integerOnly="true" var="board" scope="request"/>
+			<h1 style = "text-align: center;">${nowfmtTime }</h1>
+			<h1 style = "text-align: center;">${sysYear }</h1>
+			
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">
@@ -52,7 +60,7 @@
 							<tr>
 								<th class="boardNo">No</th>
 						    	<th class="boardTitle">제목</th>
-						    	<th>작성자</th>
+						    	<th class="boardUser">작성자</th>
 						    	<th class="boardDate">작성일자</th>
 						    	<th class="boardNo">조회수</th>
 							</tr>
@@ -61,13 +69,23 @@
 							<c:forEach var="board" items="${boardList}">
 								<tr>
 									<td class="boardNo">${board.qna_bno}</td>  
-									<td class="boardTitle"><div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}</div></td>  
+									
+									<td class="boardTitle">
+									<c:choose>
+									<c:when test="${(sysYear == board.qna_regDate)}">
+											<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}&nbsp;&nbsp;<img src="../resources/images/new.png" height= "13px"width="25px" alt="new" /></div>
+									</c:when>
+									<c:otherwise>
+										<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}</div>
+									</c:otherwise>
+									</c:choose>	
+									</td>
 									<td class="boardUser">${board.userID}</td>
-									<td class="boardDate"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일 a hh시 mm분 ss초"/></td>
+									<td class="boardDate"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초"/></td>
 									<td class="boardNo"><fmt:formatNumber value="${board.qna_readCount}" pattern="#,###"/></td>
 								</tr>
 								<tr style = "display:none;">
-									<td colspan="5" style = "border: 1px solid black; padding: 10px 40px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
+									<td colspan="5" style = "padding: 10px 40px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

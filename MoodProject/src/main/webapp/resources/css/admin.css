@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/*관리자 페이지*/
+table {
+	width:800px;
+	display:inline-block;
+	text-align:center;	
+}
+table tr td {
+	border:1px solid black;
+}
+#pdtable {
+	text-align:center;
+}
+/*관리메뉴*/
+#admintitle *{
+	display:inline-block;
+}
+#admintitle2 *{
+	display:inline-block;
+	
+}
+#admintitle3 *{
+	display:inline-block;
+}
+

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.edu.board.dto.BoardDTO;
 import com.edu.member.dto.MemberDTO;
 import com.edu.product.dto.ProductDTO;
 
@@ -84,5 +85,17 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<ProductDTO> productList(String product_code) throws Exception {
 		logger.info("MemberDAOImpl 관리자페이지 상품정보가져오기() 시작");
 		return sqlSession.selectList(Namespace+".productList",product_code);
+	}
+	//관리자페이지 qna게시판정보가져오기
+	@Override 
+	public List<BoardDTO> boardList(String qna_bno) throws Exception {
+		logger.info("MemberDAOImpl 관리자페이지 qna게시판정보가져오기() 시작");
+		return sqlSession.selectList(Namespace+".boardList",qna_bno);
+	}
+	//관리자페이지 회원정보가져오기
+	@Override
+	public List<MemberDTO> memberList(String userID) throws Exception {
+		logger.info("MemberDAOImpl 관리자페이지 회원정보 가져오기() 시작");
+		return sqlSession.selectList(Namespace+".memberList",userID);
 	}
 }

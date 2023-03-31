@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자페이지</title>
 	
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -24,7 +24,8 @@
 			<!-- 다음 API -->
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			
-			<link href="${contextPath}/resources/css/member.css" rel="stylesheet" type="text/css">
+			
+			<link href="${contextPath}/resources/css/admin.css" rel="stylesheet" type="text/css">
 			<script src="${contextPath}/resources/js/admin.js"></script>	
 </head>
 <body>
@@ -37,13 +38,13 @@
 		<div id="admintitle2"><h4 id="titlesection4">상품관리</h4><h1 id="titlesection5">회원관리</h1><h4 id="titlesection6">게시글관리</h4></div>
 		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 id="titlesection9">상품관리</h4></div>
 		
-		<div class="container" id="pdtable">
+		<div class="container" id="pdtable"> 
 		<!-- 상품 관련 테이블 -->
-		<table id="admintable">
-			<tr>
-				<td>상품번호</td>
-				<td>상품이름</td>
-				<td>이미지</td>
+		<table id="admintable" style="text-align:center;">
+			<tr class="thead">
+				<td style="width:20%;">상품번호</td>
+				<td style="width:50%;">상품이름</td>
+				<td style="width:20%;">이미지</td>
 			</tr>
 			<c:forEach var="product" items="${productList}">
 			<tr>
@@ -53,36 +54,42 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<!-- 게시글 관련 테이블 -->
-		<table id="admintable2">
-			<tr>
-				<td>게시글번호</td>
-				<td>게시글제목</td>
-				<td>작성일자</td>
-			</tr>
-			<c:forEach var="product" items="${productList}">
-			<tr>
-				<td>${product.product_code}</td>
-				<td>${product.product_name}</td>
-				<td>이미지</td>
-			</tr>
-			</c:forEach>
-		</table>
+		
 		<!-- 회원 관련 테이블 -->
-		<table id="admintable3">
-			<tr>
-				<td>유저아이디</td>
-				<td>유저이름</td>
-				<td>등록일자</td>
+		<table id="admintable2">
+			<tr class="thead">
+				<td style="width:10%;">회원아이디</td>
+				<td style="width:50%;">등록일자</td>
+				<td>관리자여부</td>
+				<td style="width:10%;">회원삭제</td>
 			</tr>
-			<c:forEach var="product" items="${productList}">
+			<c:forEach var="member" items="${memberList}" varStatus="status">
 			<tr>
-				<td>${product.product_code}</td>
-				<td>${product.product_name}</td>
-				<td>이미지</td>
+				<td id="userIDval">${member.userID}</td>
+				<td>${member.joinDate}</td>
+				<td>${member.grade}</td>
+				<td><button type="button" id="listRemoveBtn" class="btn btn-sm" onclick="fn_removeMember('${member.userID}');" >삭제</button></td>
 			</tr>
 			</c:forEach>
 		</table>
+		
+		<!-- 게시글 관련 테이블 -->
+		<table id="admintable3">
+			
+			<tr class="thead">
+				<td style="width:20%;">게시글번호</td>
+				<td style="width:50%;">게시글제목</td>
+				<td style="width:20%;">작성일자</td>
+			</tr>
+			<c:forEach var="board" items="${boardList}">
+			<tr>
+				<td>${board.qna_bno}</td>
+				<td><a href="/board/boardDetail?qna_bno=${board.qna_bno}">${board.qna_subject}</a></td>
+				<td>${board.qna_regDate}</td>
+			</tr>
+			</c:forEach>
+		</table>
+		
 		</div>
 	</div>
 	

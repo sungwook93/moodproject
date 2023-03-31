@@ -128,5 +128,14 @@ public class ProductController {
 	}
 	
 	
+	//상품 등록하기 페이지로 이동
+	@RequestMapping(value="/productRegisterForm", method=RequestMethod.GET)
+	public String productRegisterForm() throws Exception{
+		System.out.println("ProductController의 productRegisterForm 불러오기.... ");
+		
+		return "/product/productRegisterForm";
+	}
+	
+	
 	
 }

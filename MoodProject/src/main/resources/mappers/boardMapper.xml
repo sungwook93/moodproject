@@ -74,4 +74,10 @@
 		]]>
 	</update>	
 	
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType = "com.edu.board.dto.BoardDTO">
+		<![CDATA[
+		update t_board set qna_subject = #{qna_subject}, qna_content = #{qna_content}, userID = #{userID}, qna_regDate = now() where qna_bno = #{qna_bno};
+		]]>
+	</update>
 </mapper>

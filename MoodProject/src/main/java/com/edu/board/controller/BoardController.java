@@ -105,5 +105,41 @@ public class BoardController {
 		
 		
 	}
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 수정화면 불러오기
+	//-----------------------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/boardUpdateForm", method = RequestMethod.GET)
+	public ModelAndView boardUpdateForm(int qna_bno) throws Exception {
+		
+		logger.info("BoardController 게시글 수정화면 불러오기() 시작");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//service의 게시글 상세 정보 가져오는 method를 이용해서 boardDTO를 가져와서 model에 담는다.
+		BoardDTO boardDTO = boardService.boardDetail(qna_bno);
+		mav.addObject("boardDTO", boardDTO);
+		
+		mav.setViewName("/board/boardUpdateForm");
+	
+		return mav;
+		
+	} // End - 게시글 수정화면 불러오기
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 수정
+	//-----------------------------------------------------------------------------------------------------------	
+	@ResponseBody
+	@RequestMapping(value = "/boardUpdate", method = RequestMethod.POST)
+	public String boardUpdate(BoardDTO boardDTO) throws Exception {
+		
+		System.out.println("게시글 번호에 해당하는 내용 수정하기");
+		
+		if(boardService.boardUpdate(boardDTO) == 1) {
+			return "Y";
+		}else {
+			return "N";
+		}
+		
+	}
 	
 }

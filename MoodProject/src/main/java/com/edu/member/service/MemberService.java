@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import com.edu.board.dto.BoardDTO;
 import com.edu.member.dto.MemberDTO;
 import com.edu.product.dto.ProductDTO;
 
@@ -35,5 +36,11 @@ public interface MemberService {
 	
 	//관리자페이지 상품정보가져오기
 	public List<ProductDTO> productList(String product_code) throws Exception;
+	
+	//관리자페이지 qna게시판정보가져오기
+	public List<BoardDTO> boardList(String qna_bno) throws Exception;
+	
+	//관리자페이지 회원정보가져오기
+	public List<MemberDTO> memberList(String userID) throws Exception;
 
 }

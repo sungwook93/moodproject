@@ -96,33 +96,5 @@ button {
 		.btn-light {
 			color:black;
 		}
-/*관리자 페이지*/
-#admintable {
-	border:1px solid black;
-	display:inline-block;
-}
-#admintable tr td {
-	border:1px solid black;
-}
-#pdtable {
-	text-align:center;	
-}
-#admintitle *{
-	display:inline;
-}
-#admintitle2 *{
-	display:inline;
-	
-}
-#admintitle3 *{
-	display:inline;
-}
 
-/*임시로 테이블가려놓기*/
-#admintable2 {
-	display:none;
-}
-#admintable3 {
-	display:none;
-}
   

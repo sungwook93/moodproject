@@ -71,4 +71,20 @@
 		
 		]]>
 	</select>
+	<!-- 관리자페이지 qna게시판정보 가져오기 -->
+	<select id="boardList" resultType="com.edu.board.dto.BoardDTO">
+		<![CDATA[
+		SELECT * 
+		FROM t_board
+		]]>
+	</select>
+	<!-- 관리자페이지 회원정보 가져오기 -->
+	<select id="memberList" resultType="com.edu.member.dto.MemberDTO">
+		<![CDATA[
+		SELECT * 
+		FROM t_member
+		]]>
+	</select>
+	
+	
 </mapper>

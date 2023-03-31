@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.edu.board.dto.BoardDTO;
 //import com.edu.board.dao.BoardDAO;
 //import com.edu.board.dao.ReviewDAO;
 import com.edu.member.dto.MemberDTO;
@@ -268,13 +269,20 @@ public class MemberControllerImpl implements MemberController {
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/adminForm.do", method=RequestMethod.GET)
-		public ModelAndView adminForm(String product_code,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		public ModelAndView adminForm(String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 			logger.info("MemberControllerImpl 회원가입 화면 불러오기() 시작");
 					
 			ModelAndView mav = new ModelAndView();
 			List<ProductDTO> productList = memberService.productList(product_code);
 			mav.addObject("productList", productList);
+			
+			List<BoardDTO> boardList = memberService.boardList(qna_bno);
+			mav.addObject("boardList", boardList);
+			
+			List<MemberDTO> memberList = memberService.memberList(userID);
+			mav.addObject("memberList", memberList);
+			
 			mav.setViewName("/member/adminForm");	
 			return mav;
 		} // End - 관리자 화면 불러오기()

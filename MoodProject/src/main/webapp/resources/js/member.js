@@ -424,34 +424,4 @@ if(!confirm("회원 정보를 삭제하시겠습니까?")) {
 	         
    }
 }  
-//관리자 페이지 메뉴
-$(document).ready(function() {
-	
-	$("#titlesection1").click(function() {
-		$("#admintitle3").css("display", "inline");
-	});	
-	$("#titlesection2").click(function() {
-		$("#admintitle").css("display", "inline");
-	});	
-	$("#titlesection3").click(function() {
-		$("#admintitle2").css("display", "inline");
-	});	
-	$("#titlesection4").click(function() {
-		$("#admintitle").css("display", "inline");
-	});	
-	$("#titlesection5").click(function() {
-		$("#admintitle2").css("display", "inline");
-	});	
-	$("#titlesection6").click(function() {
-		$("#admintitle3").css("display", "inline");
-	});	
-	$("#titlesection7").click(function() {
-		$("#admintitle2").css("display", "inline");
-	});	
-	$("#titlesection8").click(function() {
-		$("#admintitle3").css("display", "inline");
-	});
-	$("#titlesection9").click(function() {
-		$("#admintitle").css("display", "inline");
-	});	
-});
+

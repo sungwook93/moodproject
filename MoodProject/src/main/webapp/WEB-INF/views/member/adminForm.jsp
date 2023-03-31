@@ -25,6 +25,7 @@
 			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			
 			<link href="${contextPath}/resources/css/member.css" rel="stylesheet" type="text/css">
+			<script src="${contextPath}/resources/js/admin.js"></script>	
 </head>
 <body>
 	
@@ -34,14 +35,45 @@
 	<div class="container" id="adminarea">
 		<div id="admintitle"><h4 id="titlesection1">게시글관리</h4><h1 id="titlesection2">상품관리</h1><h4 id="titlesection3">회원관리</h4></div>
 		<div id="admintitle2"><h4 id="titlesection4">상품관리</h4><h1 id="titlesection5">회원관리</h1><h4 id="titlesection6">게시글관리</h4></div>
-		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 type="button" id="titlesection9">상품관리</h4></div>
+		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 id="titlesection9">상품관리</h4></div>
 		
 		<div class="container" id="pdtable">
-		<table id="adminproducttable">
+		<!-- 상품 관련 테이블 -->
+		<table id="admintable">
 			<tr>
 				<td>상품번호</td>
 				<td>상품이름</td>
 				<td>이미지</td>
+			</tr>
+			<c:forEach var="product" items="${productList}">
+			<tr>
+				<td>${product.product_code}</td>
+				<td><a href="/product/productDetail?product_code=${product.product_code}">${product.product_name}</a></td>
+				<td>이미지</td>
+			</tr>
+			</c:forEach>
+		</table>
+		<!-- 게시글 관련 테이블 -->
+		<table id="admintable2">
+			<tr>
+				<td>게시글번호</td>
+				<td>게시글제목</td>
+				<td>작성일자</td>
+			</tr>
+			<c:forEach var="product" items="${productList}">
+			<tr>
+				<td>${product.product_code}</td>
+				<td>${product.product_name}</td>
+				<td>이미지</td>
+			</tr>
+			</c:forEach>
+		</table>
+		<!-- 회원 관련 테이블 -->
+		<table id="admintable3">
+			<tr>
+				<td>유저아이디</td>
+				<td>유저이름</td>
+				<td>등록일자</td>
 			</tr>
 			<c:forEach var="product" items="${productList}">
 			<tr>

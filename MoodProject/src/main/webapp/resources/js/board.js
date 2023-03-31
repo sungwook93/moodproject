@@ -52,7 +52,38 @@
 	});
 	
 } // End - function fn_boardRegister()
-
+ //----------------------------------------------------------------------------------------------------------
+ // 게시글 수정
+ //----------------------------------------------------------------------------------------------------------
+function fn_boardUpdate() {
+	
+	let	qna_bno		= $("#qna_bno").val();
+	let	qna_subject	= $("#qna_subject").val();
+	let	userID	= $("#userID").val();
+	let	qna_content	= $("#qna_content").val();
+	
+	alert(qna_bno + ":" + qna_subject + ":" + userID + ":" + qna_content);
+	
+	$.ajax({
+		type:			"POST",
+		url:			"/board/boardUpdate",
+		data:			{qna_bno:qna_bno, qna_subject:qna_subject, userID:userID, qna_content:qna_content},
+		success:		function(data) {
+			if(data == "Y") {
+				alert("게시글 수정이 완료되었습니다.");
+				location.href="/board/boardList?page=1";
+			} else {
+				alert("게시글 수정이 되지 않았습니다.\n\n잠시 후에 다시 해주십시오.");
+			}
+		},
+		error:			function(data) {
+			alert("실패");
+			console.log(data);
+		}
+	});
+	
+} // End - function fn_boardUpdate()
+ 
  //----------------------------------------------------------------------------------------------------------
  // 게시판 에디터 
  //----------------------------------------------------------------------------------------------------------

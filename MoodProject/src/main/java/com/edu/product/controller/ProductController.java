@@ -98,21 +98,13 @@ public class ProductController {
 		
 		//상품 코드에 해당하는 상제정보를 model에 담는다
 		ProductDTO productDTO = productService.productDetail(product_code);
-		mav.addObject("productDTO", productDTO);
-		
-		//이미지의 이름을 담을 리스트를 만든다. 상품상세페이지에 foreach 를 돌리기위해
-		List<String> imagesList = new ArrayList<String>();
+		mav.addObject("product", productDTO);
 		
 		//상품코드에 해당하는 이미지 이름을 가져온다.
 		ImagesDTO imagesDTO = productService.ImagesName(product_code);
-		// 이미지 이름을 imagesList리스트에 담는다.
-		if(imagesDTO.getImages01() != null) imagesList.add(imagesDTO.getImages01());
-		if(imagesDTO.getImages02() != null) imagesList.add(imagesDTO.getImages02());
-		if(imagesDTO.getImages03() != null) imagesList.add(imagesDTO.getImages03());
-		if(imagesDTO.getImages04() != null) imagesList.add(imagesDTO.getImages04());
-		
+
 		//상품 코드에 해당하는 이미지리스트를 model에 담아준다.
-		mav.addObject("imagesList", imagesList);
+		mav.addObject("imagesList", imagesDTO);
 		
 		//정보를 보낼 주소를 세팅한다.
 		mav.setViewName("/product/productDetail");

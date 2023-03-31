@@ -98,6 +98,9 @@ public class ProductController {
 		
 		//상품 코드에 해당하는 상제정보를 model에 담는다
 		ProductDTO productDTO = productService.productDetail(product_code);
+		
+		//System.out.println("상품 색상" + productDTO.getProduct_color());
+		
 		mav.addObject("product", productDTO);
 		
 		//상품코드에 해당하는 이미지 이름을 가져온다.

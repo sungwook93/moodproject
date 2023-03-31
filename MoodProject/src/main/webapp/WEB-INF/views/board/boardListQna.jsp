@@ -41,11 +41,6 @@
 				</div>
 			</div>
 			
-			<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="nowfmtTime" scope="request"/>
-			<fmt:parseNumber value="${board.qna_regDate / (1000*60*60*24)}" integerOnly="true" var="board" scope="request"/>
-			<h1 style = "text-align: center;">${nowfmtTime }</h1>
-			<h1 style = "text-align: center;">${sysYear }</h1>
-			
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">

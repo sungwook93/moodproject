@@ -1,5 +1,7 @@
 package com.edu.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +10,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.edu.member.dto.MemberDTO;
+import com.edu.product.dto.ProductDTO;
 
 @Repository("memberDAO")
 public class MemberDAOImpl implements MemberDAO {
@@ -75,4 +78,11 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sqlSession.delete(Namespace + ".deleteMember", userID);
 		return result;
 	} // End - // 아이디에 해당하는 회원 정보 삭제하기
+	
+	//관리자페이지 상품정보가져오기
+	@Override 
+	public List<ProductDTO> productList(String product_code) throws Exception {
+		logger.info("MemberDAOImpl 관리자페이지 상품정보가져오기() 시작");
+		return sqlSession.selectList(Namespace+".productList",product_code);
+	}
 }

@@ -1,8 +1,11 @@
 package com.edu.member.service;
 
+import java.util.List;
+
 import org.springframework.dao.DataAccessException;
 
 import com.edu.member.dto.MemberDTO;
+import com.edu.product.dto.ProductDTO;
 
 public interface MemberService {
 	//-----------------------------------------------------------------------------------------------------------
@@ -29,5 +32,8 @@ public interface MemberService {
 	// 아이디에 해당하는 회원 정보 삭제하기
 	//-----------------------------------------------------------------------------------------------------------
 	public int removeMember(String userID) throws DataAccessException;
+	
+	//관리자페이지 상품정보가져오기
+	public List<ProductDTO> productList(String product_code) throws Exception;
 
 }

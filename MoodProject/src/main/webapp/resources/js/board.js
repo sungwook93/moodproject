@@ -194,6 +194,8 @@ function fn_boardUpdate() {
         return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
             return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
         });
+        $('#summernote').summernote('pasteHTML', data);
+        $("#qna_content").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
     }
  
 //게시글 테이블에서 제목을 눌렀을 때 밑에 내용이 나오게 하기    

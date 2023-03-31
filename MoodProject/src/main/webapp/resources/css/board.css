@@ -1,7 +1,22 @@
 @charset "UTF-8";
+#bgcolorarea {
+	width:78%;
+	height:50%;
+	z-index:0;
+	background-color:white;
+	position:absolute;
+	left:10%;
+}
 
 .container {
 	min-height: 500px;
+}
+
+#contentcss {width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#contetncss > p > span {
+	font-style:italic;!impoartant; 
+	font-size:20px;!important;
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 
 #boardTitle {

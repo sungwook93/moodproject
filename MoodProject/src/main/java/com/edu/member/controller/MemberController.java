@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.edu.member.dto.MemberDTO;
+import com.edu.product.dto.ProductDTO;
 
 public interface MemberController {
 	
@@ -58,5 +59,5 @@ public interface MemberController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	//관리자페이지불러오기
-	public ModelAndView adminForm(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView adminForm(String product_code,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

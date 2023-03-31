@@ -1,5 +1,7 @@
 package com.edu.member.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.edu.member.dao.MemberDAO;
 import com.edu.member.dto.MemberDTO;
 //import com.edu.product.dao.OrderDAO;
+import com.edu.product.dto.ProductDTO;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -80,4 +83,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.deleteMember(userID);
 
 	} // End - 아이디에 해당하는 회원 정보 삭제하기()	
+	
+	//관리자페이지 상품정보 가져오기
+	@Override
+	public List<ProductDTO> productList(String product_code) throws Exception {
+		logger.info("MemberServiceImpl 관리자페이지 상품정보 가져오기() 시작");
+		return memberDAO.productList(product_code);
+	}
 }

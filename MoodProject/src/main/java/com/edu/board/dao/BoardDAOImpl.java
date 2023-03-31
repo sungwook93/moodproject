@@ -83,4 +83,14 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.update(Namespace + ".update", boardDTO);
 	}	
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 삭제
+	//-----------------------------------------------------------------------------------------------------------	
+
+	@Override
+	public int boardDelete(int qna_bno) throws Exception {
+		
+		return sqlSession.delete(Namespace + ".delete", qna_bno);
+	}
 }

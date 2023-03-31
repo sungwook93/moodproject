@@ -142,4 +142,18 @@ public class BoardController {
 		
 	}
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 삭제
+	//-----------------------------------------------------------------------------------------------------------		
+	@ResponseBody
+	@RequestMapping(value = "/boardDelete", method = RequestMethod.POST)
+	public String boardDelete(int qna_bno) throws Exception {
+		
+		if(boardService.boardDelete(qna_bno)==1) {
+			return "Y";
+		}else {
+			return "N";
+		}
+		
+	}
 }

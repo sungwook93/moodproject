@@ -24,6 +24,7 @@ import com.edu.member.dto.MemberDTO;
 import com.edu.member.service.MemberService;
 //import com.edu.product.dao.OrderDAO;
 //import com.edu.product.dto.OrderDTO;
+import com.edu.product.dto.ProductDTO;
 
 
 @Controller("memberController")
@@ -254,7 +255,6 @@ public class MemberControllerImpl implements MemberController {
 			session.removeAttribute("isLogOn");
 			
 			request.setCharacterEncoding("UTF-8");
-
 			int result = memberService.removeMember(userID);
 			//ModelAndView mav = new ModelAndView("/member/unregisterForm");
 			ModelAndView mav = new ModelAndView();
@@ -264,18 +264,20 @@ public class MemberControllerImpl implements MemberController {
 		}//End - 아이디에 해당하는 회원 정보 삭제하기
 
 		//-----------------------------------------------------------------------------------------------------------
-		// 회원가입 화면 불러오기
+		// 관리자 화면 불러오기
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/adminForm.do", method=RequestMethod.GET)
-		public ModelAndView adminForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		public ModelAndView adminForm(String product_code,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 			logger.info("MemberControllerImpl 회원가입 화면 불러오기() 시작");
 					
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/member/adminForm");	// 회원가입화면
+			List<ProductDTO> productList = memberService.productList(product_code);
+			mav.addObject("productList", productList);
+			mav.setViewName("/member/adminForm");	
 			return mav;
-		} // End - 회원가입 화면 불러오기()
+		} // End - 관리자 화면 불러오기()
 }
 //<!-- Google tag (gtag.js) -->
 //<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NRHYLJTPK"></script>

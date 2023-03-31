@@ -62,4 +62,13 @@
 			WHERE	userID = #{userID}
 		]]>
 	</delete>
+	
+	<!-- 관리자페이지 상품정보 가져오기 -->
+	<select id="productList" resultType="com.edu.product.dto.ProductDTO">
+		<![CDATA[
+		select *
+		from t_product
+		
+		]]>
+	</select>
 </mapper>

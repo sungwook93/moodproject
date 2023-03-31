@@ -1,4 +1,12 @@
 @charset "UTF-8";
+#bgcolorarea {
+	width:78%;
+	height:50%;
+	z-index:0;
+	background-color:white;
+	position:absolute;
+	left:10%;
+}
 
 .container {
 	min-height: 500px;

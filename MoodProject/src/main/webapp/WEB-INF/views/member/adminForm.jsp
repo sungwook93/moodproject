@@ -32,24 +32,26 @@
 	
 	
 	<div class="container" id="adminarea">
-		<h1>상품관리</h1>
+		<div id="admintitle"><h4 id="titlesection1">게시글관리</h4><h1 id="titlesection2">상품관리</h1><h4 id="titlesection3">회원관리</h4></div>
+		<div id="admintitle2"><h4 id="titlesection4">상품관리</h4><h1 id="titlesection5">회원관리</h1><h4 id="titlesection6">게시글관리</h4></div>
+		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 type="button" id="titlesection9">상품관리</h4></div>
+		
+		<div class="container" id="pdtable">
 		<table id="adminproducttable">
 			<tr>
 				<td>상품번호</td>
 				<td>상품이름</td>
 				<td>이미지</td>
 			</tr>
-			<c:forEach var="board" items="${boardList}">
-				
-			</c:forEach>
+			<c:forEach var="product" items="${productList}">
 			<tr>
-				<td>상품번호</td>
-				<td>상품이름</td>
+				<td>${product.product_code}</td>
+				<td>${product.product_name}</td>
 				<td>이미지</td>
 			</tr>
+			</c:forEach>
 		</table>
-		<h1>게시글관리</h1>
-		<h1>회원관리</h1>
+		</div>
 	</div>
 	
 	

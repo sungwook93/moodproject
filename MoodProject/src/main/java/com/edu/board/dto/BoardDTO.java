@@ -1,6 +1,8 @@
 package com.edu.board.dto;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
+
 
 public class BoardDTO {
 	
@@ -8,10 +10,9 @@ public class BoardDTO {
 	private String qna_subject;
 	private String userID;
 	private String qna_content;
-	private Timestamp qna_regDate;
+	private Date qna_regDate;
 	private int qna_readCount;
 	private String qna_yn;
-	
 	public int getQna_bno() {
 		return qna_bno;
 	}
@@ -36,10 +37,10 @@ public class BoardDTO {
 	public void setQna_content(String qna_content) {
 		this.qna_content = qna_content;
 	}
-	public Timestamp getQna_regDate() {
+	public Date getQna_regDate() {
 		return qna_regDate;
 	}
-	public void setQna_regDate(Timestamp qna_regDate) {
+	public void setQna_regDate(Date qna_regDate) {
 		this.qna_regDate = qna_regDate;
 	}
 	public int getQna_readCount() {
@@ -61,6 +62,8 @@ public class BoardDTO {
 				+ qna_content + ", qna_regDate=" + qna_regDate + ", qna_readCount=" + qna_readCount + ", qna_yn="
 				+ qna_yn + "]";
 	}
+	
+	
 	
 	
 	

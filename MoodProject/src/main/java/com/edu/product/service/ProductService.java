@@ -22,4 +22,7 @@ public interface ProductService {
 	//상품 코드에 해당하는 이미지이름을 가져온다.
 	public ImagesDTO ImagesName(String product_code)throws Exception;
 	
+	//추천상품리스트를 가져온다.
+	public List<ProductDTO> productrecommend(ProductDTO productDTO)throws Exception;
+	
 }

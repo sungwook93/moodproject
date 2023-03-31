@@ -2,6 +2,7 @@ package com.edu.product.controller;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,6 +102,17 @@ public class ProductController {
 		
 		//System.out.println("상품 색상" + productDTO.getProduct_color());
 		
+		//추천상품리스트를 가져온다.
+		List<ProductDTO> recommendlist = productService.productrecommend(productDTO);
+
+		
+		System.out.println ("추천상품 구경해보자구나 ===>" +recommendlist);
+		// 추천상품 섞기
+		Collections.shuffle(recommendlist);
+		// 추천상품 리스트 뿌려주기
+		mav.addObject("recommendlist", recommendlist);
+		
+		//해당 상품코드에 대한 정부 뿌려주기
 		mav.addObject("product", productDTO);
 		
 		//상품코드에 해당하는 이미지 이름을 가져온다.

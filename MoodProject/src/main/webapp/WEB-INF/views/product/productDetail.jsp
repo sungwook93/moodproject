@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 상세</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">	
@@ -63,6 +63,8 @@
 				<div id="product_name">
 					<p id="name">${product.product_name }</p>
 					<span id="size">규격&nbsp>&nbsp${product.product_size }</span>
+					<input type="button" value="상품수정" id="productupdate" >
+					<input type="button" value="상품삭제" id="productdelete">
 				</div>
 				<div id="product_price">
 					<div>
@@ -103,7 +105,25 @@
 				</div>
 			</div>
 		</div>
+		
+		<h2 style="text-align:center; color:#69737A;">추천상품</h2>
+		<table id="recommendlist">
+			<tr>
+				<c:forEach items="${recommendlist}" var="recommend" begin="0" end ="2">
+					<td>
+						<div class = "pl">
+						<a href="/product/productDetail?product_code=${recommend.product_code}"><img src = "${contextPath }/image/displayImage?name=${recommend.product_code}" /></a><br/><br/>
+						<a href="/product/productDetail?product_code=${recommend.product_code}"><strong>상 품 명 : ${recommend.product_name}</strong></a><br/>
+						<a href="/product/productDetail?product_code=${recommend.product_code}">가  격 : <fmt:formatNumber value="${recommend.product_price}" pattern="#,###원"/></a><br/>			
+						</div>
+					</td>
+				</c:forEach>
+			</tr>
+		</table>
+		
 	</div>
+
+	
 
 	<input type="hidden" id="price" value="${product.product_price}">
 

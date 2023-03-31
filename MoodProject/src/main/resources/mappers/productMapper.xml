@@ -81,7 +81,12 @@
 		Select * from t_images where product_code = #{product_code};
 	</select>
 	
-	
+	<!-- 추천상품 리스트 -->
+	<select id="productrecommend" parameterType="com.edu.product.dto.ProductDTO"  resultType="com.edu.product.dto.ProductDTO">
+		select * from t_product where product_color = #{product_color} 
+								and   product_type  = #{product_type}
+								and   product_code  != #{product_code}
+	</select>
 	
 
 </mapper>

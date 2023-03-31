@@ -52,6 +52,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.ImagesName(product_code);
 	}
 
+	//추천상품리스트를 가져온다.
+	@Override
+	public List<ProductDTO> productrecommend(ProductDTO productDTO) throws Exception {
+		System.out.println("ProductServiceImpl의 추천상품리스트를 불러오기....");
+		
+		return productDAO.productrecommend(productDTO);
+	}
+
 	
 	
 }

@@ -30,10 +30,27 @@
 }
 
 /* 상품상세 */
+#productupdate{
+	border: none;
+	background-color: #69737A;
+	color: white;
+	width:60px;
+	height:23px;
+	margin-left:5px;
+}
+
+#productdelete{
+	border: none;
+	background-color: #69737A;
+	color: white;
+	width:60px;
+	height:23px;
+	margin-left:5px;
+}
+
 #productdetailbox{
 	width: 550px;
 	height: 550px;
-
 }
 
 #product_name{
@@ -158,3 +175,21 @@
 	font-size:21px;
 }
 
+
+/* 추천상품 영역 */
+#recommendlist{
+	margin-bottom: 20px;
+}
+
+#recommendlist td{
+	margin-right:7.5px;
+	margin-left:7.5px;
+	
+
+}
+
+#recommendlist td img{
+	width: 370px;
+	height: 370px;
+	margin-right:15px;
+}

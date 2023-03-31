@@ -83,6 +83,40 @@ function fn_boardUpdate() {
 	});
 	
 } // End - function fn_boardUpdate()
+
+ //----------------------------------------------------------------------------------------------------------
+ // 게시글 삭제
+ //---------------------------------------------------------------------------------------------------------- 
+ function fn_boardDelete(qna_bno) {
+ 	
+	if(!confirm("\n게시글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
+		alert("게시글 삭제를 취소하셨습니다.");
+	} else {	// [확인]버튼을 눌렀을 경우
+		$.ajax({
+			type:			"POST",
+			url:			"/board/boardDelete",
+			data:			{qna_bno : qna_bno},
+			success:		function(data) {
+				if(data == "Y") {
+					alert("게시글의 삭제가 완료되었습니다.");
+					location.href = "/board/boardList?page=1";
+				}
+			},
+			error:			function(data) {
+				alert("게시글을 삭제하는데 문제가 발생하였습니다.");
+			},
+			done:			function(data) {
+				alert("요청 성공");
+			},
+			fail:			function(data) {
+				alert("요청 실패");
+			},
+			always:			function(data) {
+				alert("요청 완료");
+			}
+		});
+	}
+ }
  
  //----------------------------------------------------------------------------------------------------------
  // 게시판 에디터 

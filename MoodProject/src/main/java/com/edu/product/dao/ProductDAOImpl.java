@@ -64,6 +64,13 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println("ProductDAOImpl의 ImagesName 불러오기....");
 		return sqlSession.selectOne(Namespace + ".ImagesName",product_code );
 	}
+
+	//추천상품리스트를 가져온다.
+	@Override
+	public List<ProductDTO> productrecommend(ProductDTO productDTO) throws Exception {
+		System.out.println("ProductDAOImpl의 추천상품리스트를 불러오기....");
+		return sqlSession.selectList(Namespace + ".productrecommend",productDTO);
+	}
 	
 
 	

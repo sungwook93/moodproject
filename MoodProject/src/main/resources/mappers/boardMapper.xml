@@ -80,4 +80,12 @@
 		update t_board set qna_subject = #{qna_subject}, qna_content = #{qna_content}, userID = #{userID}, qna_regDate = now() where qna_bno = #{qna_bno};
 		]]>
 	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType = "int">
+		<![CDATA[
+		delete from t_board where qna_bno = #{qna_bno};	
+		]]>
+	</delete>
+	
 </mapper>

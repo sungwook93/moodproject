@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.common.util.PageMaker;
@@ -104,8 +105,7 @@ public class ProductController {
 		
 		//추천상품리스트를 가져온다.
 		List<ProductDTO> recommendlist = productService.productrecommend(productDTO);
-
-		
+	
 		System.out.println ("추천상품 구경해보자구나 ===>" +recommendlist);
 		// 추천상품 섞기
 		Collections.shuffle(recommendlist);
@@ -135,6 +135,53 @@ public class ProductController {
 		
 		return "/product/productRegisterForm";
 	}
+	
+	//상품 등록하기
+	//ajax를 사용하므로 값을 그곳에 돌려줄것이므로 responsebody를 사용한다.
+	@ResponseBody
+	@RequestMapping(value="/productRegister", method=RequestMethod.POST)
+	public String productRegister(ProductDTO productDTO)throws Exception{
+		System.out.println("ProductController의 productRegister시작하기");
+		
+		//상품 분류를 위해 해당 상품의 타입의 가장 마지막 상품코드를 가져온다.
+		String lastCode = productService.getProductCode(productDTO.getProduct_type());
+		
+		System.out.println("마지막 상품코드 ==>" +lastCode );
+		
+		//상품코드를 만들기 위해서 숫자부분을 분리해서 더해준다.
+		String type = lastCode.substring(0, 1);
+		String lastCode_number = lastCode.substring(1);
+		
+		//새로운 코드부분을 구해준다.
+		int newCode_number = Integer.parseInt(lastCode_number) + 1;
+		
+		String product_code = "";
+		
+		//값에 따른 코드를 만든다.
+		if(newCode_number <= 9) {
+			product_code = type + "00" + newCode_number;
+		}else if(newCode_number <= 99) {
+			product_code = type + "0" + newCode_number;
+		}else {
+			product_code = type + newCode_number;
+		}
+		
+		System.out.println(product_code);
+		
+		//productDTO에 새로 만든 상품코드 세팅
+		productDTO.setProduct_code(product_code);
+		
+		//받아온 상품코드로 상품을 등록한다.
+		int result = productService.productRegister(productDTO);
+		
+		if(result <= 0) { //실패하면
+			System.out.println("상품등록 실패");
+			return "0";
+		}else //상품등록에성공하면
+		// 이미지 등록하는데 상품코드가 필요하므로 상품코드를 돌려준다.
+		return product_code;
+	}
+	
 	
 	
 	

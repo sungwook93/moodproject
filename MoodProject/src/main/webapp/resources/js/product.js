@@ -106,3 +106,108 @@ $(function(){
 });
 
 
+//상품 등록
+function fn_productRegister(){
+
+	// 각 항목의 값을 가져온다.
+	let product_name  = document.getElementById("product_name").value;
+	let product_size  = document.getElementById("product_size").value;
+	let product_price = document.getElementById("product_price").value;
+	let product_color = document.querySelector('input[name="color"]:checked').value;
+	let product_type = document.getElementById("product_type").value;
+	let file = document.getElementById("file");
+	
+	//값이 들어오는지 확인한다.
+	//alert("product_name" + product_name +  "product_size" +  product_size + "product_price"+
+	//product_price + "product_color" + product_color +  "product_type" + product_type
+	//+ "file" + file);
+	
+	//상품 이름 입력을 확인한다.
+	if(product_name.length == 0) { //이름이 없으면
+		alert("상품 이름은 필수 등록 항목입니다. 상품 이름을 입력해주세요.");
+		product_name.focus();
+		return false;
+	}	
+	
+	//상품 가격 입력을 확인한다.
+	if(product_price.length == 0) { //가격이 없으면
+		alert("상품 가격은 필수 등록 항목입니다. 상품 가격을 입력해주세요.");
+		product_price.focus();
+		return false;
+	}
+	
+	//상품 규격 입력을 확인한다.
+	if(product_size.length == 0) { //가격이 없으면
+		alert("상품 규격은 필수 등록 항목입니다. 상품 규격을 입력해주세요.");
+		product_size.focus();
+		return false;
+	}
+	
+	//상품 정보를 등록한다 그후 그거에 대한 상품코드를 받아와 그 코드로 이미지를 등록한다.
+	if(confirm("상품을 등록하시겠습니까??")){
+	
+		$.ajax({
+			type: "post",
+			url: "/product/productRegister",
+			data: {product_name:product_name, product_size:product_size, product_price:product_price,
+			product_color:product_color, product_type:product_type},
+			success: function(data){
+			alert(data);
+			
+			if(data != "0"){
+				//이미지 등록을 위해 ajax는 form태그를 안쓰기때문에 formdata()를 준비한다.
+				let formData = new FormData();
+				
+				//업로드 된 이미지만큼 반복문으로 formdata에 넣어준다.
+				//set은 리셋되면서 추가하는거지만 append는 리셋하지않고 계속 추가한다.
+				alert(file.files.length);
+				for(let i = 0; i<file.files.length; i++){
+					formData.append("files", file.files[i]);
+				}
+				
+				//alert("formData:" + formData.get("files").name);
+				//formData에 상품코드를 넣어준다.
+				formData.append("product_code", data);
+				
+				//데이터가 들어갔는지 확인
+				formData.forEach((value, key)=>{
+				console.log(`key: ${key}    /    value: ${value}`);
+				});
+				
+				//ajax로 사진업로드
+				$.ajax({
+					type: "post",
+					url: "/image/uploadImage",
+					processData: false,
+					contentType: false,
+					data: formData,
+					dataType: "json",
+					success: function(data){
+						alert("상품이 등록되었습니다. " + data.product_code);
+						location.href="/product/productDetail?product_code=" + data.product_code;
+					},
+					error: function(data){
+						alert("상품 이미지 등록에 실패하였습니다.");
+					}
+				}); //end- 이미지 ajax						
+			}//end - if			
+			}// end- success
+		}); //end - 상품등록
+	
+	} //end - confirm
+	
+	
+}//end - fn_productRegister
+
+
+function fn_preview(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "";
+  }
+}// end -function readURL(input)

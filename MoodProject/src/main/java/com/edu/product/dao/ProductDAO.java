@@ -29,4 +29,12 @@ public interface ProductDAO {
 	//추천상품리스트를 가져온다.
 	public List<ProductDTO> productrecommend(ProductDTO productDTO)throws Exception;
 	
+	// 마지막 상품 코드가져오기
+	public String getProductCode (String product_type) throws Exception;
+	
+	//상품을 등록한다.
+	public int productRegister (ProductDTO productDTO)throws Exception;
+
+	public int imagesRegister(ImagesDTO imagesDTO)throws Exception;
+	
 }

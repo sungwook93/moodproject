@@ -88,5 +88,23 @@
 								and   product_code  != #{product_code}
 	</select>
 	
+	<!-- 마지막 상품코드 가져오기 -->
+	<select id="getProductCode" parameterType="String" resultType="String">
+		select product_code from t_product where product_type = #{product_type} order by product_code DESC LIMIT 1 
+	</select>
+	
+	
+	<!-- 상품등록하기 -->
+	<insert id="productRegister" parameterType="com.edu.product.dto.ProductDTO">
+		insert into t_product(product_code, product_type, product_color, product_size, product_name, product_price, product_date, star_sum, star_avg)
+		values (#{product_code}, #{product_type}, #{product_color}, #{product_size}, #{product_name}, #{product_price}, now(), 0, 0)
+	</insert>
+	
+	<!-- 이미지dto 등록 -->
+	<insert id="imagesRegister" parameterType="com.edu.product.dto.ImagesDTO">
+		insert into t_images(product_code, images01, images02, images03, images04)
+		values (#{product_code}, #{images01}, #{images02}, #{images03}, #{images04})
+	</insert>
+	
 
 </mapper>

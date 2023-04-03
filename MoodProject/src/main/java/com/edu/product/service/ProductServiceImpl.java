@@ -59,6 +59,20 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productDAO.productrecommend(productDTO);
 	}
+	
+	//마지막 상품코드 가져오기
+	@Override
+	public String getProductCode(String product_type) throws Exception {
+		System.out.println("ProductServiceImpl 마지막 상품코드 가져오기");
+		return productDAO.getProductCode(product_type);
+	}
+
+	//상품을 등록한다.
+	@Override
+	public int productRegister(ProductDTO productDTO) throws Exception {
+		System.out.println("ProductServiceImpl 상품등록하기");
+		return productDAO.productRegister(productDTO);
+	}
 
 	
 	

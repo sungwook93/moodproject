@@ -72,6 +72,27 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.selectList(Namespace + ".productrecommend",productDTO);
 	}
 	
+	//마지막 상품코드 가져오기
+	@Override
+	public String getProductCode(String product_type) throws Exception {
+		System.out.println("ProductDAOImpl의 마지막 상품코드를 불러오기....");
+		return sqlSession.selectOne(Namespace + ".getProductCode",product_type);
+	}
+
+	// 상품을 등록한다.
+	@Override
+	public int productRegister(ProductDTO productDTO) throws Exception {
+		System.out.println("ProductDAOImpl의 상품을 등록한다.....");
+		return sqlSession.insert(Namespace + ".productRegister" , productDTO);
+	}
+
+	//이미지 DTO 입력
+	@Override
+	public int imagesRegister(ImagesDTO imagesDTO) throws Exception {
+		System.out.println("ProductDAOImpl의 이미지 DTO 입력.....");
+		return sqlSession.insert(Namespace + ".imagesRegister", imagesDTO);
+	}
+	
 
 	
 	

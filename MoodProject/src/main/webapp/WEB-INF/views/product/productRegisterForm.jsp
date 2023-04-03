@@ -33,69 +33,55 @@
 			<!-- 상품 이미지 부분 -->
 			<div id="imagebox">
 				<div>
-					<img src="/image/displayImage?name=${product.product_code}" id="mainImg"/>
+					<input type="file" id="file" onchange="fn_preview(this);" multiple/>
+					<img id="preview" />
 				</div>
-				<div>
-					<table id="subImg3">
-						<tr>
-							<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
-								<img src="/image/displayImage?name=${imagesList.images01}" id="img1" class="subImg"/>
-							</td></c:if>
-							<c:if test="${imagesList.images02 != null}" >
-							<td class="subImg1">
-								<img src="/image/displayImage?name=${imagesList.images02}" id="img2" class="subImg"/>
-							</td>
-							</c:if>
-							<c:if test="${imagesList.images03 != null}" >
-							<td class="subImg1">
-								<img src="/image/displayImage?name=${imagesList.images03}" id="img3" class="subImg"/>
-							</td>
-							</c:if>
-							<c:if test="${imagesList.images04 != null}" >
-							<td class="subImg1">
-								<img src="/image/displayImage?name=${imagesList.images04}" id="img4" class="subImg"/>
-							</td>
-							</c:if>
-						</tr>
-					</table>
-				</div>
+				
 			</div>
 			<!-- 상품 정보 부분 -->
 			<div id="productdetailbox">
 				<div>
 					<div>
-					<label for="product_name">상품명</label><input type="text" id="product_name">
+					<br><br>
+					<label for="product_name">상품명</label><input type="text" id="product_name" maxlength="200">
 					</div>
-					<label for="product_size">규&nbsp&nbsp&nbsp격</label><input type="text" id="product_size">
+					<label for="product_size">규&nbsp&nbsp&nbsp격</label><input type="text" id="product_size" maxlength="20">
 				</div>
-				<div id="product_price">
+				<div id="product_price1">
 					<div>
-						<h3 class="pricename">판매가</h3>
-					</div>
-					<div>
-						<h3 class="price" ><fmt:formatNumber value="${product.product_price}" pattern="#,###,###원"/></h3>
+						<label for="product_price">판매가</label><input type="number" id="product_price" maxlength="20">
 					</div>
 				</div>
 				<div id="product_option">
 					<div id="product_amout">
 						<div>
 							<p>색상&nbsp&nbsp&nbsp</p>
-							<div id="colorbox" style="background-color:${product.product_color};"></div>
+							<input type="radio" id="white" class="product_color" name="color" value="white" checked>
+							<label for="white">흰색&nbsp&nbsp</label>
+							<input type="radio" id="black" class="product_color" name="color" value="black">
+							<label for="black" style="color:black">검정&nbsp&nbsp</label>
+							<input type="radio" id="gray" class="product_color" name="color" value="gray">
+							<label for="gray" style="color:gray">회색</label>
 						</div>
 					</div>
-					<div id="product_type">
+					<div id="product_type1">
 						<h4>상품안내</h4>
-						<h4 style="font-size:15px;">카테고리&nbsp>&nbsp ${product.product_type}</h4>
+						<label for="product_type" style="font-size:15px;">카테고리&nbsp>&nbsp</label>
+						<select id="product_type">
+							<option value="bed">Bed</option>
+							<option value="bath">Bath</option>
+							<option value="living">Living</option>
+						</select>
 					</div>
 				</div>
 				
 				<!-- 장바구니 주문 버튼 -->
 				<div id="buttonbox">
 					<div>
-						<input type="button" id="cartbutton" value="등록하기">
+						<input type="button" id="productRegister" value="등록하기" onclick="fn_productRegister()">
 					</div>
 					<div >
-						<input type="button"  id="orderbutton" value="취소하기">
+						<input type="button"  id="cancel" value="취소하기" onclick="location.href='/main.do'">
 					</div>
 				</div>
 			</div>

@@ -16,8 +16,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.edu.product.dao.ProductDAO;
+import com.edu.product.dto.ImagesDTO;
 
 
 @Controller
@@ -43,6 +46,7 @@ public class ImageController {
 	
 	//상품코드 혹은 이미지 이름에 해당하는 파일 뿌려주기
 	//이미지는 바이너리 파일이므로 byte타입을 사용해야한다, 따라서 해당데이터 타입이 이미지임을 알려주기위해 ReqonseEntity를 이용
+	//결론은 ResponseEntity 클래스를 사용하면, 결과값 상태코드 헤더값을 모두 프론트에 넘겨줄 수 있고, 에러코드 또한 섬세하게 설정해서 보내줄 수 있다는 장점이 있다
 	@RequestMapping(value="/displayImage", method=RequestMethod.GET)
 	public ResponseEntity<byte[]> displayImage(String name) throws Exception{
 		
@@ -90,6 +94,29 @@ public class ImageController {
 			
 		return result;
 	}//end - public ResponseEntity<byte[]> displayImage(String name) throws Exception
+	
+	//넘어온 파일 UploadFileUtils 클래스의 메소드를 이용해 업로드하고, 상품코드로 이미지 데이터 저장하기
+	@ResponseBody
+	@RequestMapping(value="/uploadImage", method=RequestMethod.POST)
+	public ResponseEntity<ImagesDTO> uploadImage(MultipartFile[] files, String product_code)throws Exception{
+		System.out.println("ImageController의 updateImage 처리하기.... 상품 코드: " + product_code + ", 파일이름: " + files[0].getOriginalFilename());
+		
+		//이미지를 업로드후 db에 입력하기위해 imagesDTO 타입으로 받는다.
+		ImagesDTO imagesDTO = UploadFile.uploadImage(uploadPath, files, product_code);
+		
+		//imagesDTO에 상품 코드를 세팅한다.
+		imagesDTO.setProduct_code(product_code);
+		
+		//imageDTO db등록
+		int result = productDAO.imagesRegister(imagesDTO);
+		
+		if(result == 1) {
+			System.out.println("db에 이미지 등록성공");
+		}
+		
+		
+		return new ResponseEntity<ImagesDTO>(imagesDTO, HttpStatus.OK);
+	}
 	
 	
 	

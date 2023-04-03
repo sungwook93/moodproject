@@ -1,6 +1,95 @@
 /**
  *	
  */
+ 
+$(document).ready(function() {
+	
+	//처음 페이지들어갈시 상품관리메뉴만보이게
+	$("#membertitle2").css("display", "none");
+	$("#membertitle3").css("display", "none");
+	
+	//처음 페이지들어갈시 상품관리테이블만 보이게
+	$("#membertable2").css("display", "none");
+	$("#membertable3").css("display", "none");
+	
+	
+	$("#adminarea").css("text-align", "center");
+	
+	//메뉴 클릭시 보이는 페이지내용
+	$("#titlesection1").click(function() {
+		$("#membertitle").css("display", "none");
+		$("#membertitle2").css("display", "none");
+		$("#membertitle3").css("display", "inline-block");
+		$("#membertable").css("display", "none");
+		$("#membertable2").css("display", "none");
+		$("#membertable3").css("display", "inline-block");
+	});	
+	$("#titlesection2").click(function() {
+		$("#membertitle").css("display", "inline-block");
+		$("#membertitle2").css("display", "none");
+		$("#membertitle3").css("display", "none");
+		$("#membertable").css("display", "inline-block");
+		$("#membertable2").css("display", "none");
+		$("#membertable3").css("display", "none");
+	});	
+	$("#titlesection3").click(function() {
+		$("#membertitle").css("display", "none");
+		$("#membertitle2").css("display", "inline-block");
+		$("#membertitle3").css("display", "none");
+		$("#membertable").css("display", "none");
+		$("#membertable2").css("display", "inline-block");
+		$("#membertable3").css("display", "none");
+	});
+	$("#titlesection4").click(function() {
+		$("#membertitle").css("display", "inline-block");
+		$("#membertitle2").css("display", "none");
+		$("#membertitle3").css("display", "none");
+		$("#membertable").css("display", "inline-block");
+		$("#membertable2").css("display", "none");
+		$("#membertable3").css("display", "none");
+	});	
+	$("#titlesection5").click(function() {
+		$("#membertitle").css("display", "none");
+		$("#membertitle2").css("display", "inline-block");
+		$("#membertitle3").css("display", "none");
+		$("#membertable").css("display", "none");
+		$("#membertable2").css("display", "inline-block");
+		$("#membertable3").css("display", "none");
+	});	
+	$("#titlesection6").click(function() {
+		$("#membertitle").css("display", "none");
+		$("#membertitle2").css("display", "none");
+		$("#membertitle3").css("display", "inline-block");
+		$("#membertable").css("display", "none");
+		$("#membertable2").css("display", "none");
+		$("#membertable3").css("display", "inline-block");
+	});	
+	$("#titlesection7").click(function() {
+		$("#membertitle").css("display", "none");
+		$("#membertitle2").css("display", "inline-block");
+		$("#membertitle3").css("display", "none");
+		$("#membertable").css("display", "none");
+		$("#membertable2").css("display", "inline-block");
+		$("#membertable3").css("display", "none");
+	});	
+	$("#titlesection8").click(function() {
+		$("#membertitle").css("display", "none");
+		$("#membertitle2").css("display", "none");
+		$("#membertitle3").css("display", "inline-block");
+		$("#membertable").css("display", "none");
+		$("#membertable2").css("display", "none");
+		$("#membertable3").css("display", "inline-block");
+	});	
+	$("#titlesection9").click(function() {
+		$("#membertitle").css("display", "inline-block");
+		$("#membertitle2").css("display", "none");
+		$("#membertitle3").css("display", "none");
+		$("#membertable").css("display", "inline-block");
+		$("#membertable2").css("display", "none");
+		$("#membertable3").css("display", "none");
+	});		
+}); 
+ 
  $(document).ready(function() {
  	
  	

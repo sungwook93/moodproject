@@ -205,11 +205,13 @@ public class MemberControllerImpl implements MemberController {
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/myPageForm.do", method=RequestMethod.GET)
-		public ModelAndView myPageForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		public ModelAndView myPageForm(String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 			logger.info("MemberControllerImpl 마이페이지 화면 불러오기() 시작");
 			
 			ModelAndView mav = new ModelAndView();
+			List<BoardDTO> myboardList = memberService.myboardList(qna_bno,userID);
+			mav.addObject("boardList", myboardList);
 			mav.setViewName("/member/myPageForm");	// 회원가입화면
 			return mav;
 		} // End - 마이페이지 화면 불러오기()

@@ -63,6 +63,15 @@
 		]]>
 	</delete>
 	
+	<!-- 마이페이지 게시글 정보 가져오기 -->
+	<select id="myboardList" resultType="com.edu.board.dto.BoardDTO">
+		<![CDATA[
+		SELECT * 
+		FROM t_board 
+		WHERE userID = #{userID}
+		]]>
+	</select>
+	
 	<!-- 관리자페이지 상품정보 가져오기 -->
 	<select id="productList" resultType="com.edu.product.dto.ProductDTO">
 		<![CDATA[

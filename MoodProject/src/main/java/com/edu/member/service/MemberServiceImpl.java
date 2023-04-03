@@ -85,6 +85,13 @@ public class MemberServiceImpl implements MemberService {
 
 	} // End - 아이디에 해당하는 회원 정보 삭제하기()	
 	
+	//마이페이지 게시글정보가져오기
+	@Override
+	public List<BoardDTO> myboardList(String qna_bno,String userID) throws Exception {
+		logger.info("MemberServiceImpl 관리자페이지 qna게시판정보 가져오기() 시작");
+		return memberDAO.myboardList(qna_bno,userID);
+	}
+	
 	//관리자페이지 상품정보 가져오기
 	@Override
 	public List<ProductDTO> productList(String product_code) throws Exception {

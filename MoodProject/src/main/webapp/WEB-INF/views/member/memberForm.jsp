@@ -31,7 +31,7 @@
 		
 		<div class="container" id="userjointitle">
 			<h2>Join</h2>
-		</div>
+		</div>z
 		
 		<div class="container" id="userjoin">
 		<form class="form-horizontal" method="post" id="loginForm" name="memInsForm" action="${contextPath}/member/addMember.do">

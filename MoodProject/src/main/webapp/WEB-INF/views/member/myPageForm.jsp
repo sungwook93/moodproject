@@ -30,11 +30,15 @@
 <body>
 	<jsp:include page ="../common/topMenu.jsp"></jsp:include>
 	
-	<h1 style="text-align:center;">정보 수정 탈퇴</h1>
-	<div class="container">
+	<div class="container" style="text-align:center;">
+		<div id="membertitle"><h4 id="titlesection1">작성한글</h4><h1 id="titlesection2">회원정보</h1><h4 id="titlesection3">주문내역</h4></div>
+		<div id="membertitle2"><h4 id="titlesection4">회원정보</h4><h1 id="titlesection5">주문내역</h1><h4 id="titlesection6">작성한글</h4></div>
+		<div id="membertitle3"><h4 id="titlesection7">주문내역</h4><h1 id="titlesection8">작성한글</h1><h4 id="titlesection9">회원정보</h4></div>
+	</div>
+	<div class="container" id="membertable">
 		<form class="form-horizontal" method="post" id="memInfo" name="memInfo" action="${contextPath}/member/memberUpdate.do">
 			<div class="form-group">
-				<button type="button" id="updatepage"><h4>정보수정하기 수정페이지에서 우편번호받기</h4></button>
+				<button type="button" id="updatepage"><h4>정보수정하기</h4></button>
 			</div>
 			<div class="form-group">
 				
@@ -129,6 +133,23 @@
 			</div>
 		</form>
 	</div>
+	
+	<!-- 게시글 관련 테이블 -->
+		<table id="membertable3">
+			
+			<tr class="thead">
+				<td style="width:10%;">게시글번호</td>
+				<td style="width:50%;">게시글제목</td>
+				<td style="width:20%;">작성일자</td>
+			</tr>
+			<c:forEach var="board" items="${boardList}">
+			<tr>
+				<td>${board.qna_bno}</td>
+				<td><a href="/board/boardDetail?qna_bno=${board.qna_bno}">${board.qna_subject}</a></td>
+				<td>${board.qna_regDate}</td>
+			</tr>
+			</c:forEach>
+		</table>
 	
 	<!-- 회원탈퇴 비밀번호확인 모달창 -->
 	<div id="removememberFormbox">

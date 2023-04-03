@@ -34,6 +34,21 @@
 }
 
 /*mypage*/
+#membertitle *{
+	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
+}
+#membertitle2 *{
+	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
+}
+#membertitle3 *{
+	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
+}
 #memInfo{
 	text-align:center;
 }

@@ -34,6 +34,9 @@ public interface MemberService {
 	//-----------------------------------------------------------------------------------------------------------
 	public int removeMember(String userID) throws DataAccessException;
 	
+	//마이페이지 게시글정보가져오기
+	public List<BoardDTO> myboardList(String qna_bno,String userID) throws Exception;
+	
 	//관리자페이지 상품정보가져오기
 	public List<ProductDTO> productList(String product_code) throws Exception;
 	

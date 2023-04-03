@@ -42,15 +42,15 @@
 		<!-- 상품 관련 테이블 -->
 		<table id="admintable" style="text-align:center;">
 			<tr class="thead">
-				<td style="width:20%;">상품번호</td>
+				<td style="width:10%;">상품번호</td>
 				<td style="width:50%;">상품이름</td>
-				<td style="width:20%;">이미지</td>
+				<td style="width:10%;">이미지</td>
 			</tr>
 			<c:forEach var="product" items="${productList}">
 			<tr>
 				<td>${product.product_code}</td>
 				<td><a href="/product/productDetail?product_code=${product.product_code}">${product.product_name}</a></td>
-				<td>이미지</td>
+				<td><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -58,16 +58,16 @@
 		<!-- 회원 관련 테이블 -->
 		<table id="admintable2">
 			<tr class="thead">
-				<td style="width:10%;">회원아이디</td>
-				<td style="width:50%;">등록일자</td>
-				<td>관리자여부</td>
-				<td style="width:10%;">회원삭제</td>
+				<td style="width:10%;">관리자여부</td>
+				<td style="width:50%;">회원아이디</td>
+				<td>등록일자</td>
+				<td style="width:20%;">회원삭제</td>
 			</tr>
 			<c:forEach var="member" items="${memberList}" varStatus="status">
 			<tr>
+				<td>${member.grade}</td>
 				<td id="userIDval">${member.userID}</td>
 				<td>${member.joinDate}</td>
-				<td>${member.grade}</td>
 				<td><button type="button" id="listRemoveBtn" class="btn btn-sm" onclick="fn_removeMember('${member.userID}');" >삭제</button></td>
 			</tr>
 			</c:forEach>
@@ -77,7 +77,7 @@
 		<table id="admintable3">
 			
 			<tr class="thead">
-				<td style="width:20%;">게시글번호</td>
+				<td style="width:10%;">게시글번호</td>
 				<td style="width:50%;">게시글제목</td>
 				<td style="width:20%;">작성일자</td>
 			</tr>

@@ -2,12 +2,13 @@
 
 /*관리자 페이지*/
 table {
-	width:800px;
+	width:800px; !important;
 	display:inline-block;
 	text-align:center;	
 }
 table tr td {
 	border:1px solid black;
+	width:800px;
 }
 #pdtable {
 	text-align:center;
@@ -15,12 +16,20 @@ table tr td {
 /*관리메뉴*/
 #admintitle *{
 	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
 }
 #admintitle2 *{
 	display:inline-block;
-	
+	padding-left:50px;
+	padding-right:50px;
 }
 #admintitle3 *{
 	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
 }
+img {
+	objecy-fit:fill;
+	height:50px;
 

@@ -80,6 +80,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	} // End - // 아이디에 해당하는 회원 정보 삭제하기
 	
+	//마이페이지 게시글정보가져오기
+	@Override 
+	public List<BoardDTO> myboardList(String qna_bno,String userID) throws Exception {
+		logger.info("MemberDAOImpl 관리자페이지 qna게시판정보가져오기() 시작");
+		return sqlSession.selectList(Namespace+".myboardList",qna_bno);
+	}
+	
 	//관리자페이지 상품정보가져오기
 	@Override 
 	public List<ProductDTO> productList(String product_code) throws Exception {

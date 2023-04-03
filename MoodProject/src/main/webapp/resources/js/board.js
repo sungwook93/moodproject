@@ -304,20 +304,19 @@ $(document).ready(function() {
 function fn_updateComment() {
 	
 	let	qna_bno		= $("#qna_bno").val();
-	let	reply_content		= $("#reply_content").val();
-	let	reply_regDate = $("#reply_regDate").val();
+	let	reply_content = $("#reply_content1").val();
 	let	reply_bno = $("#reply_bno").val();
 	
-	alert(qna_bno + ":" + reply_content + ":" + reply_regDate + ":" + reply_bno);
+	alert(qna_bno + ":" + reply_content + ":" + reply_bno);
 	
 	$.ajax({
 		type:			"POST",
 		url:			"/board/replyUpdate",
-		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, reply_regDate:reply_regDate},
+		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, },
 		success:		function(data) {
 			if(data == "Y") {
 				alert("댓글 수정이 완료되었습니다.");
-				location.href="/board/boardDetail?reply_bno=" + reply_bno + "&flag=1";
+				location.href="/board/boardDetail?qna_bno=" + qna_bno  + "&flag=1";
 			} else {
 				alert("댓글 수정이 되지 않았습니다.\n\n잠시 후에 다시 해주십시오.");
 			}
@@ -338,11 +337,11 @@ function fn_updateOpen() {
   	alert("수정 버튼입니다");	
   	
   		
-  	text.disabled = false;
+  	document.getElementById("reply_content1").disabled = false;
   	
 	document.getElementById("commentUpdateB").style.display = 'block';
 	document.getElementById("commentUpdateA").style.display = 'none';
-	$("#text").focus();
+	$("#reply_content1").focus();
 	
  }  
 

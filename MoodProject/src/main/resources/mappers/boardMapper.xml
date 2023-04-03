@@ -134,7 +134,7 @@
 	<!-- 댓글 수정하기 -->
 	<update id = "replyUpdate" parameterType = "com.edu.board.dto.CommentDTO">
 		<![CDATA[
-			update t_comment set reply_content = #{reply_content}, reply_regDate = now() where qna_bno = #{qna_bno} and reply_bno =#{reply_bno};
+			update t_comment set reply_content = #{reply_content}, reply_regDate = now() where qna_bno = #{qna_bno} and reply_bno = #{reply_bno};
 		]]>
 	</update>
 	

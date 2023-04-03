@@ -75,6 +75,7 @@
 						</c:when>
 					</c:choose>
 				</div>
+				<input type="hidden" id="qna_bno" value="${boardDTO.qna_bno}">
 				<hr/>
 				
 				<!-- 댓글창 -->
@@ -92,13 +93,15 @@
 										<c:forEach items="${commentList}" var="comment">
 											<tr>
 												<td>
-													${boardDTO.userID} &nbsp;:&nbsp;<input type = "text" id = "text" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none;" disabled/>
+													${boardDTO.userID} &nbsp;:&nbsp;<input type = "text" id = "reply_content1" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none;" disabled/>
 													<c:if test="${member1.grade == 7 or boardDTO.userID == member1.userID }">
 														<a id="commentUpdateA" onclick="fn_updateOpen();"> 수정</a>
 														<a id="commentUpdateB" style = "display:none;" onclick="fn_updateComment();"> 등록</a>
 														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> x 삭제</a>
 													</c:if>	
-													<input type="hidden" class="reply_bno" value="${comment.reply_bno}"/>
+													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
+													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
+													<input type="hidden" id="reply_content" value="${comment.reply_content}"/>
 												</td>
 											</tr>
 										</c:forEach>

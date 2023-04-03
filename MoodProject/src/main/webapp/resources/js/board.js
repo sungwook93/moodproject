@@ -52,6 +52,7 @@
 	});
 	
 } // End - function fn_boardRegister()
+
  //----------------------------------------------------------------------------------------------------------
  // 게시글 수정
  //----------------------------------------------------------------------------------------------------------
@@ -83,7 +84,7 @@ function fn_boardUpdate() {
 	});
 	
 } // End - function fn_boardUpdate()
-
+ 
  //----------------------------------------------------------------------------------------------------------
  // 게시글 삭제
  //---------------------------------------------------------------------------------------------------------- 
@@ -228,8 +229,6 @@ function fn_boardUpdate() {
         return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
             return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
         });
-        $('#summernote').summernote('pasteHTML', data);
-        $("#qna_content").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
     }
  
 //게시글 테이블에서 제목을 눌렀을 때 밑에 내용이 나오게 하기    
@@ -244,4 +243,107 @@ $(document).ready(function() {
 		
 	});
  });   
-    
+ 
+ // 댓글 등록
+ 
+ function fn_commentRegister(qna_bno) {
+ 
+ 	let reply_content = $("#reply_content").val();
+ 	
+ 	if($("#reply_content").val() == "") {
+ 		alert("댓글 내용을 입력해주세요");
+ 		$("#reply_content").focus();
+ 		return false;
+ 	}
+ 	
+ 	$.ajax({
+ 		type : "POST",
+ 		url: "/board/commentRegister",
+ 		data: {qna_bno:qna_bno, reply_content:reply_content},
+ 		success: function(data) {
+ 			if(data == "Y") {
+ 			alert("댓글 등록 완료");
+ 			location.href = "/board/boardDetail?qna_bno=" + qna_bno + "&flag=1";
+ 			}
+ 		},
+ 		error: function(data) {
+ 			alert("댓글 등록 실패");
+ 		}
+ 	});
+ 	 	
+ }
+ 
+ // 댓글 삭제 
+ 
+ function fn_deleteComment(reply_bno, qna_bno) {
+	
+	if(!confirm("\댓글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
+		alert("댓글 삭제를 취소하셨습니다.");
+	} else {	
+	
+		$.ajax({
+			type: "POST",
+			url: "/board/replyDelete",
+			data: {qna_bno:qna_bno, reply_bno:reply_bno},
+			success: function(data) {
+				if(data == "Y") {
+					alert("댓글의 삭제가 완료되었습니다.");
+					location.href="/board/boardDetail?qna_bno=" + qna_bno + "&flag=1";
+				}
+			},
+			error: function(data){
+				alert("댓글 삭제에 실패했습니다.");
+			}
+		});
+	
+	}
+}
+
+
+// 댓글 수정
+function fn_updateComment() {
+	
+	let	qna_bno		= $("#qna_bno").val();
+	let	reply_content		= $("#reply_content").val();
+	let	reply_regDate = $("#reply_regDate").val();
+	let	reply_bno = $("#reply_bno").val();
+	
+	alert(qna_bno + ":" + reply_content + ":" + reply_regDate + ":" + reply_bno);
+	
+	$.ajax({
+		type:			"POST",
+		url:			"/board/replyUpdate",
+		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, reply_regDate:reply_regDate},
+		success:		function(data) {
+			if(data == "Y") {
+				alert("댓글 수정이 완료되었습니다.");
+				location.href="/board/boardDetail?reply_bno=" + reply_bno + "&flag=1";
+			} else {
+				alert("댓글 수정이 되지 않았습니다.\n\n잠시 후에 다시 해주십시오.");
+			}
+		},
+		error:	function(data) {
+			alert("실패");
+			console.log(data);
+		}
+	});
+	
+}
+
+
+// 댓글 수정창 
+
+function fn_updateOpen() {
+  		
+  	alert("수정 버튼입니다");	
+  	
+  		
+  	text.disabled = false;
+  	
+	document.getElementById("commentUpdateB").style.display = 'block';
+	document.getElementById("commentUpdateA").style.display = 'none';
+	$("#text").focus();
+	
+ }  
+
+ 

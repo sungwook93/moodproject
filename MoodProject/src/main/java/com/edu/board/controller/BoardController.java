@@ -1,6 +1,6 @@
 package com.edu.board.controller;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.inject.Inject;
 
@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.board.dao.BoardDAO;
 import com.edu.board.dto.BoardDTO;
+import com.edu.board.dto.CommentDTO;
 import com.edu.board.service.BoardService;
 import com.edu.common.util.PageMaker;
 import com.edu.common.util.SearchCriteria;
@@ -51,7 +52,6 @@ public class BoardController {
 		return mav;		
 		
 	}
-
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 등록화면 불러오기
 	//-----------------------------------------------------------------------------------------------------------	
@@ -67,7 +67,6 @@ public class BoardController {
 		
 		return mav;	
 	}
-	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 등록 처리 하기
 	//-----------------------------------------------------------------------------------------------------------
@@ -76,6 +75,7 @@ public class BoardController {
 	public String boardRegister(BoardDTO boardDTO) throws Exception {
 		
 		logger.info("boardController 게시글 등록하기" + boardDTO);
+		System.out.println("시작합니다");
 		
 		if(boardService.boardRegister(boardDTO) ==1) {
 			return "Y";
@@ -84,7 +84,6 @@ public class BoardController {
 		}
 		
 	}	
-	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 상세페이지 보여주기 
 	//-----------------------------------------------------------------------------------------------------------	
@@ -101,8 +100,12 @@ public class BoardController {
 			
 		mav.addObject(boardService.boardDetail(qna_bno));
 		
-		return mav;
+		if(boardService.commentListCount(qna_bno) != 0) {
+			mav.addObject("commentList", boardService.commentList(qna_bno));
+		}
+		mav.addObject(boardService.updateReplyCount(qna_bno)); 
 		
+		return mav;
 		
 	}
 	//-----------------------------------------------------------------------------------------------------------
@@ -141,19 +144,82 @@ public class BoardController {
 		}
 		
 	}
-	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 삭제
 	//-----------------------------------------------------------------------------------------------------------		
 	@ResponseBody
 	@RequestMapping(value = "/boardDelete", method = RequestMethod.POST)
-	public String boardDelete(int qna_bno) throws Exception {
+	public String boardDelete(int qna_bno, int[] reply_bno) throws Exception {
 		
-		if(boardService.boardDelete(qna_bno)==1) {
-			return "Y";
-		}else {
-			return "N";
+		int count = 0;
+		
+		if(reply_bno != null) {
+			for(int i = 0; i < reply_bno.length; i++) {
+				count += boardService.replyDelete(reply_bno[i]);
+			}
+			
+			if(count == reply_bno.length) { //댓글을 모두 삭제했으면
+				//게시글을 삭제한다.
+				if(boardService.boardDelete(qna_bno) == 1) {
+					return "Y";
+				} else {
+					return "N";
+				}
+			} else {
+				return "N";
+			}
+		} else { //댓글이 없으면 바로 게시글을 삭제한다.
+
+			if(boardService.boardDelete(qna_bno)==1) {
+				return "Y";
+			}else {
+				return "N";
+			}
 		}
 		
 	}
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 등록하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "/commentRegister", method = RequestMethod.POST)
+	public String commentRegister(CommentDTO commentDTO) throws Exception {
+	
+		if(boardService.commentRegister(commentDTO) == 1) {
+			return "Y";
+		} else {
+			return "N";
+		}
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 삭제하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public String replyDelete(int reply_bno, int qna_bno) throws Exception {
+			
+		if(boardService.replyDelete(reply_bno) == 1) {
+				return "Y";
+			} else {
+				return "N";
+			}
+			
+	} 
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 수정하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(CommentDTO commentDTO) throws Exception {
+							
+		if(boardService.replyUpdate(commentDTO) == 1) {
+				return "Y";
+			} else {
+				return "N";
+			}
+			
+	} 
+	
 }

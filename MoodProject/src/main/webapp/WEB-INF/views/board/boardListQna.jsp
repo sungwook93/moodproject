@@ -40,7 +40,7 @@
 					<a href="/other/boardListFqa">Review</a>
 				</div>
 			</div>
-			
+
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">
@@ -68,19 +68,20 @@
 									<td class="boardTitle">
 									<c:choose>
 									<c:when test="${(sysYear == board.qna_regDate)}">
-											<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}&nbsp;&nbsp;<img src="../resources/images/new.png" height= "13px"width="25px" alt="new" /></div>
+											<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}&nbsp;&nbsp;<b>[&nbsp;${board.reply_count}&nbsp;]&nbsp;&nbsp;</b><img src="../resources/images/new.png" height= "13px"width="25px" alt="new" /></div>	
 									</c:when>
 									<c:otherwise>
-										<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}</div>
+										<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}
+										<small><b>[&nbsp;${board.reply_count}&nbsp;]</b></small></div>
 									</c:otherwise>
 									</c:choose>	
 									</td>
 									<td class="boardUser">${board.userID}</td>
-									<td class="boardDate"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초"/></td>
+									<td class="boardDate"><fmt:formatDate value="${board.qna_regDate}" pattern="yyyy년 MM월 dd일"/></td>
 									<td class="boardNo"><fmt:formatNumber value="${board.qna_readCount}" pattern="#,###"/></td>
 								</tr>
 								<tr style = "display:none;">
-									<td colspan="5" style = "padding: 10px 40px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
+									<td colspan="5" style = "padding: 10px 40px; background-color: #baa593; border-radius: 10px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

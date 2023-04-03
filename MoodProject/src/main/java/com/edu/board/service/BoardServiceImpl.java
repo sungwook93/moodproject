@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.edu.board.dao.BoardDAO;
 import com.edu.board.dto.BoardDTO;
+import com.edu.board.dto.CommentDTO;
 import com.edu.common.util.SearchCriteria;
 
 @Service
@@ -42,7 +43,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDAO.boardRegister(boardDTO);
 	}
-	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 상세페이지 보여주기 
 	//-----------------------------------------------------------------------------------------------------------
@@ -68,5 +68,61 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDAO.boardDelete(qna_bno);
 	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 등록하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int commentRegister(CommentDTO commentDTO) throws Exception {
+		
+		return boardDAO.commentRegister(commentDTO);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 삭제하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int replyDelete(int reply_bno) throws Exception {
+		
+		return boardDAO.replyDelete(reply_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 수 구하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int commentListCount(int qna_bno) throws Exception {
+		
+		return boardDAO.commentListCount(qna_bno);
+	}
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 수 구하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public List<CommentDTO> commentList(int qna_bno) throws Exception {
+		
+		return boardDAO.commentList(qna_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시판 리스트 제목에 댓글 수 표시
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int updateReplyCount(int qna_bno) throws Exception {
+	
+		return boardDAO.updateReplyCount(qna_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 수정하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int replyUpdate(CommentDTO commentDTO) throws Exception {
+		
+		return boardDAO.replyUpdate(commentDTO);
+	}
+
+	
 	
 }

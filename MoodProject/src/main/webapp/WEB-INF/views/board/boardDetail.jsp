@@ -14,9 +14,11 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 			
-			<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>	
-	
+		  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+		  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+		  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
 			<script src="${contextPath}/resources/js/board.js"></script>
@@ -90,8 +92,10 @@
 										<c:forEach items="${commentList}" var="comment">
 											<tr>
 												<td>
-													${comment.reply_content}
-													<c:if test="${member1.grade == 7}">
+													${boardDTO.userID} &nbsp;:&nbsp;<input type = "text" id = "text" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none;" disabled/>
+													<c:if test="${member1.grade == 7 or boardDTO.userID == member1.userID }">
+														<a id="commentUpdateA" onclick="fn_updateOpen();"> 수정</a>
+														<a id="commentUpdateB" style = "display:none;" onclick="fn_updateComment();"> 등록</a>
 														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> x 삭제</a>
 													</c:if>	
 													<input type="hidden" class="reply_bno" value="${comment.reply_bno}"/>
@@ -124,13 +128,13 @@
 					</tr>
 					<!-- 댓글 작성 부분(관리자만 오픈됨) -->
 					<c:choose>
-						<c:when test="${member1.grade == 7}">
+						<c:when test="${member1.grade == 7  or boardDTO.userID == member1.userID}">
 							<tr>
 								<td class="comment15 commentLabel">
 									<label>댓  글  작  성</label>
 								</td>
 								<td class="comment70">
-									<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
+									${boardDTO.userID}<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
 								</td>
 								<td class="commentButton">
 									<button style="position:relative; left:25%; background-color: white; color: black; border-radius:5px; padding:5px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${boardDTO.qna_bno});">등 록</button>
@@ -147,9 +151,11 @@
 		<script>
 		$('#qna_content').summernote({
 			disableResizeEditor: true,
-			height: 300,
+			height: 300, 
 		});
+		
 		$('#qna_content').summernote('disable');
+		
 		</script>
 		
 	</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.order">
+
+	<!-- 장바구니 화면 보여주기 -->
+	<select id="cartList" resultType="com.edu.order.dto.CartDTO">
+		<![CDATA[
+		SELECT c.cart_num, c.product_code, p.product_name, p.product_price, c.product_amount
+		FROM t_product p , t_cart c
+		WHERE p.product_code = c.product_code and c.userID = #{userID};
+		]]>
+	</select>
+	
+	<!-- 장바구니 데이터 넣기 -->
+	<insert id="addCart" parameterType="com.edu.order.dto.CartDTO">
+		<![CDATA[
+		INSERT INTO t_cart (cart_num, userID, product_code, product_amount)
+		SELECT IFNULL(MAX(cart_num), 0) + 1, #{userID}, #{product_code}, #{product_amount} FROM t_cart
+		]]>
+	</insert>
+	
+</mapper>

@@ -8,9 +8,6 @@
 	left:10%;
 }
 
-.container {
-	min-height: 500px;
-}
 
 #contentcss {width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 #contetncss > p > span {

@@ -27,14 +27,95 @@ a:hover {
 	text-decoration:none;
 }
 #myNav {
-	margin-bottom:80px;
+	margin-bottom:10px;
+	height:50px;
+	
+}
+#searchdiv {
+	border:none;
+	border-radius:30px;	
+	background:white;
+	bottom:40px;
+	position:relative;
+	
+}
+
+#searcharea {
+	width:500px;
+	position:relative;
+	z-index:3;
+	bottom:0;
+	border:none;
+	height:40px;
+}
+#searcharea:focus {
+	outline:none;
+}
+/*스티키*/
+
+#sticky-content {
+	 background-color: #baa593;
+	color: #d4c6bb;
+	height:50px;
+	padding:20px;
+	text-align:right;
+}
+#sticky-content a {
+	padding-left:20px;
+	padding-right:20px;
+}	
+#sticky-btn {  
+       position:sticky;
+       top:0px;
+       padding-left:0;
+       padding-top:30px;
+       z-index:1;
+       width:50px;
+}
+#sticky-btn button{
+	width:50px;
+	height:50px;
+	border:none;
+	background-color: none;
+	font-size:1.5em;
+}
+#collapse-content {
+	position:fixed;
+	left:0;
+	top:0;
+	width:0px;
+	height:900px;
+	background-color: #d4c6bb;
+	z-index:2;
+	overflow:hidden;
+	transition-property: width;
+    transition-duration: 0.5s, 2s;
+    white-space: nowrap;
+    
+}
+
+#close-area {
+	position:relative;
+	left:270px;
+	margin-top:50px;
+	height:20px;
+}
+#close-area:hover {
+	cursor:pointer;
+}
+#nav1 {
+	position:relative;
+	bottom:60px;
 	
 }
 /*네브2*/
 #nav2 {
 	text-align:right;
 	height:40px;
-	width:93%;
+	width:300px;
+	position:relative;
+	bottom:140px;
+	left:1000px;
 }
 #nav2 li {
 	height:40px;
@@ -49,13 +130,15 @@ a:hover {
 	height:40px;	
 	width:100%;
 	text-align: center;
+	position:relative;
+	bottom:140px;
 }
 #login {
 	margin-left:100px;
 	padding:50px;
 }
 .menu {
-  width: 800px;
+  width: 480px;
   overflow: hidden;
   text-align:center;
   margin: 0 auto;
@@ -81,18 +164,6 @@ a:hover {
   overflow: hidden;
 }
 
-.submenu1 > li {
-  line-height: 50px;
-   background-color: #baa593;
-}
-
-.submenu1 {
-  height: 0; /*ul의 높이를 안보이게 처리*/
-  overflow: hidden;
-  width:800px;
- 
-}
-
 	/*네브2 호버*/
 .menu > li:hover {
  background-color: #baa593;
@@ -103,10 +174,7 @@ a:hover {
   height: auto; /*서브메뉴 li한개의 높이 50*5*/
   transition-duration: 1s;
 }  
-.menu > li:hover .submenu1 {
-  height: auto; /*서브메뉴 li한개의 높이 50*5*/
-  transition-duration: 1s;  
-}  
+
 
 /*모달 로그인 */
 
@@ -121,6 +189,7 @@ a:hover {
             align-items: center;
             justify-content: center;
             background-color: rgba(186,165,147,0.5);
+            z-index:10;
         }
         #modal .modal-window {
            	text-align:center;
@@ -131,7 +200,7 @@ a:hover {
             padding: 10px;
             background-color: rgba(186,165,147,0.9);
             border-radius:50px;
-            z-index:5;
+          
         }
         #modal .title {
             padding-left: 10px;

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+* {
+	margin:0;
+	padding:0;
+}
+#cartListbox {
+	position:relative;
+	right:20%;
+	background:white;
+	width:45%;
+	height:700px;
+}
+#orderbox {
+	position:absolute;
+	display:sticky;
+	left:55%;
+	width:35%;
+	height:500px;
+	
+	top:45%;
+	background:green;
+}

@@ -137,7 +137,7 @@
 									<label>댓  글  작  성</label>
 								</td>
 								<td class="comment70">
-									${boardDTO.userID}<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
+									${member1.userID}<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
 								</td>
 								<td class="commentButton">
 									<button style="position:relative; left:25%; background-color: white; color: black; border-radius:5px; padding:5px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${boardDTO.qna_bno});">등 록</button>

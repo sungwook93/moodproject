@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.edu.board.dto.BoardDTO;
+import com.edu.board.dto.CommentDTO;
 import com.edu.common.util.SearchCriteria;
 
 @Repository
@@ -57,6 +58,15 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.insert(Namespace + ".boardRegister", boardDTO);
 	}	
 	
+	//qna 해당 아이디에 글 가져오기
+	@Override
+	public List<BoardDTO> boardUserList(String userID) throws Exception {
+		System.out.println("BoardDAOImpl의 boardTotalList() 구하기....");
+		List<BoardDTO> boardList2 = sqlSession.selectList(Namespace + ".boardUserList", userID);
+		System.out.println(boardList2);
+		return boardList2;
+	}
+	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 상세페이지 보여주기 
 	//-----------------------------------------------------------------------------------------------------------
@@ -73,7 +83,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public void updateReadCount(int qna_bno) throws Exception {
 		
 		sqlSession.update(Namespace + ".updateReadCount", qna_bno);
-	}	
+	}
 	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 수정
@@ -83,7 +93,6 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.update(Namespace + ".update", boardDTO);
 	}	
-	
 	//-----------------------------------------------------------------------------------------------------------
 	// 게시글 삭제
 	//-----------------------------------------------------------------------------------------------------------	
@@ -93,4 +102,65 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.delete(Namespace + ".delete", qna_bno);
 	}
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 등록하기
+	//-----------------------------------------------------------------------------------------------------------
+
+	@Override
+	public int commentRegister(CommentDTO commentDTO) throws Exception {
+		
+		return sqlSession.insert(Namespace + ".commentRegister", commentDTO);
+	}
+		
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 삭제하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int replyDelete(int reply_bno) throws Exception {
+		
+		return sqlSession.delete(Namespace + ".replyDelete", reply_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 수 구하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int commentListCount(int qna_bno) throws Exception {
+		
+		return sqlSession.selectOne(Namespace + ".commentCount", qna_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시글 번호에 해당하는 댓글 수 구하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public List<CommentDTO> commentList(int qna_bno) throws Exception {
+		
+		return sqlSession.selectList(Namespace + ".commentList", qna_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 게시판 리스트 제목에 댓글 수 표시
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int updateReplyCount(int qna_bno) throws Exception {
+		
+		return sqlSession.update(Namespace + ".updateReplyCount", qna_bno);
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 수정하기
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int replyUpdate(CommentDTO commentDTO) throws Exception {
+		
+		return sqlSession.update(Namespace + ".replyUpdate", commentDTO);
+	}
+	
+
+	
+	
+	
+	
+	
 }

@@ -2,8 +2,6 @@ package com.edu.board.dto;
 
 import java.sql.Date;
 
-
-
 public class BoardDTO {
 	
 	private int qna_bno;
@@ -12,7 +10,8 @@ public class BoardDTO {
 	private String qna_content;
 	private Date qna_regDate;
 	private int qna_readCount;
-	private String qna_yn;
+	private int reply_count;
+	
 	public int getQna_bno() {
 		return qna_bno;
 	}
@@ -49,19 +48,28 @@ public class BoardDTO {
 	public void setQna_readCount(int qna_readCount) {
 		this.qna_readCount = qna_readCount;
 	}
-	public String getQna_yn() {
-		return qna_yn;
+	
+	public int getReply_count() {
+		return reply_count;
 	}
-	public void setQna_yn(String qna_yn) {
-		this.qna_yn = qna_yn;
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
 	}
 	
 	@Override
 	public String toString() {
 		return "BoardDTO [qna_bno=" + qna_bno + ", qna_subject=" + qna_subject + ", userID=" + userID + ", qna_content="
-				+ qna_content + ", qna_regDate=" + qna_regDate + ", qna_readCount=" + qna_readCount + ", qna_yn="
-				+ qna_yn + "]";
+				+ qna_content + ", qna_regDate=" + qna_regDate + ", qna_readCount=" + qna_readCount + ", reply_count="
+				+ reply_count + "]";
 	}
+
+	
+	
+
+
+	
+
+
 	
 	
 	

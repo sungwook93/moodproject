@@ -106,5 +106,23 @@
 		values (#{product_code}, #{images01}, #{images02}, #{images03}, #{images04})
 	</insert>
 	
+	<!-- 상품 업데이트 -->
+	<update id="productUpdate" parameterType="com.edu.product.dto.ProductDTO">
+		update t_product
+		set product_name = #{product_name}, product_price = #{product_price}, product_color = #{product_color}, product_type = #{product_type}, product_size = #{product_size}
+		where product_code = #{product_code}
+	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="productDelete" parameterType="String">
+		delete from t_product where product_code = #{product_code}
+	</delete>
+	
+	<!-- 상품이미지명 전체 가져오기 -->
+	<select id="images" parameterType="String" resultType="com.edu.product.dto.ImagesDTO">
+			SELECT * FROM t_images WHERE product_code = #{product_code};
+	</select>
+
+	
 
 </mapper>

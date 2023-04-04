@@ -93,6 +93,31 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.insert(Namespace + ".imagesRegister", imagesDTO);
 	}
 	
+	//상품을 수정한다.
+	@Override
+	public int productUpdate(ProductDTO productDTO) throws Exception {
+		System.out.println("ProductDAOImpl의 상품을 수정한다......");
+		
+		return sqlSession.update(Namespace + ".productUpdate" , productDTO);
+	}
+
+	//상품 삭제하기
+	@Override
+	public int productDelete(String product_code) throws Exception {
+		System.out.println("ProductDAOImpl의 상품 삭제하기.....");
+	
+		return sqlSession.delete(Namespace + ".productDelete" ,product_code);
+	}
+
+	//해당코드에 해당하는 이미지명을 전체를 가져온다
+	@Override
+	public ImagesDTO getImagesName(String product_code) throws Exception{
+		System.out.println("ProductDAOImpl의 해당코드에 해당하는 이미지명을 전체를 가져온다.....");
+		return sqlSession.selectOne(Namespace + ".images", product_code);
+	}
+
+	
+	
 
 	
 	

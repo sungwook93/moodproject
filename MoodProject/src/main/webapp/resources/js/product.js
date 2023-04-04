@@ -143,6 +143,27 @@ function fn_productRegister(){
 		return false;
 	}
 	
+	//이미지 파일이 있는지 확인한다.
+	if(file.files.length == 0){ // 파일이 없으면
+	   alert("상품 이미지는 필수 등록 항목입니다. 이미지 파일을 등록해주세요.");
+	   file.focus();
+	   return false;
+	 }else{ // 파일이 있으면 이미지파일이 맞는지 함수로 확인한다.
+	 	let count = 0;
+	 	for(let i = 0; i < file.files.length; i++){
+	 	 //alert(file.files[i].name);
+	 	 if(!checkImageType(file.files[i].name)){
+	 	 	count++;
+	 	 }
+	 	}
+	 	if(count > 0) { //이미지가 아닌 파일이 하나라도 있으면
+	 		alert("업로드 할 수 있는 파일 형식은 jpg, png, jpeg, gif 입니다.")
+	 		file.focus();
+	 		return false;
+	 	}
+	 }
+	
+	
 	//상품 정보를 등록한다 그후 그거에 대한 상품코드를 받아와 그 코드로 이미지를 등록한다.
 	if(confirm("상품을 등록하시겠습니까??")){
 	
@@ -199,7 +220,16 @@ function fn_productRegister(){
 	
 }//end - fn_productRegister
 
+//파일 확장자 검사 함수
+function checkImageType(fileName){
+	var pattern = /jpg|png|jpeg|gif/i;  //정규표현식 (i: ignore case()(대소문자 무시), |: or)
+	
+	return fileName.match(pattern); //파일 이름 규칙에 맞는지 확인 후 참/거짓을 반환한다.
+	
+}//end - checkImageType
 
+
+//이미지 업로드 할거를 미리보여준다
 function fn_preview(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -211,3 +241,141 @@ function fn_preview(input) {
     document.getElementById('preview').src = "";
   }
 }// end -function readURL(input)
+
+//상품 수정
+function fn_productUpdate(){
+	
+	// 각 항목의 값을 가져온다.
+	let product_name  = document.getElementById("product_name").value;
+	let product_size  = document.getElementById("product_size").value;
+	let product_price = document.getElementById("product_price").value;
+	let product_color = document.querySelector('input[name="color"]:checked').value;
+	let product_type = document.getElementById("product_type").value;
+	let product_code = document.getElementById("product_code").value;
+	let file = document.getElementById("file");
+
+	//값이 들어오는지 확인한다.
+	//alert("product_name" + product_name +  "product_size" +  product_size + "product_price"+
+	//product_price + "product_color" + product_color +  "product_type" + product_type
+	//+ "file" + file);
+	
+	//상품 이름 입력을 확인한다.
+	if(product_name.length == 0) { //이름이 없으면
+		alert("상품 이름은 필수 등록 항목입니다. 상품 이름을 입력해주세요.");
+		product_name.focus();
+		return false;
+	}	
+	
+	//상품 가격 입력을 확인한다.
+	if(product_price.length == 0) { //가격이 없으면
+		alert("상품 가격은 필수 등록 항목입니다. 상품 가격을 입력해주세요.");
+		product_price.focus();
+		return false;
+	}
+	
+	//상품 규격 입력을 확인한다.
+	if(product_size.length == 0) { //가격이 없으면
+		alert("상품 규격은 필수 등록 항목입니다. 상품 규격을 입력해주세요.");
+		product_size.focus();
+		return false;
+	}
+	
+	//이미지 파일이 있는지 확인한다.
+	if(file.files.length != 0){ // 파일이 있으면
+	 	let count = 0;
+	 	for(let i = 0; i < file.files.length; i++){
+	 	 //alert(file.files[i].name);
+	 	 if(!checkImageType(file.files[i].name)){
+	 	 	count++;
+	 	 	}
+	 	}
+	 	if(count > 0) { //이미지가 아닌 파일이 하나라도 있으면
+	 		alert("업로드 할 수 있는 파일 형식은 jpg, png, jpeg, gif 입니다.")
+	 		file.focus();
+	 		return false;
+	 	}
+	 }
+	
+	//상품 정보를 먼저 수정한 후 상품 코드를 리턴 받아 이미지를 수정한다.
+	if(confirm("상품을 등록하시겠습니까? ")){
+	
+		$.ajax({
+			type: "post",
+			url: "/product/productUpdate",
+			data: {product_name:product_name, product_size:product_size, product_price:product_price,
+			product_color:product_color, product_type:product_type, product_code:product_code},
+			success: function(data){
+			//alert(data +"  결과");
+				if(file.files.length == 0){
+					if(confirm("이미지 변경없이 수정하시겠습니까??")){
+						location.href="/product/productDetail?product_code=" + data;
+					}
+				} else{
+				 //이미지 등록을 위한 FormData() 준비
+				 let formData = new FormData();
+				 
+				 //업로드 된 이미지만큼 반복문으로 FormData에 넣어준다.
+				for(let i = 0; i < file.files.length; i++) {
+					formData.append("files", file.files[i]);
+					//alert("formData:" + formData.get("files").name);
+				}
+				
+				//formData에 상품 코드를 넣어준다.
+				formData.append("product_code", data);
+				
+				//이미지 수정 ajax
+				$.ajax({
+					type: "post",
+					url: "/image/updateImage",
+					processData: false,
+					contentType: false,
+					data: formData,
+					dataType: "json",
+					success: function(data, status, req){
+						alert("상품 수정 성공" + data.product_code);
+						location.href = "/product/productDetail?product_code=" + data;
+					
+					}// end - 이미지 수정 success
+				
+				}); //end - 이미지 수정 ajax
+				
+				
+				}// if문 끝
+			
+							
+			}// end - 상품등록 success
+		})// end - ajax
+	
+	}// end- confirm
+	
+}//end - 상품 수정
+
+// 상품 삭제
+function fn_productDelete(product_code){
+	if(confirm("상품을 삭제하시겠습니까?")){	
+				//이미지 삭제한다.
+				$.ajax({
+					type:"post",
+					url:"/image/deleteImage",
+					data: {product_code:product_code},
+					success: function(data){
+						alert("product_code ==>" + data);		
+					
+					$.ajax({
+						type:"post",
+						url:"/product/productDelete",
+						data: {product_code:data},
+						success: function(data){
+							alert(data);
+							location.href="/main.do";
+						}
+						
+					});
+					
+			}
+			
+		}); // end - 상품삭제ajax
+	}// end - confirm
+}//end -상품 삭제
+
+

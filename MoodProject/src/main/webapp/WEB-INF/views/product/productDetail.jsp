@@ -64,8 +64,8 @@
 					<p id="name">${product.product_name }</p>
 					<span id="size">규격&nbsp>&nbsp${product.product_size }</span>
 					<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister">
-					<input type="button" value="상품수정" id="productupdate" >
-					<input type="button" value="상품삭제" id="productdelete">
+					<input type="button" onclick="location.href='/product/productUpdateForm?product_code='+'${product.product_code}'" value="상품수정" id="productupdate" >
+					<input type="button" onclick="fn_productDelete('${product.product_code}')"value="상품삭제" id="productdelete">
 				</div>
 				<div id="product_price">
 					<div>

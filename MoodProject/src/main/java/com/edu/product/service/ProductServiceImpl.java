@@ -74,6 +74,20 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.productRegister(productDTO);
 	}
 
+	//상품 수정한다.
+	@Override
+	public int productUpdate(ProductDTO productDTO) throws Exception {
+		System.out.println("ProductServiceImpl 상품수정하기");
+		return productDAO.productUpdate(productDTO);
+	}
+	
+	//상품 삭제하기
+	@Override
+	public int productDelete(String product_code) throws Exception {
+		System.out.println("ProductServiceImpl 상품삭제하기");
+		return productDAO.productDelete(product_code);
+	}
+
 	
 	
 }

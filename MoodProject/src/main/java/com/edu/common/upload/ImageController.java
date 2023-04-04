@@ -118,6 +118,30 @@ public class ImageController {
 		return new ResponseEntity<ImagesDTO>(imagesDTO, HttpStatus.OK);
 	}
 	
+	//이미지 삭제하기
+	@RequestMapping(value="/deleteImage" , method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteImage(String product_code) throws Exception{
+		System.out.println("ImageController의 deleteImage 불러오기.... 상품 코드: " + product_code);
+		
+		// 상품 코드에 해당하는 ImageDTO를 가져오기
+		ImagesDTO imagesDTO = productDAO.getImagesName(product_code);
+		System.out.println("imagesDTO: " + imagesDTO);
+		
+		// 해당 이미지를 삭제하기 위해 상품코드에 따른 경로를 세팅한다.
+		String savedPath = UploadFile.calculatePath(uploadPath, product_code);
+		
+		//파일을 삭제한다.
+		if(imagesDTO.getImages01() != null) new File(savedPath + imagesDTO.getImages01()).delete();
+		if(imagesDTO.getImages02() != null) new File(savedPath + imagesDTO.getImages02()).delete();
+		if(imagesDTO.getImages03() != null) new File(savedPath + imagesDTO.getImages03()).delete();
+		if(imagesDTO.getImages04() != null) new File(savedPath + imagesDTO.getImages04()).delete();
+		
+		
+		return product_code;
+	
+	}
+	
 	
 	
 	

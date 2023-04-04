@@ -59,7 +59,7 @@ public class UploadFile {
 
 	
 	//상품타입에 맞는 경로 설정
-	private static String calculatePath(String uploadPath, String product_code) {
+	public static String calculatePath(String uploadPath, String product_code) {
 		System.out.println("UploadFileUtils의 calculatePath() 시작....");
 		
 		// 경로
@@ -67,11 +67,11 @@ public class UploadFile {
 		
 		//상품 코드에 따른 경로 분류
 		if(product_code.substring(0, 1).equals("c")) {
-			savedPath = uploadPath + "\\gift\\bath";
+			savedPath = uploadPath + "\\gift\\bath\\";
 		}else if(product_code.substring(0, 1).equals("b")) {
-			savedPath = uploadPath+ "\\gift\\bed";
-		}else {
-			savedPath = uploadPath+ "\\gift\\living";
+			savedPath = uploadPath+ "\\gift\\bed\\";
+		}else if(product_code.substring(0, 1).equals("l")){
+			savedPath = uploadPath+ "\\gift\\living\\";
 		}
 		
 		return savedPath;

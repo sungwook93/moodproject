@@ -182,7 +182,52 @@ public class ProductController {
 		return product_code;
 	}
 	
+	//상품 수정페이지 이동
+	@RequestMapping(value="/productUpdateForm", method=RequestMethod.GET)
+	public ModelAndView productUpdateForm(String product_code) throws Exception{
+		System.out.println("ProductController의 상품수정페이지 이동");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		//상품 코드에 해당하는 상품DTO를 보내준다.
+		mav.addObject("product", productService.productDetail(product_code));
+		
+		//주소 세팅
+		mav.setViewName("/product/productUpdateForm");
+
+		return mav;
+	}
 	
+	//상품 수정하기
+	@ResponseBody
+	@RequestMapping(value="/productUpdate", method=RequestMethod.POST)
+	public String productUpdate(ProductDTO productDTO)throws Exception{
+		System.out.println("ProductController의 productRegister 불러오기.... " + productDTO);	
+		
+		//업데이트를 한다.
+		int result = productService.productUpdate(productDTO);
+		
+		if (result <= 0) { // 실패했으면
+			return "0";
+		}else // 이미지 수정한값을 위해 코드를 가져간다.
+		System.out.println("상품수정 코드 ==>" + productDTO.getProduct_code());
+			
+		return productDTO.getProduct_code();
+	}
+	
+	//상품 삭제하기
+	@ResponseBody
+	@RequestMapping(value="/productDelete", method=RequestMethod.POST)
+	public int productDelete(String product_code) throws Exception{
+	
+		System.out.println("ajax에서 넘어온 값" + product_code);
+		int result = productService.productDelete(product_code);
+		
+		if (result <= 0) {// 실패함
+			return 0;
+		}else
+		return result;
+	}
 	
 	
 }

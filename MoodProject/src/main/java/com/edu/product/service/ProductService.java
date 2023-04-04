@@ -31,4 +31,10 @@ public interface ProductService {
 	//상품 등록하기
 	public int productRegister(ProductDTO productDTO)throws Exception;
 	
+	//상품 수정하기
+	public int productUpdate(ProductDTO productDTO)throws Exception;
+	
+	//상품 삭제하기
+	public int productDelete(String product_code)throws Exception;
+	
 }

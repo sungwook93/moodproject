@@ -34,7 +34,20 @@ public interface ProductDAO {
 	
 	//상품을 등록한다.
 	public int productRegister (ProductDTO productDTO)throws Exception;
-
+	//이미지를 등록한다.
 	public int imagesRegister(ImagesDTO imagesDTO)throws Exception;
+	
+	//상품을 수정한다.
+	public int productUpdate(ProductDTO productDTO)throws Exception;
+	
+	//상품을 삭제한다.
+	public int productDelete(String product_code)throws Exception;
+
+	//해당코드에 해당하는 이미지명을 전체를 가져온다
+	public ImagesDTO getImagesName(String product_code)throws Exception;
+
+
+	
+	
 	
 }

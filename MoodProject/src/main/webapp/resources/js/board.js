@@ -304,10 +304,12 @@ $(document).ready(function() {
 
 
 // 댓글 수정
-function fn_updateComment() {
+function fn_updateComment(status) {
 	
+	let status1 = status;
+	
+	let	reply_content = $("#" + status1).value;
 	let	qna_bno		= $("#qna_bno").val();
-	let	reply_content = $("#reply_content1").val();
 	let	reply_bno = $("#reply_bno").val();
 	let	userID = $("#userID1").val();
 	

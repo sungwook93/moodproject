@@ -306,10 +306,8 @@ $(document).ready(function() {
 // 댓글 수정
 function fn_updateComment(status) {
 	
-	let status1 = status;
-	
-	let	reply_content = $("#" + status1).value;
 	let	qna_bno		= $("#qna_bno").val();
+	let	reply_content = $("#"+status).val();
 	let	reply_bno = $("#reply_bno").val();
 	let	userID = $("#userID1").val();
 	
@@ -348,8 +346,8 @@ function fn_updateOpen(reply_bno) {
 	 	$("#" + status).attr("readonly",false);
 		$("#" + status).focus();
 	 	
-	 	document.getElementById("commentUpdateB").style.display = 'block';
-		document.getElementById("commentUpdateA").style.display = 'none';
+	 	document.getElementById("commentUpdateB"+status).style.display = 'block';
+		document.getElementById("commentUpdateA"+status).style.display = 'none';
 		
 		
 	

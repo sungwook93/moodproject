@@ -84,7 +84,7 @@
 	<!-- 게시글 수정 -->
 	<update id="update" parameterType = "com.edu.board.dto.BoardDTO">
 		<![CDATA[
-		update t_board set qna_subject = #{qna_subject}, qna_content = #{qna_content}, userID = #{userID}, qna_regDate = now() where qna_bno = #{qna_bno};
+		update t_board set qna_subject = #{qna_subject}, qna_content = #{qna_content}, userID = #{userID} where qna_bno = #{qna_bno};
 		]]>
 	</update>
 	
@@ -120,7 +120,7 @@
 	<!-- 댓글 목록 기져오기 -->
 	<select id ="commentList" parameterType="Integer" resultType = "com.edu.board.dto.CommentDTO">
 		<![CDATA[
-			select * from t_comment where qna_bno = #{qna_bno};
+			select * from t_comment where qna_bno = #{qna_bno} ORDER BY reply_regDate DESC;
 		]]>
 	</select>
 	
@@ -134,7 +134,7 @@
 	<!-- 댓글 수정하기 -->
 	<update id = "replyUpdate" parameterType = "com.edu.board.dto.CommentDTO">
 		<![CDATA[
-			update t_comment set reply_content = #{reply_content}, userID = #{userID}, reply_regDate = now() where qna_bno = #{qna_bno} and reply_bno =#{reply_bno};
+			update t_comment set reply_content = #{reply_content}, userID = #{userID} where qna_bno = #{qna_bno} and reply_bno =#{reply_bno};
 		]]>
 	</update>
 	

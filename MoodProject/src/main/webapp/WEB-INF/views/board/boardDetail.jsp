@@ -95,11 +95,11 @@
 										<c:forEach items="${commentList}" var="comment" varStatus="status">
 											<tr>
 												<td>
-													<p>${status.count}</p>
+													
 													${comment.userID} &nbsp;:&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none; width: 500px;" readonly/>
 													<c:if test="${member1.grade == 7 or member1.userID == comment.userID }">
-														<a id="commentUpdateA" onclick="fn_updateOpen(${status.count});"> 수정</a>
-														<a id="commentUpdateB" style = "display:none;" onclick="fn_updateComment(${status.count});"> 등록</a>
+														<a id="commentUpdateA${status.count}" onclick="fn_updateOpen(${status.count});"> 수정</a>
+														<a id="commentUpdateB${status.count}" style = "display:none;" onclick="fn_updateComment(${status.count});"> 등록</a>
 														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> x 삭제</a>
 													</c:if>	
 													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>

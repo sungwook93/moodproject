@@ -92,10 +92,11 @@
 							<table>
 								<c:choose>
 									<c:when test="${not empty commentList}">
-										<c:forEach items="${commentList}" var="comment">
+										<c:forEach items="${commentList}" var="comment" varStatus="status">
 											<tr>
 												<td>
-													${comment.userID} &nbsp;:&nbsp;<input type = "text" id = "reply_content1" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none; width: 500px;" readonly/>
+													<p>${status.count}</p>
+													${comment.userID} &nbsp;:&nbsp;<input type = "text" id = "reply_content${status.count}" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none; width: 500px;" readonly/>
 													<c:if test="${member1.grade == 7 or member1.userID == comment.userID }">
 														<a id="commentUpdateA" onclick="fn_updateOpen(${comment.reply_bno});"> 수정</a>
 														<a id="commentUpdateB" style = "display:none;" onclick="fn_updateComment();"> 등록</a>
@@ -104,7 +105,7 @@
 													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
 													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
 													<input type="hidden" id="userID1" value="${member1.userID}"/>
-													
+													<input type="hidden" id="statuscount" value="${status.count}"/>
 												</td>
 											</tr>
 										</c:forEach>

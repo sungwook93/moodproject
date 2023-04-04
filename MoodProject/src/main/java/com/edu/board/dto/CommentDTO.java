@@ -8,7 +8,14 @@ public class CommentDTO {
 	private int qna_bno;
 	private String reply_content;
 	private Timestamp reply_regDate;
+	private String userID;
 	
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
 	public int getReply_bno() {
 		return reply_bno;
 	}

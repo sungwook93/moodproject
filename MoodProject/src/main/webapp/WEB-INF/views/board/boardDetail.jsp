@@ -104,7 +104,7 @@
 													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
 													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
 													<input type="hidden" id="userID1" value="${member1.userID}"/>
-													<input type="hidden" id="reply_content" value="${comment.reply_content}"/>
+													
 												</td>
 											</tr>
 										</c:forEach>

@@ -1,6 +1,6 @@
 package com.edu.member.controller;
 
-import java.util.List;	
+import java.util.List;		
 
 import javax.inject.Inject;	
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.edu.board.dto.BoardDTO;
+import com.edu.member.dao.MemberDAO;
 //import com.edu.board.dao.BoardDAO;
 //import com.edu.board.dao.ReviewDAO;
 import com.edu.member.dto.MemberDTO;
@@ -42,6 +43,9 @@ public class MemberControllerImpl implements MemberController {
 	// MemberService memberService = new MemberService();
 	@Autowired
 	private	MemberService	memberService;
+	
+	@Inject
+	MemberDAO memberDAO;
 		
 		
 	//@Inject
@@ -205,16 +209,49 @@ public class MemberControllerImpl implements MemberController {
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/myPageForm.do", method=RequestMethod.GET)
-		public ModelAndView myPageForm(String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		public ModelAndView myPageForm(String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 			logger.info("MemberControllerImpl 마이페이지 화면 불러오기() 시작");
+			System.out.println("마이페이지화면불러오기1");
+			
+			// 아이디와 비밀번호가 일치하면 세션을 발급한다.
+			HttpSession session = request.getSession();
+			session.setAttribute("member1", 	memberDTO);
+			session.setAttribute("isLogOn", true);
+			
+			System.out.println(userID+"123");
+			
+//			// 세션값 받기
+//			HttpSession session = request.getSession();
+//			session.setAttribute("member1", 	memberDTO);
+//			session.setAttribute("isLogOn", true);
+//			request.setCharacterEncoding("UTF-8");
+			
 			
 			ModelAndView mav = new ModelAndView();
-			List<BoardDTO> myboardList = memberService.myboardList(qna_bno,userID);
-			mav.addObject("boardList", myboardList);
-			mav.setViewName("/member/myPageForm");	// 회원가입화면
+			
+			
+			//qna 해당아이디에 속한 것만 가지고 온다
+			mav.addObject("boardList", memberDAO.boardUserList(userID));
+			System.out.println(memberDAO.boardUserList(userID));
+			System.out.println(mav+"1");
+			
+			//주문 번호를 해당 아이디에 속한 것만 가지고 온다.
+			//List<Long> orderNumList = orderDAO.getOrderNum(userID);
+			
+			//주문 번호를 가지고 orderDTO리스트를 구해 model에 담는다.
+			//mav.addObject("orderList", memberService.getOrderList(orderNumList));
+			//review 해당아이디에 속한 것만 가지고 온다
+			//mav.addObject("reviewList", reviewDAO.reviewUserList(userID));
+			//System.out.println(reviewDAO.reviewUserList(userID));
+			
+			
+			mav.setViewName("/member/myPageForm");	// 
+			//System.out.println(userID+"!");
 			return mav;
 		} // End - 마이페이지 화면 불러오기()
+
+
 		
 		//----------------------------------------------------------------------------------------------------------
 		// 마이페이지 아이디에 해당하는 마이페이지의 내용(비밀번호, 이름 등)을 수정 요청하기

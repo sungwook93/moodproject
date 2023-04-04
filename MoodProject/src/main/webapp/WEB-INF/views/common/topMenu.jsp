@@ -33,10 +33,10 @@
 			<c:when test="${isLogOn==true && member1 != null}"><!-- MemberControllerImpl에 세션에 담김 -->
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
-						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a><a href="/member/adminForm.do">관리자페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/member/adminForm.do">관리자페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
@@ -75,25 +75,27 @@
 		<a href="/main.do"><img src="${contextPath}../resources/images/logo1.png" style = "width: 18%; height: 18%; padding-left:120px; z-index:5;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
 	</div>	
+	
 	<div id="nav2">
 		<c:choose>
 			<c:when test="${isLogOn==true && member1 != null}"><!-- MemberControllerImpl에 세션에 담김 -->
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
-						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li><li><a href="/member/adminForm.do">관리자페이지</a></li>
+						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li><li style="display:none;"><a href="/member/adminForm.do">관리자페이지</a></li>
        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li> <li><a href="#"><span class="glyphicon glyphicon-search" style = "width: 160px;"></span></a></li>
+						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li> <li style="display:none;"><a href="#"><span class="glyphicon glyphicon-search" style = "width: 160px;"></span></a></li>
        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" style = "width: 160px;"></span></a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
 			<c:otherwise> <!-- 로그인 안했을시 login join이보이는부분 -->
-				<li><a style="width:160px;" id="loginbtn">login</a><a style="width:160px;"href="${contextPath}/member/memberForm.do" >join</a></li>
+				<li style="display:none;"><a style="width:160px;" id="loginbtn">login</a><a style="width:160px;"href="${contextPath}/member/memberForm.do" >join</a></li>
 			</c:otherwise>
 		</c:choose>	
 	</div>
+
 	<br/>
 	<!-- 주석 -->
 	<div id="nav3">

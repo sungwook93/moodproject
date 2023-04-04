@@ -338,24 +338,17 @@ function fn_updateComment() {
 // 댓글 수정창 
 
 function fn_updateOpen(reply_bno) {
-  	
-  	let	qna_bno		= $("#qna_bno").val();
-	let	reply_content = $("#reply_content").val();
-	let	statuscount = $("#statuscount").val();
-	let i =0;
-	let	userID = $("#userID1").val();
-  		
-  	alert("수정 버튼입니다 " + reply_bno + " : " + qna_bno + " : " + reply_content + " : " + userID);	
-  	
-	 for (i = 0; i < 100 ; i++) {
-	
-	}
-	 	$("#reply_content3").attr("readonly",false);
+
+	let status = reply_bno;
+
+  	alert($("#" + status).val() + "입니다.");	
+  
+	 	$("#" + status).attr("readonly",false);
+		$("#" + status).focus();
 	 	
 	 	document.getElementById("commentUpdateB").style.display = 'block';
 		document.getElementById("commentUpdateA").style.display = 'none';
 		
-		$("#reply_content3").focus();
 		
 	
  }  

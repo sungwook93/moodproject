@@ -98,8 +98,8 @@
 	<!-- 댓글 등록하기  -->
 	<insert id = "commentRegister" parameterType = "com.edu.board.dto.CommentDTO">
 		<![CDATA[
-		insert into t_comment (reply_bno, qna_bno, reply_content, reply_regDate)
-		select ifnull(max(reply_bno),0) + 1, #{qna_bno}, #{reply_content}, now() from t_comment;
+		insert into t_comment (reply_bno, qna_bno, userID, reply_content, reply_regDate)
+		select ifnull(max(reply_bno),0) + 1, #{qna_bno}, #{userID}, #{reply_content}, now() from t_comment;
 		]]>
 	</insert>
 	
@@ -134,7 +134,7 @@
 	<!-- 댓글 수정하기 -->
 	<update id = "replyUpdate" parameterType = "com.edu.board.dto.CommentDTO">
 		<![CDATA[
-			update t_comment set reply_content = #{reply_content}, reply_regDate = now() where qna_bno = #{qna_bno} and reply_bno = #{reply_bno};
+			update t_comment set reply_content = #{reply_content}, userID = #{userID}, reply_regDate = now() where qna_bno = #{qna_bno} and reply_bno =#{reply_bno};
 		]]>
 	</update>
 	

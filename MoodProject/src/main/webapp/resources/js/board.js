@@ -249,6 +249,9 @@ $(document).ready(function() {
  function fn_commentRegister(qna_bno) {
  
  	let reply_content = $("#reply_content").val();
+ 	let userID = $("#userID1").val();
+ 	
+ 	alert(reply_content + " : " + userID);
  	
  	if($("#reply_content").val() == "") {
  		alert("댓글 내용을 입력해주세요");
@@ -259,7 +262,7 @@ $(document).ready(function() {
  	$.ajax({
  		type : "POST",
  		url: "/board/commentRegister",
- 		data: {qna_bno:qna_bno, reply_content:reply_content},
+ 		data: {qna_bno:qna_bno, reply_content:reply_content, userID:userID},
  		success: function(data) {
  			if(data == "Y") {
  			alert("댓글 등록 완료");
@@ -306,13 +309,14 @@ function fn_updateComment() {
 	let	qna_bno		= $("#qna_bno").val();
 	let	reply_content = $("#reply_content1").val();
 	let	reply_bno = $("#reply_bno").val();
+	let	userID = $("#userID1").val();
 	
 	alert(qna_bno + ":" + reply_content + ":" + reply_bno);
 	
 	$.ajax({
 		type:			"POST",
 		url:			"/board/replyUpdate",
-		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, },
+		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, userID:userID},
 		success:		function(data) {
 			if(data == "Y") {
 				alert("댓글 수정이 완료되었습니다.");
@@ -330,17 +334,23 @@ function fn_updateComment() {
 }
 
 
+
 // 댓글 수정창 
 
-function fn_updateOpen() {
-  		
-  	alert("수정 버튼입니다");	
+function fn_updateOpen(reply_bno) {
   	
+  	let	qna_bno		= $("#qna_bno").val();
+	let	reply_content = $("#reply_content").val();
+	
+	let	userID = $("#userID1").val();
   		
-  	document.getElementById("reply_content1").disabled = false;
+  	alert("수정 버튼입니다 " + reply_bno + " : " + qna_bno + " : " + reply_content + " : " + userID);	
   	
-	document.getElementById("commentUpdateB").style.display = 'block';
+ 	$("#reply_content1").attr("readonly",false);
+ 	
+ 	document.getElementById("commentUpdateB").style.display = 'block';
 	document.getElementById("commentUpdateA").style.display = 'none';
+	
 	$("#reply_content1").focus();
 	
  }  

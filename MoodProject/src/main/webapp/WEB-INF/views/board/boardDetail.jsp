@@ -47,7 +47,7 @@
 									<input type="text" class="form-control" id="userID" name="userID" maxlength="20" value = "${boardDTO.userID }" readonly/>
 								</c:when>
 								<c:otherwise>
-									<input type="text" class="form-control" id="userID" name="userID" maxlength="20" value = "${boardDTO.userID.substring(0, 2)}******" readonly/>
+									<input type="text" class="form-control" id="userID" name="userID" maxlength="20" value = "${boardDTO.userID }" readonly/>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -78,6 +78,7 @@
 				<input type="hidden" id="qna_bno" value="${boardDTO.qna_bno}">
 				<hr/>
 				
+				
 				<!-- 댓글창 -->
 				<table id="boardDetailCommentList">
 					<!-- 등록된 댓글 보여주는 부분 -->
@@ -86,22 +87,25 @@
 							<label>댓  글  목  록</label>
 						</td>
 						<!-- 내용 -->
+						<!-- ${boardDTO.userID}는 게시글 작성자 아이디 /// ${member1.userID} 현재 회원 아이디 -->
 						<td class="comment70">
 							<table>
 								<c:choose>
 									<c:when test="${not empty commentList}">
-										<c:forEach items="${commentList}" var="comment">
+										<c:forEach items="${commentList}" var="comment" varStatus="status">
 											<tr>
 												<td>
-													${boardDTO.userID} &nbsp;:&nbsp;<input type = "text" id = "reply_content1" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none;" disabled/>
-													<c:if test="${member1.grade == 7 or boardDTO.userID == member1.userID }">
-														<a id="commentUpdateA" onclick="fn_updateOpen();"> 수정</a>
+													<p>${status.count}</p>
+													${comment.userID} &nbsp;:&nbsp;<input type = "text" id = "reply_content${status.count}" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none; width: 500px;" readonly/>
+													<c:if test="${member1.grade == 7 or member1.userID == comment.userID }">
+														<a id="commentUpdateA" onclick="fn_updateOpen(${comment.reply_bno});"> 수정</a>
 														<a id="commentUpdateB" style = "display:none;" onclick="fn_updateComment();"> 등록</a>
 														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> x 삭제</a>
 													</c:if>	
 													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
 													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
-													<input type="hidden" id="reply_content" value="${comment.reply_content}"/>
+													<input type="hidden" id="userID1" value="${member1.userID}"/>
+													<input type="hidden" id="statuscount" value="${status.count}"/>
 												</td>
 											</tr>
 										</c:forEach>
@@ -137,12 +141,13 @@
 									<label>댓  글  작  성</label>
 								</td>
 								<td class="comment70">
-									${boardDTO.userID}<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
+									${member1.userID}<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
 								</td>
 								<td class="commentButton">
 									<button style="position:relative; left:25%; background-color: white; color: black; border-radius:5px; padding:5px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${boardDTO.qna_bno});">등 록</button>
 								</td>
 							</tr>
+							<input type="hidden" id="userID1" value="${member1.userID}"/>
 						</c:when>
 					</c:choose>
 				</table>

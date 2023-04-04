@@ -63,12 +63,10 @@
 		]]>
 	</delete>
 	
-	<!-- 마이페이지 게시글 정보 가져오기 -->
-	<select id="myboardList" resultType="com.edu.board.dto.BoardDTO">
+	<!-- qna 해당 아이디 게시글 전체 리스트 가져오기 -->
+	<select id="boardUserList" resultType="com.edu.board.dto.BoardDTO" parameterType="String">
 		<![CDATA[
-		SELECT * 
-		FROM t_board 
-		WHERE userID = #{userID}
+			SELECT * FROM t_board WHERE userID= #{userID}
 		]]>
 	</select>
 	

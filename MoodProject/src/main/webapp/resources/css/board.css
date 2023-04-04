@@ -8,7 +8,9 @@
 	left:10%;
 }
 
-
+#reply_content3 {
+	color:green !important;
+}
 #contentcss {width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 #contetncss > p > span {
 	font-style:italic;!impoartant; 

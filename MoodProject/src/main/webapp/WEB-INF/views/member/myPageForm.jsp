@@ -135,8 +135,8 @@
 	</div>
 	
 	<!-- 게시글 관련 테이블 -->
+	<div class="container" style="text-align:center; margin-right:100px;">
 		<table id="membertable3">
-			
 			<tr class="thead">
 				<td style="width:10%;">게시글번호</td>
 				<td style="width:50%;">게시글제목</td>
@@ -145,11 +145,12 @@
 			<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.qna_bno}</td>
-				<td><a href="/board/boardDetail?qna_bno=${board.qna_bno}">${board.qna_subject}</a></td>
+				<td><a href="#">${board.qna_subject}</a></td>
 				<td>${board.qna_regDate}</td>
 			</tr>
 			</c:forEach>
 		</table>
+	</div>
 	
 	<!-- 회원탈퇴 비밀번호확인 모달창 -->
 	<div id="removememberFormbox">
@@ -180,7 +181,9 @@
 	   	</div>
 	   	</form>
 	  </div>		
-	
+	<div>
+					<input type="hidden" id = "userID" value="${member1.userID }">
+				</div>
 	
 	<jsp:include page ="../common/footer.jsp"></jsp:include>
 	

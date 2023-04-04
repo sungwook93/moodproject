@@ -1,6 +1,6 @@
 package com.edu.member.dao;
 
-import java.util.List;
+import java.util.List;	
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -80,12 +80,14 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	} // End - // 아이디에 해당하는 회원 정보 삭제하기
 	
-	//마이페이지 게시글정보가져오기
-	@Override 
-	public List<BoardDTO> myboardList(String qna_bno,String userID) throws Exception {
-		logger.info("MemberDAOImpl 관리자페이지 qna게시판정보가져오기() 시작");
-		return sqlSession.selectList(Namespace+".myboardList",qna_bno);
-	}
+	//qna 해당 아이디에 글 가져오기
+	@Override
+	public List<BoardDTO> boardUserList(String userID) throws Exception {
+		System.out.println("MemberDAOImpl의 boardTotalList() 구하기....");
+		List<BoardDTO> boardList2 = sqlSession.selectList(Namespace + ".boardUserList", userID);
+		System.out.println(boardList2);
+		return boardList2;
+	}	
 	
 	//관리자페이지 상품정보가져오기
 	@Override 

@@ -19,7 +19,12 @@
 		  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 		  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+			
+			<!-- font -->
+		   <link rel="preconnect" href="https://fonts.googleapis.com">
+		   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		   <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
+			
 			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
 			<script src="${contextPath}/resources/js/board.js"></script>
 		</head>
@@ -28,7 +33,7 @@
 			<jsp:include page="../common/topMenu.jsp" flush="false"/>
 			
 			<hr/><br/>
-			<h2 style = "text-align: center;">Q & A Detail</h2>
+			<h2 style = "text-align: center; font-family: 'Sunflower', sans-serif;">Q & A Detail</h2>
 			<br/>
 			<br/>
 				
@@ -58,20 +63,19 @@
 							<textarea class="form-control" id="qna_content" name="qna_content" readonly>${boardDTO.qna_content}</textarea>
 						</div>
 					</div>
-				<br/>
 				<div id="boardDetailBtn">
 					<button type="button" class="btn btn-light" onclick="location.href='/board/boardList?page=1'">
-						<span class="glyphicon glyphicon-list-alt"> 전체 목록 보기</span>
-					</button>
+						<span> 전체 목록 보기 </span>
+					</button>&nbsp;&nbsp;&nbsp;&nbsp;
 					<!-- 작성자와 로그인한 사람의 아이디가 같거나 관리자일 때 나오는 부분 -->
 					<c:choose>
 						<c:when test="${boardDTO.userID == member1.userID or member1.grade == 7}">
-							<button type="button" class="btn btn-light" onclick="location.href = '/board/boardUpdateForm?qna_bno=' + ${boardDTO.qna_bno}">
-								<span class="glyphicon glyphicon-pencil"> 게시글 수정</span>
-							</button>
+							<button type="button" class="btn btn-light" onclick="location.href = '/board/boardUpdateForm?qna_bno=' + ${boardDTO.qna_bno}" style = "font-family: 'Sunflower', sans-serif;">
+								<span> 게시글 수정</span>
+							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-light" onclick="fn_boardDelete(${boardDTO.qna_bno})">
-								<span class="glyphicon glyphicon-trash"> 게시글 삭제</span>
-							</button>
+								<span> 게시글 삭제</span>
+							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 						</c:when>
 					</c:choose>
 				</div>
@@ -95,13 +99,19 @@
 										<c:forEach items="${commentList}" var="comment" varStatus="status">
 											<tr>
 												<td>
+													<!-- 관리자이면서 자기 글일 경우 삭제 버튼 가능  -->
 													
-													${comment.userID} &nbsp;:&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #d4c6bb; border: none; width: 500px;" readonly/>
 													<c:if test="${member1.grade == 7 or member1.userID == comment.userID }">
+														${comment.userID}&nbsp; :&nbsp;&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #c1c1c1; border: none; width: 600px;" readonly/>
+														<a id="commentUpdateB${status.count}" style = "display:none; width: 30px;" onclick="fn_updateComment(${status.count});"> 등록</a>
 														<a id="commentUpdateA${status.count}" onclick="fn_updateOpen(${status.count});"> 수정</a>
-														<a id="commentUpdateB${status.count}" style = "display:none; width:30px;" onclick="fn_updateComment(${status.count});"> 등록</a>
-														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> x 삭제</a>
-													</c:if>	
+														<a> | </a>
+														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> 삭제</a>
+													</c:if>
+													<!-- 글쓴이면 자기글 수정 삭제 가능  -->
+													<c:if test="${member1.grade != 7 and member1.userID != comment.userID}">
+														${comment.userID}&nbsp; :&nbsp;&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #c1c1c1; border: none; width: 600px;" readonly/>
+													</c:if>
 													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
 													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
 													<input type="hidden" id="userID1" value="${member1.userID}"/>
@@ -138,19 +148,25 @@
 						<c:when test="${member1.grade == 7  or boardDTO.userID == member1.userID}">
 							<tr>
 								<td class="comment15 commentLabel">
+									<br/>
 									<label>댓  글  작  성</label>
 								</td>
 								<td class="comment70">
-									${member1.userID}<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
+									<br/>
+									<img src = "${contextPath }/resources/images/user.png" style = "width: 20px; height: 20px;"/>&nbsp;&nbsp;${member1.userID}
+									<br/><br/>
+									<textarea rows="3" cols="110" id="reply_content" placeholder="댓글 입력"></textarea>
 								</td>
 								<td class="commentButton">
-									<button style="position:relative; left:25%; background-color: white; color: black; border-radius:5px; padding:5px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${boardDTO.qna_bno});">등 록</button>
+									<br/>
+									<button style="position:relative; left:25%; background-color: white; color: black; border: none; border-radius:5px; padding:4px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${boardDTO.qna_bno});">등 록</button>
 								</td>
 							</tr>
 							<input type="hidden" id="userID1" value="${member1.userID}"/>
 						</c:when>
 					</c:choose>
 				</table>
+				<br/>
 			</div>
 			
 			<jsp:include page="../common/footer.jsp" flush="false"/>
@@ -165,7 +181,11 @@
 		$('#qna_content').summernote('disable');
 		
 		</script>
-		
+		<style>
+		   * {
+		      font-family: 'Sunflower','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
+		   }   
+		</style>	
 	</html>
 
 

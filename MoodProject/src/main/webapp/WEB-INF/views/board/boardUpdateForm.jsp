@@ -53,16 +53,17 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<br/>
 						<div id="boardUpdateBtn">
 							<button type="reset"  class="btn btn-light">
-								<span class="glyphicon glyphicon-erase"> 다시 입력</span>
-							</button>
+								<span> 다시 입력</span>
+							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-light" onclick="fn_boardUpdate();">
-								<span class="glyphicon glyphicon-pencil"> 게시글 수정</span>
-							</button>
+								<span> 게시글 수정</span>
+							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-light" onclick="location.href='/board/boardList'">
-								<span class="glyphicon glyphicon-list-alt"> 게시글 목록</span>
-							</button>
+								<span> 게시글 목록</span>
+							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 						</div>
 					</div>
 				</form>
@@ -72,9 +73,15 @@
 				<input type="hidden" id="qna_bno" value="${boardDTO.qna_bno}"/>
 				<input type="hidden" id="userID" value="${member1.userID}"/>
 			</div>
-			
+			<br/>
 			<jsp:include page="../common/footer.jsp" flush="false"/>
 		</body>
+		
+		<style>
+		   * {
+		      font-family: 'Sunflower','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
+		   }   
+		</style>
 	</html>
 
 

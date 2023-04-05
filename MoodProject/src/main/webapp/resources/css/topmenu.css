@@ -8,19 +8,19 @@
  }
  body {
 	background-color: #c1c1c1;
-	
+	color:black;
  }
 /**/
 *{
 	padding:0;margin:0
 }
 li{
-	list-style:none
+	list-style:none;
 }
 a{
 	text-decoration:none;
 	font-size:14px;
-	color:white;
+	color:black !important;
 }
 a:hover {
 	color:black;

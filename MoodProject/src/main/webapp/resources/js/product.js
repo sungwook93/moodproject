@@ -384,7 +384,9 @@ function fn_cart(){
 	let product_amount = $("#price").val();
 	
  	alert(product_amount);
-
+ 	
+ 	//모달창 display를보여주는 js
+	
 }
 
 

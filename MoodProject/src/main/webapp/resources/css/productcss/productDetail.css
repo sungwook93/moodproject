@@ -4,7 +4,9 @@
 	align-items: left;
 	color:white;
 }
-
+#loginFormBox {
+	display:none;
+}
 
 /* 이미지 css*/
 #imagebox{

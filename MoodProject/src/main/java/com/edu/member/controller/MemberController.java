@@ -37,6 +37,15 @@ public interface MemberController {
 			
 			HttpServletRequest request, HttpServletResponse response) //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
 			throws Exception;
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 로그인 처리
+	//-----------------------------------------------------------------------------------------------------------
+	public ModelAndView login2(@ModelAttribute("member") MemberDTO member,
+		
+		HttpServletRequest request, HttpServletResponse response) //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
+		throws Exception;	
+	
 				
 	//-----------------------------------------------------------------------------------------------------------
 	// 로그아웃 처리

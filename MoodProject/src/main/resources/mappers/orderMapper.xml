@@ -9,7 +9,7 @@
 	<!-- 장바구니 화면 보여주기 -->
 	<select id="cartList" resultType="com.edu.order.dto.CartDTO">
 		<![CDATA[
-		SELECT c.cart_num, c.product_code, p.product_name, p.product_price, c.product_amount
+		SELECT c.product_code, p.product_name, p.product_price, c.product_amount
 		FROM t_product p , t_cart c
 		WHERE p.product_code = c.product_code and c.userID = #{userID};
 		]]>
@@ -18,8 +18,8 @@
 	<!-- 장바구니 데이터 넣기 -->
 	<insert id="addCart" parameterType="com.edu.order.dto.CartDTO">
 		<![CDATA[
-		INSERT INTO t_cart (cart_num, userID, product_code, product_amount)
-		SELECT IFNULL(MAX(cart_num), 0) + 1, #{userID}, #{product_code}, #{product_amount} FROM t_cart
+		INSERT INTO t_cart (userID, product_code, product_amount)
+		SELECT #{userID}, #{product_code}, #{product_amount} FROM t_cart
 		]]>
 	</insert>
 	

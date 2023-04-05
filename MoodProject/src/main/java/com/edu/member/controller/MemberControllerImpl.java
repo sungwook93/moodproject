@@ -186,6 +186,70 @@ public class MemberControllerImpl implements MemberController {
 			return mav;
 		}
 		
+		
+		//-----------------------------------------------------------------------------------------------------------
+		// 로그인 처리
+		// member => 로그인 창에서 보내온 정보, memberDTO => DB에서 가져온 정보
+		//-----------------------------------------------------------------------------------------------------------
+		@Override
+		@RequestMapping(value="/login2.do", method=RequestMethod.POST)
+		public ModelAndView login2(MemberDTO member, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {   //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
+			
+			System.out.println("MemberControllerImpl 로그인 처리 시작.....");
+			System.out.println("로그인 정보 => " + member.getUserID() + " : " + member.getPwd());
+			
+			ModelAndView mav = new ModelAndView();
+			
+			// 아이디 값이 없이 넘어온 경우에는 돌려보낸다.
+			if(member.getUserID().equals("") || member.getUserID() == null) {
+				mav.addObject("result", "loginIdEmpty");
+				//mav.setViewName("redirect:/member/loginForm.do");	
+				mav.setViewName("/main");
+				return mav;
+			}
+			
+			// 로그인한 정보를 가지고 데이터베이스에 존재하는지 처리를 하고, 그 결과를 가져온다.
+			// member => 로그인 창에서 보내온 정보, memberDTO => DB에서 가져온 정보
+			memberDTO = memberService.login(member);
+			System.out.println("로그인 처리 결과 ==> " + memberDTO);
+			
+			// 로그인한 정보가 데이터베이스에 존재하는지에 따라 처리를 다르게 한다.
+			if(memberDTO != null) {	// 로그인 정보에 해당하는 자료가 있으면
+				
+				if(member.getPwd().equals(memberDTO.getPwd())) {
+					
+					// 아이디와 비밀번호가 일치하면 세션을 발급한다.
+					HttpSession session = request.getSession();
+					session.setAttribute("member1", 	memberDTO);
+					session.setAttribute("isLogOn", true);
+					
+					//아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
+				    //List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(memberDTO.getUserID());
+				    //session.setAttribute("member1OrderDetail",    orderDetailList);
+				    //System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList);
+					
+					mav.setViewName("/main");	// 메인화면으로 이동한다.
+					
+				} else { 	// 아이디는 있는데 비밀번호가 틀린 경우
+							// 메시지를 가지고 로그인 화면으로 이동한다.
+					mav.addObject("result", "PasswordFailed");
+					//mav.setViewName("redirect:/member/loginForm.do");	
+					mav.setViewName("/main");	// 메인화면으로 이동한다.
+				}
+				
+			} else {	// 로그인한 아이디가 존재하지 않으면 
+						// 로그인 실패 메시지를 가지고 로그인 화면으로 이동한다.
+				mav.addObject("result", "loginFailed");
+				//mav.setViewName("redirect:/member/loginForm.do");	
+				mav.setViewName("/main");	// 메인화면으로 이동한다.
+				
+			}
+			return mav;
+		}
+			
+		
+		
 		//-----------------------------------------------------------------------------------------------------------
 		// 로그아웃 처리
 		//-----------------------------------------------------------------------------------------------------------

@@ -53,7 +53,7 @@
 <div id="sticky-btn"><button type="button" onclick="fn_collapsebtn()"><span class="glyphicon glyphicon-align-justify"></span></button></div> 
 
 <div id="collapse-content">
-		<img src="${contextPath}../resources/images/logo1.png" style = "width: 200px; height: 10%; position:relative; left:40px;"/>
+		<img src="${contextPath}../resources/images/logo3.png" style = "width: 200px; height: 10%; position:relative; left:40px;"/>
 	  <div id="close-area" onclick="fn_closecollapse()">X</div>
 	  <ul style="margin-top:80px;">
 	  	<li><h1>MOOD</h1></li>
@@ -76,7 +76,7 @@
 <div class="navbar" id="myNav" style="font-family: 'Sunflower', sans-serif;">
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
-		<a href="/main.do"><img src="${contextPath}../resources/images/logo1.png" style = "width: 18%; height: 18%; padding-left:120px; z-index:5;"/></a>
+		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 30%; height: 30%; padding-left:120px;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
 	</div>	
 	

@@ -346,7 +346,7 @@ function fn_updateOpen(reply_bno) {
 	 	$("#" + status).attr("readonly",false);
 		$("#" + status).focus();
 	 	
-	 	document.getElementById("commentUpdateB"+status).style.display = 'block';
+	 	document.getElementById("commentUpdateB"+status).style.display = 'inline';
 		document.getElementById("commentUpdateA"+status).style.display = 'none';
 		
 		

@@ -53,17 +53,17 @@
 <div id="sticky-btn"><button type="button" onclick="fn_collapsebtn()"><span class="glyphicon glyphicon-align-justify"></span></button></div> 
 
 <div id="collapse-content">
-		<img src="${contextPath}../resources/images/logo3.png" style = "width: 200px; height: 10%; position:relative; left:40px;"/>
+		<img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; position:relative; left:40px;"/>
 	  <div id="close-area" onclick="fn_closecollapse()">X</div>
 	  <ul style="margin-top:80px;">
 	  	<li><h1>MOOD</h1></li>
 	  	<li>CONCEPT</li>
 	  	<li><h1>PRODUCT</h1></li>
-	  	<li>WHITE</li>
-	  	<li>BLACK</li>
-	  	<li>GRAY</li>
+	  	<li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r">WHITE</a></li>
+	  	<li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r">BLACK</a></li>
+	  	<li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r">GRAY</a></li>
 	  	<li><h1>BOARD</h1></li>
-	  	<li>QNA</li>
+	  	<li><a href="/board/boardList?page=1">QNA</a></li>
 	  	<li>REVIEW</li>
 	  </ul>
 </div>   
@@ -76,7 +76,7 @@
 <div class="navbar" id="myNav" style="font-family: 'Sunflower', sans-serif;">
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
-		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 170px; height: 100px; padding-left:50px;"/></a>
+		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; padding-left:50px; object-fit:cover;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
 	</div>	
 	

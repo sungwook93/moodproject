@@ -54,7 +54,9 @@
 			</tr>
 			</c:forEach>
 		</table>
-		
+		<div class="container">
+		<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister">
+		</div>
 		<!-- 회원 관련 테이블 -->
 		<table id="admintable2">
 			<tr class="thead">

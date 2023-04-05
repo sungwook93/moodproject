@@ -53,9 +53,9 @@
 <div id="sticky-btn"><button type="button" onclick="fn_collapsebtn()"><span class="glyphicon glyphicon-align-justify"></span></button></div> 
 
 <div id="collapse-content">
-		<img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; position:relative; left:40px;"/>
 	  <div id="close-area" onclick="fn_closecollapse()">X</div>
-	  <ul style="margin-top:80px;">
+		<img src="${contextPath}../resources/images/logo3.png" style = "width: 300px; height: 170px; position:relative; left:10px;"/>
+	  <ul style="margin-top:20px;">
 	  	<li><h1>MOOD</h1></li>
 	  	<li>CONCEPT</li>
 	  	<li><h1>PRODUCT</h1></li>
@@ -114,9 +114,9 @@
        
         <a href="#">Gift</a>
         <ul class="submenu">
-          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/>white</a></li>
-          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/>black</a></li>
-          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/>gray</a></li>
+          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/>white&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/>black&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/>gray&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
         </ul>
       </li>
       <li>

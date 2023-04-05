@@ -331,9 +331,9 @@ function fn_productUpdate(){
 					contentType: false,
 					data: formData,
 					dataType: "json",
-					success: function(data, status, req){
+					success: function(data){
 						alert("상품 수정 성공" + data.product_code);
-						location.href = "/product/productDetail?product_code=" + data;
+						location.href = "/product/productDetail?product_code=" + data.product_code;
 					
 					}// end - 이미지 수정 success
 				
@@ -377,5 +377,14 @@ function fn_productDelete(product_code){
 		}); // end - 상품삭제ajax
 	}// end - confirm
 }//end -상품 삭제
+
+// 상품 장바구니
+function fn_cart(){
+	
+	let product_amount = $("#price").val();
+	
+ 	alert(product_amount);
+
+}
 
 

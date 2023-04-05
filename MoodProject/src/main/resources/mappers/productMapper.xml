@@ -123,6 +123,12 @@
 			SELECT * FROM t_images WHERE product_code = #{product_code};
 	</select>
 
-	
+	<!-- 상품이미지 수정 -->
+	<update id="imagesUpdate" parameterType="com.edu.product.dto.ImagesDTO">
+		update t_images
+		set product_code = #{product_code}, images01 = #{images01}, images02 = #{images02},
+		images03 = #{images03}, images04 = #{images04}
+		where product_code = #{product_code}
+	</update>
 
 </mapper>

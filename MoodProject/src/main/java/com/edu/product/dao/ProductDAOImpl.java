@@ -115,6 +115,13 @@ public class ProductDAOImpl implements ProductDAO {
 		System.out.println("ProductDAOImpl의 해당코드에 해당하는 이미지명을 전체를 가져온다.....");
 		return sqlSession.selectOne(Namespace + ".images", product_code);
 	}
+	
+	//상품 이미지 수정
+	@Override
+	public int imagesUpdate(ImagesDTO imagesDTO) throws Exception {
+		System.out.println("ProductDAOImpl의 상품 이미지 수정....." + imagesDTO);
+		return sqlSession.update(Namespace + ".imagesUpdate", imagesDTO);
+	}
 
 	
 	

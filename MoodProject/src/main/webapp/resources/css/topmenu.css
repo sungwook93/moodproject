@@ -7,7 +7,7 @@
  	padding:0;
  }
  body {
-	background-color: #d4c6bb;
+	background-color: #c1c1c1;
 	
  }
 /**/
@@ -54,7 +54,7 @@ a:hover {
 /*스티키*/
 
 #sticky-content {
-	 background-color: #baa593;
+	 background-color: #9a9a9a;
 	color: #d4c6bb;
 	height:50px;
 	padding:20px;
@@ -85,7 +85,7 @@ a:hover {
 	top:0;
 	width:0px;
 	height:900px;
-	background-color: #d4c6bb;
+	background-color: #9a9a9a;
 	z-index:2;
 	overflow:hidden;
 	transition-property: width;
@@ -126,7 +126,7 @@ a:hover {
 
 /*네브3*/
 #nav3 {
-	background-color: #d4c6bb;
+	background-color: #c1c1c1;
 	height:40px;	
 	width:100%;
 	text-align: center;
@@ -149,14 +149,14 @@ a:hover {
   width: 160px;
   float: left;
   line-height: 40px;
-  background-color: #d4c6bb;
+  background-color: #c1c1c1;
   color:black;
   position:relative;
   text-align:center;
 }
 .submenu > li {
   line-height: 50px;
-   background-color: #baa593;
+   background-color: #9a9a9a;
 }
 
 .submenu {
@@ -166,7 +166,7 @@ a:hover {
 
 	/*네브2 호버*/
 .menu > li:hover {
- background-color: #baa593;
+ background-color: #9a9a9a;
   transition-duration: 0.5s;
 }
 

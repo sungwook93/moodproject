@@ -6,7 +6,7 @@
 <style>
 	#footerbox {
 		text-align:right;
-		background-color: #baa593;
+		background-color: #9a9a9a;
 		color:white;
 		margin:0;
 	}

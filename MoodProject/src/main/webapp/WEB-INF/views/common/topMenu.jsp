@@ -7,6 +7,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
 
+	<!-- font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
 			
 <!-- 로그인 확인용 -->
 <script src="${contextPath}/resources/js/isLogOn.js"></script>
@@ -82,11 +86,11 @@
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
 						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li><li style="display:none;"><a href="/member/adminForm.do">관리자페이지</a></li>
-       <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+       <li></li>
 					</c:when>
 					<c:otherwise>
-						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li> <li style="display:none;"><a href="#"><span class="glyphicon glyphicon-search" style = "width: 160px;"></span></a></li>
-       <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" style = "width: 160px;"></span></a></li>
+						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li> <li style="display:none;"></li>
+       <li></li>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
@@ -191,3 +195,9 @@ function fn_closecollapse() {
 }
 
 </script>	  
+
+<style>
+	* {
+		font-family: 'Sunflower', sans-serif;
+	}	
+	</style>

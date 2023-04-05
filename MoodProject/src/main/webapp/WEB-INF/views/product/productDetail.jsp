@@ -72,7 +72,7 @@
 						<h3 class="pricename">판매가</h3>
 					</div>
 					<div>
-						<h3 class="price" ><fmt:formatNumber value="${product.product_price}" pattern="#,###,###원"/></h3>
+						<h3 class="price" ><fmt:formatNumber  value="${product.product_price}" pattern="#,###,###원"/></h3>
 					</div>
 				</div>
 				<div id="product_option">
@@ -98,7 +98,7 @@
 				<!-- 장바구니 주문 버튼 -->
 				<div id="buttonbox">
 					<div>
-						<input type="button" id="cartbutton" value="장바구니">
+						<input type="button" id="cartbutton" onclick="fn_cart()" value="장바구니">
 					</div>
 					<div >
 						<input type="button"  id="orderbutton" value="주문하기">

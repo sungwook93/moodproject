@@ -46,6 +46,9 @@ public interface ProductDAO {
 	//해당코드에 해당하는 이미지명을 전체를 가져온다
 	public ImagesDTO getImagesName(String product_code)throws Exception;
 
+	// 상품이미지 수정
+	public int imagesUpdate(ImagesDTO imagesDTO)throws Exception;
+
 
 	
 	

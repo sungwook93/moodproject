@@ -143,6 +143,30 @@ public class ImageController {
 	}
 	
 	
+	//상품이미지 수정하기
+	@ResponseBody
+	@RequestMapping(value="/updateImage", method=RequestMethod.POST)
+	public ResponseEntity<ImagesDTO> updateImage(MultipartFile[] files, String product_code)throws Exception{
+		System.out.println("ImageController의 updateImage");
+		
+		//해당 상품 이미지를 먼저 없앤다.
+		deleteImage(product_code);
+		System.out.println("중간점검" + product_code);
+		//이미지를 업로드한다.
+		ImagesDTO imagesDTO = UploadFile.uploadImage(uploadPath, files, product_code);
+		
+		//imagesDTO에 상품코드 세팅
+		imagesDTO.setProduct_code(product_code);
+		
+		//imagesDTO를 업데이트해준다.
+		int result = productDAO.imagesUpdate(imagesDTO);
+		if(result == 1) {
+			System.out.println("db에 이미지 데이터 업데이트 성공");
+		}
+		
+		return new ResponseEntity<ImagesDTO>(imagesDTO, HttpStatus.OK);
+	}
+
 	
 	
 }

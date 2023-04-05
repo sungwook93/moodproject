@@ -69,14 +69,14 @@
 </div>   
     
 <!-- 스티키 콜랩스 네비바 -->
-<div class="container" style="width:100%; height:180px;">
+<div class="container" style="width:100%; height:140px;"><!-- 네비바와 body내용 거리조절하는 height -->
 
 
 
 <div class="navbar" id="myNav" style="font-family: 'Sunflower', sans-serif;">
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
-		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 30%; height: 30%; padding-left:120px;"/></a>
+		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 170px; height: 100px; padding-left:50px;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
 	</div>	
 	

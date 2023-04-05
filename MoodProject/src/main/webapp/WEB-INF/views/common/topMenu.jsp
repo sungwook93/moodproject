@@ -107,7 +107,7 @@
       	<li>
         <a href="#">Mood</a>
         <ul class="submenu">
-           <li><a href="#">Concept</a></li>
+           <li><a href="/common/conceptForm.do">Concept</a></li>
         </ul>
       </li>
       <li>
@@ -123,7 +123,7 @@
         <a href="#">Board</a>
         <ul class="submenu">
           <li><a href="/board/boardList?page=1">Q & A</a></li>
-          <li><a href="#">Review</a></li>
+          <li><a href="/review/reviewList">Review</a></li>
         </ul>
       </li>
      

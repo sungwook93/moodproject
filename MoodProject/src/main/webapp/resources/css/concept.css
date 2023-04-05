@@ -20,7 +20,13 @@
 	line-height: 100px;
 }
 .box {
-	width: calc(100% / 3);
+	width: calc(100% / 2);
+  	height: 100px;
+  	float: left;
+  	padding: 5px 10px 5px 10px;
+}
+.box1 {
+	width: calc(100% / 1);
   	height: 100px;
   	float: left;
   	padding: 5px 10px 5px 10px;

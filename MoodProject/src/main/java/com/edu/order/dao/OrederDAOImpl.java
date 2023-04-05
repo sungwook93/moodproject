@@ -38,9 +38,16 @@ public class OrederDAOImpl implements OrderDAO {
 	@Override
 	public int addCart(CartDTO cartDTO) throws Exception {
 		
-		logger.info("MemberDAOImpl 장바구니 담기");
+		System.out.println("OrderDAO 장바구니 담기");
 		
-		return sqlSession.insert(Namespace + ".cartList", cartDTO);
+		return sqlSession.insert(Namespace + ".addCart", cartDTO);
+	}
+
+	//해당상품이 장바구니에 이미 들어있는지 확인한다.
+	@Override
+	public int checkcart(CartDTO cartDTO) throws Exception {
+		System.out.println("OrderDAO 해당상품이 장바구니에 이미 들어있는지 확인한다.");
+		return sqlSession.selectOne(Namespace + ".checkcart", cartDTO);
 	}
 
 }

@@ -8,19 +8,22 @@
 
 	<!-- 장바구니 화면 보여주기 -->
 	<select id="cartList" resultType="com.edu.order.dto.CartDTO">
-		<![CDATA[
-		SELECT c.cart_num, c.product_code, p.product_name, p.product_price, c.product_amount
-		FROM t_product p , t_cart c
-		WHERE p.product_code = c.product_code and c.userID = #{userID};
-		]]>
+		select product_code, userID, product_amount, product_price, product_size,
+		product_color, product_type
+		from t_cart
+		where userID = #{userID}
 	</select>
 	
-	<!-- 장바구니 데이터 넣기 -->
 	<insert id="addCart" parameterType="com.edu.order.dto.CartDTO">
-		<![CDATA[
-		INSERT INTO t_cart (cart_num, userID, product_code, product_amount)
-		SELECT IFNULL(MAX(cart_num), 0) + 1, #{userID}, #{product_code}, #{product_amount} FROM t_cart
-		]]>
+		insert into t_cart(product_code, userID, product_amount, product_price, product_size,
+		product_color, product_type)
+		value (#{product_code}, #{userID}, #{product_amount}, #{product_price}, #{product_size}, 
+		#{product_color}, #{product_type})
 	</insert>
+	
+	<!-- 해당상품이 장바구니에 이미 들어있는지 확인한다. -->
+	<select id="checkcart" parameterType="com.edu.order.dto.CartDTO" resultType="Integer">
+		select count(*) from t_cart where product_code = #{product_code} and userID = #{userID}
+	</select>
 	
 </mapper>

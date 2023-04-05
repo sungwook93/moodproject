@@ -381,10 +381,49 @@ function fn_productDelete(product_code){
 // 상품 장바구니
 function fn_cart(){
 	
-	let product_amount = $("#price").val();
+	let product_amount = $("#product_amount").text();
+	product_amount = parseInt(product_amount); //숫자로 바꿔준다.
+	let userID = $("#userID").val();
+	let product_code = $("#product_code").val();
+	let product_color = $("#product_color").val();
+	let product_size = $("#product_size").val();
+	let product_name = $("#product_name1").val();
+	let product_type = $("#product_type1").val();
 	
- 	alert(product_amount);
+ 	//alert("상품 수량==" +  product_amount + "유저아이디==" + userID + "상품코드 ==" + product_code);
+	alert(product_type);
 
+	$.ajax({
+		type: "POST",
+		url: "/order/addCart.do",
+		data: {product_code:product_code, product_amount:product_amount, userID:userID, product_color:product_color,
+				product_size:product_size, product_name:product_name, product_type:product_type},
+		success: function(data){
+		
+		if(data == -1){
+			alert("로그인을 해주세요");
+			//location.href="
+		}//end -1
+		if(data == 1){
+			if(confirm("상품이 등록되었습니다. 장바구니로 가시겠습니까?")){
+				location.href="/order/cartForm.do?userID=" + userID;
+			}
+		}// end 1
+		if(data == -2){
+			if(confirm("장바구니에 해당상품이 있습니다. 장바구니로 이동하시겠습니까?")){
+				location.href="/order/cartForm.do?userID=" + userID;
+			}
+		}
+		
+		
+		}, //end -success
+		error: function(data) {
+				alert("실패했습니다==> " + data);
+			}
+		
+	
+	});//end - ajax
+	
 }
 
 

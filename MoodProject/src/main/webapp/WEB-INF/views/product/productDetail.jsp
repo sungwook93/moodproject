@@ -127,6 +127,12 @@
 	
 
 	<input type="hidden" id="price" value="${product.product_price}">
+	<input type="hidden" id="userID" value="${member1.userID}">
+	<input type="hidden" id="product_code" value="${product.product_code}">
+	<input type="hidden" id="product_color" value="${product.product_color}">
+	<input type="hidden" id="product_size" value="${product.product_size}">
+	<input type="hidden" id="product_name1" value="${product.product_name}">
+	<input type="hidden" id="product_type1" value="${product.product_type}">
 
 	
 	<jsp:include page ="../common/footer.jsp"></jsp:include>

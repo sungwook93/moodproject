@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.member.dao.MemberDAO;
@@ -33,12 +34,16 @@ public class OrderController {
 		ModelAndView mav =new ModelAndView(userID);
 		
 		List<CartDTO> cartList = orderService.cartList(userID);
+		System.out.println("장바구니 리스트 ==>"+ cartList);
 		mav.addObject("cartList", cartList);
+		
+		mav.setViewName("/order/cartForm");
 		return mav;
 	}
 	
 	//장바구니에 상품 담기
-	@RequestMapping(value="/addCart.do", method=RequestMethod.GET)
+	@ResponseBody
+	@RequestMapping(value="/addCart.do", method=RequestMethod.POST)
 	public int addCart(CartDTO cartDTO) throws Exception {
 		
 		logger.info("OrderController의 addCart....");
@@ -48,10 +53,15 @@ public class OrderController {
 		if(cartDTO.getUserID().equals("")) {
 			return -1;
 		} else {
-			
-			//해당 유저의 장바구니에 해당 상품이 있으면 더한다
-			return orderService.addCart(cartDTO);
-		}	
+			//해당상품이 장바구니에 이미 들어있는지 확인한다.
+			if(orderService.checkcart(cartDTO) == 0) {
+				//상품을 장바구니에 넣는다
+				int result = orderService.addCart(cartDTO);
+				return result;
+			} else { // 장바구니에 이미 해당상품이 있음
+				return -2;
+			}
+		}
 	
 	}
 }

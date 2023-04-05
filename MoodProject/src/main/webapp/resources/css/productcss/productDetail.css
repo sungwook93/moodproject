@@ -2,7 +2,7 @@
 #topbox{
 	display: flex;
 	align-items: left;
-	color:white;
+	color:black;
 }
 
 
@@ -112,6 +112,7 @@
  height:25px;
  border:none;
  background-color:#8D999E;
+ color: white;
 
 }
 
@@ -133,6 +134,7 @@
 	width:25px;
 	height:25px;
 	display: inline-block;
+	border: 1px solid black;
 }
 
 #totalproduct_price{
@@ -153,7 +155,7 @@
 
 #totalprice2{
 	font-size: 38px;
-	color:white;
+	color:black;
 }
 
 /*주문 버튼 영역*/
@@ -166,7 +168,7 @@
 	width: 270px;
 	height: 57px;
 	margin-right: 11px;
-	border: none;
+	border: 1px solid black;
 	background-color: white;
 	color:#69737A;
 	font-size:21px;
@@ -190,11 +192,14 @@
 	margin-right:7.5px;
 	margin-left:7.5px;
 	
-
 }
 
 #recommendlist td img{
 	width: 370px;
 	height: 370px;
 	margin-right:15px;
+}
+
+#recommendlist td div a{
+	color:black;
 }

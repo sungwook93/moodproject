@@ -73,7 +73,7 @@ a:hover {
 	width:50px;
 	height:50px;
 	border:none;
-	background-color: none;
+	background-color: #c1c1c1;
 	font-size:1.5em;
 }
 #collapse-content {
@@ -130,6 +130,7 @@ a:hover {
 	text-align: center;
 	position:relative;
 	bottom:60px;
+	z-index:2;
 }
 #login {
 	margin-left:100px;
@@ -186,7 +187,7 @@ a:hover {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: rgba(186,165,147,0.5);
+            background-color: rgba(193,193,193,0.9); 
             z-index:10;
         }
         #modal .modal-window {
@@ -196,7 +197,7 @@ a:hover {
             position: relative;
             top: -100px;
             padding: 10px;
-            background-color: rgba(186,165,147,0.9);
+            background-color:  rgba(154,154,154,0.5);
             border-radius:50px;
           
         }

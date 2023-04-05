@@ -131,7 +131,7 @@
 	</div>
 
 <!-- 로그인 모달창 -->
-    <div id="loginFormBox2">
+    <div id="loginFormBox2" style="display:none;">
 		<form class = "form-horizontal" method = "post" action = "/member/login2.do">
 	    <div id="modal2" class="modal-overlay">
 	        <div class="modal-window">

@@ -111,12 +111,12 @@
         </ul>
       </li>
       <li>
+       
         <a href="#">Gift</a>
         <ul class="submenu">
-          <li><a href="/product/productList?product_color=white&page=1"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/> &nbsp;white</a></li>
-          <li><a href="/product/productList?product_color=black&page=1"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/> &nbsp;black</a></li>
-          <li><a href="/product/productList?product_color=black&page=1"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/> &nbsp;gray</a></li>
-
+          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/>white</a></li>
+          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/>black</a></li>
+          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/>gray</a></li>
         </ul>
       </li>
       <li>

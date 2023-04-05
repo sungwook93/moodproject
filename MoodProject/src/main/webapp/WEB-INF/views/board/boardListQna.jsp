@@ -37,7 +37,7 @@
 			<div id="mainTitle">
 				<div id="boardTitle">
 					<a href="/board/boardList?page=1" id="selectedA">Q & A</a>
-					<a href="/other/boardListFqa">Review</a>
+					<a href="review/reviewList?page=1">Review</a>
 				</div>
 			</div>
 
@@ -68,7 +68,7 @@
 									<td class="boardTitle">
 									<c:choose>
 									<c:when test="${(sysYear == board.qna_regDate)}">
-											<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}&nbsp;&nbsp;<b>[&nbsp;${board.reply_count}&nbsp;]&nbsp;&nbsp;</b><img src="../resources/images/new.png" height= "13px"width="25px" alt="new" /></div>	
+											<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}&nbsp;&nbsp;<b>[&nbsp;${board.reply_count}&nbsp;]&nbsp;&nbsp;</b><img src="../resources/images/new3.png" height= "30px"width="25px" alt="new" /></div>	
 									</c:when>
 									<c:otherwise>
 										<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${board.qna_subject}
@@ -81,7 +81,7 @@
 									<td class="boardNo"><fmt:formatNumber value="${board.qna_readCount}" pattern="#,###"/></td>
 								</tr>
 								<tr style = "display:none;">
-									<td colspan="5" style = "padding: 10px 40px; background-color: #baa593; border-radius: 10px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
+									<td colspan="5" style = "padding: 10px 40px; background-color: #9a9a9a; border-radius: 10px;"><a href="/board/boardDetail?qna_bno=${board.qna_bno}" style = "color: black;">${board.qna_content}</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -98,9 +98,9 @@
 							</select>
 						</div>
 						<div id="boardSearchBoxDiv">
-							<input type="text" id="searchKeyword" value="${keyword}" style = "background-color: #d4c6bb;"/>
+							<input type="text" id="searchKeyword" value="${keyword}" style = "background-color: #c1c1c1;"/>
 						</div>
-							<button id="searchBtn" class="glyphicon glyphicon-search" style = "background-color: #d4c6bb;"></button>
+							<button id="searchBtn" class="glyphicon glyphicon-search" style = "background-color: #c1c1c1;"></button>
 					</div>
 					
 					<br/>
@@ -141,15 +141,15 @@
 		$('#qna_content').summernote('pasteHTML', data);
 		</script>
 		
+		<style>
+		   * {
+		      font-family: 'Sunflower','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
+		   }   
+		</style>	
 	</html>
 
 
 
-<style>
-	* {
-		font-family: 'Sunflower','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
-	}	
-	</style>
 
 
 

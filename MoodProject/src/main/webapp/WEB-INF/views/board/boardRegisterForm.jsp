@@ -24,7 +24,7 @@
 			<!-- 상단 메뉴 -->
 			<jsp:include page="../common/topMenu.jsp" flush="false"/>
 			<hr/>
-			<h2 style = "text-align: center; color: white;">Q & A RegisterForm</h2>
+			<h2 style = "text-align: center; color: white; font-family: Sunflower;">Q & A RegisterForm</h2>
 			<br/>
 			<br/>
 			<div class="container">
@@ -50,8 +50,8 @@
 					<br/>
 					<div class="form-group">
 						<div id="registerFormBtnDiv">
-							<button type="button" class="btn btn-light" onclick="location.href='/board/boardList?page=1'" style = "width: 80px;"><strong>Back</strong></button>
-							<button type="reset"  class="btn btn-light"><strong>다시 입력</strong></button>
+							<button type="button" class="btn btn-light" onclick="location.href='/board/boardList?page=1'" style = "width: 80px;"><strong>Back</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="reset"  class="btn btn-light"><strong>다시 입력</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-light" onclick="fn_boardRegister();"><strong>게시글 등록</strong></button>
 						</div>
 					</div>
@@ -62,6 +62,11 @@
 			<jsp:include page = "../common/footer.jsp" flush = "false"/>
 		</body>
 		
+		<style>
+		   * {
+		      font-family: 'Arial','Sunflower', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
+		   }   
+		</style>
 	</html>
 	
 	

@@ -20,9 +20,9 @@ public interface MemberService {
 	public MemberDTO login(MemberDTO memberDTO) throws DataAccessException;
 	
 	//-----------------------------------------------------------------------------------------------------------
-	// 로그인 처리
+	// 로그인 처리2
 	//-----------------------------------------------------------------------------------------------------------
-	public MemberDTO login2(MemberDTO memberDTO) throws DataAccessException;
+	public MemberDTO login2(MemberDTO memberDTO,String product_code) throws DataAccessException;
 
 	//-----------------------------------------------------------------------------------------------------------
 	// 회원가입 처리하기

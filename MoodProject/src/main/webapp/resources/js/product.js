@@ -402,7 +402,8 @@ function fn_cart(){
 		
 		if(data == -1){
 			alert("로그인을 해주세요");
-			//location.href="
+			//location.href="/member/login2.do"
+			modal.style.display = "flex"
 		}//end -1
 		if(data == 1){
 			if(confirm("상품이 등록되었습니다. 장바구니로 가시겠습니까?")){
@@ -426,4 +427,31 @@ function fn_cart(){
 	
 }
 
+ $(document).ready(function() {
+ //----------------------------------------------------------------------------------------------------------
+ // 로그인 모달창 띄우긴
+ //----------------------------------------------------------------------------------------------------------
+  	const modal = document.getElementById("modal2")
+        function modalOn() {
+            modal.style.display = "flex"
+        }
+        function isModalOn() {
+            return modal.style.display === "flex"
+        }
+        function modalOff() {
+            modal.style.display = "none"
+        }
+        
+        const closeBtn = modal.querySelector(".close-area")
+        closeBtn.addEventListener("click", e => {
+            modalOff();
+    })
+	
+	$("#cartbutton").click(function() {
+	
+		$("#modal2.modal-overlay").css ({
+			"display" : "flex"
+		});
+	});
 
+});

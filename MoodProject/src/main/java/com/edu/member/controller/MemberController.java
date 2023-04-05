@@ -39,9 +39,9 @@ public interface MemberController {
 			throws Exception;
 	
 	//-----------------------------------------------------------------------------------------------------------
-	// 로그인 처리
+	// 로그인 처리2
 	//-----------------------------------------------------------------------------------------------------------
-	public ModelAndView login2(@ModelAttribute("member") MemberDTO member,
+	public ModelAndView login2(@ModelAttribute("member") MemberDTO member,String product_code,
 		
 		HttpServletRequest request, HttpServletResponse response) //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
 		throws Exception;	

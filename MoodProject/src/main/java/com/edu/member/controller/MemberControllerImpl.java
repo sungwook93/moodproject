@@ -188,12 +188,12 @@ public class MemberControllerImpl implements MemberController {
 		
 		
 		//-----------------------------------------------------------------------------------------------------------
-		// 로그인 처리
+		// 로그인 처리2
 		// member => 로그인 창에서 보내온 정보, memberDTO => DB에서 가져온 정보
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/login2.do", method=RequestMethod.POST)
-		public ModelAndView login2(MemberDTO member, HttpServletRequest request,
+		public ModelAndView login2(MemberDTO member,String product_code, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {   //ModelAttribute로 member라는 갹채애 값을 한번에 담아 넘긴다.
 			
 			System.out.println("MemberControllerImpl 로그인 처리 시작.....");

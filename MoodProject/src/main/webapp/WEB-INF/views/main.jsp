@@ -31,14 +31,44 @@
 			</style>
 		</head>
 		<body>
-<!-- 연습 -->
+
 			<jsp:include page ="./common/topMenu.jsp"></jsp:include>
+			<br/>
+			<!-- 슬라이더 -->
+			<div class ="container-fluid">
+				<div id = "myCarousel" class ="carousel slide" data-ride = "carousel">
+					<!-- indicators -->
+					
+					<div class ="carousel-inner">
+						<div class ="item active">
+							<!-- class = "img-responsive center-block" : 반응형 이미지를 가운데에 정렬한다. -->
+							<img class = "img-responsive center-block" src = "${contextPath }/resources/images/main01.jpg" style = "width:1500px; height: 500px;"/>
+		
+						</div>
+						<div class ="item">
+							<!-- class = "img-responsive center-block" : 반응형 이미지를 가운데에 정렬한다. -->
+							<img class = "img-responsive center-block" src = "${contextPath }/resources/images/main02.jpg" style = "width:1500px; height: 500px;"/>
+		
+						</div>
+						<div class ="item">
+							<!-- class = "img-responsive center-block" : 반응형 이미지를 가운데에 정렬한다. -->
+							<img class = "img-responsive center-block" src = "${contextPath }/resources/images/main03.jpg" style = "width:1500px; height: 500px;"/>
+		
+						</div>
+					</div>
+				
+					<a class = "left carousel-control" href = "#myCarousel" data-slide = "prev" style = "background-image: none">
+						<span class = "glyphicon glyphicon-chevron-left"></span>
+					</a>
+					
+					<a class = "right carousel-control" href = "#myCarousel" data-slide = "next" style = "background-image: none">
+						<span class = "glyphicon glyphicon-chevron-right"></span>
+					</a> 
+					
+				</div>
+			</div>
 			
-			<table style="width:1500px; height:900px; margin-left:auto; margin-right:auto;">
-				<tr>
-					<td colspan="2"><a href="/main.do"><img style="width:1000px; height:450px;" src="${contextPath}../resources/images/main1.png"/></a></td>
-					<td><a href="/main.do"><img style="width:500px;  height:450px;" src="${contextPath}../resources/images/main2.png"/></a></td>
-				</tr>
+			<table style="width:1500px; height:450px; margin-left:auto; margin-right:auto;">
 				<tr>
 					<td><a href="/product/productList?product_color=white,black,gray&product_type=living&page=1&array_type=r"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main3.png"/></a></td>
 					<td><a href="/product/productList?product_color=white,black,gray&product_type=bed&page=1&array_type=r"><img style="width:500px; height:450px;" src="${contextPath}../resources/images/main4.png"/></a></td>

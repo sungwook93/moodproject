@@ -35,7 +35,7 @@
 		<div id="membertitle2"><h4 id="titlesection4">회원정보</h4><h1 id="titlesection5">주문내역</h1><h4 id="titlesection6">작성한글</h4></div>
 		<div id="membertitle3"><h4 id="titlesection7">주문내역</h4><h1 id="titlesection8">작성한글</h1><h4 id="titlesection9">회원정보</h4></div>
 	</div>
-	<div class="container" id="membertable">
+	<div class="container" id="membertable" style="text-align:center;">
 		<form class="form-horizontal" method="post" id="memInfo" name="memInfo" action="${contextPath}/member/memberUpdate.do">
 			<div class="form-group">
 				<button type="button" id="updatepage"><h4>정보수정하기</h4></button>

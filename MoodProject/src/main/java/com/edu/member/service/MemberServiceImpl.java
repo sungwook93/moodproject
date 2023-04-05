@@ -39,6 +39,7 @@ public class MemberServiceImpl implements MemberService {
 			
 		return result;
 	}	
+	
 	//-----------------------------------------------------------------------------------------------------------
 	// 로그인 처리
 	//-----------------------------------------------------------------------------------------------------------
@@ -49,6 +50,18 @@ public class MemberServiceImpl implements MemberService {
 
 		return memberDAO.loginByID(memberDTO);
 	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 로그인 처리
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public MemberDTO login2(MemberDTO memberDTO) throws DataAccessException {
+			
+		logger.info("MemberServiceImpl login() 시작");
+
+		return memberDAO.loginByID(memberDTO);
+	}
+		
 		
 	//-----------------------------------------------------------------------------------------------------------
 	// 회원가입 처리하기

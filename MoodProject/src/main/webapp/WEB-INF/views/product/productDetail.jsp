@@ -124,6 +124,33 @@
 		
 	</div>
 
+<!-- 로그인 모달창 -->
+    <div id="loginFormBox">
+		<form class = "form-horizontal" method = "post" action = "/member/login2.do">
+	    <div id="modal" class="modal-overlay">
+	        <div class="modal-window">
+	            <div class="title form-group">
+	                <h2>Login</h2>
+	            </div>
+	            <div class="close-area">X</div>
+	            
+	            <div class = "form-group">
+		            <div style="padding-top:20px;"><h4>ID</h4></div>
+		            <div class="content"><input type = "text" class = "form-control" id = "loginUserID" name ="userID" maxlength="20" placeholder="아이디"/></div>
+		        </div>
+		        <div class = "form-group">    
+		            <div><h4>PASSWORD</h4></div>
+		            <div class="content"><input type = "password" class = "form-control" id = "pwd" name ="pwd" maxlength="20" placeholder="비밀번호"/></div>
+	            </div> 
+	            <div class="content form-group" style="margin-top:50px;">
+	            	<button type = "reset" class = "btn btn-light">Re-enter</button>
+					<button type = "submit" class = "btn btn-light" id = "submit">Login</button>
+					<button type = "button" class = "btn btn-light">Join</button>
+	            </div>
+	        </div>
+	   	</div>
+	   	</form>
+	  </div>
 	
 
 	<input type="hidden" id="price" value="${product.product_price}">

@@ -7,6 +7,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
 
+	<!-- font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
 			
 <!-- 로그인 확인용 -->
 <script src="${contextPath}/resources/js/isLogOn.js"></script>
@@ -49,7 +53,7 @@
 <div id="sticky-btn"><button type="button" onclick="fn_collapsebtn()"><span class="glyphicon glyphicon-align-justify"></span></button></div> 
 
 <div id="collapse-content">
-		<img src="${contextPath}../resources/images/logo1.png" style = "width: 200px; height: 10%; position:relative; left:40px;"/>
+		<img src="${contextPath}../resources/images/logo3.png" style = "width: 200px; height: 10%; position:relative; left:40px;"/>
 	  <div id="close-area" onclick="fn_closecollapse()">X</div>
 	  <ul style="margin-top:80px;">
 	  	<li><h1>MOOD</h1></li>
@@ -72,7 +76,7 @@
 <div class="navbar" id="myNav" style="font-family: 'Sunflower', sans-serif;">
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
-		<a href="/main.do"><img src="${contextPath}../resources/images/logo1.png" style = "width: 18%; height: 18%; padding-left:120px; z-index:5;"/></a>
+		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 30%; height: 30%; padding-left:120px;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
 	</div>	
 	
@@ -82,11 +86,11 @@
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
 						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li><li style="display:none;"><a href="/member/adminForm.do">관리자페이지</a></li>
-       <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+       <li></li>
 					</c:when>
 					<c:otherwise>
-						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li> <li style="display:none;"><a href="#"><span class="glyphicon glyphicon-search" style = "width: 160px;"></span></a></li>
-       <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" style = "width: 160px;"></span></a></li>
+						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li> <li style="display:none;"></li>
+       <li></li>
 					</c:otherwise>
 				</c:choose>
 			</c:when>
@@ -109,9 +113,10 @@
       <li>
         <a href="#">Gift</a>
         <ul class="submenu">
-          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r">white</a></li>
-          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r">black</a></li>
-          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r">gray</a></li>
+          <li><a href="/product/productList?product_color=white&page=1"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/> &nbsp;white</a></li>
+          <li><a href="/product/productList?product_color=black&page=1"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/> &nbsp;black</a></li>
+          <li><a href="/product/productList?product_color=black&page=1"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/> &nbsp;gray</a></li>
+
         </ul>
       </li>
       <li>
@@ -191,3 +196,9 @@ function fn_closecollapse() {
 }
 
 </script>	  
+
+<style>
+	* {
+		font-family: 'Sunflower', sans-serif;
+	}	
+	</style>

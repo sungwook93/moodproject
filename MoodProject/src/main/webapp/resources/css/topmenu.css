@@ -83,7 +83,7 @@ a:hover {
 	width:0px;
 	height:900px;
 	background-color: #9a9a9a;
-	z-index:2;
+	z-index:3;
 	overflow:hidden;
 	transition-property: width;
     transition-duration: 0.5s, 2s;

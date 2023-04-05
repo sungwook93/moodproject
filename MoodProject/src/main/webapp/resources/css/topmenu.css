@@ -2,10 +2,7 @@
 
 
 /* top menu */
- * {
- 	margin:0;
- 	padding:0;
- }
+
  body {
 	background-color: #c1c1c1;
 	color:black;
@@ -28,7 +25,7 @@ a:hover {
 }
 #myNav {
 	margin-bottom:10px;
-	height:50px;
+	height:80px;
 	
 }
 #searchdiv {
@@ -105,7 +102,8 @@ a:hover {
 }
 #nav1 {
 	position:relative;
-	bottom:60px;
+	bottom:80px;
+	height:50px;
 	
 }
 /*네브2*/
@@ -131,7 +129,7 @@ a:hover {
 	width:100%;
 	text-align: center;
 	position:relative;
-	bottom:140px;
+	bottom:60px;
 }
 #login {
 	margin-left:100px;

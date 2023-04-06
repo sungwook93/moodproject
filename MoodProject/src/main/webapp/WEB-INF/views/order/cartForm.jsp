@@ -50,7 +50,6 @@
 		</div>
 	</div>
 	<div class="container" id="orderListBox">
-	<form name="form">
 		<table id="orderListTable">
 			<tr style="text-align:center;">
 				<th style="width:3%;"></th>
@@ -97,7 +96,7 @@
 		<h3>총 결제금액</h3>
 		<input name="total_sum" type="text" size="20" readonly>
 	</div>
-	</form>
+	
 	<div class="container" id="orderbtnBox">
 		<input type="button" value="전체상품주문" style="background-color: #69737A; color:white; font-size:20px; border:none;">
 		<input type="button" value="선택상품주문" style="color: #69737A; font-size:20px; border:none;">	

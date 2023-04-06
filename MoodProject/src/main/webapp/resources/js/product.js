@@ -389,6 +389,7 @@ function fn_cart(){
 	let product_size = $("#product_size").val();
 	let product_name = $("#product_name1").val();
 	let product_type = $("#product_type1").val();
+	let product_price= $("#price").val();
 	
  	//alert("상품 수량==" +  product_amount + "유저아이디==" + userID + "상품코드 ==" + product_code);
 	alert(product_type);
@@ -397,7 +398,7 @@ function fn_cart(){
 		type: "POST",
 		url: "/order/addCart.do",
 		data: {product_code:product_code, product_amount:product_amount, userID:userID, product_color:product_color,
-				product_size:product_size, product_name:product_name, product_type:product_type},
+				product_size:product_size, product_name:product_name, product_type:product_type, product_price:product_price},
 		success: function(data){
 		
 		if(data == -1){

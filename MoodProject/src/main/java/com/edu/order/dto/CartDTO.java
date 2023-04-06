@@ -2,7 +2,8 @@ package com.edu.order.dto;
 
 public class CartDTO {
 
-	
+
+	private int cart_num; //장바구니 번호
 	private String product_code; //상품 코드
 	private String userID;//회원 아이디
 	private int product_amount; //상품 수량
@@ -10,7 +11,14 @@ public class CartDTO {
 	private String product_size; //상품 사이즈
 	private String product_color;	//상품 색상
 	private String product_type; //상품 타입
+	private String product_name; //상품 타입
 	
+	public int getCart_num() {
+		return cart_num;
+	}
+	public void setCart_num(int cart_num) {
+		this.cart_num = cart_num;
+	}
 	public String getProduct_code() {
 		return product_code;
 	}
@@ -53,12 +61,18 @@ public class CartDTO {
 	public void setProduct_type(String product_type) {
 		this.product_type = product_type;
 	}
-	
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
 	@Override
 	public String toString() {
-		return "CartDTO [product_code=" + product_code + ", userID=" + userID
+		return "CartDTO [cart_num=" + cart_num + ", product_code=" + product_code + ", userID=" + userID
 				+ ", product_amount=" + product_amount + ", product_price=" + product_price + ", product_size="
-				+ product_size + ", product_color=" + product_color + ", product_type=" + product_type + "]";
+				+ product_size + ", product_color=" + product_color + ", product_type=" + product_type
+				+ ", product_name=" + product_name + "]";
 	}
 	
 	

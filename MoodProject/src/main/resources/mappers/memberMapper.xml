@@ -21,7 +21,6 @@
 		<result property = "grade" column = "grade"/>
 	</resultMap>
 	
-	
 	<!-- 아이디 중복 검사 : 입력한 아이디가 존재하는지 알아낸다. -->
 	<select id = "idCheck" parameterType = "com.edu.member.dto.MemberDTO" resultType ="Integer">
 		<![CDATA[
@@ -70,14 +69,32 @@
 		]]>
 	</select>
 	
-	<!-- 관리자페이지 상품정보 가져오기 -->
-	<select id="productList" resultType="com.edu.product.dto.ProductDTO">
-		<![CDATA[
-		select *
-		from t_product
+	<!-- 관리자페이지 상품 정보 가져오기 -->
+	<!-- foreach 같은 문장에 CDATA를 쓰면 안먹힌다 주의!!! 이것때문에 엄청고생 -->
+	<select id="productList" parameterType="Map" resultType="com.edu.product.dto.ProductDTO">
+		select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg
+		from (select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg,
+		row_number() over( 
+			<!--  <include refid="array"/>-->
+		) as rNum from t_product where product_type in  
+								<foreach collection="typeList" item="item" open="(" close=")" separator=",">
+								 #{item}
+								</foreach>
 		
-		]]>
+		<!-- <include refid="search"/> -->
+		) bpd
+		where rNUM BETWEEN (#{perPageNum} * #{page} - 8) and (#{perPageNum} * #{page}) 
 	</select>
+	
+	<!-- Type + 전체 별 전체 데이터 갯수 -->
+	<select id="totalCount" parameterType="Map" resultType="Integer">
+		select count(*) from t_product where product_type in  
+											<foreach collection="typeList" item="item" open="(" close=")" separator=",">
+											 #{item}
+											</foreach>
+										   	and 1=1
+	</select>
+	
 	<!-- 관리자페이지 qna게시판정보 가져오기 -->
 	<select id="boardList" resultType="com.edu.board.dto.BoardDTO">
 		<![CDATA[

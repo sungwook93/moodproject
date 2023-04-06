@@ -1,6 +1,7 @@
 package com.edu.member.dao;
 
-import java.util.List;	
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -91,10 +92,17 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	//관리자페이지 상품정보가져오기
 	@Override 
-	public List<ProductDTO> productList(String product_code) throws Exception {
+	public List<ProductDTO> productList(Map<String, Object> param) throws Exception {
 		logger.info("MemberDAOImpl 관리자페이지 상품정보가져오기() 시작");
-		return sqlSession.selectList(Namespace+".productList",product_code);
+		return sqlSession.selectList(Namespace+".productList",param);
 	}
+	//관리자 페이징 처리를 위한 상품 총 갯수 가져오기
+	@Override
+	public int totalCount(Map<String, Object> param) throws Exception {
+		logger.info("MemberDAOImpl 관리자 페이징 처리를 위한 상품 총 갯수 가져오기() 시작");
+		return sqlSession.selectOne(Namespace+".totalCount",param);
+	}
+	
 	//관리자페이지 qna게시판정보가져오기
 	@Override 
 	public List<BoardDTO> boardList(String qna_bno) throws Exception {

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="${contextPath}/resources/css/topmenu.css" rel="stylesheet" type="text/css">
+<script src="${contextPath}/resources/js/product.js"></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +38,7 @@
 			<c:when test="${isLogOn==true && member1 != null}"><!-- MemberControllerImpl에 세션에 담김 -->
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
-						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/member/adminForm.do">관리자페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/member/adminForm.do?product_type=bed">관리자페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 					</c:when>
 					<c:otherwise>
 						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
@@ -77,15 +78,15 @@
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
 		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; padding-left:50px; object-fit:cover;"/></a>
-		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
-	</div>	
+		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" value="${keyword}" id="keyword" onclick="fn_checkbox()"/><span onclick='getCheckboxValue()' id="keywordbutton" class="glyphicon glyphicon-search"></span></div>
+	</div>																									
 	
 	<div id="nav2">
 		<c:choose>
 			<c:when test="${isLogOn==true && member1 != null}"><!-- MemberControllerImpl에 세션에 담김 -->
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
-						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li><li style="display:none;"><a href="/member/adminForm.do">관리자페이지</a></li>
+						<li style="display:none;"><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do">마이페이지</a></li><li style="display:none;"><a href="/member/adminForm.do?product_type=bed">관리자페이지</a></li>
        <li></li>
 					</c:when>
 					<c:otherwise>

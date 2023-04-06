@@ -20,7 +20,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "none");
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "inline-block");
-		$("#productregister").css("display", "none");
+		$("#productBottom").css("display", "none");
 		
 	});	
 	$("#titlesection2").click(function() {
@@ -30,7 +30,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "inline-block");
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "none");
-		$("#productregister").css("display", "inline-block");
+		$("#productBottom").css("display", "inline-block");
 	});	
 	$("#titlesection3").click(function() {
 		$("#admintitle").css("display", "none");
@@ -39,7 +39,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "none");
 		$("#admintable2").css("display", "inline-block");
 		$("#admintable3").css("display", "none");
-		$("#productregister").css("display", "none");
+		$("#productBottom").css("display", "none");
 	});
 	$("#titlesection4").click(function() {
 		$("#admintitle").css("display", "inline-block");
@@ -48,7 +48,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "inline-block");
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "none");
-		$("#productregister").css("display", "inline-block");
+		$("#productBottom").css("display", "inline-block");
 	});	
 	$("#titlesection5").click(function() {
 		$("#admintitle").css("display", "none");
@@ -57,7 +57,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "none");
 		$("#admintable2").css("display", "inline-block");
 		$("#admintable3").css("display", "none");
-		$("#productregister").css("display", "none");
+		$("#productBottom").css("display", "none");
 	});	
 	$("#titlesection6").click(function() {
 		$("#admintitle").css("display", "none");
@@ -66,7 +66,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "none");
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "inline-block");
-		$("#productregister").css("display", "none");
+		$("#productBottom").css("display", "none");
 	});	
 	$("#titlesection7").click(function() {
 		$("#admintitle").css("display", "none");
@@ -75,7 +75,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "none");
 		$("#admintable2").css("display", "inline-block");
 		$("#admintable3").css("display", "none");
-		$("#productregister").css("display", "none");
+		$("#productBottom").css("display", "none");
 	});	
 	$("#titlesection8").click(function() {
 		$("#admintitle").css("display", "none");
@@ -84,7 +84,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "none");
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "inline-block");
-		$("#productregister").css("display", "none");
+		$("#productBottom").css("display", "none");
 	});	
 	$("#titlesection9").click(function() {
 		$("#admintitle").css("display", "inline-block");
@@ -93,7 +93,7 @@ $(document).ready(function() {
 		$("#admintable").css("display", "inline-block");
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "none");
-		$("#productregister").css("display", "inline-block");
+		$("#productBottom").css("display", "inline-block");
 	});		
 });
 

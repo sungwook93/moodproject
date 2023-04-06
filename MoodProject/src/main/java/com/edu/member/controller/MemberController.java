@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.edu.common.util.AdminCriteria;
+import com.edu.common.util.ProductCriteria;
 import com.edu.member.dto.MemberDTO;
 import com.edu.product.dto.ProductDTO;
 
@@ -68,5 +70,5 @@ public interface MemberController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	//관리자페이지불러오기
-	public ModelAndView adminForm(String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView adminForm(AdminCriteria aCri,String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

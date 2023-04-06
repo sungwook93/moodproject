@@ -1,6 +1,8 @@
 package com.edu.member.controller;
 
-import java.util.List;		
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;	
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.edu.board.dto.BoardDTO;
+import com.edu.common.util.AdminCriteria;
+import com.edu.common.util.PageMaker;
+import com.edu.common.util.ProductCriteria;
 import com.edu.member.dao.MemberDAO;
 //import com.edu.board.dao.BoardDAO;
 //import com.edu.board.dao.ReviewDAO;
@@ -372,21 +377,46 @@ public class MemberControllerImpl implements MemberController {
 		//-----------------------------------------------------------------------------------------------------------
 		@Override
 		@RequestMapping(value="/adminForm.do", method=RequestMethod.GET)
-		public ModelAndView adminForm(String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		public ModelAndView adminForm(AdminCriteria aCri,String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 			logger.info("MemberControllerImpl 회원가입 화면 불러오기() 시작");
-					
+			
 			ModelAndView mav = new ModelAndView();
-			List<ProductDTO> productList = memberService.productList(product_code);
+
+			// map 형식을 담기위해 설정해둔다. 이유는 type쪽을 배열로 넘겨주기위해서 가공을 해야한다.
+			// type을 배열로 담을려는 이유는 mapper에 where in을 넣어야 하는데 mybatis 부분의 where in은 foreach를 써야하므로
+			// 문자열을 배열로 바꾼다.
+			Map<String, Object> param = new HashMap<String, Object>();
+			param.put("perPageNum", 9);
+			param.put("page", aCri.getPage());
+			
+			//들어오는 문자열을 배열로 만들고 map에다가 담아준다.
+			//type
+			String typeList[] = null;
+			typeList = aCri.getProduct_type().split(",");
+			param.put("typeList", typeList);	
+			
+			List<ProductDTO> productList = memberService.productList(param);
 			mav.addObject("productList", productList);
+			
+			//넘어온 현재 페이지와 해당 상품 전체 데이터 갯수를 pageMaker에 세팅하고 model담는다.
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(aCri);
+			pageMaker.setTotalCount(memberService.totalCount(param));
+			System.out.println("totalCount: " + pageMaker.getTotalCount());
+			mav.addObject("pageMaker", pageMaker);
+			mav.addObject("type" , aCri.getProduct_type());
+			mav.addObject("totalCount", pageMaker.getTotalCount());
 			
 			List<BoardDTO> boardList = memberService.boardList(qna_bno);
 			mav.addObject("boardList", boardList);
 			
+			
 			List<MemberDTO> memberList = memberService.memberList(userID);
 			mav.addObject("memberList", memberList);
+			System.out.println(typeList+"프로덕트타입");
 			
-			mav.setViewName("/member/adminForm");	
+			//mav.setViewName("redirect:/member/adminForm.do?product_type=bed");
 			return mav;
 		} // End - 관리자 화면 불러오기()
 }

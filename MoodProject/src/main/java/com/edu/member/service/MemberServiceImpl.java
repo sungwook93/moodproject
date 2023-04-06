@@ -1,6 +1,7 @@
 package com.edu.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -101,9 +102,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	//관리자페이지 상품정보 가져오기
 	@Override
-	public List<ProductDTO> productList(String product_code) throws Exception {
+	public List<ProductDTO> productList(Map<String, Object> param) throws Exception {
 		logger.info("MemberServiceImpl 관리자페이지 상품정보 가져오기() 시작");
-		return memberDAO.productList(product_code);
+		return memberDAO.productList(param);
+	}
+	//관리자페이지 상품정보 페이징 처리를 위한 상품 총갯수 가져오기
+	public int totalCount(Map<String, Object> param) throws Exception {
+		logger.info("MemberServiceImpl 관리자페이지 페이징처리를 위한 상품 총갯수 가져오기() 시작");
+		return memberDAO.totalCount(param);
 	}
 	
 	//관리자페이지 qna게시판정보가져오기

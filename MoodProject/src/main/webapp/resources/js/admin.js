@@ -1,5 +1,24 @@
 //관리자 페이지 메뉴
+//관리자페이지 상품종류 체크박스
+	function Radio_Checked() {
+
+    if(document.myform.type[0].checked) {
+    
+		location.href = "/member/adminForm.do?product_type=bed&page=1";
+    }
+    if(document.myform.type[1].checked) {
+    
+		location.href = "/member/adminForm.do?product_type=living&page=1";
+    }
+    if(document.myform.type[2].checked) {
+   
+		location.href = "/member/adminForm.do?product_type=bath&page=1";
+    }
+   }
 $(document).ready(function() {
+	
+	
+	
 	
 	//처음 페이지들어갈시 상품관리메뉴만보이게
 	$("#admintitle2").css("display", "none");
@@ -21,6 +40,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "inline-block");
 		$("#productBottom").css("display", "none");
+		$("#typecheckbox").css("display", "none");
 		
 	});	
 	$("#titlesection2").click(function() {
@@ -31,6 +51,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "none");
 		$("#productBottom").css("display", "inline-block");
+		$("#typecheckbox").css("display", "inline-block");
 	});	
 	$("#titlesection3").click(function() {
 		$("#admintitle").css("display", "none");
@@ -40,6 +61,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "inline-block");
 		$("#admintable3").css("display", "none");
 		$("#productBottom").css("display", "none");
+		$("#typecheckbox").css("display", "none");
 	});
 	$("#titlesection4").click(function() {
 		$("#admintitle").css("display", "inline-block");
@@ -49,6 +71,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "none");
 		$("#productBottom").css("display", "inline-block");
+		$("#typecheckbox").css("display", "inline-block");
 	});	
 	$("#titlesection5").click(function() {
 		$("#admintitle").css("display", "none");
@@ -58,6 +81,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "inline-block");
 		$("#admintable3").css("display", "none");
 		$("#productBottom").css("display", "none");
+		$("#typecheckbox").css("display", "none");
 	});	
 	$("#titlesection6").click(function() {
 		$("#admintitle").css("display", "none");
@@ -67,6 +91,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "inline-block");
 		$("#productBottom").css("display", "none");
+		$("#typecheckbox").css("display", "none");
 	});	
 	$("#titlesection7").click(function() {
 		$("#admintitle").css("display", "none");
@@ -76,6 +101,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "inline-block");
 		$("#admintable3").css("display", "none");
 		$("#productBottom").css("display", "none");
+		$("#typecheckbox").css("display", "none");
 	});	
 	$("#titlesection8").click(function() {
 		$("#admintitle").css("display", "none");
@@ -85,6 +111,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "inline-block");
 		$("#productBottom").css("display", "none");
+		$("#typecheckbox").css("display", "none");
 	});	
 	$("#titlesection9").click(function() {
 		$("#admintitle").css("display", "inline-block");
@@ -94,6 +121,7 @@ $(document).ready(function() {
 		$("#admintable2").css("display", "none");
 		$("#admintable3").css("display", "none");
 		$("#productBottom").css("display", "inline-block");
+		$("#typecheckbox").css("display", "inline-block");
 	});		
 });
 
@@ -109,3 +137,4 @@ function fn_removeMember(userID) {
 		location.href = "/member/removeMember.do?userID="+ userID;
 	}
 }
+

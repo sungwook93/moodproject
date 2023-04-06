@@ -2,7 +2,7 @@
 <%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="${contextPath}/resources/css/topmenu.css" rel="stylesheet" type="text/css">
-<script src="${contextPath}/resources/js/product.js"></script>
+<script src="${contextPath}/resources/js/login.js"></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,13 +58,13 @@
 		<img src="${contextPath}../resources/images/logo3.png" style = "width: 300px; height: 170px; position:relative; left:10px;"/>
 	  <ul style="margin-top:20px;">
 	  	<li><h1>MOOD</h1></li>
-	  	<li>CONCEPT</li>
+	  	<li><a href="/common/conceptForm.do">CONCEPT</a></li>
 	  	<li><h1>PRODUCT</h1></li>
 	  	<li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r">WHITE</a></li>
 	  	<li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r">BLACK</a></li>
 	  	<li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r">GRAY</a></li>
 	  	<li><h1>BOARD</h1></li>
-	  	<li><a href="/board/boardList?page=1">QNA</a></li>
+	  	<li><a href="/board/boardList?page=1">Q&A</a></li>
 	  	<li>REVIEW</li>
 	  </ul>
 </div>   
@@ -78,7 +78,10 @@
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
 		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; padding-left:50px; object-fit:cover;"/></a>
-		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" value="${keyword}" id="keyword" onclick="fn_checkbox()"/><span onclick='getCheckboxValue()' id="keywordbutton" class="glyphicon glyphicon-search"></span></div>
+		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;">
+		<input type="text" id="keyword2"/>
+		<button onclick='getCheckboxValue2()' style="border:none; background:white;"><span class="glyphicon glyphicon-search"></span></button>
+		</div>
 	</div>																									
 	
 	<div id="nav2">
@@ -113,7 +116,7 @@
       </li>
       <li>
        
-        <a href="#">Gift</a>
+        <a href="/product/productList?product_color=white,black,gray&product_type=bed,bath,living&page=1&array_type=r">Gift</a>
         <ul class="submenu">
           <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/>white&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
           <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/>black&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>

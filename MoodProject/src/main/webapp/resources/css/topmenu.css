@@ -2,7 +2,9 @@
 
 
 /* top menu */
-
+input:checked {
+	background:black;
+}
  body {
 	background-color: #c1c1c1;
 	color:black;
@@ -37,7 +39,7 @@ a:hover {
 	
 }
 
-#keyword {
+#keyword2 {
 	width:500px;
 	position:relative;
 	z-index:3;
@@ -45,7 +47,7 @@ a:hover {
 	border:none;
 	height:40px;
 }
-#searcharea:focus {
+#keyword2:focus {
 	outline:none;
 }
 /*스티키*/

@@ -39,6 +39,16 @@
 		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 id="titlesection9">상품관리</h4></div>
 		
 		<div class="container" id="pdtable"> 
+		<div class="container" id="typecheckbox">
+				<label id="naming" for="type"></label>
+				<form name="myform">
+				<label><input type="radio" name="type" id="bed" value="bed">침실</label>
+				<label><input type="radio" name="type" id="living" value="living">거실</label>
+				<label><input type="radio" name="type" id="bath" value="bath">욕실</label>
+				<br/>
+				<label><input type="button" value="상품종류" onclick="Radio_Checked()"></label>
+				</form>
+		</div>
 		<!-- 상품 관련 테이블 -->
 		<table id="admintable" style="text-align:center;">
 			<tr class="thead">

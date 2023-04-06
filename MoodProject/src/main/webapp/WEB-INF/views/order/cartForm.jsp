@@ -60,7 +60,14 @@
 			</tr>
 			<c:forEach var="cart" items="${cartList}" varStatus="status" >
 			<tr style="text-align:center;">
-				<td><input type="checkbox" class="checkBoxId" id="check${status.count}" name="chkbox" value="${cart.product_price * cart.product_amount}" onClick='totalprice(this.form);' style="margin-left:10px;">
+				<td>
+				<form name="myform">
+				<label>
+				<input type="checkbox" class="checkBoxId" id="check${status.count}" name="chkbox" value="${cart.product_price * cart.product_amount}" onClick='totalprice(this.form);' style="margin-left:10px;">
+				</label>
+				<label><input type="button" value="상품종류" onclick="Radio_Checked()"></label>
+				</form>
+				
 				</td>
 				<td>
 					<div style="display:flex">

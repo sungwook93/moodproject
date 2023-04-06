@@ -34,6 +34,24 @@ function count(type, count){
 	document.getElementById('product_price' + id).innerText = (totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 }
 
+function Radio_Checked() {
+ // 선택된 목록 가져오기
+  const query = 'input[name="chkbox"]:checked';
+  const selectedEls = 
+      document.querySelectorAll(query);
+  
+  // 선택된 목록에서 value 찾기
+  let result = 0;
+  parseInt(result);
+  selectedEls.forEach((el) => {
+    result+= parseInt(el.value);
+  });
+  
+   alert(result); 
+   
+}
+
+
 
 
 

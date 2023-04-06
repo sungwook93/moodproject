@@ -1,6 +1,7 @@
 package com.edu.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
@@ -38,7 +39,10 @@ public interface MemberDAO {
 	public List<BoardDTO> boardUserList(String userID) throws Exception;
 	
 	//관리자페이지 상품정보 가져오기
-	public List<ProductDTO> productList(String product_code) throws Exception;
+	public List<ProductDTO> productList(Map<String, Object> param) throws Exception;
+	
+	//관리자 페이지 페이징처리를 위한 상품 총갯수 가져오기
+	public int totalCount(Map<String, Object> param) throws Exception;
 	
 	//관리자페이지 qna게시판정보가져오기
 	public List<BoardDTO> boardList(String qna_bno) throws Exception;

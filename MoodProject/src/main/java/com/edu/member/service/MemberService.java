@@ -1,6 +1,7 @@
 package com.edu.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
@@ -42,7 +43,10 @@ public interface MemberService {
 	
 	
 	//관리자페이지 상품정보가져오기
-	public List<ProductDTO> productList(String product_code) throws Exception;
+	public List<ProductDTO> productList(Map<String, Object> param) throws Exception;
+	//페이징처리를위한 상품 총갯수 가져오기
+	public int totalCount(Map<String, Object> param)throws Exception;
+	
 	
 	//관리자페이지 qna게시판정보가져오기
 	public List<BoardDTO> boardList(String qna_bno) throws Exception;

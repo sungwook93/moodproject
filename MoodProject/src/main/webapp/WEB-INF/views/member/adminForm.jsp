@@ -39,6 +39,16 @@
 		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 id="titlesection9">상품관리</h4></div>
 		
 		<div class="container" id="pdtable"> 
+		<div class="container" id="typecheckbox">
+				<label id="naming" for="type"></label>
+				<form name="myform">
+				<label><input type="radio" name="type" id="bed" value="bed">침실</label>
+				<label><input type="radio" name="type" id="living" value="living">거실</label>
+				<label><input type="radio" name="type" id="bath" value="bath">욕실</label>
+				<br/>
+				<label><input type="button" value="상품종류" onclick="Radio_Checked()"></label>
+				</form>
+		</div>
 		<!-- 상품 관련 테이블 -->
 		<table id="admintable" style="text-align:center;">
 			<tr class="thead">
@@ -53,42 +63,32 @@
 				<td><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></td>
 			</tr>
 			</c:forEach>
-			
-			
-			
-			
-			
-			<!-- 페이징 처리 -->
-			<div class="container producbox" id="pagingunderbar">
-				<div align="center">
-					<ul class="btn-group pagination">
-						<c:if test="${pageMaker.prev }">
-							<li>
-								<!-- c:url URL에 자동으로 Context Path 를 붙여주는 테그 -->
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.startPage-1}&array_type=${array}&keyword=${keyword}'/>"><span class="glyphicon glyphicon-chevron-left"></span></a>
-							</li>
-						</c:if>
-						<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageNum}&array_type=${array}&keyword=${keyword}'/>"><i>${pageNum}</i></a>
-							</li>
-						</c:forEach>
-						<c:if test="${pageMaker.next }">
-							<li>
-								<a href="<c:url value='/product/productList?product_color=${color}&product_type=${type}&page=${pageMaker.endPage + 1}&array_type=${array}&keyword=${keyword}'/>"><span class="glyphicon glyphicon-chevron-right"></span></a>
-							</li>
-						</c:if>
-					</ul>
-				</div>
-			</div>
-			
-			
-			
-			
-			
+		
 		</table>
-		<div class="container">
+		<div class="container"  id="productBottom">
 		<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister">
+		<!-- 페이징 처리 -->
+			<div class="col-sm-12" align="center">
+				<ul class="btn-group pagination">
+					<c:if test="${pageMaker.prev}">
+						<li>
+							<a href='<c:url value="/member/adminForm.do?product_type=${type}?page=${pageMakerf.startPage-1}"/>'><span class="glyphicon glyphicon-chevron-left"></span></a>
+						</li>
+					</c:if>
+		
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+						<li>
+							<a href='<c:url value="/member/adminForm.do?product_type=${type}&page=${pageNum}"/>'><i>${pageNum}</i></a>
+						</li>
+					</c:forEach>
+				
+					<c:if test="${pageMaker.next}">
+						<li>
+							<a href='<c:url value="/member/adminForm.do?product_type=${type}?page=${pageMaker.endPage+1}"/>'><span class="glyphicon glyphicon-chevron-right"></span></a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 		<!-- 회원 관련 테이블 -->
 		<table id="admintable2">

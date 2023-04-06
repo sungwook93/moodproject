@@ -28,11 +28,36 @@ function count(type, count){
 	document.getElementById('product_amount'+ id).innerText = number;
 	totalprice = number*price;
 	
-	//정규식을 이용해서 금액을 돌려준다.
-	document.getElementById('product_price' + id).innerText = (totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 	
+	//정규식을 이용해서 금액을 돌려준다.
+	document.getElementById('check' + id).value = totalprice;
+	document.getElementById('product_price' + id).innerText = (totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 }
 
+function totalprice(frm)
+{
+   let sum = 0;
+   let count = frm.chkbox.length;
+   for(let i=0; i < count; i++ ){
+       if( frm.chkbox[i].checked == true ){
+	    sum += parseInt(frm.chkbox[i].value);
+       }
+   }
+   frm.total_sum.value = sum;
+}
 
+function itemSum(frm)
+{
+   var sum = 0;
+   var count = frm.chkbox.length;
+   for(var i=0; i < count; i++ ){
+       if( frm.chkbox[i].checked == true ){
+	    sum += parseInt(frm.chkbox[i].value);
+	    alert(sum);
+       }
+   }
+   frm.total_sum.value = sum;
+}
+ 
 
  

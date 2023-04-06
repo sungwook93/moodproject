@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt"	uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c"	uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import = "java.text.NumberFormat" %>
 
 <!DOCTYPE html>
 <html>
@@ -49,9 +50,10 @@
 		</div>
 	</div>
 	<div class="container" id="orderListBox">
+	<form name="form">
 		<table id="orderListTable">
 			<tr style="text-align:center;">
-				<th style="width:3%;"><input type="checkbox" style="margin-left:10px;"></th>
+				<th style="width:3%;"></th>
 				<th style="text-align:center;">상품정보</th>
 				<th style="width:20%;">수량</th>
 				<th style="width:20%;">금액</th>
@@ -59,7 +61,8 @@
 			</tr>
 			<c:forEach var="cart" items="${cartList}" varStatus="status" >
 			<tr style="text-align:center;">
-				<td><input type="checkbox"  style="margin-left:10px;"></td>
+				<td><input type="checkbox" class="checkBoxId" id="check${status.count}" name="chkbox" value="${cart.product_price * cart.product_amount}" onClick='totalprice(this.form);' style="margin-left:10px;">
+				</td>
 				<td>
 					<div style="display:flex">
 						<div style="width:100px;">
@@ -80,8 +83,8 @@
 												<input type="button" id="amountbutton" class="amount" onclick='count("plus", ${status.count})' value="+">
 												<input type="hidden" id="price${status.count}" value="${cart.product_price}"/>
 				</td>
-				<td style="text-align:center;" id="product_price${status.count}">
-					<fmt:formatNumber value="${cart.product_price}" pattern="##,###,###원"/>
+				<td style="text-align:center;" id="product_price${status.count}" >
+					<fmt:formatNumber value="${cart.product_price * cart.product_amount}" pattern="##,###,###원"/>
 				</td>	
 				<td>
 				
@@ -92,8 +95,9 @@
 	</div>
 	<div class="container" id="orderCountBox">
 		<h3>총 결제금액</h3>
-		<span id="totalprice2"><fmt:formatNumber value="" pattern="#,###,###원"/></span>
+		<input name="total_sum" type="text" size="20" readonly>
 	</div>
+	</form>
 	<div class="container" id="orderbtnBox">
 		<input type="button" value="전체상품주문" style="background-color: #69737A; color:white; font-size:20px; border:none;">
 		<input type="button" value="선택상품주문" style="color: #69737A; font-size:20px; border:none;">	

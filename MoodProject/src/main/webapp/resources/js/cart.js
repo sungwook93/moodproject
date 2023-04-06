@@ -46,7 +46,7 @@ function totalprice(){
   	});
   	
   	//alert(result);
-  	$("#totalprice1").text(result);
+  	document.getElementById('totalprice1').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 	
 }
 

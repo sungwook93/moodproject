@@ -93,8 +93,8 @@
 		</table>
 	</div>
 	<div class="container" id="orderCountBox">
-		<h3>총 결제금액</h3>
-		<span id="totalprice1"></span>
+		<span style="font-size:30px;">총 결제금액 &nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span id="totalprice1" style="font-size:25px;"></span>
 	</div>
 	
 	<div class="container" id="orderbtnBox">

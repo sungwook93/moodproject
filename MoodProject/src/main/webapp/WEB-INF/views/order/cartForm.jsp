@@ -60,7 +60,7 @@
 			</tr>
 			<c:forEach var="cart" items="${cartList}" varStatus="status" >
 			<tr style="text-align:center;">
-				<td><input type="checkbox" class="checkBoxId" id="check${status.count}" name="chkbox" value="${cart.product_price * cart.product_amount}" onClick='totalprice(this.form);' style="margin-left:10px;">
+				<td><input type="checkbox" class="checkBoxId" id="check${status.count}" name="check" value="${cart.product_price * cart.product_amount}" onClick='totalprice();' style="margin-left:10px;">
 				</td>
 				<td>
 					<div style="display:flex">
@@ -94,7 +94,7 @@
 	</div>
 	<div class="container" id="orderCountBox">
 		<h3>총 결제금액</h3>
-		<input name="total_sum" type="text" size="20" readonly>
+		<span id="totalprice1"></span>
 	</div>
 	
 	<div class="container" id="orderbtnBox">

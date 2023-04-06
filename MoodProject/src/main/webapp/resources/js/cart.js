@@ -34,6 +34,22 @@ function count(type, count){
 	document.getElementById('product_price' + id).innerText = (totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 }
 
+function totalprice(){
+	
+	let checked = 'input[name="check"]:checked'
+	let selectedEls = document.querySelectorAll(checked);
+	
+	let result = 0;
+	parseInt(result);
+	selectedEls.forEach((el) => {
+    result += parseInt(el.value);
+  	});
+  	
+  	//alert(result);
+  	$("#totalprice1").text(result);
+	
+}
+
 
 
 

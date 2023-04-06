@@ -40,7 +40,7 @@
 						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/member/adminForm.do">관리자페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/order/cartForm.do"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/order/cartForm.do?userID=${member1.userID}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:when>

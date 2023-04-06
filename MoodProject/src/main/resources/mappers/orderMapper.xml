@@ -9,16 +9,16 @@
 	<!-- 장바구니 화면 보여주기 -->
 	<select id="cartList" resultType="com.edu.order.dto.CartDTO">
 		select product_code, userID, product_amount, product_price, product_size,
-		product_color, product_type
+		product_color, product_type, product_name
 		from t_cart
 		where userID = #{userID}
 	</select>
 	
 	<insert id="addCart" parameterType="com.edu.order.dto.CartDTO">
 		insert into t_cart(product_code, userID, product_amount, product_price, product_size,
-		product_color, product_type)
+		product_color, product_type, product_name )
 		value (#{product_code}, #{userID}, #{product_amount}, #{product_price}, #{product_size}, 
-		#{product_color}, #{product_type})
+		#{product_color}, #{product_type}, #{product_name})
 	</insert>
 	
 	<!-- 해당상품이 장바구니에 이미 들어있는지 확인한다. -->

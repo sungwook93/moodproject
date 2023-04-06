@@ -2,10 +2,7 @@
 
 
 /* top menu */
- * {
- 	margin:0;
- 	padding:0;
- }
+
  body {
 	background-color: #c1c1c1;
 	color:black;
@@ -28,7 +25,7 @@ a:hover {
 }
 #myNav {
 	margin-bottom:10px;
-	height:50px;
+	height:80px;
 	
 }
 #searchdiv {
@@ -76,7 +73,7 @@ a:hover {
 	width:50px;
 	height:50px;
 	border:none;
-	background-color: none;
+	background-color: #c1c1c1;
 	font-size:1.5em;
 }
 #collapse-content {
@@ -86,7 +83,7 @@ a:hover {
 	width:0px;
 	height:900px;
 	background-color: #9a9a9a;
-	z-index:2;
+	z-index:3;
 	overflow:hidden;
 	transition-property: width;
     transition-duration: 0.5s, 2s;
@@ -97,15 +94,17 @@ a:hover {
 #close-area {
 	position:relative;
 	left:270px;
-	margin-top:50px;
 	height:20px;
+	top:40px;
+	z-index:3;s
 }
 #close-area:hover {
 	cursor:pointer;
 }
 #nav1 {
 	position:relative;
-	bottom:60px;
+	bottom:80px;
+	height:50px;
 	
 }
 /*네브2*/
@@ -131,7 +130,8 @@ a:hover {
 	width:100%;
 	text-align: center;
 	position:relative;
-	bottom:140px;
+	bottom:60px;
+	z-index:2;
 }
 #login {
 	margin-left:100px;
@@ -188,7 +188,7 @@ a:hover {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: rgba(186,165,147,0.5);
+            background-color: rgba(193,193,193,0.9); 
             z-index:10;
         }
         #modal .modal-window {
@@ -198,7 +198,7 @@ a:hover {
             position: relative;
             top: -100px;
             padding: 10px;
-            background-color: rgba(186,165,147,0.9);
+            background-color:  rgba(154,154,154,0.5);
             border-radius:50px;
           
         }

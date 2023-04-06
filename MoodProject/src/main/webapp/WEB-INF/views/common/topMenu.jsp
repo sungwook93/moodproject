@@ -53,30 +53,30 @@
 <div id="sticky-btn"><button type="button" onclick="fn_collapsebtn()"><span class="glyphicon glyphicon-align-justify"></span></button></div> 
 
 <div id="collapse-content">
-		<img src="${contextPath}../resources/images/logo3.png" style = "width: 200px; height: 10%; position:relative; left:40px;"/>
 	  <div id="close-area" onclick="fn_closecollapse()">X</div>
-	  <ul style="margin-top:80px;">
+		<img src="${contextPath}../resources/images/logo3.png" style = "width: 300px; height: 170px; position:relative; left:10px;"/>
+	  <ul style="margin-top:20px;">
 	  	<li><h1>MOOD</h1></li>
 	  	<li>CONCEPT</li>
 	  	<li><h1>PRODUCT</h1></li>
-	  	<li>WHITE</li>
-	  	<li>BLACK</li>
-	  	<li>GRAY</li>
+	  	<li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r">WHITE</a></li>
+	  	<li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r">BLACK</a></li>
+	  	<li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r">GRAY</a></li>
 	  	<li><h1>BOARD</h1></li>
-	  	<li>QNA</li>
+	  	<li><a href="/board/boardList?page=1">QNA</a></li>
 	  	<li>REVIEW</li>
 	  </ul>
 </div>   
     
 <!-- 스티키 콜랩스 네비바 -->
-<div class="container" style="width:100%; height:180px;">
+<div class="container" style="width:100%; height:140px;"><!-- 네비바와 body내용 거리조절하는 height -->
 
 
 
 <div class="navbar" id="myNav" style="font-family: 'Sunflower', sans-serif;">
 	<!-- 로고 네브바  -->
 	<div class="container-fluid" id="nav1">
-		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 30%; height: 30%; padding-left:120px;"/></a>
+		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; padding-left:50px; object-fit:cover;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;"><input type="text" id="searcharea"/><span class="glyphicon glyphicon-search"></span></div>
 	</div>	
 	
@@ -107,23 +107,23 @@
       	<li>
         <a href="#">Mood</a>
         <ul class="submenu">
-           <li><a href="#">Concept</a></li>
+           <li><a href="/common/conceptForm.do">Concept</a></li>
         </ul>
       </li>
       <li>
        
         <a href="#">Gift</a>
         <ul class="submenu">
-          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/>white</a></li>
-          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/>black</a></li>
-          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/>gray</a></li>
+          <li><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/white.png" style = "width: 50px; height: 20px;"/>white&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          <li><a href="/product/productList?product_color=black&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/black.png" style = "width: 50px; height: 20px;"/>black&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+          <li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r"><img src = "${contextPath }/resources/images/gray.png" style = "width: 50px; height: 20px;"/>gray&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Board</a>
         <ul class="submenu">
           <li><a href="/board/boardList?page=1">Q & A</a></li>
-          <li><a href="#">Review</a></li>
+          <li><a href="/review/reviewList">Review</a></li>
         </ul>
       </li>
      

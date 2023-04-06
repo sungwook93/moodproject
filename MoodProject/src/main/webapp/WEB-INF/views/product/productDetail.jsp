@@ -63,9 +63,15 @@
 				<div id="product_name">
 					<p id="name">${product.product_name }</p>
 					<span id="size">규격&nbsp>&nbsp${product.product_size }</span>
-					<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister">
-					<input type="button" onclick="location.href='/product/productUpdateForm?product_code='+'${product.product_code}'" value="상품수정" id="productupdate" >
-					<input type="button" onclick="fn_productDelete('${product.product_code}')"value="상품삭제" id="productdelete">
+					<c:choose>
+						<c:when test="${member1.grade == 7}">
+							<input type="button" onclick="location.href='/product/productUpdateForm?product_code='+'${product.product_code}'" value="상품수정" id="productupdate" >
+							<input type="button" onclick="fn_productDelete('${product.product_code}')"value="상품삭제" id="productdelete">
+						</c:when>
+						<c:otherwise>
+							
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div id="product_price">
 					<div>
@@ -125,9 +131,9 @@
 	</div>
 
 <!-- 로그인 모달창 -->
-    <div id="loginFormBox">
+    <div id="loginFormBox2" style="display:none;">
 		<form class = "form-horizontal" method = "post" action = "/member/login2.do">
-	    <div id="modal" class="modal-overlay">
+	    <div id="modal2" class="modal-overlay">
 	        <div class="modal-window">
 	            <div class="title form-group">
 	                <h2>Login</h2>

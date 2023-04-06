@@ -30,6 +30,7 @@
 <body>
 	<jsp:include page ="../common/topMenu.jsp"></jsp:include>
 	
+	<div class="container">
 	<div class="container" style="text-align:center;">
 		<div id="membertitle"><h4 id="titlesection1">작성한글</h4><h1 id="titlesection2">회원정보</h1><h4 id="titlesection3">주문내역</h4></div>
 		<div id="membertitle2"><h4 id="titlesection4">회원정보</h4><h1 id="titlesection5">주문내역</h1><h4 id="titlesection6">작성한글</h4></div>
@@ -180,8 +181,9 @@
 	        </div>
 	   	</div>
 	   	</form>
-	  </div>		
-	<div>
+	  </div>
+	 </div> 		
+				<div>
 					<input type="hidden" id = "userID" value="${member1.userID }">
 				</div>
 	

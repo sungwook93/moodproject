@@ -52,10 +52,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	//-----------------------------------------------------------------------------------------------------------
-	// 로그인 처리
+	// 로그인 처리2
 	//-----------------------------------------------------------------------------------------------------------
 	@Override
-	public MemberDTO login2(MemberDTO memberDTO) throws DataAccessException {
+	public MemberDTO login2(MemberDTO memberDTO,String product_code) throws DataAccessException {
 			
 		logger.info("MemberServiceImpl login() 시작");
 

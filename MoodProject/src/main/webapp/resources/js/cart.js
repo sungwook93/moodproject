@@ -70,6 +70,7 @@ $(document).ready(function() {
 			});	
 			
 });
+//결제수단 안내서 열기 닫기
 
 //주문서작성 페이지 동의안내서 열기닫기
 function fn_personalInfo(){
@@ -235,7 +236,7 @@ $(document).ready(function() {
 	        $("#payMethodInput").attr("value", "1");
 	        
 	        //계좌 이체 정보를 보여준다.
-	        $("#payMethodInfo").css("visibility", "visible");
+	        $("#payMethodInfodiv").css("height", "100px");
 	        
 	    } else if(e.target.id === 'payMethodCard'){ //카드 버튼 클릭시
 	        
@@ -258,7 +259,7 @@ $(document).ready(function() {
 	        $("#payMethodInput").attr("value", "2");
 	        
 	        //계좌 이체 정보를 숨긴다.
-	        $("#payMethodInfo").css("visibility", "hidden");
+	        $("#payMethodInfodiv").css("height", "0px");
 	    } else if(e.target.id === 'payMethodKakao'){ //카카오페이 버튼 클릭시
 	        
 	        //나머지 버튼의 css를 바꿔준다.
@@ -280,24 +281,12 @@ $(document).ready(function() {
 	        $("#payMethodInput").attr("value", "3");
 	        
 	        //계좌 이체 정보를 숨긴다.
-	        $("#payMethodInfo").css("visibility", "hidden");
+	        $("#payMethodInfodiv").css("height", "0px");
 	    }
 	});
 
 
-	//개인정보 수집 보기 클릭시
-	$('#personalInfoCheckP').click(function(){
-		
-		if($("#personalInfoDetailDiv").css("display", "none")) { //안보일때
-			alert("보이기");
-			$("#personalInfoDetailDiv").css("display", "inline");
-			
-		} else if($("#personalInfoDetailDiv").css("display", "inline")){ //보일 때
-			alert("숨기기");
-			$("#personalInfoDetailDiv").css("display", "none");
-		}
-		
-	});
+	
 });
  /* orderDetail javascript */
  

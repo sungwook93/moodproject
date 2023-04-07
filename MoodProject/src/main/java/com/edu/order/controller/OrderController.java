@@ -93,6 +93,7 @@ public class OrderController {
 		CartDTO cartDTO = orderService.bills(cart_num);
 		//상품정보 넘겨주기
 		mav.addObject("cartDTO" ,cartDTO);
+		System.out.println("상품정보" + cartDTO);
 		
 		
 		mav.setViewName("/order/bills");

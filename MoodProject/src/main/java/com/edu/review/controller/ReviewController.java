@@ -61,14 +61,14 @@ public class ReviewController {
 	// 리뷰 등록화면 불러오기
 	//-----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/reviewRegisterForm", method = RequestMethod.GET)
-	public ModelAndView reviewRegisterForm(ProductDTO productDTO) throws Exception {
+	public ModelAndView reviewRegisterForm(String userID) throws Exception {
 		
 		logger.info("ReviewController 리뷰 등록화면 불러오기");
-		System.out.println(productDTO);
+		System.out.println(userID);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		List<ProductDTO> productList = reviewService.productList(productDTO);
+		List<ProductDTO> productList = reviewService.productList(userID);
 		mav.addObject("productList", productList);
 
 		return mav;	

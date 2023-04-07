@@ -21,7 +21,7 @@ public interface ReviewDAO {
 	public int reviewRegister(ReviewDTO reviewDTO) throws Exception;
 	
 	// productList 가져오기
-	public List<ProductDTO> productList(ProductDTO productDTO) throws Exception;
+	public List<ProductDTO> productList(String userID) throws Exception;
 
 
 

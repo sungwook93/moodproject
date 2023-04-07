@@ -51,11 +51,11 @@
 						<label class="col-sm-1 control-label" for="productKindU">상품 목록</label>
 						<div class="col-sm-3">	
 							<select class="form-control" id="productKindU" name="productKindU" onchange="productKindChange(this)">
-								<c:forEach items ="${productList }">
+								<c:forEach items ="${productList }" var="productList">
 								<option disabled selected>상품 Type</option>
-								<option value="l" <c:if test="${searchType == 'l'}">selected</c:if>>${productList.product_type}</option>
-								<option value="b" <c:if test="${searchType == 'b'}">selected</c:if>>${productList.product_type}</option>
-								<option value="c1" <c:if test="${searchType == 'c1'}">selected</c:if>>${productList.product_type}</option>
+								<option value="living">${productList.product_type}</option>
+								<option value="bed">${productList.product_type}</option>
+								<option value="bath" >${productList.product_type}</option>
 								</c:forEach>
 							</select>
 						</div>

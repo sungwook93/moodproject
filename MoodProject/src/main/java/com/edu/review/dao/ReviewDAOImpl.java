@@ -53,9 +53,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	
 	// productList 가져오기
 	@Override
-	public List<ProductDTO> productList(ProductDTO productDTO) throws Exception {
+	public List<ProductDTO> productList(String userID) throws Exception {
 		
-		return sqlSession.selectList(Namespace + ".productList", productDTO);
+		return sqlSession.selectList(Namespace + ".productList", userID);
 	}
 	
 

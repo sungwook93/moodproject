@@ -61,7 +61,7 @@
 			
 	<select id="productList" resultType="com.edu.review.dto.ReviewDTO" parameterType = "com.edu.product.dto.ProductDTO">
 		<![CDATA[
-		SELECT r.review_bno, r.userID, r.review_subject, r.review_content, r.review_date, r.review_star
+		SELECT r.review_bno, r.userID, r.review_subject, r.review_content, r.review_date, r.review_star,p.product_code
 		FROM t_product p , t_review r
 		]]>
 	</select>

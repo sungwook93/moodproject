@@ -14,9 +14,6 @@ public interface OrderService {
 	//해당상품이 장바구니에 이미 들어있는지 확인한다.
 	public int checkcart(CartDTO cartDTO) throws Exception;
 	
-	//넘어온 장바구니 List를 구해서 보내준다
-	public int userCartList(CartDTO cartNum) throws Exception;
-	
-	//상세페이지에서 보여줄 합계금액을 보내준다.
-	public int orderSum(CartDTO cartNum) throws Exception;
+	//수량db에 변경하러 출발
+	public int countUpdate(CartDTO cartDTO)throws Exception;
 }

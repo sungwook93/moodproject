@@ -50,18 +50,11 @@ public class OrederDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(Namespace + ".checkcart", cartDTO);
 	}
 
-	//넘어온 장바구니 List를 구해서 보내준다
+	//수량 변경
 	@Override
-	public int userCartList(CartDTO cartNum) throws Exception {
-		
-		return sqlSession.insert(Namespace + ".userCartList", cartNum);
-	}
-
-	//상세페이지에서 보여줄 합계금액을 보내준다.
-	@Override
-	public int orderSum(CartDTO cartNum) throws Exception {
-		
-		return sqlSession.selectOne(Namespace + ".orderSum", cartNum);
+	public int countUpdate(CartDTO cartDTO) throws Exception {
+		System.out.println("OrderDAO 수량변경");
+		return sqlSession.update(Namespace + ".countUpdate", cartDTO);
 	}
 
 }

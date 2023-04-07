@@ -61,14 +61,14 @@ public class ReviewController {
 	// 리뷰 등록화면 불러오기
 	//-----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/reviewRegisterForm", method = RequestMethod.GET)
-	public ModelAndView reviewRegisterForm(String userID) throws Exception {
+	public ModelAndView reviewRegisterForm(ProductDTO productDTO) throws Exception {
 		
 		logger.info("ReviewController 리뷰 등록화면 불러오기");
-		System.out.println(userID);
+		System.out.println(productDTO);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		List<ProductDTO> productList = reviewService.productList(userID);
+		List<ProductDTO> productList = reviewService.productList(productDTO);
 		mav.addObject("productList", productList);
 
 		return mav;	
@@ -92,6 +92,23 @@ public class ReviewController {
 
 	}
 	
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 타입에 따른 상품명 찾기
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/searchname" , method=RequestMethod.GET)
+	public ModelAndView searchname(String produt_type) throws Exception{
+		
+		System.out.println("ReviewController 타입에 따른 상품명 찾기" + produt_type);
+		ModelAndView mav = new ModelAndView();
+		
+		List<ProductDTO> productList = reviewService.searchname(produt_type);
+		mav.addObject("produt_type", produt_type);
+		mav.addObject("productList", productList);
+		mav.setViewName("/review/reviewRegisterForm");
+		
+		return mav;
+	}
 	
 	
 	

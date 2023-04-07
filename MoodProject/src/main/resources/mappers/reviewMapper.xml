@@ -61,12 +61,16 @@
 			
 	<select id="productList" resultType="com.edu.review.dto.ReviewDTO" parameterType = "com.edu.product.dto.ProductDTO">
 		<![CDATA[
-		SELECT r.review_bno, r.userID, r.review_subject, r.review_content, r.review_date, r.review_star,p.product_code
+		SELECT r.review_bno, r.userID, r.review_subject, r.review_content, r.review_date, r.review_star
 		FROM t_product p , t_review r
 		]]>
 	</select>
 	
-	
+	<select id="searchname" resultType="com.edu.product.dto.ProductDTO" parameterType = "String">
+		select product_name
+		from t_product
+		where product_type = #{product_type}
+	</select>
 </mapper>
 
 

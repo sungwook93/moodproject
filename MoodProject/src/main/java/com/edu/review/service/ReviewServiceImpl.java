@@ -43,9 +43,15 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	// productList 가져오기
 	@Override
-	public List<ProductDTO> productList(String userID) throws Exception {
+	public List<ProductDTO> productList(ProductDTO productDTO) throws Exception {
 		
-		return reviewDAO.productList(userID);
+		return reviewDAO.productList(productDTO);
+	}
+
+	@Override
+	public List<ProductDTO> searchname(String produt_type) throws Exception {
+		// TODO Auto-generated method stub
+		return reviewDAO.searchname(produt_type);
 	}
 
 	

@@ -51,21 +51,20 @@
 						<label class="col-sm-1 control-label" for="productKindU">상품 목록</label>
 						<div class="col-sm-3">	
 							<select class="form-control" id="productKindU" name="productKindU" onchange="productKindChange(this)">
-								<c:forEach items ="${productList }">
 								<option disabled selected>상품 Type</option>
-								<option value="l" <c:if test="${searchType == 'l'}">selected</c:if>>${productList.product_type}</option>
-								<option value="b" <c:if test="${searchType == 'b'}">selected</c:if>>${productList.product_type}</option>
-								<option value="c1" <c:if test="${searchType == 'c1'}">selected</c:if>>${productList.product_type}</option>
-								</c:forEach>
+								<option value="living" <c:if test="${produt_type == 'living'}">selected</c:if>>Living</option>
+								<option value="bed" <c:if test="${produt_type == 'bed'}">selected</c:if>>Bed</option>
+								<option value="bath" <c:if test="${produt_type == 'bath'}">selected</c:if>>Bath</option>
 							</select>
 						</div>
+						<input type="button" onClick="fn_typename();"  value="확인">
 						<label class="col-sm-1 control-label"  for="productKindD">상품 이름</label>
 						<div class="col-sm-3">	
 							<select class="form-control" id="productKindD" name="productKindD">
 								<option disabled selected>선택해주세요.</option>
-								<option value="l" <c:if test="${searchType == 'l'}">selected</c:if>>${product.product_name == living}</option>
-								<option value="b" <c:if test="${searchType == 'b'}">selected</c:if>>${product.product_name == bed}</option>
-								<option value="c1" <c:if test="${searchType == 'c1'}">selected</c:if>>${product.product_name == bath}</option>
+								<c:forEach items="${productList}" var="product">
+								<option id="product_name">${product.product_name}</option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -121,25 +120,5 @@
 		      font-family: 'Arial','Sunflower', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
 		   }   
 		</style>
-		<script>
-			function productKindChange(e) {
-			    var living = ["BAGGEBO 바게보 도어수납장", "VIHALS 비할스 다용도수납장", "STOENSE 스토엔세 단모러그", "BESTA 베스토 TV장식장", "IKEA PS 이케아 피에스 수납장", "DEJSA 데이사 탁상스탠드", "MALM 말름 6칸서랍장", "LIXHULT 릭스훌트 수납장", "TIPHEDE 팁헤데 평직러그", "RANNAS 란네스 TV장식장", "BILLY 빌리 책장", "PILSKOTT 필스코트 LED플로어스탠드", "EKET 에케트 수납장", "KALLAX 칼락스 선반유닛", "LANGSTED 랑스테드 단모러그", "BESTA 베스토 TV수납콤비네이션", "EKET 에케트 수납콤비네이션", "GLADOM 글라돔 트레이테이블"];
-			    var bed = ["FREDVANG 프레드방 수납장", "SKUBB 스쿠브 수납장", "KULLEN 쿨렌 서랍장", "HEMNES 헴네스 서랍장", "ÅBYGDA 오뷔그다 매트리스", "BRIMNES 브림네스 침대해드", "KNARREVIK 크나레비크 탁상", "IDANÄS 이다네스 탁상", "HEMNES 헴네스 수납장", "VARDÖ 바르되 수납장", "IDANÄS 이다네스 침대", "IDANÄS 이다네스 6칸서랍장", "STOCKHOLM 2017 스톡홀름 2017 탁상스탠드", "SLATTUM 슬라툼 쿠션형 침대프레임", "OLDERDALEN 올데르달렌 침대협탁", "STUK 스투크 수납박스", "KOPPARFALL 코파르팔 그림", "TÄLLBYN 텔뷘 플로어스탠드"];
-			    var bath = ["ENHET 엔헤트 수납콤비네이션1", "ENHET 엔헤트 수납콤비네이션2", "ENHET 엔헤트 수납콤비네이션3","HAVSDUN 하브스둔 LED벽부착등", "VILTO 빌토 수건스탠드", "BASTSJÖN 바스트셴 샤워커튼","GANSJÖN 간셴 욕실용품3종", "VÅGSJÖN 복셴 세면타올 A세트", "EKOLN 에콜른 휴지통","ALMTJÄRN 알름셰른 욕실매트", "LINDBYN 린드뷘 거울 블랙", "VESKEN 베스켄 카트 블랙","BROGRUND 브로그룬드", "ENHET 엔헤트 / TVÄLLEN 트벨렌", "ENHET 엔헤트 양문형 거울수납장 그레이 프레임","TOLFSEN 톨프센 샤워커튼", "4+1 마비스 칫솔 블랙 하드 타입 이탈리아 명품칫솔", "DIMPA 딤파 분리수거가방"];
-			    var target = document.getElementById("productKindD");
-			
-			    if(e.value == "l") var d = living;
-			    else if(e.value == "b") var d = bed;
-			    else if(e.value == "c1") var d = bath;
-			
-			    target.options.length = 0;
-			
-			    for (x in d) {
-			        var opt = document.createElement("option");
-			        opt.value = d[x];
-			        opt.innerHTML = d[x];
-			        target.appendChild(opt);
-			    }   
-			}
-			</script>
+
 </html>

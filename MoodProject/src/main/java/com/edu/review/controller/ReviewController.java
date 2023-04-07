@@ -93,6 +93,23 @@ public class ReviewController {
 	}
 	
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 타입에 따른 상품명 찾기
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/searchname" , method=RequestMethod.GET)
+	public ModelAndView searchname(String produt_type) throws Exception{
+		
+		System.out.println("ReviewController 타입에 따른 상품명 찾기" + produt_type);
+		ModelAndView mav = new ModelAndView();
+		
+		List<ProductDTO> productList = reviewService.searchname(produt_type);
+		mav.addObject("produt_type", produt_type);
+		mav.addObject("productList", productList);
+		mav.setViewName("/review/reviewRegisterForm");
+		
+		return mav;
+	}
+	
 	
 	
 	

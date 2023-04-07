@@ -20,5 +20,7 @@ public interface ReviewService {
 	
 	// productList 가져오기
 	public List<ProductDTO> productList(ProductDTO productDTO) throws Exception;
+
+	public List<ProductDTO> searchname(String produt_type)throws Exception;
 	
 }

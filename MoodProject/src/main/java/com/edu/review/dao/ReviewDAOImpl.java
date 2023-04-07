@@ -57,6 +57,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return sqlSession.selectList(Namespace + ".productList", productDTO);
 	}
+
+	@Override
+	public List<ProductDTO> searchname(String produt_type) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(Namespace + ".searchname", produt_type);
+	}
 	
 
 	

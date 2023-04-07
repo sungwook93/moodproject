@@ -61,5 +61,16 @@
 } 
 
 
+function fn_typename(){
+ //alert("확인");
+ 	let typename = document.getElementById("productKindU");
+ 	let produt_type  = typename.options[typename.selectedIndex].value;
+ 	alert(produt_type);
+ 	
+ 	location.href = "/review/searchname?produt_type=" + produt_type;
+ 		
+ 		
+}
+
  
 

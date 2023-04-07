@@ -14,6 +14,7 @@
 		where userID = #{userID}
 	</select>
 	
+	<!-- 장바구니에 추가하기 -->
 	<insert id="addCart" parameterType="com.edu.order.dto.CartDTO">
 		insert into t_cart(product_code, userID, product_amount, product_price, product_size,
 		product_color, product_type, product_name)
@@ -27,11 +28,21 @@
 		select count(*) from t_cart where product_code = #{product_code} and userID = #{userID}
 	</select>
 	
-	
+	<!-- 수량 수정하기 -->
 	<update id="countUpdate" parameterType="com.edu.order.dto.CartDTO" >
 		update t_cart
 		set product_amount = #{product_amount}
 		where product_code = #{product_code} and userID = #{userID}
 	</update>
+	
+	<!-- 카트넘버에 해당하는 정보 가져오기 -->
+	<select id="bills" parameterType="String" resultType="com.edu.order.dto.CartDTO">
+		select cart_num, product_code, userID, product_amount, product_price, product_size,
+		product_color, product_type, product_name
+		from t_cart
+		where cart_num = #{cart_num};
+	</select>
+	
+	
 	
 </mapper>

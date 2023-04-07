@@ -29,6 +29,7 @@
 	<context:component-scan base-package="com.edu.common" />
 	<context:component-scan base-package="com.edu.board" />
 	<context:component-scan base-package="com.edu.order" />
+	<context:component-scan base-package="com.edu.review" />
 	
 	<!-- AOP 설정 -->
 	<context:annotation-config></context:annotation-config>

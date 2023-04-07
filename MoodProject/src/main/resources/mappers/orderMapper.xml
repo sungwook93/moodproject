@@ -26,4 +26,15 @@
 		select count(*) from t_cart where product_code = #{product_code} and userID = #{userID}
 	</select>
 	
+	<!-- 넘어온 장바구니 List를 구해서 보내준다 -->
+	<insert id="userCartList" parameterType="com.edu.order.dto.CartDTO">
+		insert into t_order(order_num, userID, product_code, product_amount, product_size,
+		order_date )
+		value (#{order_num}, #{userID}, #{product_code}, #{product_amount}, #{product_size}, 
+		#{order_date})
+	</insert>
+	<!-- 상세페이지에서 보여줄 합계금액을 보내준다. -->
+	<select>
+	
+	</select>
 </mapper>

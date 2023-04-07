@@ -4,6 +4,13 @@
 	text-align:center;
 	overflow:hidden;
 }
+#updatepage,#updateinfo,#registerbtn {
+	background-color: #69737A;
+	border: none;
+	color:white;
+	border-radius:50px;
+	padding:4px;
+}
 
 #userjoin input {
 	background-color: #d4c6bb;

@@ -32,9 +32,10 @@ function count(type, count){
 	//정규식을 이용해서 금액을 돌려준다.
 	document.getElementById('check' + id).value = totalprice;
 	document.getElementById('product_price' + id).innerText = (totalprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
+	
 }
 
-function totalprice(){
+function totalprice(count){
 	
 	let checked = 'input[name="check"]:checked'
 	let selectedEls = document.querySelectorAll(checked);
@@ -42,11 +43,16 @@ function totalprice(){
 	let result = 0;
 	parseInt(result);
 	selectedEls.forEach((el) => {
+	let result1=document.getElementById(product_price+count).value;
+  	parseInt(result1);
     result += parseInt(el.value);
   	});
   	
-  	//alert(result);
+  	alert(result);
+  	let result1=document.getElementById(product_price+count).value;
+  	parseInt(result1);
   	document.getElementById('totalprice1').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
+  	
 	
 }
 

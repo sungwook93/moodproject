@@ -13,6 +13,7 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
+			
 			<!-- 제이쿼리 ui css -->
             <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <!-- 제이쿼리  style css -->
@@ -34,19 +35,19 @@
 	
 	
 	<div class="container" id="adminarea">
-		<div id="admintitle"><h4 id="titlesection1">게시글관리</h4><h1 id="titlesection2">상품관리</h1><h4 id="titlesection3">회원관리</h4></div>
-		<div id="admintitle2"><h4 id="titlesection4">상품관리</h4><h1 id="titlesection5">회원관리</h1><h4 id="titlesection6">게시글관리</h4></div>
-		<div id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 id="titlesection9">상품관리</h4></div>
+		<div class="container" id="admintitle"><h4 id="titlesection1">게시글관리</h4><h1 id="titlesection2">상품관리</h1><h4 id="titlesection3">회원관리</h4></div>
+		<div class="container" id="admintitle2"><h4 id="titlesection4">상품관리</h4><h1 id="titlesection5">회원관리</h1><h4 id="titlesection6">게시글관리</h4></div>
+		<div class="container" id="admintitle3"><h4 id="titlesection7">회원관리</h4><h1 id="titlesection8">게시글관리</h1><h4 id="titlesection9">상품관리</h4></div>
 		
 		<div class="container" id="pdtable"> 
 		<div class="container" id="typecheckbox">
 				<label id="naming" for="type"></label>
 				<form name="myform">
-				<label><input type="radio" name="type" id="bed" value="bed">침실</label>
-				<label><input type="radio" name="type" id="living" value="living">거실</label>
-				<label><input type="radio" name="type" id="bath" value="bath">욕실</label>
-				<br/>
-				<label><input type="button" value="상품종류" onclick="Radio_Checked()"></label>
+				<label><input type="radio" name="type" id="bed" value="bed" onclick="Radio_Checked()">침실</label>
+				<label><input type="radio" name="type" id="living" value="living" onclick="Radio_Checked()">거실</label>
+				<label><input type="radio" name="type" id="bath" value="bath" onclick="Radio_Checked()">욕실</label>
+				
+				
 				</form>
 		</div>
 		<!-- 상품 관련 테이블 -->

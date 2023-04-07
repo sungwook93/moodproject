@@ -20,4 +20,7 @@ public interface OrderDAO {
 	
 	//수량 변경
 	public int countUpdate(CartDTO cartDTO)throws Exception;
+	
+	//카트넘버에 해당하는 정보 가져오기
+	public CartDTO bills(String cart_num)throws Exception;
 }

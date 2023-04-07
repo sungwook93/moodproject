@@ -23,6 +23,7 @@ function count(type, count){
 	document.getElementById('product_amount'+ id).innerText = number;
 }
 
+//수량 수정하기
 function countUpdate(count){
 	//alert("확인");
 	let id = count;
@@ -67,20 +68,8 @@ $(document).ready(function() {
 				if(total != checked) $("#cbx_chkAll").prop("checked", false);
 				else $("#cbx_chkAll").prop("checked", true); 
 			});	
-			$("#personalInfoCheckP").click(function() {
-				$("#personalInfoDetail").css("transition-property", "height");
-				$("#personalInfoDetail").css("transition-duration", "0.5s, 2s");
-			});
 			
 });
-function fn_collapsebtn(){
-	//alert(1);
-	$("#collapse-content").css("width", "300px");
-}
-function fn_closecollapse() {
-	//$("#collapse-content").css("display", "none");
-	$("#collapse-content").css("width", "0px");
-}
 
 //가격 합산
 function checkbox(){
@@ -101,20 +90,16 @@ function checkbox(){
   	document.getElementById('totalprice').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 	
 }
-//주문서작성 페이지
+
 function fn_order(count){
 	
 	let id = count;
 	let cart_num = $("#cart_num" + id).val();
 	//alert(cart_num);
 
-	//ajax를 이용한 주문하기
-	$.ajax ({
-		
-	})
+	location.href="/order/bills.do?cart_num=" + cart_num;
 
 }
-
 
 
 

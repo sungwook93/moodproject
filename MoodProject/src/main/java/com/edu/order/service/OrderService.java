@@ -16,4 +16,7 @@ public interface OrderService {
 	
 	//수량db에 변경하러 출발
 	public int countUpdate(CartDTO cartDTO)throws Exception;
+
+	//카트넘버에 해당하는 정보 가져오기
+	public CartDTO bills(String cart_num)throws Exception;
 }

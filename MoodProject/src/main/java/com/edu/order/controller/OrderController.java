@@ -84,10 +84,15 @@ public class OrderController {
 	
 	//장바구니 담은 상품 주문페이지
 	@RequestMapping(value="/bills.do", method=RequestMethod.GET)
-	public ModelAndView billsForm(String userID) throws Exception {
-		logger.info("OrderController의 주문서작성페이지로");
+	public ModelAndView billsForm(String cart_num) throws Exception {
+		System.out.println("OrderController의 countUpdate시작" + cart_num);
 		
-		ModelAndView mav =new ModelAndView(userID);
+		//모델을 준비한다.
+		ModelAndView mav =new ModelAndView();
+		
+		CartDTO cartDTO = orderService.bills(cart_num);
+		//상품정보 넘겨주기
+		mav.addObject("cartDTO" ,cartDTO);
 		
 		
 		mav.setViewName("/order/bills");

@@ -57,4 +57,12 @@ public class OrederDAOImpl implements OrderDAO {
 		return sqlSession.update(Namespace + ".countUpdate", cartDTO);
 	}
 
+	//카트넘버에 해당하는 정보 하나가져오기
+	@Override
+	public CartDTO bills(String cart_num) throws Exception {
+		System.out.println("OrderDAO 카트넘버에 해당하는 정보 가져오기");
+		return sqlSession.selectOne(Namespace + ".bills", cart_num);
+	}
+
+	
 }

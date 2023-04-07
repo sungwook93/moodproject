@@ -66,8 +66,20 @@ $(document).ready(function() {
 				if(total != checked) $("#cbx_chkAll").prop("checked", false);
 				else $("#cbx_chkAll").prop("checked", true); 
 			});	
+			$("#personalInfoCheckP").click(function() {
+				$("#personalInfoDetail").css("transition-property", "height");
+				$("#personalInfoDetail").css("transition-duration", "0.5s, 2s");
+			});
 			
 });
+function fn_collapsebtn(){
+	//alert(1);
+	$("#collapse-content").css("width", "300px");
+}
+function fn_closecollapse() {
+	//$("#collapse-content").css("display", "none");
+	$("#collapse-content").css("width", "0px");
+}
 
 function checkbox(){
 
@@ -85,6 +97,8 @@ function checkbox(){
   	document.getElementById('totalprice').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 	
 }
+
+//주문서작성 페이지
 
 
 

@@ -95,3 +95,41 @@
 	float:right;
 	margin-right:20px;
 }
+
+/*주문서 작성 페이지*/
+#userOrderArea {
+	border:1px solid black;
+}
+#userInfoArea {
+	border:1px solid black;
+}
+#userInfoTable tr td{
+	padding-bottom:30px;
+}
+#orderSumaryDiv {
+	border:1px solid black;
+}
+#payMethod td {
+	display:flex;
+	float:left;
+}
+#payMethod td button {
+	width:200px;
+}
+#personalInfoDetail {
+	border:1px solid black;
+	background:#9a9a9a;
+	
+	position:fixed;
+	left:0;
+	top:0;
+	width:0px;
+	height:900px;
+	background-color: #9a9a9a;
+	z-index:3;
+	overflow:hidden;
+	transition-property: width;
+    transition-duration: 0.5s, 2s;
+    white-space: nowrap;
+	
+}

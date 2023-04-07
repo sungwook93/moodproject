@@ -90,10 +90,10 @@
 	</div>
 	
 	<br/><br/>
-	<div class="container">
+	<div class="container" id="userOrderArea">
 			<!-- 회원 배송 정보 -->
-				<div class="col-sm-8">
-					<table>
+				<div class="col-sm-8" id="userInfoArea">
+					<table id="userInfoTable">
 						<tr>
 							<th colspan="2">
 								<h4><strong>주문자 정보</strong></h4>
@@ -218,10 +218,9 @@
 								<td>결제 금액</td>
 								<td class="orderPrice" id="totalBillTd"></td>
 							</tr>
-							<tr id="personalInfoCheckTr">
+							<tr id="personalInfoCheckTr" style="border:1px solid black;">
 								<td colspan="2">
-									<input type="checkbox" id="personalInfoCheck"/>
-									<p><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
+									<p><input type="checkbox" id="personalInfoCheck"/><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
 									<p id="personalInfoCheckP"> 보기</p>
 								</td>
 							</tr>
@@ -312,6 +311,7 @@
 	<script>
 	$('#qna_content').summernote('pasteHTML', data);
 	</script>
+	
 		
 	<style>
 		* {

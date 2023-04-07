@@ -127,7 +127,7 @@
         <a href="#">Board</a>
         <ul class="submenu">
           <li><a href="/board/boardList?page=1">Q & A</a></li>
-          <li><a href="/review/reviewList">Review</a></li>
+          <li><a href="/review/reviewList?page=1">Review</a></li>
         </ul>
       </li>
      

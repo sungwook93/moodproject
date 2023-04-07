@@ -50,4 +50,11 @@ public class OrederDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(Namespace + ".checkcart", cartDTO);
 	}
 
+	//수량 변경
+	@Override
+	public int countUpdate(CartDTO cartDTO) throws Exception {
+		System.out.println("OrderDAO 수량변경");
+		return sqlSession.update(Namespace + ".countUpdate", cartDTO);
+	}
+
 }

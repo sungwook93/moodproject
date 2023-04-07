@@ -17,4 +17,7 @@ public interface OrderDAO {
 
 	//해당상품이 장바구니에 이미 들어있는지 확인한다.
 	public int checkcart(CartDTO cartDTO)throws Exception;
+	
+	//수량 변경
+	public int countUpdate(CartDTO cartDTO)throws Exception;
 }

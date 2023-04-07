@@ -26,4 +26,11 @@
 		select count(*) from t_cart where product_code = #{product_code} and userID = #{userID}
 	</select>
 	
+	
+	<update id="countUpdate" parameterType="com.edu.order.dto.CartDTO" >
+		update t_cart
+		set product_amount = #{product_amount}
+		where product_code = #{product_code} and userID = #{userID}
+	</update>
+	
 </mapper>

@@ -64,4 +64,23 @@ public class OrderController {
 		}
 	
 	}
+	
+	//장바구니 수량 변경
+	@ResponseBody
+	@RequestMapping(value="/countUpdate", method=RequestMethod.POST)
+	public String countUpdate(CartDTO cartDTO)throws Exception{
+		
+		System.out.println("OrderController의 countUpdate시작" + cartDTO);
+		
+		//수량db에 변경하러 출발
+		int result = orderService.countUpdate(cartDTO);
+		
+		if(result == 1) {
+			return cartDTO.getUserID();
+		}
+		
+		return null;
+	}
+	
+	
 }

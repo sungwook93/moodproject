@@ -47,5 +47,12 @@ public class OrederServiceImpl implements OrderService {
 		
 		return orderDAO.checkcart(cartDTO);
 	}
+
+	//수량변경
+	@Override
+	public int countUpdate(CartDTO cartDTO) throws Exception {
+		System.out.println("OrderService 수량변경.");
+		return orderDAO.countUpdate(cartDTO);
+	}
 	
 }

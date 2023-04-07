@@ -52,7 +52,7 @@
 	<div class="container" id="orderListBox">
 		<table id="orderListTable">
 			<tr style="text-align:center;">
-				<th style="width:3%;"></th>
+				<th style="width:3%;"><input type="checkbox" value="0" class="checkBoxId" id="cbx_chkAll"  ></th>
 				<th style="text-align:center;">상품정보</th>
 				<th style="width:20%;">수량</th>
 				<th style="width:20%;">금액</th>
@@ -60,7 +60,7 @@
 			</tr>
 			<c:forEach var="cart" items="${cartList}" varStatus="status" >
 			<tr style="text-align:center;">
-				<td><input type="checkbox" class="checkBoxId" id="check${status.count}" name="check" value="${cart.product_price * cart.product_amount}" onClick='totalprice();' style="margin-left:10px;">
+				<td><input type="checkbox" class="checkBoxId" id="${status.count}" name="check" value="${cart.product_price * cart.product_amount}" onClick='checkbox();' style="margin-left:10px;">
 				</td>
 				<td>
 					<div style="display:flex">
@@ -69,6 +69,7 @@
 						</div>
 						<div style="text-align:left; margin-left:20px;">
 						<ul>
+							<li><input type="hidden" value="${cart.product_code}" id="product_code${status.count}"></li>
 							<li><a href="/product/productDetail?product_code=${cart.product_code}">${cart.product_name}</a></li>
 							<li><a href="/product/productDetail?product_code=${cart.product_code}">상품종류 &nbsp&nbsp${cart.product_type}</a></li>
 							<li><a href="/product/productDetail?product_code=${cart.product_code}">사이즈 &nbsp&nbsp${cart.product_size}</a></li>
@@ -80,6 +81,7 @@
 				<td style="text-align:center;"><input type="button" id="amountbutton" class="amount" onclick='count("minus", ${status.count})' value="-">
 												<p class="amount" id="product_amount${status.count}">${cart.product_amount}</p>
 												<input type="button" id="amountbutton" class="amount" onclick='count("plus", ${status.count})' value="+">
+												<input type="button" id="countbutton" value="변경적용" onclick='countUpdate(${status.count})'>
 												<input type="hidden" id="price${status.count}" value="${cart.product_price}"/>
 				</td>
 				<td style="text-align:center;" id="product_price${status.count}" >
@@ -94,7 +96,7 @@
 	</div>
 	<div class="container" id="orderCountBox">
 		<span style="font-size:30px;">총 결제금액 &nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span id="totalprice1" style="font-size:25px;"></span>
+		<span id="totalprice" style="font-size:25px;">0원</span>
 	</div>
 	
 	<div class="container" id="orderbtnBox">
@@ -102,7 +104,7 @@
 		<input type="button" value="선택상품주문" style="color: #69737A; font-size:20px; border:none;">	
 	</div>
 	
-
+	<input type="hidden" value="${member1.userID}" id="userID">
 	
 	
 	<jsp:include page ="../common/footer.jsp"></jsp:include>

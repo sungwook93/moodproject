@@ -45,7 +45,7 @@
 	<!-- 상품 검색 및 상품 정렬 -->
 	
 		<div id="keywordbox" style="font-family: 'Sunflower', sans-serif;">
-			<input type="text" id="keyword" value="${keyword}" placeholder="상품을 입력해주리렵니까?" onclick="fn_checkbox()"><button onclick='getCheckboxValue()' id="keywordbutton">확인</button>
+			<input type="text" id="keyword" value="${keyword}" placeholder="상품을 입력해주리렵니까?" onclick="fn_checkbox()" onkeypress="if( event.keyCode == 13 ){getCheckboxValue();}"><button onclick='getCheckboxValue()' id="keywordbutton">확인</button>
 		</div>
 		<div id="typebox">
 			<div id="colorcheckbox">

@@ -79,7 +79,7 @@
 	<div class="container-fluid" id="nav1">
 		<a href="/main.do"><img src="${contextPath}../resources/images/logo3.png" style = "width: 190px; height: 100px; padding-left:50px; object-fit:cover;"/></a>
 		<div class="container" id="searchdiv" style="text-align:center; width:600px; height:40px !important;">
-		<input type="text" id="keyword2"/>
+		<input type="text" id="keyword2" onkeypress="if( event.keyCode == 13 ){getCheckboxValue2();}"/>
 		<button onclick='getCheckboxValue2()' style="border:none; background:white;"><span class="glyphicon glyphicon-search"></span></button>
 		</div>
 	</div>																									
@@ -151,7 +151,7 @@
 		        </div>
 		        <div class = "form-group">    
 		            <div><h4>PASSWORD</h4></div>
-		            <div class="content"><input type = "password" class = "form-control" id = "pwd" name ="pwd" maxlength="20" placeholder="비밀번호"/></div>
+		            <div class="content"><input type = "password" class = "form-control" id = "pwd" name ="pwd" maxlength="20" placeholder="비밀번호" onkeypress="if( event.keyCode == 13 ){submit}"/></div>
 	            </div> 
 	            <div class="content form-group" style="margin-top:50px;">
 	            	<button type = "reset" class = "btn btn-light">Re-enter</button>

@@ -5,6 +5,10 @@
 input:checked {
 	background:black;
 }
+
+#loginbtn:hover {
+	cursor: pointer;
+}
  body {
 	background-color: #c1c1c1;
 	color:black;

@@ -100,7 +100,7 @@
 	</div>
 	
 	<div class="container" id="orderbtnBox">
-		<input type="button" value="전체상품주문" style="background-color: #69737A; color:white; font-size:20px; border:none;">
+		<a href="/order/bills.do?userID=${member1.userID }"><input type="button" value="전체상품주문" style="background-color: #69737A; color:white; font-size:20px; border:none;"></a>
 		<input type="button" value="선택상품주문" style="color: #69737A; font-size:20px; border:none;">	
 	</div>
 	

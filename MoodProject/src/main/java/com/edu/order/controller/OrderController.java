@@ -82,5 +82,16 @@ public class OrderController {
 		return null;
 	}
 	
-	
+	//장바구니 담은 상품 주문페이지
+	@RequestMapping(value="/bills.do", method=RequestMethod.GET)
+	public ModelAndView billsForm(String userID) throws Exception {
+		logger.info("OrderController의 주문서작성페이지로");
+		
+		ModelAndView mav =new ModelAndView(userID);
+		
+		
+		mav.setViewName("/order/bills");
+		
+		return mav;
+	}
 }

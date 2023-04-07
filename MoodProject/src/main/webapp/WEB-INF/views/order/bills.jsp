@@ -54,43 +54,48 @@
 	</div>	
 	
 	<div class="container">
-		<table style = "background-color: white; width: 1140px; height: 30px; font-size: 18px; border-top: 3px solid black;">
-			<thead>
-				<tr>
-					<th colspan="3" style = "width: 70%;"> 상품/옵션 정보</th>
-					<th style = "width: 20%:">수량</th>
-					<th style = "width: 20%:">상품 가격</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${cartList}" var="cart">
-					<tr>
-						<td style = "width: 70%:">
-							<div style="display:flex">
-								<div style="width:100px;">
-								<img src="/image/displayImage?name=${cart.product_code}" class="cartImg"/>					
-								</div>
-								<div style="text-align:left; margin-left:20px;">
-								<ul>
-									<li><a href="/product/productDetail?product_code=${cart.product_code}">상품명&nbsp;&nbsp;:&nbsp;&nbsp;${cart.product_name}</a></li>
-									<li><a href="/product/productDetail?product_code=${cart.product_code}">상품종류&nbsp;&nbsp;:&nbsp;&nbsp;${cart.product_type}</a></li>
-									<li><a href="/product/productDetail?product_code=${cart.product_code}">사이즈&nbsp;&nbsp;:&nbsp;&nbsp;${cart.product_size}</a></li>
-									<li><a href="/product/productDetail?product_code=${cart.product_code}">색상&nbsp;&nbsp;:&nbsp;&nbsp;${cart.product_color}</a></li>
-								</ul>
-								</div>				
-							</div>
-						</td>
-						<td style="text-align:center;"><input type="button" id="amountbutton" class="amount" onclick='count("minus", ${status.count})' value="-" style = "width: 20%:">
-							<p class="amount" id="product_amount${status.count}">${cart.product_amount}</p>
-							<input type="button" id="amountbutton" class="amount" onclick='count("plus", ${status.count})' value="+">
-							<input type="hidden" id="price${status.count}" value="${cart.product_price}"/>
-						</td>
-						<td style="text-align:center;" id="product_price${status.count}" style = "width: 20%:">
-							<fmt:formatNumber value="${cart.product_price}" pattern="##,###,###원"/>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+		<table id="orderListTable">
+			<tr style="text-align:center;">
+				<th style="width:3%;"></th>
+				<th style="text-align:center;">상품정보</th>
+				<th style="width:20%;">수량</th>
+				<th style="width:20%;">상품 가격</th>
+				<th style="width:20%;">상품 총가격</th>
+			</tr>
+			
+			<tr style="text-align:center;">
+				<td>
+				</td>
+				<td>
+					<div style="display:flex">
+						<div style="width:100px;">
+						<img src="/image/displayImage?name=${cartDTO.product_code}" class="cartImg"/>					
+						</div>
+						<div style="text-align:left; margin-left:20px;">
+						<ul>
+							<li><input type="hidden" value="${cartDTO.product_code}" id="product_code${status.count}"></li>
+							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">${cartDTO.product_name}</a></li>
+							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">상품종류 &nbsp&nbsp${cartDTO.product_type}</a></li>
+							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">사이즈 &nbsp&nbsp${cartDTO.product_size}</a></li>
+							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">색상 &nbsp&nbsp${cartDTO.product_color}</a></li>
+						</ul>
+						</div>				
+					</div>
+				</td>
+				<td style="text-align:center;">
+												<p class="amount" id="product_amount${status.count}">${cartDTO.product_amount}</p>
+												
+												
+												<input type="hidden" id="price${status.count}" value="${cartDTO.product_price}"/>
+				</td>
+				<td style="text-align:center;" id="product_price${status.count}" >
+					<fmt:formatNumber value="${cartDTO.product_price}" pattern="##,###,###원"/>
+				</td>	
+				<td style="text-align:center;">
+					<fmt:formatNumber value="${cartDTO.product_price * cartDTO.product_amount}" pattern="##,###,###원"/>	
+				</td>
+			</tr>
+			
 		</table>
 	</div>
 	
@@ -118,7 +123,7 @@
 						</tr>	
 						<tr>
 							<th colspan="2">
-								<h4><strong>배송지 정보 </strong></h4> <p>주문자 정보와 동일 </p><input type="checkbox" checked/>
+								
 							</th>
 						</tr>
 						<tr>
@@ -176,7 +181,7 @@
 							</tr>
 							<tr id="payMethod">
 								<td colspan="2">
-									<button type="button" class="form-control payMethodBtn" id="payMethodCash">가상계좌이체</button>
+									<button type="button" class="form-control payMethodBtn" id="payMethodCash" onclick="cashInfo()">가상계좌이체</button>
 									<button type="button" class="form-control payMethodBtn" id="payMethodCard">카드결제</button>
 									<button type="button" class="form-control payMethodBtn" id="payMethodKakao" onclick="iamporta()">카카오페이</button>
 									<!-- 결제 수단 구분을 위한 hidden input -->
@@ -185,7 +190,7 @@
 							</tr>
 							<tr id="payMethodInfo">
 								<td>
-									<div class="container">
+									<div class="container" id="payMethodInfodiv">
 										<p>· 실시간 계좌이체를 이용하기 위해서는 계좌결제 앱이 설치되어 있어야 합니다.</p>
 										<p>· 계좌이체는 ATM이나 은행 홈페이지에 접속하지 않고 홈페이지 내에서 즉시 결제, 출금되는 결제 방식 입니다.</p>
 										<p>· 현재 약 20여개의 은행이 가능하며 현금영수증 발행은 결제 시 즉시 발급받으실 수 있습니다.</p>
@@ -198,6 +203,9 @@
 					<!-- 결제 요약 -->
 					<div class="col-sm-4" id="orderSumaryDiv">
 						<table id="orderSumaryTable">
+							<tr>
+								<td>최종 결제금액</td>
+							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 상품 금액</td>
 								<td class="orderPrice" id="orderSum"><fmt:formatNumber value="${orderSum}" pattern="#,###원"/></td>

@@ -106,9 +106,7 @@
 }
 
 /*주문서 작성 페이지*/
-#userOrderArea {
-	border:1px solid black;
-}
+
 #userInfoArea {
 	border:1px solid black;
 }
@@ -117,6 +115,8 @@
 }
 #orderSumaryDiv {
 	border:1px solid black;
+	position:sticky;
+	top:50px;
 }
 #payMethod td {
 	display:flex;
@@ -133,7 +133,7 @@
 	background-color: #9a9a9a;
 	z-index:3;
 	overflow:hidden;
-	transition-property: width;
+	transition-property: height;
     transition-duration: 0.5s, 2s;
 }
 #deliveryDetailInfodiv {
@@ -143,10 +143,23 @@
 	background-color: #9a9a9a;
 	z-index:3;
 	overflow:hidden;
-	transition-property: width;
+	transition-property: height;
     transition-duration: 0.5s, 2s;
 }
 #orderOkDetail {
 	border:1px solid black;
+}
+#payMethodInfodiv {
+	border:1px solid black;
+	width:730px;
+	height:0px;
+	background-color: #9a9a9a;
+	z-index:3;
+	overflow:hidden;
+	transition-property: height;
+    transition-duration: 0.5s, 2s;
+}
+.orderSumaryTr {
+	font-size:1.3em;
 }
 

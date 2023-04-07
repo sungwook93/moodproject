@@ -52,6 +52,15 @@
 	margin: 0 auto;
 }
 
+.orderbutton{
+	width:60px;
+	height:25px;
+	font-size: 15px;
+	display:block;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
 #amountbutton{
  width:25px;
  height:25px;

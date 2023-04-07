@@ -88,7 +88,9 @@
 					<fmt:formatNumber value="${cart.product_price * cart.product_amount}" pattern="##,###,###원"/>
 				</td>	
 				<td>
-				
+					<input type="button" id="order${status.count}" class="orderbutton" value="주문하기" onclick="fn_order(${status.count})">
+					<input type="hidden" id="cart_num${status.count}" value="${cart.cart_num}" >					
+					<input type="button" id="delete${status.count}" class="orderbutton" value="삭제하기">					
 				</td>
 			</tr>
 			</c:forEach>

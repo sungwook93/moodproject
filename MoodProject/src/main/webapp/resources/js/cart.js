@@ -52,10 +52,11 @@ function countUpdate(count){
 
 $(document).ready(function() {
 			
-			
+			//체크박스 한번에 모든거 체크관리
 			$("#cbx_chkAll").click(function() {		
 				if($("#cbx_chkAll").is(":checked")) $("input[name=check]").prop("checked", true);
 				else $("input[name=check]").prop("checked", false);
+				//체크가 끝난뒤에 가격을 표시한다.
 				checkbox();		
 			});
 			
@@ -69,21 +70,37 @@ $(document).ready(function() {
 			
 });
 
+//가격 합산
 function checkbox(){
 
-	
+	//체크한 항목들을 모은다
 	let checked = 'input[name="check"]:checked'
 	let selectedEls = document.querySelectorAll(checked);
 	
 	let result = 0;
 	parseInt(result);
+	// 체크된거를 다더해준다
 	selectedEls.forEach((el) => {
     result += parseInt(el.value);
   	});
   	
+  	//값을 정규식에 넣어 표시해준다.
   	//alert(result);
   	document.getElementById('totalprice').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
 	
+}
+
+function fn_order(count){
+	
+	let id = count;
+	let cart_num = $("#cart_num" + id).val();
+	//alert(cart_num);
+
+	//ajax를 이용한 주문하기
+	$.ajax ({
+		
+	})
+
 }
 
 

@@ -36,7 +36,7 @@
 					<a href="/review/reviewList?page=1" id="selectedA">Review</a>
 				</div>
 			</div>
-
+<!-- 1 -->
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">

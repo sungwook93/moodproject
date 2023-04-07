@@ -15,6 +15,11 @@
 		
 			<script src="${contextPath}/resources/js/cart.js"></script>
 			<link href="${contextPath}/resources/css/cart.css" rel="stylesheet" type="text/css">
+			
+			<!-- 다음 API -->
+			<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+			<!-- api연동 시스템 -->
+			<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
 	
@@ -221,7 +226,9 @@
 							<tr id="personalInfoCheckTr" style="border:1px solid black;">
 								<td colspan="2">
 									<p><input type="checkbox" id="personalInfoCheck"/><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
-									<p id="personalInfoCheckP"> 보기</p>
+									<p id="personalInfoCheckP" onclick="fn_personalInfo()"> 보기</p>
+									<p id="personalInfoCheckP2" onclick="fn_personalInfo2()" style="display:none;"> 닫기</p>
+									
 								</td>
 							</tr>
 							<tr id="personalInfoDetail">
@@ -241,26 +248,27 @@
 									</div>
 								</td>
 							</tr>
+							<tr id="orderOkDetail">
+								<td colspan="2">
+									<p><input type="checkbox" id="orderOkCheckbox"/>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며,</p>
+									<p>구매에 동의(전자상거래법 제8조 제2항)</p>
+									<p id="personalInfoCheckP3" onclick="fn_personalInfo3()"> 보기</p>
+									<p id="personalInfoCheckP4" onclick="fn_personalInfo4()" style="display:none;"> 닫기</p>
+								</td>
+							</tr>
 							<tr id="deliveryDetailInfo">
 								<td colspan="2">
+									<div id="deliveryDetailInfodiv">
 									<p><strong>배송 지연/품절/파업으로 인한 발송 불가 안내</strong></p>
 									<p>① 일부 상품은 상품 준비 기간 중 입고 사정 등으로 인하여 배송이 지연될 수 있습니다.</p>
 									<p>② 택배 파업 지역의 경우 발송이 불가합니다.</p>
 									<p>③ 결제 완료 후 품절이 발생할 수 있습니다.</p>
 									<p>위와 같은 상황 발생 시 알림톡 안내 후 주문취소 및 환불 처리가 진행됩니다.</p>
-								</td>
-							</tr>
-							<tr id="orderOkDetail">
-								<td colspan="2">
-									<p>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며,</p>
-									<p>구매에 동의하시겠습니까? (전자상거래법 제8조 제2항)</p>
+									</div>
 								</td>
 							</tr>
 							<tr id="orderOkCheck">
-								<td colspan="2">
-									<input type="checkbox" id="orderOkCheckbox"/>
-									<p> 동의합니다.</p>
-								</td>
+								
 							</tr>
 						</table>
 						<table>
@@ -300,10 +308,9 @@
 				<input type="hidden" name="amount" value="${sum}" />
 			</div>
 						
-					</div>
-				</div>		
+					
 				
-				<br/><br/><br/>
+				
 	<!-- 하단 메뉴바 -->
 	<jsp:include page = "../common/footer.jsp" flush = "false"/>
 		

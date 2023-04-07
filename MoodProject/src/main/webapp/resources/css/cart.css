@@ -125,20 +125,28 @@
 #payMethod td button {
 	width:200px;
 }
-#personalInfoDetail {
-	border:1px solid black;
-	background:#9a9a9a;
+#personalInfoDetailDiv {
 	
-	position:fixed;
-	left:0;
-	top:0;
-	width:0px;
-	height:900px;
+	border:1px solid black;
+	width:350px;
+	height:0px;
 	background-color: #9a9a9a;
 	z-index:3;
 	overflow:hidden;
 	transition-property: width;
     transition-duration: 0.5s, 2s;
-    white-space: nowrap;
-	
 }
+#deliveryDetailInfodiv {
+	border:1px solid black;
+	width:350px;
+	height:0px;
+	background-color: #9a9a9a;
+	z-index:3;
+	overflow:hidden;
+	transition-property: width;
+    transition-duration: 0.5s, 2s;
+}
+#orderOkDetail {
+	border:1px solid black;
+}
+

@@ -26,7 +26,7 @@
 		<![CDATA[
 			SELECT *
 			FROM (
-			SELECT review_bno, review_subject, review_content, userID, review_date, review_star, product_type, product_name, ROW_NUMBER() OVER(ORDER BY review_bno DESC) AS rNUM
+			SELECT review_bno, review_subject, review_content, userID, review_date, review_star, ROW_NUMBER() OVER(ORDER BY review_bno DESC) AS rNUM
 			FROM t_review WHERE 1=1
 			]]>
 			<include refid="searchMySQL"/>
@@ -54,16 +54,15 @@
 	<!-- 리뷰 등록하기 -->
 	<select id = "reviewRegister" parameterType = "com.edu.review.dto.ReviewDTO">
 		<![CDATA[ 
-		insert into t_review(review_bno, userID, product_type, product_name, review_subject, review_content, review_date, review_star)
-		select ifnull(max(review_bno), 0) +1, #{userID}, #{product_type}, #{product_name}, #{review_subject}, #{review_content}, now(), #{review_star} from t_review;
+		insert into t_review(review_bno, userID, review_subject, review_content, review_date, review_star)
+		select ifnull(max(review_bno), 0) +1, #{userID}, #{review_subject}, #{review_content}, now(), #{review_star} from t_review;
 		]]>
 	</select>
 			
 	<select id="productList" resultType="com.edu.review.dto.ReviewDTO" parameterType = "com.edu.product.dto.ProductDTO">
 		<![CDATA[
-		SELECT r.review_bno, p.product_type, p.product_name, r.userID, r.review_subject, r.review_content, r.review_date, r.review_star
+		SELECT r.review_bno, r.userID, r.review_subject, r.review_content, r.review_date, r.review_star
 		FROM t_product p , t_review r
-		WHERE p.product_type = r.product_type and p.product_name = r.product_name;
 		]]>
 	</select>
 	

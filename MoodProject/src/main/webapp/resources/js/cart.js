@@ -122,15 +122,18 @@ function checkbox(){
 	
 }
 
+//상품넘겨주기
 function fn_order(count){
-	
 	let id = count;
+	alert(id);
 	let cart_num = $("#cart_num" + id).val();
-	//alert(cart_num);
+	alert(cart_num);
 
 	location.href="/order/bills.do?cart_num=" + cart_num;
 
 }
+
+
 
  /* orderDetail jquery */
 $(document).ready(function() {

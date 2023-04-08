@@ -1,11 +1,12 @@
 package com.edu.order.dao;
 
-import java.util.List;
+import java.util.List;	
 
 import org.springframework.dao.DataAccessException;
 
 import com.edu.member.dto.MemberDTO;
 import com.edu.order.dto.CartDTO;
+import com.edu.order.dto.OrderDTO;
 
 public interface OrderDAO {
 	
@@ -23,4 +24,5 @@ public interface OrderDAO {
 	
 	//카트넘버에 해당하는 정보 가져오기
 	public CartDTO bills(int cart_num)throws Exception;
+
 }

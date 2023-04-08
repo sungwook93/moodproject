@@ -1,5 +1,6 @@
 package com.edu.member.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 import com.edu.board.dto.BoardDTO;
 import com.edu.member.dao.MemberDAO;
 import com.edu.member.dto.MemberDTO;
+import com.edu.order.dao.OrderDAO;
+import com.edu.order.dto.OrderDTO;
 //import com.edu.product.dao.OrderDAO;
 import com.edu.product.dto.ProductDTO;
 
@@ -26,7 +29,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberDAO;
 	
 	//@Inject
-	//OrderDAO orderDAO;
+	OrderDAO orderDAO;
 	
 	//-----------------------------------------------------------------------------------------------------------
 	// 아이디 중복 검사 => return  값을 0과 1로 받기 떄문에 정수형(int)로 설정
@@ -124,4 +127,8 @@ public class MemberServiceImpl implements MemberService {
 		logger.info("MemberServiceImpl 관리자페이지 회원정보 가져오기() 시작");
 		return memberDAO.memberList(userID);
 	}
+	
+	
+	
+	
 }

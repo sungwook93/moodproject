@@ -69,6 +69,13 @@
 		]]>
 	</select>
 	
+	<!-- 구매정보 가져오기 -->
+	<select id="orderList" resultType="com.edu.order.dto.OrderDTO" parameterType="String">
+		<![CDATA[
+			SELECT * FROM t_order WHERE userID= #{userID}
+		]]>
+	</select>
+	
 	<!-- 관리자페이지 상품 정보 가져오기 -->
 	<!-- foreach 같은 문장에 CDATA를 쓰면 안먹힌다 주의!!! 이것때문에 엄청고생 -->
 	<select id="productList" parameterType="Map" resultType="com.edu.product.dto.ProductDTO">
@@ -109,6 +116,7 @@
 		FROM t_member
 		]]>
 	</select>
+	
 	
 	
 </mapper>

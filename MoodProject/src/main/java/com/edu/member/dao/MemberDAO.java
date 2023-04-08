@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.edu.board.dto.BoardDTO;
 import com.edu.member.dto.MemberDTO;
+import com.edu.order.dto.OrderDTO;
 import com.edu.product.dto.ProductDTO;
 
 public interface MemberDAO {
@@ -38,6 +39,9 @@ public interface MemberDAO {
 	//qna 해당아이디에 속한 것만 가지고 온다
 	public List<BoardDTO> boardUserList(String userID) throws Exception;
 	
+	//구매정보 가져오기
+	public List<OrderDTO> orderList(String userID) throws Exception;
+	
 	//관리자페이지 상품정보 가져오기
 	public List<ProductDTO> productList(Map<String, Object> param) throws Exception;
 	
@@ -50,4 +54,5 @@ public interface MemberDAO {
 	//관리자페이지 회원정보가져오기
 	public List<MemberDTO> memberList(String userID) throws Exception;
 			
+	
 }

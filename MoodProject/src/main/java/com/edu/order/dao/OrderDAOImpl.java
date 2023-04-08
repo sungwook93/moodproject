@@ -65,7 +65,12 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(Namespace + ".bills", cart_num);
 	}
 
-	
+	@Override
+	public CartDTO cartNumList(int cartNum) throws Exception {
+		System.out.println("OrderDAOImpl의 cartNumList().... cartNum: " + cartNum);
+		
+		return sqlSession.selectOne(Namespace + ".cartNumList", cartNum);
+	}
 
 	
 }

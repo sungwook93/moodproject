@@ -102,6 +102,14 @@ public class OrderController {
 		
 		//리스트 모델에 담기
 		mav.addObject("cartList", cartList);
+		
+		//장바구니 리스트의 상품의 합계를 구해 model에 담아준다.
+		//장바구니 리스트의 장바구니 번호를 배열로 만든다.
+		int[] cartNum = new int[cartList.size()];
+		for(int i = 0; i < cartList.size(); i++) {
+			cartNum[i] = cartList.get(i).getCart_num();
+		}
+		mav.addObject("orderSum", orderService.orderSum(cartNum));
 			
 		//주소 입력
 		mav.setViewName("/order/bills");

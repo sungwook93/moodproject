@@ -25,4 +25,6 @@ public interface OrderDAO {
 	//카트넘버에 해당하는 정보 가져오기
 	public CartDTO bills(int cart_num)throws Exception;
 
+	//장바구니 번호에 해당하는 장바구니 정보 가져오기
+	public CartDTO cartNumList(int cartNum) throws Exception;
 }

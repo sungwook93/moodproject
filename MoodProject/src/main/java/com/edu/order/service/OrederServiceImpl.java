@@ -62,6 +62,26 @@ public class OrederServiceImpl implements OrderService {
 		return orderDAO.bills(cart_num);
 	}
 	
+	//주문 상세 페이지에서 보여줄 합계 금액을 반환하는 메소드
+	@Override
+	public int orderSum(int[] cartNum) throws Exception {
+		System.out.println("OrderServiceImpl의 orderSum()....");
+			
+		//계산해줄 합계 변수 준비
+		int result = 0;
+			
+		//반복문을 통해 장바구니에 해당하는 정보를 가져온 다음 계산해서 result에 더해준다.
+		for(int i = 0; i < cartNum.length; i++) {
+			CartDTO cartDTO = orderDAO.cartNumList(cartNum[i]); //번호에 해당하는 장바구니 정보
+				
+			int price = cartDTO.getProduct_price(); //해당 상품 가격
+			int amount = cartDTO.getProduct_amount(); //해당 상품 주문 수량
+				
+			result += (price * amount); //상품 가격과 수량을 곱해서 result에 누적한다.
+		}
+			
+		return result;
+	}
 	
 	
 }

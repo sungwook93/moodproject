@@ -25,7 +25,7 @@
 	
 	<div class="container" id="cartListbox"> 
 		<div class="ordersub" style="margin-right:300px; position:relative; bottom:0; width:200px;">
-			<h3>장바구니(담긴개수)</h3>
+			<h2 style="font-size:30px;">장바구니&nbsp;&nbsp;(${fn:length(cartList)})</h2>
 		</div>
 		<div class="ordersub" style="border-radius:50px; padding:15px; margin-bottom:20px; margin-right:0; background-color: #8D999E;">
 			<span class="glyphicon glyphicon-shopping-cart" style="font-size:3em;  color:white;"></span>

@@ -57,7 +57,7 @@ public class OrederServiceImpl implements OrderService {
 
 	//카트넘버에 해당하는 정보 가져오기
 	@Override
-	public CartDTO bills(String cart_num) throws Exception {
+	public CartDTO bills(int cart_num) throws Exception {
 		System.out.println("OrderService 카트넘버에 해당하는 정보 가져오기");
 		return orderDAO.bills(cart_num);
 	}

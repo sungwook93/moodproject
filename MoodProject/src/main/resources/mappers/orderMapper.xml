@@ -36,7 +36,7 @@
 	</update>
 	
 	<!-- 카트넘버에 해당하는 정보 가져오기 -->
-	<select id="bills" parameterType="String" resultType="com.edu.order.dto.CartDTO">
+	<select id="bills" parameterType="Integer" resultType="com.edu.order.dto.CartDTO">
 		select cart_num, product_code, userID, product_amount, product_price, product_size,
 		product_color, product_type, product_name
 		from t_cart

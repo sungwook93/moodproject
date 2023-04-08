@@ -1,5 +1,6 @@
 package com.edu.order.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -84,18 +85,25 @@ public class OrderController {
 	
 	//장바구니 담은 상품 주문페이지
 	@RequestMapping(value="/bills.do", method=RequestMethod.GET)
-	public ModelAndView billsForm(String cart_num) throws Exception {
+	public ModelAndView billsForm(int[] cart_num) throws Exception {
 		System.out.println("OrderController의 countUpdate시작" + cart_num);
 		
 		//모델을 준비한다.
 		ModelAndView mav =new ModelAndView();
 		
-		CartDTO cartDTO = orderService.bills(cart_num);
-		//상품정보 넘겨주기
-		mav.addObject("cartDTO" ,cartDTO);
-		System.out.println("상품정보" + cartDTO);
+		//카트정보를 담을 리스트를 만든다
+		List<CartDTO> cartList = new ArrayList<CartDTO>();
 		
+		//장바구니에서 넘어온 배열만큼 cartList에 담아준다.
+		for(int i = 0; i < cart_num.length; i++) {
+			cartList.add(i,orderService.bills(cart_num[i]));
+		}
+		System.out.println(cartList);
 		
+		//리스트 모델에 담기
+		mav.addObject("cartList", cartList);
+			
+		//주소 입력
 		mav.setViewName("/order/bills");
 		
 		return mav;

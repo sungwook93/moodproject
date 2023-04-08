@@ -18,5 +18,5 @@ public interface OrderService {
 	public int countUpdate(CartDTO cartDTO)throws Exception;
 
 	//카트넘버에 해당하는 정보 가져오기
-	public CartDTO bills(String cart_num)throws Exception;
+	public CartDTO bills(int cart_num)throws Exception;
 }

@@ -63,38 +63,40 @@
 				<th style="width:20%;">상품 총가격</th>
 			</tr>
 			
+		<c:forEach items="${cartList}" var="cart" varStatus="status">
 			<tr style="text-align:center;">
 				<td>
 				</td>
 				<td>
 					<div style="display:flex">
 						<div style="width:100px;">
-						<img src="/image/displayImage?name=${cartDTO.product_code}" class="cartImg"/>					
+						<img src="/image/displayImage?name=${cart.product_code}" class="cartImg"/>					
 						</div>
 						<div style="text-align:left; margin-left:20px;">
 						<ul>
-							<li><input type="hidden" value="${cartDTO.product_code}" id="product_code${status.count}"></li>
-							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">${cartDTO.product_name}</a></li>
-							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">상품종류 &nbsp&nbsp${cartDTO.product_type}</a></li>
-							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">사이즈 &nbsp&nbsp${cartDTO.product_size}</a></li>
-							<li><a href="/product/productDetail?product_code=${cartDTO.product_code}">색상 &nbsp&nbsp${cartDTO.product_color}</a></li>
-						</ul>
+							<li><input type="hidden" value="${cart.product_code}" id="product_code${status.count}"></li>
+							<li><a href="/product/productDetail?product_code=${cart.product_code}">${cart.product_name}</a></li>
+							<li><a href="/product/productDetail?product_code=${cart.product_code}">상품종류 &nbsp&nbsp${cart.product_type}</a></li>
+							<li><a href="/product/productDetail?product_code=${cart.product_code}">사이즈 &nbsp&nbsp${cart.product_size}</a></li>
+							<li><a href="/product/productDetail?product_code=${cart.product_code}">색상 &nbsp&nbsp${cart.product_color}</a></li>
+						</ul>						
 						</div>				
 					</div>
 				</td>
 				<td style="text-align:center;">
-												<p class="amount" id="product_amount${status.count}">${cartDTO.product_amount}</p>
+												<p class="amount" id="product_amount${status.count}">${cart.product_amount}</p>
 												
 												
-												<input type="hidden" id="price${status.count}" value="${cartDTO.product_price}"/>
+												<input type="hidden" id="price${status.count}" value="${cart.product_price}"/>
 				</td>
 				<td style="text-align:center;" id="product_price${status.count}" >
-					<fmt:formatNumber value="${cartDTO.product_price}" pattern="##,###,###원"/>
+					<fmt:formatNumber value="${cart.product_price}" pattern="##,###,###원"/>
 				</td>	
 				<td style="text-align:center;">
-					<fmt:formatNumber value="${cartDTO.product_price * cartDTO.product_amount}" pattern="##,###,###원"/>	
+					<fmt:formatNumber value="${cart.product_price * cart.product_amount}" pattern="##,###,###원"/>	
 				</td>
 			</tr>
+		</c:forEach>
 			
 		</table>
 	</div>

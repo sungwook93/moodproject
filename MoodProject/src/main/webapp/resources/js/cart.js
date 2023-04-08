@@ -60,7 +60,7 @@ $(document).ready(function() {
 				//체크가 끝난뒤에 가격을 표시한다.
 				checkbox();		
 			});
-			
+			//전체체크가 되면 제일 상단 체크박스 체크됨
 			$("input[name=check]").click(function() {
 				var total = $("input[name=check]").length;
 				var checked = $("input[name=check]:checked").length;
@@ -70,6 +70,22 @@ $(document).ready(function() {
 			});	
 			
 });
+
+//상품넘겨주기
+function fn_order(count){
+	let id = count;
+	//alert(id);
+	let cart_num = $("#cart_num" + id).val();
+	//alert(cart_num);
+
+	location.href="/order/bills.do?cart_num=" + cart_num;
+}
+
+
+
+
+
+
 //결제수단 안내서 열기 닫기
 
 //주문서작성 페이지 동의안내서 열기닫기
@@ -123,16 +139,9 @@ function checkbox(){
 	
 }
 
-//상품넘겨주기
-function fn_order(count){
-	let id = count;
-	alert(id);
-	let cart_num = $("#cart_num" + id).val();
-	alert(cart_num);
 
-	location.href="/order/bills.do?cart_num=" + cart_num;
 
-}
+
 
 
 
@@ -284,10 +293,13 @@ $(document).ready(function() {
 	        $("#payMethodInfodiv").css("height", "0px");
 	    }
 	});
-
-
-	
 });
+
+
+
+
+
+
  /* orderDetail javascript */
  
  //----------------------------------------------------------------------------------------------------------

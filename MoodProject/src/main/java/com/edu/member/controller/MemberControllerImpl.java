@@ -1,6 +1,6 @@
 package com.edu.member.controller;
 
-import java.util.HashMap;
+import java.util.HashMap;	
 import java.util.List;
 import java.util.Map;
 
@@ -29,9 +29,11 @@ import com.edu.member.dao.MemberDAO;
 //import com.edu.board.dao.ReviewDAO;
 import com.edu.member.dto.MemberDTO;
 import com.edu.member.service.MemberService;
+import com.edu.order.dao.OrderDAO;
 //import com.edu.product.dao.OrderDAO;
 //import com.edu.product.dto.OrderDTO;
 import com.edu.product.dto.ProductDTO;
+import com.edu.review.dao.ReviewDAO;
 
 
 @Controller("memberController")
@@ -59,8 +61,8 @@ public class MemberControllerImpl implements MemberController {
 	//@Inject
 	//BoardDAO boardDAO;	
 		
-	//@Inject
-	//OrderDAO orderDAO;
+	@Inject
+	OrderDAO orderDAO;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 		
@@ -287,39 +289,25 @@ public class MemberControllerImpl implements MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("member1", 	memberDTO);
 			session.setAttribute("isLogOn", true);
-			
-			System.out.println(userID+"123");
-			
-//			// 세션값 받기
-//			HttpSession session = request.getSession();
-//			session.setAttribute("member1", 	memberDTO);
-//			session.setAttribute("isLogOn", true);
-//			request.setCharacterEncoding("UTF-8");
-			
-			
+	
 			ModelAndView mav = new ModelAndView();
 			
 			
 			//qna 해당아이디에 속한 것만 가지고 온다
 			mav.addObject("boardList", memberDAO.boardUserList(userID));
 			System.out.println(memberDAO.boardUserList(userID));
-			System.out.println(mav+"1");
+			//System.out.println(mav+"1");
 			
-			//주문 번호를 해당 아이디에 속한 것만 가지고 온다.
-			//List<Long> orderNumList = orderDAO.getOrderNum(userID);
 			
-			//주문 번호를 가지고 orderDTO리스트를 구해 model에 담는다.
-			//mav.addObject("orderList", memberService.getOrderList(orderNumList));
-			//review 해당아이디에 속한 것만 가지고 온다
-			//mav.addObject("reviewList", reviewDAO.reviewUserList(userID));
-			//System.out.println(reviewDAO.reviewUserList(userID));
+			//장바구니 번호가져오기
 			
+			//구매정보 가져오기
+			mav.addObject("orderList",memberDAO.orderList(userID));
 			
 			mav.setViewName("/member/myPageForm");	// 
 			//System.out.println(userID+"!");
 			return mav;
 		} // End - 마이페이지 화면 불러오기()
-
 
 		
 		//----------------------------------------------------------------------------------------------------------

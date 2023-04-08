@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.edu.board.dto.BoardDTO;
 import com.edu.member.dto.MemberDTO;
+import com.edu.order.dto.OrderDTO;
 import com.edu.product.dto.ProductDTO;
 
 @Repository("memberDAO")
@@ -115,4 +116,15 @@ public class MemberDAOImpl implements MemberDAO {
 		logger.info("MemberDAOImpl 관리자페이지 회원정보 가져오기() 시작");
 		return sqlSession.selectList(Namespace+".memberList",userID);
 	}
+	
+	//구매정보 가져오기
+	@Override
+	public List<OrderDTO> orderList(String userID) throws Exception {
+		System.out.println("MemberDAOImpl의 구매정보 가져오기....");
+		List<OrderDTO> orderList = sqlSession.selectList(Namespace + ".orderList", userID);
+		System.out.println(orderList);
+		return orderList;
+	}
+	
+	
 }

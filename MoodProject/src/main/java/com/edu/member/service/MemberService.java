@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 
 import com.edu.board.dto.BoardDTO;
 import com.edu.member.dto.MemberDTO;
+import com.edu.order.dto.OrderDTO;
 import com.edu.product.dto.ProductDTO;
 
 public interface MemberService {
@@ -53,5 +54,8 @@ public interface MemberService {
 	
 	//관리자페이지 회원정보가져오기
 	public List<MemberDTO> memberList(String userID) throws Exception;
+	
+	
+	
 
 }

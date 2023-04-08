@@ -10,9 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.edu.member.dao.MemberDAOImpl;
 import com.edu.order.dto.CartDTO;
+import com.edu.order.dto.OrderDTO;
 
 @Repository("orderDAO")
-public class OrederDAOImpl implements OrderDAO {
+public class OrderDAOImpl implements OrderDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -63,6 +64,8 @@ public class OrederDAOImpl implements OrderDAO {
 		System.out.println("OrderDAO 카트넘버에 해당하는 정보 가져오기");
 		return sqlSession.selectOne(Namespace + ".bills", cart_num);
 	}
+
+	
 
 	
 }

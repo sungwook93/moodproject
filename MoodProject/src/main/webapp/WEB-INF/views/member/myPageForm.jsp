@@ -153,6 +153,26 @@
 		</table>
 	</div>
 	
+	<!-- 구매내역 테이블 -->
+	<div class="container" style="text-align:center; margin-right:100px;">
+		<table id="membertable2">
+			<tr class="thead">
+				<td style="width:10%;">상품번호</td>
+				<td style="width:50%;">상품수량</td>
+				<td style="width:20%;">상품사이즈</td>
+				<td style="width:20%;">구매일자</td>
+			</tr>
+			<c:forEach var="order" items="${orderList}">
+			<tr>
+				<td>${order.product_code}</td>
+				<td><a href="#">${order.product_amount}</a></td>
+				<td>${order.product_size}</td>
+				<td>${order.order_date}</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
 	<!-- 회원탈퇴 비밀번호확인 모달창 -->
 	<div id="removememberFormbox">
 		<form class = "form-horizontal" method = "post" action = "${contextPath}/member/removeMember.do">

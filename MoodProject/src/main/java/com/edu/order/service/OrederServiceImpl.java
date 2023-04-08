@@ -61,6 +61,14 @@ public class OrederServiceImpl implements OrderService {
 		System.out.println("OrderService 카트넘버에 해당하는 정보 가져오기");
 		return orderDAO.bills(cart_num);
 	}
+
+	//카트넘버들을 삭제한다.
+	@Override
+	public int cartdelete(int cart_num) throws Exception {
+		System.out.println("OrderService 카트넘버들을 삭제한다.");
+		
+		return orderDAO.cartdelete(cart_num);
+	}
 	
 	
 	

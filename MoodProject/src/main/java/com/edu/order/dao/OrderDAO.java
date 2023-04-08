@@ -21,5 +21,8 @@ public interface OrderDAO {
 	
 	//카트넘버에 해당하는 정보 가져오기
 	public CartDTO bills(int cart_num)throws Exception;
+	
+	//카트넘버들을 삭제한다.
+	public int cartdelete(int cart_num)throws Exception;
 
 }

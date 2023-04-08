@@ -43,7 +43,10 @@
 		where cart_num = #{cart_num};
 	</select>
 	
-	
+	<delete id="cartdelete" parameterType="Integer">
+		delete from t_cart
+		where cart_num = #{cart_num};
+	</delete>
 	
 	
 </mapper>

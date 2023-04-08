@@ -108,4 +108,26 @@ public class OrderController {
 		
 		return mav;
 	}
+	
+	
+	//장바구니 상품 삭제하기
+	@ResponseBody
+	@RequestMapping(value="/cartdelete", method=RequestMethod.POST)
+	public String cartdelete(int[] cart_num)throws Exception{
+		System.out.println("OrderController의 cartdelete시작" + cart_num[0]);
+		
+		int result=0;
+		//for문을 이용해서 들어온 카트넘버들을 삭제한다.
+		for(int i = 0; i < cart_num.length; i++) {
+		 result	+= orderService.cartdelete(cart_num[i]);
+		}
+		
+		if(result == cart_num.length) {
+			return "Y";			
+		}else {
+			return "N";
+		}
+	}
+	
+	
 }

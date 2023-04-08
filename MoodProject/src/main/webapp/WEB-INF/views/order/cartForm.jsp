@@ -53,7 +53,7 @@
 		<table id="orderListTable">
 			<tr style="text-align:center;">
 				<th style="width:3%;">
-				<input type="checkbox" value="0" class="checkBoxId" id="cbx_chkAll" >
+				<input type="checkbox" value="0" class="checkBoxId" id="cbx_chkAll" name="cbx_chkAll" >
 				<label for="cbx_chkAll"></label>					
 				</th>
 				<th style="text-align:center;">상품정보</th>
@@ -95,7 +95,7 @@
 				<td>
 					<input type="button" id="order${status.count}" class="orderbutton" value="주문하기" onclick="fn_order(${status.count})">
 					<input type="hidden" id="cart_num${status.count}" value="${cart.cart_num}" >					
-					<input type="button" id="delete${status.count}" class="orderbutton" value="삭제하기">					
+					<input type="button" id="delete${status.count}" class="orderbutton" value="삭제하기" onClick="fn_cartdelete(${status.count})">					
 				</td>
 			</tr>
 			</c:forEach>
@@ -107,7 +107,7 @@
 	</div>
 	
 	<div class="container" id="orderbtnBox">
-		<a href="/order/bills.do?userID=${member1.userID }"><input type="button" value="전체상품주문" style="background-color: #69737A; color:white; font-size:20px; border:none;"></a>
+		<input type="button" value="전체상품주문" onClick="fn_totalorder()" style="background-color: #69737A; color:white; font-size:20px; border:none;">
 		<input type="button" value="선택상품주문" onClick="fn_selectorder()" style="color: #69737A; font-size:20px; border:none;">	
 	</div>
 	

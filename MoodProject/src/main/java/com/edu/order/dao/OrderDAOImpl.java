@@ -65,6 +65,14 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(Namespace + ".bills", cart_num);
 	}
 
+	//카트넘버들을 삭제한다.
+	@Override
+	public int cartdelete(int cart_num) throws Exception {
+		System.out.println("OrderDAO 카트넘버들을 삭제한다.");
+		
+		return sqlSession.delete(Namespace + ".cartdelete", cart_num);
+	}
+
 	
 
 	

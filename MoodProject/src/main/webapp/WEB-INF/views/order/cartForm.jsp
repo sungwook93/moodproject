@@ -52,7 +52,10 @@
 	<div class="container" id="orderListBox">
 		<table id="orderListTable">
 			<tr style="text-align:center;">
-				<th style="width:3%;"><input type="checkbox" value="0" class="checkBoxId" id="cbx_chkAll"  ></th>
+				<th style="width:3%;">
+				<input type="checkbox" value="0" class="checkBoxId" id="cbx_chkAll" >
+				<label for="cbx_chkAll"></label>					
+				</th>
 				<th style="text-align:center;">상품정보</th>
 				<th style="width:20%;">수량</th>
 				<th style="width:20%;">금액</th>
@@ -60,14 +63,16 @@
 			</tr>
 			<c:forEach var="cart" items="${cartList}" varStatus="status" >
 			<tr style="text-align:center;">
-				<td><input type="checkbox" class="checkBoxId" id="${status.count}" name="check" value="${cart.product_price * cart.product_amount}" onClick='checkbox();' style="margin-left:10px;">
+				<td>
+				<input type="checkbox" class="checkBoxId" id="${status.count}" name="check" value="${cart.product_price * cart.product_amount}" onClick='checkbox();'>
+				<label for="${status.count}"></label>
 				</td>
 				<td>
 					<div style="display:flex">
 						<div style="width:100px;">
-						<img src="/image/displayImage?name=${cart.product_code}" class="cartImg"/>					
+						<img src="/image/displayImage?name=${cart.product_code}" class="cartImg" style="margin-left:14px;"/>					
 						</div>
-						<div style="text-align:left; margin-left:20px;">
+						<div style="text-align:left; margin-left:40px;">
 						<ul>
 							<li><input type="hidden" value="${cart.product_code}" id="product_code${status.count}"></li>
 							<li><a href="/product/productDetail?product_code=${cart.product_code}">${cart.product_name}</a></li>
@@ -103,7 +108,7 @@
 	
 	<div class="container" id="orderbtnBox">
 		<a href="/order/bills.do?userID=${member1.userID }"><input type="button" value="전체상품주문" style="background-color: #69737A; color:white; font-size:20px; border:none;"></a>
-		<input type="button" value="선택상품주문" style="color: #69737A; font-size:20px; border:none;">	
+		<input type="button" value="선택상품주문" onClick="fn_selectorder()" style="color: #69737A; font-size:20px; border:none;">	
 	</div>
 	
 	<input type="hidden" value="${member1.userID}" id="userID">

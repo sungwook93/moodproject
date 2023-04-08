@@ -102,7 +102,7 @@ public class OrderController {
 		
 		//리스트 모델에 담기
 		mav.addObject("cartList", cartList);
-			
+		
 		//주소 입력
 		mav.setViewName("/order/bills");
 		

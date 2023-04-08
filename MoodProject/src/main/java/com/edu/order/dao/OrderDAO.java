@@ -2,11 +2,8 @@ package com.edu.order.dao;
 
 import java.util.List;	
 
-import org.springframework.dao.DataAccessException;
-
-import com.edu.member.dto.MemberDTO;
 import com.edu.order.dto.CartDTO;
-import com.edu.order.dto.OrderDTO;
+
 
 public interface OrderDAO {
 	

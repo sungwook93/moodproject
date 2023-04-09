@@ -586,7 +586,7 @@ function fn_orderComplete() {
 	        console.log(rsp);
 	        
 	        if ( rsp.success ) { //결제 성공시
-		        //alert("결제가 완료되었습니다.");
+		        alert("결제가 완료되었습니다.");
 	       		
 	       		//수령인 정보, 주문 정보들을 준비한다
 	       		let formData = new FormData(); 							//데이터를 담아줄 FormData
@@ -639,6 +639,9 @@ function fn_orderComplete() {
 																			
 					},
 	       			error: function(data, status, req) {
+	       				alert(data);
+	       				alert(status);
+	       				alert(req);
 						alert("결제 완료 후 주문 완료 등록에 실패했습니다.");
 					}
 					

@@ -1,6 +1,6 @@
 package com.edu.order.dao;
 
-import java.util.List;
+import java.util.List;	
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -81,6 +81,68 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		return sqlSession.selectOne(Namespace + ".cartNumList", cartNum);
 	}
+	
+	//주문완료 영역 
+	
+	@Override
+	public long getMaxOrderNum() throws Exception {
+		System.out.println("OrderDAOImpl의 getMaxOrderNum()....");
+		
+		return sqlSession.selectOne(Namespace + ".getMaxOrderNum");
+	}
+	
+	@Override
+	public int addOrder(OrderDTO orderDTO) throws Exception {
+		System.out.println("OrderDAOImpl의 addOrder()....");
+		
+		return sqlSession.insert(Namespace + ".addOrder", orderDTO);
+		
+	}
+	
+	@Override
+	public int addOrderProduct(OrderDTO orderDTO) throws Exception {
+		System.out.println("OrderDAOImpl의 addOrderProduct()....");
+		
+		return sqlSession.insert(Namespace + ".addOrderProduct", orderDTO);
+	}
+	
+	@Override
+	public int orderDateCount(String date) throws Exception {
+		System.out.println("OrderDAOImpl의 orderDateCount()....");
+		
+		return sqlSession.selectOne(Namespace + ".orderDateCount", date);
+	}
+
+
+	@Override
+	public List<OrderDTO> getOrderDetailById(String userID) throws Exception {
+		System.out.println("OrderDAOImpl의 getOrderDetailById()....");
+		
+		return sqlSession.selectList(Namespace + ".getOrderDetailById", userID);
+	}
+	
+	@Override
+	public OrderDTO getOrderDetailDTO(OrderDTO orderDTO) throws Exception {
+		System.out.println("OrderDAOImpl의 getOrderDetailDTO()....");
+		
+		return sqlSession.selectOne(Namespace + ".getOrderDetailDTO", orderDTO);
+	}
+	
+	@Override
+	public List<OrderDTO> getOrderDetail(long order_num) throws Exception {
+		System.out.println("OrderDAOImpl의 getOrderDetail()....");
+		
+		
+		return sqlSession.selectList(Namespace + ".getOrderDTODetail", order_num);
+	}
+	
+	@Override
+	public OrderDTO getOrderDTO(long order_num) throws Exception {
+		System.out.println("OrderDAOImpl의 getOrderDTO()....");
+		
+		return sqlSession.selectOne(Namespace + ".getOrderDTO", order_num);
+	}
+	
 
 	
 }

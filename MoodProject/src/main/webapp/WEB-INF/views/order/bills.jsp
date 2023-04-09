@@ -244,7 +244,7 @@
 							</tr>
 							<tr id="personalInfoCheckTr" style="border:1px solid black;">
 								<td colspan="2">
-									<p><input type="checkbox" id="personalInfoCheck"/><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
+									<p><input type="checkbox" id="personalInfoCheck" style="display:flex !important;"/><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
 									<p id="personalInfoCheckP" onclick="fn_personalInfo()"> 보기</p>
 									<p id="personalInfoCheckP2" onclick="fn_personalInfo2()" style="display:none;"> 닫기</p>
 									
@@ -269,7 +269,7 @@
 							</tr>
 							<tr id="orderOkDetail">
 								<td colspan="2">
-									<p><input type="checkbox" id="orderOkCheckbox"/>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며,</p>
+									<p><input type="checkbox" id="orderOkCheckbox" style="display:flex !important;"/>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며,</p>
 									<p>구매에 동의(전자상거래법 제8조 제2항)</p>
 									<p id="personalInfoCheckP3" onclick="fn_personalInfo3()"> 보기</p>
 									<p id="personalInfoCheckP4" onclick="fn_personalInfo4()" style="display:none;"> 닫기</p>

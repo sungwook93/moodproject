@@ -1,7 +1,11 @@
 package com.edu.order.controller;
 
-import java.util.ArrayList;
+import java.util.ArrayList;		
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.edu.member.dao.MemberDAO;
-import com.edu.member.service.MemberService;
+
 import com.edu.order.dto.CartDTO;
 import com.edu.order.service.OrderService;
+import com.edu.order.dao.OrderDAO;
+import com.edu.order.dto.OrderDTO;
 
 
 
@@ -26,6 +31,9 @@ public class OrderController {
 	
 	@Autowired
 	private	OrderService	orderService;
+	
+	@Inject
+	OrderDAO orderDAO;
 	
 	//장바구니화면 이동하기
 	@RequestMapping(value="/cartForm.do", method=RequestMethod.GET)
@@ -100,6 +108,14 @@ public class OrderController {
 		}
 		System.out.println(cartList);
 		
+		//장바구니 리스트의 상품의 합계를 구해 model에 담아준다.
+		//장바구니 리스트의 장바구니 번호를 배열로 만든다.
+		int[] cartNum = new int[cartList.size()];
+		for(int i = 0; i < cartList.size(); i++) {
+			cartNum[i] = cartList.get(i).getCart_num();
+		}
+		mav.addObject("orderSum", orderService.orderSum(cartNum));
+		
 		//리스트 모델에 담기
 		mav.addObject("cartList", cartList);
 		
@@ -128,6 +144,79 @@ public class OrderController {
 			return "N";
 		}
 	}
-	
+		//주문 완료 처리후 주문 번호 리턴 (t_cart 데이터 +알파 를 t_order 테이블로 옮기기)
+		@ResponseBody
+		@RequestMapping(value="/orderComplete", method=RequestMethod.POST)
+		public long orderComplete(int[] cartNumberList, OrderDTO orderDTO, HttpServletRequest request) throws Exception {
+			System.out.println("OrderController의 orderComplete.... 회원 아이디: " + orderDTO.getUserID() + "장바구니 번호: " + cartNumberList[0]);	
+			
+			//orderDTO에 order_num을 계산해서 세팅한다.
+			orderDTO.setOrder_num(orderService.getOrder_num());
+			System.out.println("주문번호: " + orderDTO.getOrder_num());
+			
+			//orderDTO로 주문 완료 테이블에 데이터를 등록한다.
+			if(orderService.addOrder(cartNumberList, orderDTO) == cartNumberList.length) { //성공시
+				
+				//아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
+				HttpSession session = request.getSession();
+			    List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(orderDTO.getUserID());
+			    session.setAttribute("member1OrderDetail",    orderDetailList);
+			    System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList);
+			    
+				return orderDTO.getOrder_num();
+				
+			} else {
+				return 0;
+			}
+			
+			
+		}
+		
+		//주문 성공 페이지 이동하기
+		@RequestMapping(value="/orderCompleteForm", method=RequestMethod.GET)
+		public ModelAndView orderCompleteForm(long order_num) throws Exception {
+			System.out.println("OrderController의 orderCompleteForm.... 주문번호: " + order_num);	
+			
+			ModelAndView mav = new ModelAndView();
+			
+			//주문번호에 해당하는 orderDTO 객체를 가져와서 model에 담는다.
+			mav.addObject("orderDTO", orderService.getOrderDTO(order_num));
+			
+			//주문번호에 해당하는 상품 상세가 담긴 orderDTO 리스트를 가져와서 model에 담는다.
+			List<OrderDTO> orderDetailList = orderService.getOrderDetail(order_num);
+			mav.addObject("orderDetailList", orderDetailList);
+			
+			//주문 완료 페이지에서 사용할 합계 금액을 구해서 model에 담는다.
+			mav.addObject("orderSum", orderService.orderListSum(orderDetailList));
+			
+			//주소를 세팅한다.
+			mav.setViewName("/order/orderComplete");
+			
+			return mav;
+		}
+		
+		//주문 완료 상세 페이지 이동하기
+		@RequestMapping(value="/orderCompleteDetail", method=RequestMethod.GET)
+		public ModelAndView orderCompleteDetail(long order_num) throws Exception {
+			System.out.println("OrderController의 orderCompleteForm.... 주문번호: " + order_num);
+			
+			ModelAndView mav = new ModelAndView();
+			
+			//주문번호에 해당하는 orderDTO 객체를 가져와서 model에 담는다.
+			mav.addObject("orderDTO", orderService.getOrderDTO(order_num));
+			
+			//주문번호에 해당하는 상품 상세가 담긴 orderDTO 리스트를 가져와서 model에 담는다.
+			List<OrderDTO> orderDetailList = orderService.getOrderDetail(order_num);
+			mav.addObject("orderDetailList", orderDetailList);
+			
+			//주문 완료 페이지에서 사용할 합계 금액을 구해서 model에 담는다.
+			mav.addObject("orderSum", orderService.orderListSum(orderDetailList));
+			
+			//주소를 세팅한다.
+			mav.setViewName("/order/orderCompleteDetail");
+			
+			return mav;
+		}
+			
 	
 }

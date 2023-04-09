@@ -133,16 +133,16 @@
 							<td><input type="text" class="form-control"  value="${member1.name}"/></td>
 						</tr>	
 						<tr>
+							<td>* 휴대폰 번호</td>
+							<td><input type="text" class="form-control" id="deliveryPhone" value="${member1.phone}"/></td>
+						</tr>							
+						<tr>
 							<td>배송지 선택</td>
 							<td>
 								<input type="radio" id="originAdress" name="deliveryAddress" value="originAdress" checked/> 기본 배송지
 								<input type="radio" id="newAdress" name="deliveryAddress" value='newAdress' /> 새로운 배송지
 							</td>
 						</tr>	
-						<tr>
-							<td>* 휴대폰 번호</td>
-							<td><input type="text" class="form-control" id="deliveryPhone" value="${member1.phone}"/></td>
-						</tr>							
 						<tr>
 							<td>* 배송지</td>
 								<td>
@@ -157,7 +157,7 @@
 										</div>
 									</div>
 									<input type = "text"  class="form-control" id="deliveryAddress1" value="${member1.address1}"  readonly/>
-									<input type="text"  class="form-control" id="deliveryAddress2" value="${member1.address2}"/>
+									<input type="text"  class="form-control" id="deliveryAddress2" value="${member1.address2}" readonly/>
 								</td>
 							</tr>	
 							<tr>
@@ -206,7 +206,7 @@
 					<div class="col-sm-4" id="orderSumaryDiv">
 						<table id="orderSumaryTable">
 							<tr>
-								<td>최종 결제금액</td>
+								<td colspan="2" style="text-align:center; background:#9a9a9a; color:white;"><h1>최종 결제금액</h1></td>
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 상품 금액</td>
@@ -214,14 +214,14 @@
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 할인 금액</td>
-								<td class="orderPrice" id="discount"><fmt:formatNumber value="111" pattern="#,###원"/></td>
+								<td class="orderPrice" id="discount"><fmt:formatNumber value="${orderSum /10}" pattern="#,###원"/></td>
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 배송비</td>
 								<td class="orderPrice" id="deliveryFee">
 									<c:choose>
 										<c:when test="${orderSum > 50000}">
-											<fmt:formatNumber value="0" pattern="#,###원"/>
+											<fmt:formatNumber value="5000" pattern="#,###원"/>
 										</c:when>
 										<c:otherwise>
 											<fmt:formatNumber value="3000" pattern="#,###원"/>
@@ -231,11 +231,20 @@
 							</tr>
 							<tr class="orderSumaryTr" id="totalBill">
 								<td>결제 금액</td>
-								<td class="orderPrice" id="totalBillTd"></td>
+								<td class="orderPrice" id="totalBillTd">
+									<c:choose>
+										<c:when test="${orderSum > 50000}">
+											<fmt:formatNumber value="${orderSum+5000-(orderSum /10)}" pattern="#,###원"/>
+										</c:when>
+										<c:otherwise>
+											<fmt:formatNumber value="${orderSum+3000-(orderSum /10)}" pattern="#,###원"/>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 							<tr id="personalInfoCheckTr" style="border:1px solid black;">
 								<td colspan="2">
-									<p><input type="checkbox" id="personalInfoCheck"/><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
+									<p><input type="checkbox" id="personalInfoCheck" style="display:flex !important;"/><strong> 상품 구매를 위한 개인정보 수집·이용 동의 (필수) </strong></p>
 									<p id="personalInfoCheckP" onclick="fn_personalInfo()"> 보기</p>
 									<p id="personalInfoCheckP2" onclick="fn_personalInfo2()" style="display:none;"> 닫기</p>
 									
@@ -260,7 +269,7 @@
 							</tr>
 							<tr id="orderOkDetail">
 								<td colspan="2">
-									<p><input type="checkbox" id="orderOkCheckbox"/>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며,</p>
+									<p><input type="checkbox" id="orderOkCheckbox" style="display:flex !important;"/>주문할 상품의 상품명, 상품가격, 배송정보를 확인하였으며,</p>
 									<p>구매에 동의(전자상거래법 제8조 제2항)</p>
 									<p id="personalInfoCheckP3" onclick="fn_personalInfo3()"> 보기</p>
 									<p id="personalInfoCheckP4" onclick="fn_personalInfo4()" style="display:none;"> 닫기</p>
@@ -283,14 +292,14 @@
 						</table>
 						<table>
 							<tr>
+								<td colspan="2" style="width:56%;"></td>
 								<td colspan="2" id="postOrderBtn">
 									<button type="button" class="form-control" onclick="fn_orderComplete()">결제하기</button>
 								</td>
-							</tr>
-							<tr>
 								<td colspan="2" id="backward" >
-									<button type="button" class="form-control" onclick="location.href='/order/cartList?userID=' + ${member1.userID}">뒤로가기</button>  
+									<button type="button" class="form-control" onclick="location.href='/order/cartForm.do?userID=' + ${member1.userID}">뒤로가기</button>  
 								</td>
+								
 							</tr>
 						</table>
 					</div>

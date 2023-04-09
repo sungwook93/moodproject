@@ -240,6 +240,7 @@ $(document).ready(function() {
 			$('#newAdress').prop("checked", false);
 			//우편번호 버튼에 disabled 속성을 추가한다.
 			$("#postBtn").attr("disabled", true);
+			$("#deliveryAddress2").attr("readonly", true);
 		} else if($('#newAdress').is(':checked')){
 			$("#deliveryPostnum").val('');
 			$("#deliveryAddress1").val('');
@@ -248,6 +249,7 @@ $(document).ready(function() {
 			$('#originAdress').prop("checked", false);
 			//우편번호 버튼의 disabled 속성을 제거한다.
 			$("#postBtn").attr("disabled", false);
+			$("#deliveryAddress2").attr("readonly", false);
 		}
 	
 	});
@@ -584,7 +586,7 @@ function fn_orderComplete() {
 	        console.log(rsp);
 	        
 	        if ( rsp.success ) { //결제 성공시
-		        //alert("결제가 완료되었습니다.");
+		        alert("결제가 완료되었습니다.");
 	       		
 	       		//수령인 정보, 주문 정보들을 준비한다
 	       		let formData = new FormData(); 							//데이터를 담아줄 FormData
@@ -637,6 +639,9 @@ function fn_orderComplete() {
 																			
 					},
 	       			error: function(data, status, req) {
+	       				alert(data);
+	       				alert(status);
+	       				alert(req);
 						alert("결제 완료 후 주문 완료 등록에 실패했습니다.");
 					}
 					

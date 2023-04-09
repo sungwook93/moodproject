@@ -133,16 +133,16 @@
 							<td><input type="text" class="form-control"  value="${member1.name}"/></td>
 						</tr>	
 						<tr>
+							<td>* 휴대폰 번호</td>
+							<td><input type="text" class="form-control" id="deliveryPhone" value="${member1.phone}"/></td>
+						</tr>							
+						<tr>
 							<td>배송지 선택</td>
 							<td>
 								<input type="radio" id="originAdress" name="deliveryAddress" value="originAdress" checked/> 기본 배송지
 								<input type="radio" id="newAdress" name="deliveryAddress" value='newAdress' /> 새로운 배송지
 							</td>
 						</tr>	
-						<tr>
-							<td>* 휴대폰 번호</td>
-							<td><input type="text" class="form-control" id="deliveryPhone" value="${member1.phone}"/></td>
-						</tr>							
 						<tr>
 							<td>* 배송지</td>
 								<td>
@@ -157,7 +157,7 @@
 										</div>
 									</div>
 									<input type = "text"  class="form-control" id="deliveryAddress1" value="${member1.address1}"  readonly/>
-									<input type="text"  class="form-control" id="deliveryAddress2" value="${member1.address2}"/>
+									<input type="text"  class="form-control" id="deliveryAddress2" value="${member1.address2}" readonly/>
 								</td>
 							</tr>	
 							<tr>
@@ -206,7 +206,7 @@
 					<div class="col-sm-4" id="orderSumaryDiv">
 						<table id="orderSumaryTable">
 							<tr>
-								<td>최종 결제금액</td>
+								<td colspan="2" style="text-align:center; background:#9a9a9a; color:white;"><h1>최종 결제금액</h1></td>
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 상품 금액</td>
@@ -283,14 +283,14 @@
 						</table>
 						<table>
 							<tr>
+								<td colspan="2" style="width:56%;"></td>
 								<td colspan="2" id="postOrderBtn">
 									<button type="button" class="form-control" onclick="fn_orderComplete()">결제하기</button>
 								</td>
-							</tr>
-							<tr>
 								<td colspan="2" id="backward" >
-									<button type="button" class="form-control" onclick="location.href='/order/cartList?userID=' + ${member1.userID}">뒤로가기</button>  
+									<button type="button" class="form-control" onclick="location.href='/order/cartForm.do?userID=' + ${member1.userID}">뒤로가기</button>  
 								</td>
+								
 							</tr>
 						</table>
 					</div>

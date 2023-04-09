@@ -169,6 +169,7 @@ $(document).ready(function() {
 			$('#newAdress').prop("checked", false);
 			//우편번호 버튼에 disabled 속성을 추가한다.
 			$("#postBtn").attr("disabled", true);
+			$("#deliveryAddress2").attr("readonly", true);
 		} else if($('#newAdress').is(':checked')){
 			$("#deliveryPostnum").val('');
 			$("#deliveryAddress1").val('');
@@ -177,6 +178,7 @@ $(document).ready(function() {
 			$('#originAdress').prop("checked", false);
 			//우편번호 버튼의 disabled 속성을 제거한다.
 			$("#postBtn").attr("disabled", false);
+			$("#deliveryAddress2").attr("readonly", false);
 		}
 	
 	});

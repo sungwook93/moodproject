@@ -109,15 +109,21 @@
 /*주문서 작성 페이지*/
 
 #userInfoArea {
-	border:1px solid black;
+	border:5px solid #9a9a9a;
 }
 #userInfoTable tr td{
 	padding-bottom:30px;
 }
+#userInfoTable tr{
+	border-bottom:1px solid #9a9a9a;
+}
 #orderSumaryDiv {
-	border:1px solid black;
 	position:sticky;
 	top:50px;
+}
+#orderSumaryTable {
+	background:white;
+	border:8px solid #9a9a9a;
 }
 #payMethod td {
 	display:flex;
@@ -127,7 +133,7 @@
 	width:200px;
 }
 #personalInfoDetailDiv {
-	
+	color:white;
 	border:1px solid black;
 	width:350px;
 	height:0px;
@@ -146,6 +152,7 @@
 	overflow:hidden;
 	transition-property: height;
     transition-duration: 0.5s, 2s;
+    color:white;
 }
 #orderOkDetail {
 	border:1px solid black;
@@ -159,8 +166,10 @@
 	overflow:hidden;
 	transition-property: height;
     transition-duration: 0.5s, 2s;
+    color:white;
 }
 .orderSumaryTr {
 	font-size:1.3em;
+	background:white;
 }
 

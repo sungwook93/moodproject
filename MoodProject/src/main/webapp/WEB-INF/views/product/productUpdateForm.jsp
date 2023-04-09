@@ -57,9 +57,9 @@
 						<div>
 							<p>색상&nbsp&nbsp&nbsp</p>
 							<input type="radio" id="white" class="product_color" name="color" value="white" <c:if test="${product.product_color == 'white'}">checked</c:if>>
-							<label for="white">흰색&nbsp&nbsp</label>
+							<label for="white" style="color:white">흰색&nbsp;&nbsp;</label>
 							<input type="radio" id="black" class="product_color" name="color" value="black" <c:if test="${product.product_color == 'black'}">checked</c:if>>
-							<label for="black" style="color:black">검정&nbsp&nbsp</label>
+							<label for="black" style="color:black">검정&nbsp;&nbsp;</label>
 							<input type="radio" id="gray" class="product_color" name="color" value="gray" <c:if test="${product.product_color == 'gray'}">checked</c:if>>
 							<label for="gray" style="color:gray">회색</label>
 						</div>

@@ -57,9 +57,9 @@
 						<div>
 							<p>색상&nbsp&nbsp&nbsp</p>
 							<input type="radio" id="white" class="product_color" name="color" value="white" checked>
-							<label for="white">흰색&nbsp&nbsp</label>
+							<label for="white" style="color:white">흰색&nbsp;&nbsp;</label>
 							<input type="radio" id="black" class="product_color" name="color" value="black">
-							<label for="black" style="color:black">검정&nbsp&nbsp</label>
+							<label for="black" style="color:black">검정&nbsp;&nbsp;</label>
 							<input type="radio" id="gray" class="product_color" name="color" value="gray">
 							<label for="gray" style="color:gray">회색</label>
 						</div>

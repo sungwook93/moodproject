@@ -214,14 +214,14 @@
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 할인 금액</td>
-								<td class="orderPrice" id="discount"><fmt:formatNumber value="111" pattern="#,###원"/></td>
+								<td class="orderPrice" id="discount"><fmt:formatNumber value="${orderSum /10}" pattern="#,###원"/></td>
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 배송비</td>
 								<td class="orderPrice" id="deliveryFee">
 									<c:choose>
 										<c:when test="${orderSum > 50000}">
-											<fmt:formatNumber value="0" pattern="#,###원"/>
+											<fmt:formatNumber value="5000" pattern="#,###원"/>
 										</c:when>
 										<c:otherwise>
 											<fmt:formatNumber value="3000" pattern="#,###원"/>
@@ -231,7 +231,16 @@
 							</tr>
 							<tr class="orderSumaryTr" id="totalBill">
 								<td>결제 금액</td>
-								<td class="orderPrice" id="totalBillTd"></td>
+								<td class="orderPrice" id="totalBillTd">
+									<c:choose>
+										<c:when test="${orderSum > 50000}">
+											<fmt:formatNumber value="${orderSum+5000-(orderSum /10)}" pattern="#,###원"/>
+										</c:when>
+										<c:otherwise>
+											<fmt:formatNumber value="${orderSum+3000-(orderSum /10)}" pattern="#,###원"/>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 							<tr id="personalInfoCheckTr" style="border:1px solid black;">
 								<td colspan="2">

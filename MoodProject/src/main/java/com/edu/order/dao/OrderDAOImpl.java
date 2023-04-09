@@ -74,6 +74,13 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	
+	//장바구니 번호에 해당하는 장바구니 정보 가져오기
+	@Override
+	public CartDTO cartNumList(int cartNum) throws Exception {
+		System.out.println("OrderDAOImpl의 cartNumList().... cartNum: " + cartNum);
+		
+		return sqlSession.selectOne(Namespace + ".cartNumList", cartNum);
+	}
 
 	
 }

@@ -19,7 +19,9 @@ public interface OrderService {
 
 	//카트넘버에 해당하는 정보 가져오기
 	public CartDTO bills(int cart_num)throws Exception;
+
+	//카트넘버들을 삭제한다.
+	public int cartdelete(int cart_num)throws Exception;
 	
-	//장바구니 번호에 해당하는 정보로 최종 금액 계산하기
-	public int orderSum(int[] cartNum) throws Exception;
+	
 }

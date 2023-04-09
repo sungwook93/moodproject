@@ -97,9 +97,9 @@
 				</td>
 			</tr>
 		</c:forEach>
-			
 		</table>
 	</div>
+
 	
 	<br/><br/>
 	<div class="container" id="userOrderArea">

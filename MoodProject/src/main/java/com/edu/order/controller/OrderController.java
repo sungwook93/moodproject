@@ -103,17 +103,31 @@ public class OrderController {
 		//리스트 모델에 담기
 		mav.addObject("cartList", cartList);
 		
-		//장바구니 리스트의 상품의 합계를 구해 model에 담아준다.
-		//장바구니 리스트의 장바구니 번호를 배열로 만든다.
-		int[] cartNum = new int[cartList.size()];
-		for(int i = 0; i < cartList.size(); i++) {
-			cartNum[i] = cartList.get(i).getCart_num();
-		}
-		mav.addObject("orderSum", orderService.orderSum(cartNum));
-			
 		//주소 입력
 		mav.setViewName("/order/bills");
 		
 		return mav;
 	}
+	
+	
+	//장바구니 상품 삭제하기
+	@ResponseBody
+	@RequestMapping(value="/cartdelete", method=RequestMethod.POST)
+	public String cartdelete(int[] cart_num)throws Exception{
+		System.out.println("OrderController의 cartdelete시작" + cart_num[0]);
+		
+		int result=0;
+		//for문을 이용해서 들어온 카트넘버들을 삭제한다.
+		for(int i = 0; i < cart_num.length; i++) {
+		 result	+= orderService.cartdelete(cart_num[i]);
+		}
+		
+		if(result == cart_num.length) {
+			return "Y";			
+		}else {
+			return "N";
+		}
+	}
+	
+	
 }

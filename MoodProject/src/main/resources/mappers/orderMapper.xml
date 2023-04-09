@@ -43,14 +43,10 @@
 		where cart_num = #{cart_num};
 	</select>
 	
-	<!-- 해당 장바구니 번호의 장바구니 정보 보내주기 -->
-	<select id="cartNumList" parameterType="Integer" resultType="com.edu.order.dto.CartDTO">
-		<![CDATA[
-		SELECT c.cart_num, c.userID, c.product_code, p.product_name, p.product_price, c.product_amount, c.product_size
-		FROM t_product p , t_cart c
-		WHERE p.product_code = c.product_code and c.cart_num = #{cartNum};
-		]]>
-	</select>
+	<delete id="cartdelete" parameterType="Integer">
+		delete from t_cart
+		where cart_num = #{cart_num};
+	</delete>
 	
 	
 </mapper>

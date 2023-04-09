@@ -2,6 +2,8 @@
  * 
  */
  
+/* cart부분 */
+ 
 // 수량설정
 function count(type, count){
 	// 결과값 변수 설정
@@ -60,6 +62,7 @@ $(document).ready(function() {
 				//체크가 끝난뒤에 가격을 표시한다.
 				checkbox();		
 			});
+			
 			//전체체크가 되면 제일 상단 체크박스 체크됨
 			$("input[name=check]").click(function() {
 				var total = $("input[name=check]").length;
@@ -71,16 +74,106 @@ $(document).ready(function() {
 			
 });
 
-//상품넘겨주기
+
+//가격 합산
+function checkbox(){
+
+	//체크한 항목들을 모은다
+	let checked = 'input[name="check"]:checked'
+	let selectedEls = document.querySelectorAll(checked);
+	
+	let result = 0;
+	parseInt(result);
+	// 체크된거를 다더해준다
+	selectedEls.forEach((el) => {
+    result += parseInt(el.value);
+  	});
+  	
+  	//값을 정규식에 넣어 표시해준다.
+  	//alert(result);
+  	document.getElementById('totalprice').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
+	
+}
+
+//상품넘겨주기 - 한개주문하기 버튼
 function fn_order(count){
 	let id = count;
 	//alert(id);
 	let cart_num = $("#cart_num" + id).val();
 	//alert(cart_num);
-
+	
 	location.href="/order/bills.do?cart_num=" + cart_num;
 }
 
+//선택한 상품 사기
+function fn_selectorder(){
+//alert("확인");
+	//체크한 항목들을 모은다
+	let checked = document.querySelectorAll('input[name="check"]:checked');
+	//alert($("#cart_num" + checked[0].id).val());
+	
+	if(checked.length == 0){
+	alert("상품을 선택해주세요");
+	} else{
+	let str ="";
+	// for문은 돌려서 배열에 있는 카트번호를 넘겨준다.
+	for(let i = 0; i<checked.length; i++){
+		if(i != checked.length - 1){
+			str += $("#cart_num" + checked[i].id).val() + "&cart_num=";
+		} else{
+			str += $("#cart_num" + checked[i].id).val();
+		}
+		//alert(str);
+	}
+		location.href="/order/bills.do?cart_num=" + str;
+	}
+	
+}
+		
+//전체 상품 사기
+function fn_totalorder(){
+//alert("확인");
+	//상품 전체가 체크가된다.
+	$("input[name=check]").prop("checked", true);
+	//선택한 상품사기 메서드를 부른다.
+	fn_selectorder();
+
+}
+		
+		
+//장바구니 상품 삭제하기 - 한개 버튼
+function fn_cartdelete(count){
+	let id = count;
+	let userID = $("#userID").val();
+	//alert(userID);
+	let cart_num = $("#cart_num" + id).val();
+	//alert(cart_num);
+	
+	
+	if(confirm("선택한 상품을 장바구니에서 삭제하시겠습니까?")){
+	$.ajax({
+		type: "post",
+		url: "/order/cartdelete",
+		data: {cart_num:cart_num},
+		success: function(data){		
+			if(data == "Y"){
+			location.href="/order/cartForm.do?userID=" + userID;			
+			}else 
+				alert("삭제에 실패했습니다");
+		}
+		
+	}); //end -ajax
+	
+	}
+	
+	
+}
+
+
+
+
+
+/* cart부분 끝*/
 
 
 
@@ -119,28 +212,6 @@ function fn_personalInfo4(){
 	$("#personalInfoCheckP4").css("display", "none");
 
 }
-//가격 합산
-function checkbox(){
-
-	//체크한 항목들을 모은다
-	let checked = 'input[name="check"]:checked'
-	let selectedEls = document.querySelectorAll(checked);
-	
-	let result = 0;
-	parseInt(result);
-	// 체크된거를 다더해준다
-	selectedEls.forEach((el) => {
-    result += parseInt(el.value);
-  	});
-  	
-  	//값을 정규식에 넣어 표시해준다.
-  	//alert(result);
-  	document.getElementById('totalprice').innerText = (result.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") + "원");
-	
-}
-
-
-
 
 
 

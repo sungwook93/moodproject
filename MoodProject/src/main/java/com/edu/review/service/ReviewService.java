@@ -20,7 +20,11 @@ public interface ReviewService {
 	
 	// productList 가져오기
 	public List<ProductDTO> productList(ProductDTO productDTO) throws Exception;
-
+	
+	// 타입에 따른 상품명 찾기
 	public List<ProductDTO> searchname(String produt_type)throws Exception;
+	
+	// 리뷰 상세페이지 보여주기 
+	public ReviewDTO reviewDetail(int review_bno) throws Exception;
 	
 }

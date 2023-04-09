@@ -78,7 +78,7 @@ public class ReviewController {
 	// 리뷰 등록하기
 	//-----------------------------------------------------------------------------------------------------------	
 	@ResponseBody
-	@RequestMapping(value = "/reveiwRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewRegister", method = RequestMethod.POST)
 	public String reviewRegister(ReviewDTO reviewDTO) throws Exception {
 		
 		System.out.println("ReviewController 리뷰 등록하기");
@@ -110,7 +110,21 @@ public class ReviewController {
 		return mav;
 	}
 	
-	
+	//-----------------------------------------------------------------------------------------------------------
+	// 리뷰 상세페이지 보여주기 
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value = "/reviewDetail", method = RequestMethod.GET)
+	public ModelAndView reviewDetail(int review_bno) throws Exception {
+		
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject(reviewService.reviewDetail(review_bno));
+		
+		
+		return mav;
+		
+	}
 	
 	
 }

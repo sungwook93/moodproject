@@ -48,19 +48,19 @@
 							<input type="text" class="form-control" id="userID" name="userID" maxlength="20" value = "${member1.userID }" readonly/>
 						</div>
 						<!-- 상품 관련 -->
-						<label class="col-sm-1 control-label" for="productKindU">상품 목록</label>
+						<label class="col-sm-1 control-label">상품 목록</label>
 						<div class="col-sm-3">	
-							<select class="form-control" id="productKindU" name="productKindU" onchange="productKindChange(this)">
-								<option disabled selected>상품 Type</option>
+							<select class="form-control" id="product_type" onchange="fn_typename()">
+								<option disabled selected>선택해주세요.</option>
 								<option value="living" <c:if test="${produt_type == 'living'}">selected</c:if>>Living</option>
 								<option value="bed" <c:if test="${produt_type == 'bed'}">selected</c:if>>Bed</option>
 								<option value="bath" <c:if test="${produt_type == 'bath'}">selected</c:if>>Bath</option>
 							</select>
 						</div>
-						<input type="button" onClick="fn_typename();"  value="확인">
-						<label class="col-sm-1 control-label"  for="productKindD">상품 이름</label>
+
+						<label class="col-sm-1 control-label">상품 이름</label>
 						<div class="col-sm-3">	
-							<select class="form-control" id="productKindD" name="productKindD">
+							<select class="form-control" id="product_name">
 								<option disabled selected>선택해주세요.</option>
 								<c:forEach items="${productList}" var="product">
 								<option id="product_name">${product.product_name}</option>

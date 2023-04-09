@@ -36,7 +36,7 @@
 					<a href="/review/reviewList?page=1" id="selectedA">Review</a>
 				</div>
 			</div>
-
+			
 			<div class="container">
 				<!-- 게시글 작성 버튼 -->
 				<div id="registerBtnBox">
@@ -49,21 +49,21 @@
 						<thead>
 							<tr>
 								<th class="reviewNo">No</th>
-								<th class= "productName">상품명</th>
+								<th class= "reviewTitle">상품 정보</th>
 						    	<th class="reviewTitle">제목</th>
 						    	<th class="reviewTitle">내용</th>
 						    	<th class="reviewUser">작성자</th>
 						    	<th class="reviewDate">작성일자</th>
 						    	<th class="reviewStar">평점</th>
-						    	
 							</tr>
 						</thead>
 						<tbody>	
 							<c:forEach var="review" items="${reviewList}">
 								<tr>
-									<td class="reviewNo">${review.review_bno}</td>  
+									<td class="reviewNo">${review.review_bno}</td> 
+									<td class="reviewTitle">${review.product_type}&nbsp;&nbsp;/&nbsp;&nbsp;${review.product_name}</td>
 									<td class="reviewTitle">${review.review_subject}</td>
-									<td class="reviewTitle">${review.review_content}</td>
+									<td class="reviewTitle"><a href="/review/reviewDetail?review_bno=${review.review_bno}" style = "color: black;">${review.review_content}</a></td>
 									<td class="reviewUser">${review.userID}</td>
 									<td class="reviewDate"><fmt:formatDate value="${review.review_date}" pattern="yyyy년 MM월 dd일"/></td>
 									<td class="reviewStar"><fmt:formatNumber value="${review.review_star}" pattern="#,###"/></td>

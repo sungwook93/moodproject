@@ -37,7 +37,7 @@
 			<div id="mainTitle">
 				<div id="boardTitle">
 					<a href="/board/boardList?page=1" id="selectedA">Q & A</a>
-					<a href="review/reviewList?page=1">Review</a>
+					<a href="/review/reviewList?page=1">Review</a>
 				</div>
 			</div>
 

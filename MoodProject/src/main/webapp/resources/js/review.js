@@ -10,7 +10,8 @@
 	let	userID	= $("#userID").val();
 	let	review_content	= $("#review_content").val();
 	let review_star = $("#review_star").val();
-
+	let	product_type	= $("#product_type").val();
+	let product_name = $("#product_name").val();
 
 	
 	// 제목 항목에 값이 없으면 입력하도록 한다.
@@ -39,14 +40,25 @@
 		$("#review_star").focus();
 		return false;
 	}
-
 	
-	alert(review_subject + userID + review_content + review_star + product_code);
+	if($("#product_type").val() == "") {
+		alert("상품 타입은 필수 입력 항목입니다.");
+		$("#product_type").focus();
+		return false;
+	}
+	
+	if($("#product_name").val() == "") {
+		alert("상품 이름은 필수 입력 항목입니다.");
+		$("#product_name").focus();
+		return false;
+	}
+	
+	alert(review_subject + userID + review_content + review_star + product_type + product_name);
 	
 	$.ajax({
 		type:		"POST",
 		url:		"/review/reviewRegister",
-		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star},
+		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 		success:	function(data) {
 			if(data == "Y") {
 				alert("리뷰를 등록하였습니다.");
@@ -60,10 +72,9 @@
 	
 } 
 
-
 function fn_typename(){
  //alert("확인");
- 	let typename = document.getElementById("productKindU");
+ 	let typename = document.getElementById("product_type");
  	let produt_type  = typename.options[typename.selectedIndex].value;
  	alert(produt_type);
  	

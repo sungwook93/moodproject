@@ -80,12 +80,24 @@ input[type="checkbox"]:checked + label::after{
 	margin: 0 auto;
 }
 
+
 .orderbutton{
-	width:60px;
-	height:25px;
+	width:63px;
+	height:30px;
 	font-size: 15px;
 	display:block;
 	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.glyphicon-trash{
+	width:25px;
+	height:25px;
+	font-size: 26px;
+	display:block;
+	margin: auto;
+	margin-top: 10px;
 	margin-bottom: 10px;
 }
 

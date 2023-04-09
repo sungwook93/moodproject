@@ -173,7 +173,7 @@ function fn_productRegister(){
 			data: {product_name:product_name, product_size:product_size, product_price:product_price,
 			product_color:product_color, product_type:product_type},
 			success: function(data){
-			alert(data);
+			//alert(data);
 			
 			if(data != "0"){
 				//이미지 등록을 위해 ajax는 form태그를 안쓰기때문에 formdata()를 준비한다.
@@ -181,7 +181,7 @@ function fn_productRegister(){
 				
 				//업로드 된 이미지만큼 반복문으로 formdata에 넣어준다.
 				//set은 리셋되면서 추가하는거지만 append는 리셋하지않고 계속 추가한다.
-				alert(file.files.length);
+				//alert(file.files.length);
 				for(let i = 0; i<file.files.length; i++){
 					formData.append("files", file.files[i]);
 				}
@@ -359,14 +359,14 @@ function fn_productDelete(product_code){
 					url:"/image/deleteImage",
 					data: {product_code:product_code},
 					success: function(data){
-						alert("product_code ==>" + data);		
+						//alert("product_code ==>" + data);		
 					
 					$.ajax({
 						type:"post",
 						url:"/product/productDelete",
 						data: {product_code:data},
 						success: function(data){
-							alert(data);
+							//alert(data);
 							location.href="/main.do";
 						}
 						
@@ -392,7 +392,7 @@ function fn_cart(){
 	let product_price= $("#price").val();
 	
  	//alert("상품 수량==" +  product_amount + "유저아이디==" + userID + "상품코드 ==" + product_code);
-	alert(product_type);
+	//alert(product_type);
 
 	$.ajax({
 		type: "POST",

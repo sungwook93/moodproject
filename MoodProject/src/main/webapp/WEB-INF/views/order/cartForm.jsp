@@ -95,7 +95,9 @@
 				<td>
 					<input type="button" id="order${status.count}" class="orderbutton" value="주문하기" onclick="fn_order(${status.count})">
 					<input type="hidden" id="cart_num${status.count}" value="${cart.cart_num}" >					
-					<input type="button" id="delete${status.count}" class="orderbutton" value="삭제하기" onClick="fn_cartdelete(${status.count})">					
+					<span class="glyphicon glyphicon-trash" id="delete${status.count}" onClick="fn_cartdelete(${status.count})"></span>
+					<!--  <input type="button" id="delete${status.count}" class="orderbutton" value="삭제하기"
+					 onClick="fn_cartdelete(${status.count})">				-->
 				</td>
 			</tr>
 			</c:forEach>

@@ -125,6 +125,9 @@ public class OrderController {
 		}
 		mav.addObject("orderSum", orderService.orderSum(cartNum));
 		
+		//상세페이지 스크립트에서 이용할 장바구니 갯수를 구해 model에 담는다.
+		mav.addObject("cartCount", cartNum.length);
+		
 		//리스트 모델에 담기
 		mav.addObject("cartList", cartList);
 		

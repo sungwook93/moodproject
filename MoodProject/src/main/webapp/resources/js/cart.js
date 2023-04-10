@@ -460,204 +460,204 @@ function daumZipCode() {
  		//alert(input.value);
  	}
  }
+
   //최종 결제 버튼 클릭시
 function fn_orderComplete() {
 
-	//동의 항목 검사
-	if(!$('#personalInfoCheck').is(':checked')) {
-		alert("개인정보 수집·이용에 동의에 채크 해주세요");
-		$("#personalInfoCheck").focus();
-		return false;
-	}
-	if(!$('#orderOkCheckbox').is(':checked')) {
-		alert("구매 동의에 체크 해주세요.");
-		$("#orderOkCheckbox").focus();
-		return false;
-	}
-	
-	//클릭한 버튼에 따라 결제 수단 처리를 한다.
-	var payMethod = $("#payMethodInput").val(); //결제 수단 value 값
-	
-	if(payMethod == "1" ) {
-		//alert("계좌이체");
-	} else if(payMethod == "2" ) {
-	
-		//넘겨줄 정보를 준비한다.
-		//구매 상품 기본 정보
-		var cartCount = $("#cartCount").val(); //장바구니 상품 갯수
-		var firstProduct = $("#firstProduct").val(); //첫번째 상품 이름
-		//결제 창에서 보여줄 상품 이름을 세팅한다. (첫번째 상품... 외 몇건)
-		var cartName = "";
-		if(cartCount == 1 ) {
-			cartName = firstProduct.substr(0, 6) + "...";
-		} else {
-			cartName = firstProduct.substr(0, 6) + "... 외 " + (cartCount - 1) + "건";
-		}
-		var sum = $("#totalBillTd").html();
-		var totalBill = sum.replace(/[^0-9]/g, ""); //총 결제 금액
-		
-		//구매자 기본 정보
-		var userID = $("#userID").val(); //주문자 아이디
-		var email = $("#email").val(); //주문자 이메일
-		var name = $("#name").val(); //주문자 이름
-		var phone = $("#phone").val(); //주문자 휴대폰번호
-		var address1 = $("#address1").val(); //주문자 주소1
-		var address2 = $("#address2").val(); //주문자 주소2
-		var postnum = $("#postnum").val(); //주문자 우편번호
-		//alert(postnum);	
-		
-		IMP.init('imp80230473');
-		
-	  	//결제시 전달되는 정보
-		IMP.request_pay({
-					pg : 'html5_inicis.INIpayTest',
-				    pay_method : 'card',
-				    merchant_uid : 'merchant_' + new Date().getTime(),
-				    name : cartName, 									/*상품명*/
-				    amount : totalBill,									/*상품 가격*/
-				    buyer_email : email,								/*구매자 이메일*/
-				    buyer_name : name,
-				    buyer_tel : phone,									/*구매자 연락처*/
-				    buyer_addr : address1 + ' ' + address2,				/*구매자 주소*/
-				    buyer_postcode : postnum							/*구매자 우편번호*/
-				}, function(rsp) {
-					var result = '';
-				    if ( rsp.success ) {
-				    	//alert("결제가 완료되었습니다.\n");
-				        //location.href="/order/orderComplete";
-				        result ='0';
-				        
-				        //주문 완료 테이블로 넘기기 위한 
-				        //alert(userID);
-				        
-				    } else {
-				        alert("결제에 실패하였습니다. \n 에러 내용: " + rsp.error_msg);
-				        result ='1';
-				    }
-				    if(result=='0') {
-				    	location.href= $.getContextPath()+"/Cart/Success";
-				    }
-				    alert(msg);
-				});
-				
-	} else if(payMethod == "3" ) { //카카오 페이일 때
-		
-		//넘겨줄 정보를 준비한다.
-		//구매 상품 기본 정보
-		var cartCount = $("#cartCount").val(); //장바구니 상품 갯수
-		var firstProduct = $("#firstProduct").val(); //첫번째 상품 이름
-		//결제 창에서 보여줄 상품 이름을 세팅한다. (첫번째 상품... 외 몇건)
-		var cartName = "";
-		if(cartCount == 1 ) {
-			cartName = firstProduct.substr(0, 6) + "...";
-		} else {
-			cartName = firstProduct.substr(0, 6) + "... 외 " + (cartCount - 1) + "건";
-		}
-		var sum = $("#totalBillTd").html();
-		var totalBill = sum.replace(/[^0-9]/g, ""); //총 결제 금액
-		
-		//구매자 기본 정보
-		var userID = $("#userID").val(); //주문자 아이디
-		var email = $("#email").val(); //주문자 이메일
-		var name = $("#name").val(); //주문자 이름
-		var phone = $("#phone").val(); //주문자 휴대폰번호
-		var address1 = $("#address1").val(); //주문자 주소1
-		var address2 = $("#address2").val(); //주문자 주소2
-		var postnum = $("#postnum").val(); //주문자 우편번호
-		//alert(postnum);	
-		
-		//가맹점 식별코드 imp80230473  location.href = "/order/orderComplete";
+   //동의 항목 검사
+   if(!$('#personalInfoCheck').is(':checked')) {
+      alert("개인정보 수집·이용에 동의에 채크 해주세요");
+      $("#personalInfoCheck").focus();
+      return false;
+   }
+   if(!$('#orderOkCheckbox').is(':checked')) {
+      alert("구매 동의에 체크 해주세요.");
+      $("#orderOkCheckbox").focus();
+      return false;
+   }
+   
+   //클릭한 버튼에 따라 결제 수단 처리를 한다.
+   var payMethod = $("#payMethodInput").val(); //결제 수단 value 값
+   
+   if(payMethod == "1" ) {
+      //alert("계좌이체");
+   } else if(payMethod == "2" ) {
+   
+      //넘겨줄 정보를 준비한다.
+      //구매 상품 기본 정보
+      var cartCount = $("#cartCount").val(); //장바구니 상품 갯수
+      var firstProduct = $("#firstProduct").val(); //첫번째 상품 이름
+      //결제 창에서 보여줄 상품 이름을 세팅한다. (첫번째 상품... 외 몇건)
+      var cartName = "";
+      if(cartCount == 1 ) {
+         cartName = firstProduct.substr(0, 6) + "...";
+      } else {
+         cartName = firstProduct.substr(0, 6) + "... 외 " + (cartCount - 1) + "건";
+      }
+      var sum = $("#totalBillTd").html();
+      var totalBill = sum.replace(/[^0-9]/g, ""); //총 결제 금액
+      
+      //구매자 기본 정보
+      var userID = $("#userID").val(); //주문자 아이디
+      var email = $("#email").val(); //주문자 이메일
+      var name = $("#name").val(); //주문자 이름
+      var phone = $("#phone").val(); //주문자 휴대폰번호
+      var address1 = $("#address1").val(); //주문자 주소1
+      var address2 = $("#address2").val(); //주문자 주소2
+      var postnum = $("#postnum").val(); //주문자 우편번호
+      //alert(postnum);   
+      
+      IMP.init('imp80230473');
+      
+        //결제시 전달되는 정보
+      IMP.request_pay({
+               pg : 'html5_inicis.INIpayTest',
+                pay_method : 'card',
+                merchant_uid : 'merchant_' + new Date().getTime(),
+                name : cartName,                            /*상품명*/
+                amount : totalBill,                           /*상품 가격*/
+                buyer_email : email,                        /*구매자 이메일*/
+                buyer_name : name,
+                buyer_tel : phone,                           /*구매자 연락처*/
+                buyer_addr : address1 + ' ' + address2,            /*구매자 주소*/
+                buyer_postcode : postnum                     /*구매자 우편번호*/
+            }, function(rsp) {
+               var result = '';
+                if ( rsp.success ) {
+                   //alert("결제가 완료되었습니다.\n");
+                    //location.href="/order/orderComplete";
+                    result ='0';
+                    
+                    //주문 완료 테이블로 넘기기 위한 
+                    //alert(userID);
+                    
+                } else {
+                    alert("결제에 실패하였습니다. \n 에러 내용: " + rsp.error_msg);
+                    result ='1';
+                }
+                if(result=='0') {
+                   location.href= $.getContextPath()+"/Cart/Success";
+                }
+                alert(msg);
+            });
+            
+   } else if(payMethod == "3" ) { //카카오 페이일 때
+      
+      //넘겨줄 정보를 준비한다.
+      //구매 상품 기본 정보
+      var cartCount = $("#cartCount").val(); //장바구니 상품 갯수
+      var firstProduct = $("#firstProduct").val(); //첫번째 상품 이름
+      //결제 창에서 보여줄 상품 이름을 세팅한다. (첫번째 상품... 외 몇건)
+      var cartName = "";
+      if(cartCount == 1 ) {
+         cartName = firstProduct.substr(0, 6) + "...";
+      } else {
+         cartName = firstProduct.substr(0, 6) + "... 외 " + (cartCount - 1) + "건";
+      }
+      var sum = $("#totalBillTd").html();
+      var totalBill = sum.replace(/[^0-9]/g, ""); //총 결제 금액
+      
+      //구매자 기본 정보
+      var userID = $("#userID").val(); //주문자 아이디
+      var email = $("#email").val(); //주문자 이메일
+      var name = $("#name").val(); //주문자 이름
+      var phone = $("#phone").val(); //주문자 휴대폰번호
+      var address1 = $("#address1").val(); //주문자 주소1
+      var address2 = $("#address2").val(); //주문자 주소2
+      var postnum = $("#postnum").val(); //주문자 우편번호
+      //alert(postnum);   
+      
+      //가맹점 식별코드 imp80230473  location.href = "/order/orderComplete";
         IMP.init('imp80230473');
         IMP.request_pay({
-	        pg: 'kakaopay',
-	        pay_method : 'card',
-	        userID : userID + new Date().getTime(),
-	        name : 'ShoppingProject' , 				//결제창에서 보여질 이름
-	        amount : totalBill, 					//실제 결제되는 가격
-	          
-	        buyer_name : name,
-	        buyer_phone : phone,
-	        buyer_email : email,
-	        buyer_addr : address1 + " " + address2,
-	        buyer_postcode : postnum,
+           pg: 'kakaopay',
+           pay_method : 'card',
+           userID : userID + new Date().getTime(),
+           name : 'ShoppingProject' ,             //결제창에서 보여질 이름
+           amount : totalBill,                //실제 결제되는 가격
+             
+           buyer_name : name,
+           buyer_phone : phone,
+           buyer_email : email,
+           buyer_addr : address1 + " " + address2,
+           buyer_postcode : postnum,
           
         }, 
         function(rsp) {
-	        console.log(rsp);
-	        
-	        if ( rsp.success ) { //결제 성공시
-		        alert("결제가 완료되었습니다.");
-	       		
-	       		//수령인 정보, 주문 정보들을 준비한다
-	       		let formData = new FormData(); 							//데이터를 담아줄 FormData
-	       		var order_name = $("#deliveryName").val(); 				//수령인 이름
-	       		var address1 = $("#deliveryAddress1").val(); 			//배송지1
-	       		var address2 = $("#deliveryAddress2").val(); 			//배송지2
-	       		var postnum = $("#deliveryPostnum").val();			 	//우편번호
-	       		var phone = $("#deliveryPhone").val(); 					//전화번호
-	       		var order_memo = $("#orderMemo").val() //배송메모
-	       		
-	       		var checkbox = document.querySelectorAll("input[name='cartNum']:checked"); //체크된 장바구니 번호 input
-				var cartNumList = []; 														//넘겨줄 장바구니 배열
-				for(let i = 0; i < checkbox.length; i++) {
-					//alert(checkbox[i].value);
-					cartNumList[i] = checkbox[i].value;										//배열 형태로 담아준다.
-				}
-				//alert(cartNumList);
-				
-				
-				//데이터들을 formData에 담아준다.
-				formData.append("cartNumberList", cartNumList); 			//장바구니 번호 배열
-	       		formData.append("userID", userID); 							//회원 아이디
-	       		formData.append("order_name", order_name); 					//수령인 이름
-	       		formData.append("address1", address1);				 		//수령인 주소1
-	       		formData.append("address2", address2); 						//수령인 주소2
-	       		formData.append("postnum", postnum); 						//수령인 우편번호
-	       		formData.append("order_phone", phone); 						//수령인 휴대폰 번호
-	       		formData.append("order_memo", order_memo); 					//수령인 배송 메모
-	       		formData.append("paymethod", "카카오페이");					//결제수단
-	       		formData.append("totalbill", totalBill);					//총주문금액
-	       		
-	       		alert(formData.get("order_name"));
-	       		//alert(formData.get("cartNumberList"));
-	       		//alert(formData.get("userID"));
-	       		//alert(formData.get("address1"));
-	       		//alert(formData.get("address2"));
-	       		//alert(formData.get("postnum"));
-	       		//alert(formData.get("order_phone"));
-	       		//alert(formData.get("order_memo"));
-	       		
-	       		//ajax로 formData를 넘겨준다.
-	       		$.ajax({
-	       			type: "post",
-	       			url: "/order/orderComplete",
-	       			processData: false,
-					contentType: false,
-	       			data: formData,
-	       			success: function(data){
-						alert("주문 결제 완료. 주문번호: " + data);
-						location.href="/order/orderCompleteForm?order_num=" + data;
-																			
-					},
-	       			error: function(data, status, req) {
-	       				alert(data);
-	       				alert(status);
-	       				alert(req);
-						alert("결제 완료 후 주문 완료 등록에 실패했습니다.");
-					}
-					
-	       		}); //End - 결제 후 ajax로 데이터 등록
-	       		
+           console.log(rsp);
+           
+           if ( rsp.success ) { //결제 성공시
+              alert("결제가 완료되었습니다.");
+                
+                //수령인 정보, 주문 정보들을 준비한다
+                let formData = new FormData();                      //데이터를 담아줄 FormData
+                var order_name = $("#deliveryName").val();             //수령인 이름
+                var address1 = $("#deliveryAddress1").val();          //배송지1
+                var address2 = $("#deliveryAddress2").val();          //배송지2
+                var postnum = $("#deliveryPostnum").val();             //우편번호
+                var phone = $("#deliveryPhone").val();                //전화번호
+                var order_memo = $("#orderMemo").val() //배송메모
+                
+                var checkbox = document.querySelectorAll("input[name='cartNum']:checked"); //체크된 장바구니 번호 input
+            var cartNumList = [];                                           //넘겨줄 장바구니 배열
+            for(let i = 0; i < checkbox.length; i++) {
+               //alert(checkbox[i].value);
+               cartNumList[i] = checkbox[i].value;                              //배열 형태로 담아준다.
+            }
+            //alert(cartNumList);
+            
+            
+            //데이터들을 formData에 담아준다.
+            formData.append("cartNumberList", cartNumList);          //장바구니 번호 배열
+                formData.append("userID", userID);                      //회원 아이디
+                formData.append("order_name", order_name);                //수령인 이름
+                formData.append("address1", address1);                   //수령인 주소1
+                formData.append("address2", address2);                   //수령인 주소2
+                formData.append("postnum", postnum);                   //수령인 우편번호
+                formData.append("order_phone", phone);                   //수령인 휴대폰 번호
+                formData.append("order_memo", order_memo);                //수령인 배송 메모
+                formData.append("paymethod", "카카오페이");               //결제수단
+                formData.append("totalbill", totalBill);               //총주문금액
+                
+                //alert(formData.get("cartNumberList"));
+                //alert(formData.get("userID"));
+                //alert(formData.get("address1"));
+                //alert(formData.get("address2"));
+                //alert(formData.get("postnum"));
+                //alert(formData.get("order_phone"));
+                //alert(formData.get("order_memo"));
+                
+                //ajax로 formData를 넘겨준다.
+                $.ajax({
+                   type: "post",
+                   url: "/order/orderComplete",
+                   processData: false,
+               contentType: false,
+                   data: formData,
+                   success: function(data){
+                  alert("주문 결제 완료. 주문번호: " + data);
+                  location.href="/order/orderCompleteForm?order_num=" + data;
+                                                         
+               },
+                   error: function(data, status, req) {
+                      alert(data);
+                      alert(status);
+                      alert(req);
+                  alert("결제 완료 후 주문 완료 등록에 실패했습니다.");
+               }
+               
+                }); //End - 결제 후 ajax로 데이터 등록
+                
             } else {
-	            var msg = '결제에 실패하였습니다.';
-	            msg += '에러내용 : ' + rsp.error_msg;
-	            alert(msg);
-       		}
-       		
-   		}); //End - IMP카카오페이 결제
+               var msg = '결제에 실패하였습니다.';
+               msg += '에러내용 : ' + rsp.error_msg;
+               alert(msg);
+             }
+             
+         }); //End - IMP카카오페이 결제
       
-	} //End - 구매 방법 카카오페이일 때	
-	
+   } //End - 구매 방법 카카오페이일 때   
+   
 }
 
 

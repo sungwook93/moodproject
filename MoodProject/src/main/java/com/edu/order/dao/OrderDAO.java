@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.edu.order.dto.CartDTO;
 import com.edu.order.dto.OrderDTO;
+import com.edu.product.dto.ProductDTO;
 
 
 public interface OrderDAO {
@@ -57,5 +58,7 @@ public interface OrderDAO {
 	//주문완료영역 controller에서 바로타고 온부분
 	//회원 아이디에 해당하는 모든 t_orderProduct 데이터 가져오기
 	public List<OrderDTO> getOrderDetailById(String userID) throws Exception;
+
+
 
 }

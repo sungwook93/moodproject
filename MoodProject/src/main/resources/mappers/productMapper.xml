@@ -130,5 +130,7 @@
 		images03 = #{images03}, images04 = #{images04}
 		where product_code = #{product_code}
 	</update>
+	
+	
 
 </mapper>

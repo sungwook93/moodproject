@@ -107,7 +107,7 @@
 						<input type="button" id="cartbutton" onclick="fn_cart()" value="장바구니">
 					</div>
 					<div >
-						<input type="button"  id="orderbutton" value="주문하기">
+						<input type="button"  id="orderbutton" onClick="fn_order();" value="주문하기">
 					</div>
 				</div>
 			</div>

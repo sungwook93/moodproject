@@ -2,6 +2,7 @@ package com.edu.order.controller;
 
 import java.util.ArrayList;		
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.order.dto.CartDTO;
 import com.edu.order.service.OrderService;
+import com.edu.product.dto.ProductDTO;
 import com.edu.order.dao.OrderDAO;
 import com.edu.order.dto.OrderDTO;
 
@@ -35,6 +37,7 @@ public class OrderController {
 	@Inject
 	OrderDAO orderDAO;
 	
+	
 	//장바구니화면 이동하기
 	@RequestMapping(value="/cartForm.do", method=RequestMethod.GET)
 	public ModelAndView cartForm(String userID) throws Exception {
@@ -49,6 +52,7 @@ public class OrderController {
 		mav.setViewName("/order/cartForm");
 		return mav;
 	}
+	
 	
 	//장바구니에 상품 담기
 	@ResponseBody
@@ -65,7 +69,9 @@ public class OrderController {
 			//해당상품이 장바구니에 이미 들어있는지 확인한다.
 			if(orderService.checkcart(cartDTO) == 0) {
 				//상품을 장바구니에 넣는다
+				
 				int result = orderService.addCart(cartDTO);
+				
 				return result;
 			} else { // 장바구니에 이미 해당상품이 있음
 				return -2;
@@ -73,6 +79,9 @@ public class OrderController {
 		}
 	
 	}
+	
+	
+	
 	
 	//장바구니 수량 변경
 	@ResponseBody
@@ -125,6 +134,25 @@ public class OrderController {
 		return mav;
 	}
 	
+	//상품주문하기
+	@RequestMapping(value="/bills", method=RequestMethod.GET)
+	public ModelAndView bills(CartDTO cartDTO) throws Exception {
+		System.out.println("OrderController의 상품주문하기" + cartDTO);
+		
+		//모델을 준비한다.
+		ModelAndView mav =new ModelAndView();
+		
+		
+		//리스트만든다
+		List<CartDTO> cartList = new ArrayList<CartDTO>();
+		cartList.add(0, cartDTO);
+		
+		mav.addObject("orderSum", cartDTO.getProduct_amount()*cartDTO.getProduct_price());
+		
+		mav.addObject("cartList", cartList);
+		mav.setViewName("/order/bills");
+		return mav;
+	}
 	
 	//장바구니 상품 삭제하기
 	@ResponseBody

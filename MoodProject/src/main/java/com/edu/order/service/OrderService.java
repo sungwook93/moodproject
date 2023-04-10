@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.edu.order.dto.CartDTO;
 import com.edu.order.dto.OrderDTO;
+import com.edu.product.dto.ProductDTO;
 
 public interface OrderService {
 	//장바구니에 담은 상품 보여주기
@@ -43,5 +44,6 @@ public interface OrderService {
 
 	//상품 디테일 리스트에 해당하는 정보로 최종 금액 계산하기
 	public int orderListSum(List<OrderDTO> orderDetailList) throws Exception;
+
 
 }

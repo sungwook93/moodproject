@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.edu.member.dao.MemberDAOImpl;
 import com.edu.order.dto.CartDTO;
 import com.edu.order.dto.OrderDTO;
+import com.edu.product.dto.ProductDTO;
 
 @Repository("orderDAO")
 public class OrderDAOImpl implements OrderDAO {
@@ -142,7 +143,6 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		return sqlSession.selectOne(Namespace + ".getOrderDTO", order_num);
 	}
-	
 
 	
 }

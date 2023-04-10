@@ -461,7 +461,7 @@ function daumZipCode() {
  	}
  }
 
-  //최종 결제 버튼 클릭시
+//최종 결제 버튼 클릭시
 function fn_orderComplete() {
 
    //동의 항목 검사

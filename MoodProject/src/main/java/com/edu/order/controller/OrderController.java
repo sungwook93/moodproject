@@ -137,6 +137,7 @@ public class OrderController {
 		return mav;
 	}
 	
+	
 	//상품주문하기
 	@RequestMapping(value="/bills", method=RequestMethod.GET)
 	public ModelAndView bills(CartDTO cartDTO) throws Exception {
@@ -186,12 +187,9 @@ public class OrderController {
 			//orderDTO에 order_num을 계산해서 세팅한다.
 			orderDTO.setOrder_num(orderService.getOrder_num());
 			System.out.println("주문번호: " + orderDTO.getOrder_num());
-			
-			
-			
-			
-			//orderDTO로 주문 완료 테이블에 데이터를 등록한다.
-			if(orderService.addOrder(cartNumberList, orderDTO) == cartNumberList.length) { //성공시
+	
+				//orderDTO로 주문 완료 테이블에 데이터를 등록한다.
+				if(orderService.addOrder(cartNumberList, orderDTO) == cartNumberList.length) { //성공시
 				
 				//아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
 				HttpSession session = request.getSession();

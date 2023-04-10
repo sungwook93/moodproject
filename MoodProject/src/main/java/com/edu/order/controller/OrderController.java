@@ -157,6 +157,7 @@ public class OrderController {
 		return mav;
 	}
 	
+	
 	//장바구니 상품 삭제하기
 	@ResponseBody
 	@RequestMapping(value="/cartdelete", method=RequestMethod.POST)
@@ -175,6 +176,7 @@ public class OrderController {
 			return "N";
 		}
 	}
+	
 		//주문 완료 처리후 주문 번호 리턴 (t_cart 데이터 +알파 를 t_order 테이블로 옮기기)
 		@ResponseBody
 		@RequestMapping(value="/orderComplete", method=RequestMethod.POST)
@@ -184,6 +186,9 @@ public class OrderController {
 			//orderDTO에 order_num을 계산해서 세팅한다.
 			orderDTO.setOrder_num(orderService.getOrder_num());
 			System.out.println("주문번호: " + orderDTO.getOrder_num());
+			
+			
+			
 			
 			//orderDTO로 주문 완료 테이블에 데이터를 등록한다.
 			if(orderService.addOrder(cartNumberList, orderDTO) == cartNumberList.length) { //성공시
@@ -198,10 +203,10 @@ public class OrderController {
 				
 			} else {
 				return 0;
-			}
-			
-			
+			}	
 		}
+		
+		
 		
 		//주문 성공 페이지 이동하기
 		@RequestMapping(value="/orderCompleteForm", method=RequestMethod.GET)
@@ -225,6 +230,7 @@ public class OrderController {
 			
 			return mav;
 		}
+		
 		
 		//주문 완료 상세 페이지 이동하기
 		@RequestMapping(value="/orderCompleteDetail", method=RequestMethod.GET)

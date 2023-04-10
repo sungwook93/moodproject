@@ -18,6 +18,7 @@ import com.edu.common.util.SearchCriteria;
 import com.edu.order.dto.CartDTO;
 import com.edu.product.dto.ProductDTO;
 import com.edu.review.dao.ReviewDAO;
+import com.edu.review.dto.ReviewCommentDTO;
 import com.edu.review.dto.ReviewDTO;
 import com.edu.review.service.ReviewService;
 
@@ -121,6 +122,12 @@ public class ReviewController {
 		
 		mav.addObject(reviewService.reviewDetail(review_bno));
 		
+		// 리뷰 상세페이지 보여줄 때, 댓글이 있으면 댓글도 보여주기  
+		if(reviewService.commentListCount(review_bno) != 0) {
+			mav.addObject("commentList", reviewService.commentList(review_bno));
+		}
+		// 리뷰 리스트 제목에 댓글 수 표시
+		mav.addObject(reviewService.updateReplyCount(review_bno)); 
 		
 		return mav;
 		
@@ -163,22 +170,78 @@ public class ReviewController {
 	//-----------------------------------------------------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping(value = "reviewDelete", method = RequestMethod.POST)
-	public String reviewDelete(int review_bno) throws Exception {
+	public String reviewDelete(int review_bno, int[] reply_bno) throws Exception {
 		
-		if(reviewService.reviewDelete(review_bno) == 1) {
+		int count = 0;
+		
+		if(reply_bno != null) {
+			for(int i = 0; i < reply_bno.length; i++) {
+				count += reviewService.replyDelete(reply_bno[i]);
+			}
+			if(count == reply_bno.length) { //댓글을 모두 삭제했으면
+				//리뷰 삭제한다.
+				if(reviewService.reviewDelete(review_bno) == 1) {
+					return "Y";
+				} else {
+					return "N";
+				}
+			} else {
+				return "N";
+			}
+		}else {
+			if(reviewService.reviewDelete(review_bno) == 1) {
+				return "Y";
+			}else {
+				return "N";
+			}
+		}
+		
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 리뷰에 해당하는 댓글 등록하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "reviewCommentRegister", method = RequestMethod.POST)
+	public String reviewCommentRegister(ReviewCommentDTO reviewCommentDTO) throws Exception{
+		
+		if(reviewService.reviewCommentRegister(reviewCommentDTO) == 1) {
 			return "Y";
 		}else {
 			return "N";
 		}
-		
-		
+	
 	}
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 삭제하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public String replyDelete(int reply_bno, int review_bno) throws Exception {
+			
+		if(reviewService.replyDelete(reply_bno) == 1) {
+				return "Y";
+			} else {
+				return "N";
+			}
+			
+	} 
 	
-	
-	
-	
-	
+	//-----------------------------------------------------------------------------------------------------------
+	// 댓글 번호에 해당하는 댓글 수정하기
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	public String replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception {
+							
+		if(reviewService.replyUpdate(reviewCommentDTO) == 1) {
+				return "Y";
+			} else {
+				return "N";
+			}
+			
+	} 
 	
 	
 }

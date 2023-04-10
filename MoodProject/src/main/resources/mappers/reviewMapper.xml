@@ -26,7 +26,7 @@
 		<![CDATA[
 			SELECT *
 			FROM (
-			SELECT review_bno, review_subject, review_content, userID, product_type, product_name, review_date, review_star, ROW_NUMBER() OVER(ORDER BY review_bno DESC) AS rNUM
+			SELECT review_bno, review_subject, review_content, userID, product_type, product_name, reply_count, review_date, review_star, ROW_NUMBER() OVER(ORDER BY review_bno DESC) AS rNUM
 			FROM t_review WHERE 1=1
 			]]>
 			<include refid="searchMySQL"/>
@@ -67,11 +67,20 @@
 	</select>
 	
 	<!-- 타입에 따른 상품명 찾기 -->
+	
 	<select id="searchname" resultType="com.edu.product.dto.ProductDTO" parameterType = "String">
 		select product_name
 		from t_product
 		where product_type = #{product_type}
 	</select>
+	
+	<!-- 타입에 따른 상품명 찾기2 -->
+	<select id="searchname2" resultType="com.edu.product.dto.ProductDTO" parameterType = "String">
+		select product_name
+		from t_product
+		where product_type = #{product_type}
+	</select>
+	
 	
 	<!-- 리뷰 상세페이지 보여주기  -->
 	<select id = "detail" parameterType = "int" resultType = "com.edu.review.dto.ReviewDTO">
@@ -92,10 +101,53 @@
 		<![CDATA[
 			delete from t_review where review_bno = #{review_bno}
 		]]>
-	</select>	
+	</select>
 	
 	
+	<!-- 댓글 관련 시작 -->
 	
+	<!-- 리뷰에 해당하는 댓글 등록하기 -->
+	<insert id = "reviewCommentRegister" parameterType = "com.edu.review.dto.ReviewCommentDTO">
+		<![CDATA[
+			insert into t_reviewcomment (reply_bno, review_bno, userID, reply_content, reply_regDate)
+			select ifnull(max(reply_bno),0) + 1, #{review_bno}, #{userID}, #{reply_content}, now() from t_reviewcomment;
+		]]>
+	</insert>
+	
+	<!--  리뷰에 해당하는 댓글 수 구하기 -->
+	<select id = "commentListCount" parameterType = "Integer" resultType = "Integer">
+		<![CDATA[
+			select count(*) from t_reviewcomment where review_bno = #{review_bno};
+		]]>
+	</select>
+	
+	<!-- 리뷰 댓글 목록 가져오기 -->
+	<select id = "commentList" parameterType = "Integer" resultType = "com.edu.review.dto.ReviewCommentDTO">
+		<![CDATA[
+			select * from t_reviewcomment where review_bno = #{review_bno} order by reply_bno DESC;
+		]]>
+	</select>
+	
+	<!-- 게시판 리스트 제목에 댓글 수 표시 -->
+	<update id = "updateReplyCount" parameterType = "int">
+		update t_review r
+		set r.reply_count = (select count(reply_bno) from t_reviewcomment where review_bno = #{review_bno})
+		where r.review_bno = #{review_bno}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id = "replyDelete" parameterType = "int">
+		<![CDATA[
+			delete from t_reviewcomment where reply_bno = #{reply_bno};
+		]]>
+	</delete>
+	
+	<!-- 댓글 수정하기 -->
+	<update id = "replyUpdate" parameterType = "com.edu.review.dto.ReviewCommentDTO">
+		<![CDATA[
+			update t_reviewcomment set reply_content = #{reply_content}, userID = #{userID} where review_bno = #{review_bno} and reply_bno =#{reply_bno};
+		]]>
+	</update>
 	
 	
 	

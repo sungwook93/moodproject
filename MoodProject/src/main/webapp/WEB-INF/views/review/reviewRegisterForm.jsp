@@ -38,8 +38,15 @@
 							<input type="text" class="form-control" id="review_subject" name="review_subject" maxlength="200" placeholder="제목 입력"/>
 						</div>
 						<label class="col-sm-1 control-label">리뷰 별점</label>
-						<div class="col-sm-3">
-							<input type="number" class="form-control" id="review_star" name="review_star" min = "1" max="5" placeholder="리뷰 별점 입력" style = "width:160px;"/>
+						<div class="col-sm-2">
+							<select id="review_star" class="form-control">
+								<option disabled selected>리뷰 별점</option>
+								<option value="1">★</option>
+								<option value="2">★★</option>
+								<option value="3">★★★</option>
+								<option value="4">★★★★</option>
+								<option value="5">★★★★★</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

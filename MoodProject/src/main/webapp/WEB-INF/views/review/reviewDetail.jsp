@@ -62,6 +62,7 @@
 								</c:otherwise>
 							</c:choose>
 						</div>
+						
 						<label class="col-sm-1 control-label">상품 목록</label>
 						<div class="col-sm-3">	
 							<input type="text" class="form-control" id="product_type" name="product_type" value = "${reviewDTO.product_type}" readonly/>
@@ -98,7 +99,7 @@
 				<div>
 				<input type="hidden" id="review_bno" value="${reviewDTO.review_bno}">
 				</div>
-				
+				<hr/>
 				
 				<!-- 댓글창 -->
 				<table id="boardDetailCommentList">
@@ -118,19 +119,19 @@
 												<td>
 													<!-- 관리자이면서 자기 글일 경우 삭제 버튼 가능  -->
 													
-													<c:if test="${member1.grade == 7 or member1.userID == comment.userID }">
+													<c:if test="${member1.grade == 7 or member1.userID == reviewDTO.userID }">
 														${comment.userID}&nbsp; :&nbsp;&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #c1c1c1; border: none; width: 600px;" readonly/>
 														<a id="commentUpdateB${status.count}" style = "display:none; width: 30px;" onclick="fn_updateComment(${status.count});"> 등록</a>
 														<a id="commentUpdateA${status.count}" onclick="fn_updateOpen(${status.count});"> 수정</a>
 														<a> | </a>
-														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> 삭제</a>
+														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${reviewDTO.review_bno});"> 삭제</a>
 													</c:if>
 													<!-- 글쓴이면 자기글 수정 삭제 가능  -->
-													<c:if test="${member1.grade != 7 and member1.userID != comment.userID}">
+													<c:if test="${member1.grade != 7 and member1.userID != reviewDTO.userID}">
 														${comment.userID}&nbsp; :&nbsp;&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #c1c1c1; border: none; width: 600px;" readonly/>
 													</c:if>
 													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
-													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
+													<input type="hidden" id="review_bno" value="${comment.review_bno}"/>
 													<input type="hidden" id="userID1" value="${member1.userID}"/>
 													<input type="hidden" id="statuscount" value="${status.count}"/>
 												</td>
@@ -162,7 +163,7 @@
 					</tr>
 					<!-- 댓글 작성 부분(관리자만 오픈됨) -->
 					<c:choose>
-						<c:when test="${member1.grade == 7  or boardDTO.userID == member1.userID}">
+						<c:when test="${member1.grade == 7  or reviewDTO.userID == member1.userID}">
 							<tr>
 								<td class="comment15 commentLabel">
 									<br/>
@@ -176,7 +177,7 @@
 								</td>
 								<td class="commentButton">
 									<br/>
-									<button style="position:relative; left:25%; background-color: white; color: black; border: none; border-radius:5px; padding:4px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${boardDTO.qna_bno});">등 록</button>
+									<button style="position:relative; left:25%; background-color: white; color: black; border: none; border-radius:5px; padding:4px; font-size:1.0em;" type="button" class="btn-light" type="button" onclick="fn_commentRegister(${reviewDTO.review_bno});">등 록</button>
 								</td>
 							</tr>
 							<input type="hidden" id="userID1" value="${member1.userID}"/>
@@ -189,15 +190,7 @@
 			<jsp:include page="../common/footer.jsp" flush="false"/>
 		
 		</body>
-		<script>
-		$('#qna_content').summernote({
-			disableResizeEditor: true,
-			height: 300, 
-		});
-		
-		$('#qna_content').summernote('disable');
-		
-		</script>
+
 		<style>
 		   * {
 		      font-family: 'Sunflower','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';

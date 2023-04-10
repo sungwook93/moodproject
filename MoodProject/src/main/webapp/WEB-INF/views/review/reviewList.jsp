@@ -62,7 +62,10 @@
 								<tr>
 									<td class="reviewNo">${review.review_bno}</td> 
 									<td class="reviewTitle">${review.product_type}&nbsp;&nbsp;/&nbsp;&nbsp;${review.product_name}</td>
-									<td class="reviewTitle">${review.review_subject}</td>
+									<td>
+									<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${review.review_subject}
+										<small><b>[&nbsp;${review.reply_count}&nbsp;]</b></small></div>
+									</td>
 									<td class="reviewTitle"><a href="/review/reviewDetail?review_bno=${review.review_bno}" style = "color: black;">${review.review_content}</a></td>
 									<td class="reviewUser">${review.userID}</td>
 									<td class="reviewDate"><fmt:formatDate value="${review.review_date}" pattern="yyyy년 MM월 dd일"/></td>
@@ -71,8 +74,8 @@
 							</c:forEach>
 						</tbody>
 					</table>
-			</div>
 			
+
 					<!-- 검색종류  -->
 					<div id="boardSearchBox">
 						<div>
@@ -111,14 +114,14 @@
 							</c:if>
 						</ul>
 					</div>
-				</div>
-			</div>
+		
 			
 			<!-- 스크립트에서 사용할 hidden 요소 -->
 			<form id="formList" action="/board/boardList?page=1" method="get">
 				<input type='hidden' name='searchType'	value='${searchType}'/>
 				<input type="hidden" name="keyword"		value="${keyword}"/>
-			</form>			
+			</form>		
+		</div>		
 			<!-- 하단 메뉴바 -->
 			<jsp:include page = "../common/footer.jsp" flush = "false"/>
 		</body>	

@@ -12,6 +12,7 @@ public class ReviewDTO {
 	private String review_content;
 	private Date review_date;
 	private int review_star;
+	private int reply_count;
 	
 	public int getReview_bno() {
 		return review_bno;
@@ -61,14 +62,22 @@ public class ReviewDTO {
 	public void setReview_star(int review_star) {
 		this.review_star = review_star;
 	}
+	public int getReply_count() {
+		return reply_count;
+	}
+	public void setReply_count(int reply_count) {
+		this.reply_count = reply_count;
+	}
 	
 	@Override
 	public String toString() {
 		return "ReviewDTO [review_bno=" + review_bno + ", userID=" + userID + ", product_type=" + product_type
 				+ ", product_name=" + product_name + ", review_subject=" + review_subject + ", review_content="
-				+ review_content + ", review_date=" + review_date + ", review_star=" + review_star + "]";
+				+ review_content + ", review_date=" + review_date + ", review_star=" + review_star + ", reply_count="
+				+ reply_count + "]";
 	}
-
+	
+	
 	
 
 	

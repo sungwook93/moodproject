@@ -1,6 +1,6 @@
 package com.edu.review.dao;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.inject.Inject;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.edu.common.util.SearchCriteria;
 import com.edu.product.dto.ProductDTO;
+import com.edu.review.dto.ReviewCommentDTO;
 import com.edu.review.dto.ReviewDTO;
 
 @Repository
@@ -65,13 +66,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectList(Namespace + ".searchname", produt_type);
 	}
 	
+	
 	// 리뷰 상세페이지 보여주기 
 	@Override
 	public ReviewDTO reviewDetail(int review_bno) throws Exception {
 		
 		return sqlSession.selectOne(Namespace + ".detail", review_bno);
 	}
-	
+
 	// 리뷰 수정	
 	@Override
 	public int reviewUpdate(ReviewDTO reviewDTO) throws Exception {
@@ -85,6 +87,51 @@ public class ReviewDAOImpl implements ReviewDAO {
 		
 		return sqlSession.delete(Namespace + ".deleteReview", review_bno);
 	}
+
+	// 리뷰에 해당하는 댓글 등록하기
+	@Override
+	public int reviewCommentRegister(ReviewCommentDTO reviewCommentDTO) throws Exception {
+		
+		return sqlSession.insert(Namespace + ".reviewCommentRegister", reviewCommentDTO);
+	}
+
+	// 게시글 번호에 해당하는 댓글 수 구하기
+	@Override
+	public int commentListCount(int review_bno) throws Exception {
+		
+		return sqlSession.selectOne(Namespace + ".commentListCount", review_bno);
+	}
+
+	@Override
+	public List<ReviewCommentDTO> commentList(int review_bno) throws Exception {
+		
+		return sqlSession.selectList(Namespace + ".commentList", review_bno);
+	}
+	
+	// 리뷰 리스트 제목에 댓글 수 표시
+	@Override
+	public int updateReplyCount(int review_bno) throws Exception {
+		
+		return sqlSession.update(Namespace + ".updateReplyCount", review_bno);
+	}
+	
+	// 댓글 번호에 해당하는 댓글 삭제하기
+	@Override
+	public int replyDelete(int reply_bno) throws Exception {
+		
+		return sqlSession.delete(Namespace + ".replyDelete", reply_bno);
+	}
+	
+	// 댓글 번호에 해당하는 댓글 수정하기
+	@Override
+	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception {
+		
+		return sqlSession.update(Namespace + ".replyUpdate", reviewCommentDTO);
+	}
+
+
+	
+
 	
 	
 	

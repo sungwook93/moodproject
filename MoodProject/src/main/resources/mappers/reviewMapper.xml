@@ -66,17 +66,35 @@
 		]]>
 	</select>
 	
+	<!-- 타입에 따른 상품명 찾기 -->
 	<select id="searchname" resultType="com.edu.product.dto.ProductDTO" parameterType = "String">
 		select product_name
 		from t_product
 		where product_type = #{product_type}
 	</select>
 	
+	<!-- 리뷰 상세페이지 보여주기  -->
 	<select id = "detail" parameterType = "int" resultType = "com.edu.review.dto.ReviewDTO">
 		<![CDATA[
 			select * from t_review where review_bno = #{review_bno};
 		]]>
 	</select>
+	
+	<!-- 리뷰 수정 -->
+	<select id = "updateReview" parameterType = "com.edu.review.dto.ReviewDTO">
+		<![CDATA[
+			update t_review set review_subject = #{review_subject}, userID = #{userID}, review_content = #{review_content}, product_type = #{product_type}, product_name = #{product_name}, review_star = #{review_star} where review_bno = #{review_bno};
+		]]>
+	</select>
+	
+	<!-- 리뷰 삭제 -->
+	<select id = "deleteReview" parameterType = "int">
+		<![CDATA[
+			delete from t_review where review_bno = #{review_bno}
+		]]>
+	</select>	
+	
+	
 	
 	
 	

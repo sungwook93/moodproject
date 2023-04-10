@@ -126,5 +126,59 @@ public class ReviewController {
 		
 	}
 	
+	//-----------------------------------------------------------------------------------------------------------
+	// 리뷰 수정화면 불러오기
+	//-----------------------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/reviewUpdateForm", method = RequestMethod.GET)
+	public ModelAndView reviewUpdateForm(int review_bno) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		ReviewDTO reviewDTO = reviewService.reviewDetail(review_bno);
+		mav.addObject("reviewDTO", reviewDTO);
+		
+		mav.setViewName("/review/reviewUpdateForm");
+		
+		return mav;
+		
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 리뷰 수정
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "reviewUpdate", method = RequestMethod.POST)
+	public String reviewUpdate(ReviewDTO reviewDTO) throws Exception {
+		
+		if(reviewService.reviewUpdate(reviewDTO) == 1) {
+			return "Y";
+		}else {
+			return "N";
+		}
+		
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 리뷰 삭제
+	//-----------------------------------------------------------------------------------------------------------
+	@ResponseBody
+	@RequestMapping(value = "reviewDelete", method = RequestMethod.POST)
+	public String reviewDelete(int review_bno) throws Exception {
+		
+		if(reviewService.reviewDelete(review_bno) == 1) {
+			return "Y";
+		}else {
+			return "N";
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

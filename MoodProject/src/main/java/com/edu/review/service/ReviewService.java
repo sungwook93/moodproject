@@ -27,4 +27,11 @@ public interface ReviewService {
 	// 리뷰 상세페이지 보여주기 
 	public ReviewDTO reviewDetail(int review_bno) throws Exception;
 	
+	// 리뷰 수정	
+	public int reviewUpdate(ReviewDTO reviewDTO) throws Exception;
+	
+	// 리뷰 삭제
+	public int reviewDelete(int review_bno) throws Exception;
+	
+	
 }

@@ -72,7 +72,19 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectOne(Namespace + ".detail", review_bno);
 	}
 	
+	// 리뷰 수정	
+	@Override
+	public int reviewUpdate(ReviewDTO reviewDTO) throws Exception {
+		
+		return sqlSession.update(Namespace + ".updateReview", reviewDTO);
+	}
 
+	// 리뷰 삭제
+	@Override
+	public int reviewDelete(int review_bno) throws Exception {
+		
+		return sqlSession.delete(Namespace + ".deleteReview", review_bno);
+	}
 	
 	
 	

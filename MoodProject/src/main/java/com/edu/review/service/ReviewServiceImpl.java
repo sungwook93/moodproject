@@ -62,7 +62,19 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.reviewDetail(review_bno);
 	}
 	
+	// 리뷰 수정	
+	@Override
+	public int reviewUpdate(ReviewDTO reviewDTO) throws Exception {
+		
+		return reviewDAO.reviewUpdate(reviewDTO);
+	}
 
+	// 리뷰 삭제
+	@Override
+	public int reviewDelete(int review_bno) throws Exception {
+		
+		return reviewDAO.reviewDelete(review_bno);
+	}
 	
 
 

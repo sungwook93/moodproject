@@ -25,25 +25,35 @@
 			<jsp:include page="../common/topMenu.jsp" flush="false"/>
 			<div id="mainTitle">
 				<hr/>
-				<h1>주문/결제 완료</h1>
+				<h1 style="position:relative; left:27%; top:100px;">주문/결제 완료</h1>
 			</div>
 			
 			<div class = "container">
 				<div class="row" id="orderDetail">
 				<!-- 회원 배송 정보 -->
 					<div class="col-sm-8" id="deliveryDetail">
-						<table>
+						<table id="deliveryDetailtable">
 							<tr>
 								<th colspan="3">
 									<h4><strong>주문자 정보</strong></h4>
 								</th>
 							</tr>
 							<tr>
-								<td>주문 번호</td>
-								<td colspan="2">${orderDTO.order_num}</td>
+								<td>
+								</td>
+								<td>
+									<div>
+										<p>주문 번호</p>	
+									</div>
+								</td>
+								<td>
+									<div id="detailviewdiv">
+										<p style="position:relative; top:1px; left:10px;">${orderDTO.order_num}</p>	
+									</div>
+								</td>
 							</tr>
 							<tr>
-								<td>배송 정보</td>
+								<td></td>
 								<td>
 									<div>
 										<p>수령인 이름</p>
@@ -51,11 +61,13 @@
 										<p>주소</p>
 										<p>&nbsp;</p>
 										<p>&nbsp;</p>
-										<p>배송 메모</p>
+										<c:if test="${not empty orderDTO.order_memo}">
+											<p>배송 메모</p>
+										</c:if>
 									</div>
 								</td>
 								<td>
-									<div>
+									<div id="detailviewdiv">
 										<p>${orderDTO.order_name}</p>
 										<p>${orderDTO.order_phone}</p>
 										<p>${orderDTO.postnum}</p>
@@ -68,7 +80,7 @@
 								</td>
 							</tr>	
 							<tr>
-								<td>결제 정보</td>
+								<td></td>
 								<td>
 									<div>
 										<p>회원 아이디</p>
@@ -78,7 +90,7 @@
 									</div>
 								</td>
 								<td>
-									<div>
+									<div id="userorderinfoview">
 										<p>${member1.userID}</p>
 										<p>${orderDTO.paymethod}</p>
 										<p><fmt:formatDate value="${orderDTO.order_date}" pattern="yyyy.MM.dd  a hh: mm: ss"/></p>
@@ -126,6 +138,7 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						
 						<table id="orderSumaryTable">
 							<tr class="orderSumaryTr">
 								<td>총 상품 금액</td>
@@ -133,14 +146,14 @@
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 할인 금액</td>
-								<td class="orderPrice" id="discount"><fmt:formatNumber value="111" pattern="#,###원"/></td>
+								<td class="orderPrice" id="discount"><fmt:formatNumber value="${orderSum /10}" pattern="#,###원"/></td>
 							</tr>
 							<tr class="orderSumaryTr">
 								<td>총 배송비</td>
 								<td class="orderPrice" id="deliveryFee">
 									<c:choose>
 										<c:when test="${orderSum > 50000}">
-											<fmt:formatNumber value="0" pattern="#,###원"/>
+											<fmt:formatNumber value="5000" pattern="#,###원"/>
 										</c:when>
 										<c:otherwise>
 											<fmt:formatNumber value="3000" pattern="#,###원"/>
@@ -150,7 +163,22 @@
 							</tr>
 							<tr class="orderSumaryTr" id="totalBill">
 								<td>결제 금액</td>
-								<td class="orderPrice" id="totalBillTd"></td>
+								<td class="orderPrice" id="totalBillTd">
+									<c:choose>
+										<c:when test="${orderSum > 50000}">
+											<fmt:formatNumber value="${orderSum+5000-(orderSum /10)}" pattern="#,###원"/>
+										</c:when>
+										<c:otherwise>
+											<fmt:formatNumber value="${orderSum+3000-(orderSum /10)}" pattern="#,###원"/>
+										</c:otherwise>
+									</c:choose>
+								</td>
+							</tr>
+						</table>
+						<table id="AfterCareTable"> 
+							<tr>
+								<td><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><button type="button" style="color:#9a9a9a; background:white;">상품추가구매</button></a></td>
+								<td><a href="/member/myPageForm.do?userID=${member1.userID}"><button type="button" style="color:white; background:#9a9a9a;">나의구매현황</button></a></td>
 							</tr>
 						</table>
 					</div>

@@ -79,8 +79,8 @@
 	<!-- 주문 완료 상품 테이블에 데이터 등록하기 -->
 	<insert id="addOrderProduct" parameterType="com.edu.order.dto.OrderDTO">
 		<![CDATA[
-		INSERT INTO t_orderProduct (orderProduct_num, order_num, userID, product_code, product_amount, product_size, review_yn)
-		SELECT IFNULL(MAX(orderProduct_num), 0) + 1, #{order_num}, #{userID}, #{product_code}, #{product_amount}, #{product_size}, #{review_yn} FROM t_orderProduct
+		INSERT INTO t_orderProduct (orderProduct_num, order_num, userID, product_code, product_amount, product_size, review_yn ,order_date)
+		SELECT IFNULL(MAX(orderProduct_num), 0) + 1, #{order_num}, #{userID}, #{product_code}, #{product_amount}, #{product_size}, #{review_yn}, now() FROM t_orderProduct
 		]]>
 	</insert>
 	

@@ -72,7 +72,7 @@
 	<!-- 구매정보 가져오기 -->
 	<select id="orderList" resultType="com.edu.order.dto.OrderDTO" parameterType="String">
 		<![CDATA[
-			SELECT * FROM t_order WHERE userID= #{userID}
+			SELECT * FROM t_orderproduct WHERE userID= #{userID}
 		]]>
 	</select>
 	

@@ -618,6 +618,7 @@ function fn_orderComplete() {
 	       		formData.append("paymethod", "카카오페이");					//결제수단
 	       		formData.append("totalbill", totalBill);					//총주문금액
 	       		
+	       		alert(formData.get("order_name"));
 	       		//alert(formData.get("cartNumberList"));
 	       		//alert(formData.get("userID"));
 	       		//alert(formData.get("address1"));

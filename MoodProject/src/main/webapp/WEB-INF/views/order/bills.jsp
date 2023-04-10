@@ -130,7 +130,7 @@
 						</tr>
 						<tr>
 							<td>* 수령인</td>
-							<td><input type="text" class="form-control"  value="${member1.name}"/></td>
+							<td><input type="text" class="form-control" id="deliveryName" value="${member1.name}"/></td>
 						</tr>	
 						<tr>
 							<td>* 휴대폰 번호</td>

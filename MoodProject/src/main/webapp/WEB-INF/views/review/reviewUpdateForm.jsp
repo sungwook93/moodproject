@@ -67,15 +67,15 @@
 							<div class="col-sm-3">	
 								<select class="form-control" id="product_type" name="product_type" onchange="productKindChange(this)">
 									<option disabled selected>상품 Type</option>
-									<option value="living" <c:if test="${searchType == 'living'}">selected</c:if>>Living</option>
-									<option value="bed" <c:if test="${searchType == 'bed'}">selected</c:if>>Bed</option>
-									<option value="bath" <c:if test="${searchType == 'bath'}">selected</c:if>>Bath</option>
+									<option value="living" <c:if test="${reviewDTO.product_type == 'living'}">selected</c:if>>Living</option>
+									<option value="bed" <c:if test="${reviewDTO.product_type == 'bed'}">selected</c:if>>Bed</option>
+									<option value="bath" <c:if test="${reviewDTO.product_type == 'bath'}">selected</c:if>>Bath</option>
 								</select>
 						</div>
 						<label class="col-sm-1 control-label"  for="productKindD">상품 이름</label>
 							<div class="col-sm-3">	
 								<select class="form-control" id="product_name" name="product_name">
-									<option disabled selected>선택해주세요.</option>
+									<option disabled selected>${reviewDTO.product_name}</option>
 								</select>
 							</div>
 					</div>	

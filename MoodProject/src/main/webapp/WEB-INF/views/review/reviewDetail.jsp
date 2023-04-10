@@ -25,8 +25,8 @@
 		   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		   <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@700&display=swap" rel="stylesheet">
 			
-			<link href="${contextPath}/resources/css/board.css" rel="stylesheet" type="text/css">
-			<script src="${contextPath}/resources/js/board.js"></script>
+			<link href="${contextPath}/resources/css/review.css" rel="stylesheet" type="text/css">
+			<script src="${contextPath}/resources/js/review.js"></script>
 		</head>
 		<body>
 			<!-- 상단 메뉴 -->
@@ -77,27 +77,27 @@
 							<textarea class="form-control" id="review_content" name="review_content" rows="10" cols="160"  readonly>${reviewDTO.review_content}</textarea>
 						</div>
 
-						
-
+					
 					</div>
 				<div id="boardDetailBtn">
-					<button type="button" class="btn btn-light" onclick="location.href='/board/boardList?page=1'">
+					<button type="button" class="btn btn-light" onclick="location.href='/review/reviewList?page=1'">
 						<span> 전체 목록 보기 </span>
 					</button>&nbsp;&nbsp;&nbsp;&nbsp;
 					<!-- 작성자와 로그인한 사람의 아이디가 같거나 관리자일 때 나오는 부분 -->
 					<c:choose>
-						<c:when test="${boardDTO.userID == member1.userID or member1.grade == 7}">
-							<button type="button" class="btn btn-light" onclick="location.href = '/board/boardUpdateForm?qna_bno=' + ${boardDTO.qna_bno}" style = "font-family: 'Sunflower', sans-serif;">
+						<c:when test="${reviewDTO.userID == member1.userID or member1.grade == 7}">
+							<button type="button" class="btn btn-light" onclick="location.href = '/review/reviewUpdateForm?review_bno=' + ${reviewDTO.review_bno}" style = "font-family: 'Sunflower', sans-serif;">
 								<span> 게시글 수정</span>
 							</button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-light" onclick="fn_boardDelete(${boardDTO.qna_bno})">
+							<button type="button" class="btn btn-light" onclick="fn_reviewDelete(${reviewDTO.review_bno})">
 								<span> 게시글 삭제</span>
 							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 						</c:when>
 					</c:choose>
 				</div>
-				<input type="hidden" id="qna_bno" value="${boardDTO.qna_bno}">
-				<hr/>
+				<div>
+				<input type="hidden" id="review_bno" value="${reviewDTO.review_bno}">
+				</div>
 				
 				
 				<!-- 댓글창 -->

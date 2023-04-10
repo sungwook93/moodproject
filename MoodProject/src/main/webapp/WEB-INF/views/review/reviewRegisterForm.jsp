@@ -25,7 +25,7 @@
 			<!-- 상단 메뉴 -->
 			<jsp:include page="../common/topMenu.jsp" flush="false"/>
 			<hr/>
-			<h2 style = "text-align: center; color: white; font-family: Sunflower;">Review RegisterForm</h2>
+			<h2 style = "text-align: center; font-family: Sunflower;">Review RegisterForm</h2>
 			<br/>
 			<br/>
 			

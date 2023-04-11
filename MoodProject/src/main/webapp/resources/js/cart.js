@@ -627,6 +627,7 @@ function fn_orderComplete() {
                 formData.append("product_code", product_code);               //총주문금액
                 formData.append("product_amount", product_amount);               //총주문금액
                 formData.append("product_size", product_size);               //총주문금액
+                formData.append("product_name", product_name);               //총주문금액
                 
                 //alert(formData.get("cartNumberList"));
                 //alert(formData.get("userID"));
@@ -635,9 +636,9 @@ function fn_orderComplete() {
                 //alert(formData.get("postnum"));
                 //alert(formData.get("order_phone"));
                 //alert(formData.get("order_memo"));
-                alert(formData.get("product_code"));
-                alert(formData.get("product_amount"));
-                alert(formData.get("product_size"));
+                //alert(formData.get("product_code"));
+                //alert(formData.get("product_amount"));
+                //alert(formData.get("product_size"));
                 
                 //ajax로 formData를 넘겨준다.
                 $.ajax({

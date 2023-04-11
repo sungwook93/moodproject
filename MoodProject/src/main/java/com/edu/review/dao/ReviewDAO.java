@@ -23,16 +23,19 @@ public interface ReviewDAO {
 	
 	// productList 가져오기
 	public List<ProductDTO> productList(ProductDTO productDTO) throws Exception;
-
+	
 	// 타입에 따른 상품명 찾기
 	public List<ProductDTO> searchname(String produt_type) throws Exception;
-
+	
+	// 타입에 따른 상품명 찾기2
+	public List<ProductDTO> searchname2(String produt_type) throws Exception;
+	
 	// 리뷰 상세페이지 보여주기 
 	public ReviewDTO reviewDetail(int review_bno) throws Exception;
 	
 	// 리뷰 수정	
 	public int reviewUpdate(ReviewDTO reviewDTO) throws Exception;
-	
+
 	// 리뷰 삭제
 	public int reviewDelete(int review_bno) throws Exception;
 
@@ -48,9 +51,18 @@ public interface ReviewDAO {
 	public int updateReplyCount(int review_bno) throws Exception;
 	
 	// 댓글 번호에 해당하는 댓글 삭제하기
-	public int replyDelete(int reply_bno) throws Exception;	
+	public int replyDelete(int imsi_bno) throws Exception;	
 	
 	// 댓글 번호에 해당하는 댓글 수정하기
-	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception; 
+	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception; 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

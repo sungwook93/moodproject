@@ -600,6 +600,7 @@ function fn_orderComplete() {
                 let product_code = $("#product_code").val() //배송메모
                 let product_amount = $("#product_amount").val() //배송메모
                 let product_size = $("#product_size").val() //배송메모
+                let product_name = $("#product_name").val() //배송메모
                 
                // alert(product_code + product_amount + product_size);
                 

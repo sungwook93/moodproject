@@ -137,14 +137,20 @@ public class OrederServiceImpl implements OrderService {
 		
 		//t_order 테이블에 먼저 데이터를 등록한다.
 		if(orderDAO.addOrder(orderDTO) == 1) { //성공하면
-			
+			//System.out.println("확인!!!!!!!!!");
+			//System.out.println(cartNumberList[0]+"!!!!!!!!!!!!!!!");
 			int count = 0;
+			
+			
+			
 			//반복문을 통해 장바구니 번호에 해당하는 cartDTO를 가져와서 해당 데이터로 orderDTO를 세팅한 후
 			for(int i = 0; i < cartNumberList.length; i++) {
 				
 				//장바구니 번호에 해당하는 cartDTO를 가져온다.
 				//System.out.println("장바구니번호: " + cartNumberList[i]);
 				CartDTO cartDTO = orderDAO.cartNumList(cartNumberList[i]);
+				
+				//
 				
 				//orderProductDTO에 값을 세팅한다.
 				orderDTO.setProduct_code(cartDTO.getProduct_code());
@@ -183,14 +189,14 @@ public class OrederServiceImpl implements OrderService {
 		System.out.println("OrderServiceImpl의 getOrderDTO()....");
 		OrderDTO orderDTO = orderDAO.getOrderDTO(order_num);
 		
-		//컨트롤러로 넘어가기 전에 배송메모를 수정해준다.
-		String order_memo = orderDTO.getOrder_memo();
-		order_memo = order_memo.replaceAll("[_]", " ");//_를 없앤다
-		if(order_memo.contains("선택")) { //배송 메모를 선택해주세요 일때는 공백 처리
-			order_memo = "&nbsp;";
-		}
-		System.out.println(order_memo);
-		orderDTO.setOrder_memo(order_memo);
+//		//컨트롤러로 넘어가기 전에 배송메모를 수정해준다.
+//		String order_memo = orderDTO.getOrder_memo();
+//		order_memo = order_memo.replaceAll("[_]", " ");//_를 없앤다
+//		if(order_memo.contains("선택")) { //배송 메모를 선택해주세요 일때는 공백 처리
+//			order_memo = "&nbsp;";
+//		}
+//		System.out.println(order_memo);
+//		orderDTO.setOrder_memo(order_memo);
 		
 		return orderDTO;
 	}

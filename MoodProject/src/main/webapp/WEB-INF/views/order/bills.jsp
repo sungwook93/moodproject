@@ -313,6 +313,9 @@
 				<input type="hidden" id="address1" value="${member1.address1}"/>
 				<input type="hidden" id="address2" value="${member1.address2}"/>
 				<input type="hidden" id="postnum" value="${member1.postnum}"/>
+				<input type="hidden" id="product_code" value="${cartList[0].product_code}"/>
+				<input type="hidden" id="product_amount" value="${cartList[0].product_amount}"/>
+				<input type="hidden" id="product_size" value="${cartList[0].product_size}"/>
 			</div>
 			<div style="display:none;">
 				<c:forEach items="${cartList}" var="list">

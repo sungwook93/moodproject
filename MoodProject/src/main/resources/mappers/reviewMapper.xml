@@ -110,7 +110,7 @@
 	<insert id = "reviewCommentRegister" parameterType = "com.edu.review.dto.ReviewCommentDTO">
 		<![CDATA[
 			insert into t_reviewcomment (reply_bno, review_bno, userID, reply_content, reply_regDate)
-			select ifnull(max(reply_bno),0) + 1, #{review_bno}, #{userID}, #{reply_content}, now() from t_reviewcomment;
+			select ifnull(max(reply_bno),0) + 1, #{review_bno}, #{userID}, #{reply_content}, now() from t_reviewcomment where review_bno = #{review_bno};
 		]]>
 	</insert>
 	
@@ -124,7 +124,7 @@
 	<!-- 리뷰 댓글 목록 가져오기 -->
 	<select id = "commentList" parameterType = "Integer" resultType = "com.edu.review.dto.ReviewCommentDTO">
 		<![CDATA[
-			select * from t_reviewcomment where review_bno = #{review_bno} order by reply_bno DESC;
+			select * from t_reviewcomment where review_bno = #{review_bno} order by reply_bno;
 		]]>
 	</select>
 	

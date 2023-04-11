@@ -82,7 +82,7 @@
 						<label class="col-sm-1 control-label"  for="productKindD">상품 이름</label>
 							<div class="col-sm-3">	
 								<select class="form-control" id="product_name" name="product_name">
-									<option disabled selected>${reviewDTO.product_name}</option>
+									<option <c:if test="${reviewDTO.product_name == reviewDTO.product_name}">selected</c:if>>${reviewDTO.product_name}</option>
 								</select>
 							</div>
 					</div>	

@@ -145,4 +145,12 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	
+	//상품 즉시구매 카트넘 받아오기
+	@Override
+	public int addCartNum(CartDTO cartDTO) throws Exception {
+		
+		return sqlSession.insert(Namespace + ".addCartNum", cartDTO);
+	}
+
+	
 }

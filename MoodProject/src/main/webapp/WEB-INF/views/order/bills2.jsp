@@ -13,7 +13,7 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 		
-			<script src="${contextPath}/resources/js/cart.js"></script>
+			<script src="${contextPath}/resources/js/directcash.js"></script>
 			<script src="${contextPath}/resources/js/directpay.js"></script>
 			<link href="${contextPath}/resources/css/cart.css" rel="stylesheet" type="text/css">
 			
@@ -295,7 +295,7 @@
 							<tr>
 								<td colspan="2" style="width:56%;"></td>
 								<td colspan="2" id="postOrderBtn">
-									<button type="button" class="form-control" onclick="fn_orderComplete()">결제하기</button>
+									<button type="button" class="form-control" onclick="fn_orderComplete2()">결제하기</button>
 								</td>
 								<td colspan="2" id="backward" >
 									<button type="button" class="form-control" onclick="location.href='/order/cartForm.do?userID=' + ${member1.userID}">뒤로가기</button>  

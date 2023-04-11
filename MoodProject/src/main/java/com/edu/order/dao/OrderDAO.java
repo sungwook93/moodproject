@@ -31,6 +31,10 @@ public interface OrderDAO {
 	public CartDTO cartNumList(int cartNum) throws Exception;
 	
 	//주문완료영역
+	
+	//상품즉시구매 카트넘 받아오기 
+	public int addCartNum(CartDTO cartDTO) throws Exception;
+	
 	//가장 큰 주문번호 구하기
 	public long getMaxOrderNum() throws Exception;
 	

@@ -464,7 +464,7 @@ function daumZipCode() {
  }
 
   //최종 결제 버튼 클릭시
-function fn_orderComplete() {
+function fn_orderComplete2() {
 
    //동의 항목 검사
    if(!$('#personalInfoCheck').is(':checked')) {
@@ -663,7 +663,23 @@ function fn_orderComplete() {
                let userID = $("#userID").val();
                alert(msg+"이부분"+cart_num);
                
-              
+               //결제취소시 카트정보 삭제 /////////////////////////
+               
+               
+               
+                     $.ajax({
+						type: "post",
+						url: "/order/cartdelete",
+						data: {cart_num:cart_num},
+						success: function(data){		
+							if(data == "Y"){
+							alert(data);
+							location.href="/product/productList?product_color=white,black,gray&product_type=bed,bath,living&page=1&array_type=r";			
+							}else 
+								alert("삭제에 실패했습니다");
+						}
+						
+					}); //end -ajax
              }
              
          }); //End - IMP카카오페이 결제
@@ -672,7 +688,6 @@ function fn_orderComplete() {
    
 }
 
-//////////////////////////////////////////////////
 
 
 

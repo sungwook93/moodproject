@@ -219,6 +219,12 @@ public class OrederServiceImpl implements OrderService {
 		return result;
 	}
 
+	@Override
+	public int addCartNum(CartDTO cartDTO) throws Exception {
+		
+		return orderDAO.addCartNum(cartDTO);
+	}
+
 	
 	
 }

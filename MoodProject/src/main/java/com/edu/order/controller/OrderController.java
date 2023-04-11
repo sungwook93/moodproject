@@ -70,7 +70,8 @@ public class OrderController {
 			if(orderService.checkcart(cartDTO) == 0) {
 				//상품을 장바구니에 넣는다
 				
-				int result = orderService.addCart(cartDTO);
+				orderService.addCart(cartDTO);
+				int result =orderService.addCartNum(cartDTO);
 				
 				return result;
 			} else { // 장바구니에 이미 해당상품이 있음
@@ -136,6 +137,42 @@ public class OrderController {
 		
 		return mav;
 	}
+	//장바구니 담은 상품 주문페이지
+		@RequestMapping(value="/bills2.do", method=RequestMethod.GET)
+		public ModelAndView billsForm2(int[] cart_num) throws Exception {
+			System.out.println("OrderController의 countUpdate시작" + cart_num);
+			
+			//모델을 준비한다.
+			ModelAndView mav =new ModelAndView();
+			
+			//카트정보를 담을 리스트를 만든다
+			List<CartDTO> cartList = new ArrayList<CartDTO>();
+			
+			//장바구니에서 넘어온 배열만큼 cartList에 담아준다.
+			for(int i = 0; i < cart_num.length; i++) {
+				cartList.add(i,orderService.bills(cart_num[i]));
+			}
+			System.out.println(cartList);
+			
+			//장바구니 리스트의 상품의 합계를 구해 model에 담아준다.
+			//장바구니 리스트의 장바구니 번호를 배열로 만든다.
+			int[] cartNum = new int[cartList.size()];
+			for(int i = 0; i < cartList.size(); i++) {
+				cartNum[i] = cartList.get(i).getCart_num();
+			}
+			mav.addObject("orderSum", orderService.orderSum(cartNum));
+			
+			//상세페이지 스크립트에서 이용할 장바구니 갯수를 구해 model에 담는다.
+			mav.addObject("cartCount", cartNum.length);
+			
+			//리스트 모델에 담기
+			mav.addObject("cartList", cartList);
+			
+			//주소 입력
+			mav.setViewName("/order/bills2");
+			
+			return mav;
+		}
 	
 	//상품주문하기
 	@RequestMapping(value="/bills", method=RequestMethod.GET)
@@ -203,6 +240,7 @@ public class OrderController {
 				
 			} else {
 				return 0;
+				
 			}	
 		}
 		

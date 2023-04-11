@@ -46,6 +46,9 @@
 	<delete id="cartdelete" parameterType="Integer">
 		delete from t_cart
 		where cart_num = #{cart_num};
+		delete from t_cart
+		where userID is NULL;
+		
 	</delete>
 	
 	<!-- 해당 장바구니 번호의 장바구니 정보 보내주기 -->
@@ -60,6 +63,12 @@
 	
 	<!-- 주문완료 영역 -->
 	
+	<!-- 상품 즉시구매 카트넘 받아오기 -->
+	<insert id="addCartNum" parameterType="com.edu.order.dto.CartDTO">
+		<![CDATA[
+		INSERT INTO t_cart (cart_num) VALUES (cart_num)
+		]]>
+	</insert>
 	
 	<!-- 가장 큰 주문완료번호 구하기 -->
 	<select id="getMaxOrderNum" resultType="Long">
@@ -71,8 +80,8 @@
 	<!-- 주문 완료 테이블에 데이터 등록하기 -->
 	<insert id="addOrder" parameterType="com.edu.order.dto.OrderDTO">
 		<![CDATA[
-		INSERT INTO t_order (order_num, userID, order_date, address1, address2, postnum, order_name, order_phone, order_memo, paymethod, totalbill)
-		VALUES (#{order_num}, #{userID}, now(), #{address1}, #{address2}, #{postnum}, #{order_name}, #{order_phone}, #{order_memo}, #{paymethod}, #{totalbill})
+		INSERT INTO t_order (order_num, userID, order_date, address1, address2, postnum, order_name, order_phone, order_memo, paymethod, totalbill ,product_code ,product_amount ,product_size)
+		VALUES (#{order_num}, #{userID}, now(), #{address1}, #{address2}, #{postnum}, #{order_name}, #{order_phone}, #{order_memo}, #{paymethod}, #{totalbill}, #{product_code}, #{product_amount}, #{product_size})
 		]]>
 	</insert>
 	

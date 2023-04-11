@@ -30,6 +30,9 @@ public interface OrderService {
 	
 	//주문완료 영역
 	
+	//상품바로주문 카트넘받아오기
+	public int addCartNum(CartDTO cartDTO) throws Exception;
+	
 	////주문 완료 테이블 번호 만들기
 	public long getOrder_num() throws Exception;
 	

@@ -220,16 +220,17 @@ public class OrderController {
 		//주문 완료 처리후 주문 번호 리턴 (t_cart 데이터 +알파 를 t_order 테이블로 옮기기)
 		@ResponseBody
 		@RequestMapping(value="/orderComplete", method=RequestMethod.POST)
-		public long orderComplete(int[] cartNumberList, OrderDTO orderDTO, CartDTO cartDTO, HttpServletRequest request) throws Exception {
+		public long orderComplete(int[] cartNumberList, OrderDTO orderDTO, HttpServletRequest request) throws Exception {
 			System.out.println("OrderController의 orderComplete.... 회원 아이디: " + orderDTO.getUserID() + "장바구니 번호: " + cartNumberList[0]);	
 			System.out.println("확인해보장=========" + orderDTO);
-			System.out.println("확인해보장=========" + cartDTO);
+			
 			//orderDTO에 order_num을 계산해서 세팅한다.
 			orderDTO.setOrder_num(orderService.getOrder_num());
 			System.out.println("주문번호: " + orderDTO.getOrder_num());
 				
 				if(cartNumberList[0] == 0) {
 					//아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
+					orderDAO.addOrder(orderDTO);
 					orderDAO.addOrderProduct(orderDTO); 
 					HttpSession session = request.getSession();
 					List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(orderDTO.getUserID());

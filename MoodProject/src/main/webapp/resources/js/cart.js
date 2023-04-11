@@ -602,7 +602,7 @@ function fn_orderComplete() {
                 let product_size = $("#product_size").val() //배송메모
                 let product_name = $("#product_name").val() //배송메모
                 
-               // alert(product_code + product_amount + product_size);
+              // alert(product_name);
                 
                 var checkbox = document.querySelectorAll("input[name='cartNum']:checked"); //체크된 장바구니 번호 input
             var cartNumList = [];                                           //넘겨줄 장바구니 배열
@@ -638,7 +638,7 @@ function fn_orderComplete() {
                 //alert(formData.get("order_memo"));
                 //alert(formData.get("product_code"));
                 //alert(formData.get("product_amount"));
-                //alert(formData.get("product_size"));
+                //alert(formData.get("product_name"));
                 
                 //ajax로 formData를 넘겨준다.
                 $.ajax({

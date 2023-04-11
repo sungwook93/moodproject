@@ -2,6 +2,8 @@ package com.edu.review.service;
 
 import java.util.List;
 
+import com.edu.board.dto.BoardDTO;
+import com.edu.board.dto.CommentDTO;
 import com.edu.common.util.SearchCriteria;
 import com.edu.order.dto.CartDTO;
 import com.edu.product.dto.ProductDTO;
@@ -25,6 +27,9 @@ public interface ReviewService {
 	// 타입에 따른 상품명 찾기
 	public List<ProductDTO> searchname(String produt_type)throws Exception;
 	
+	// 타입에 따른 상품명 찾기2
+	public List<ProductDTO> searchname2(String produt_type)throws Exception;
+	
 	// 리뷰 상세페이지 보여주기 
 	public ReviewDTO reviewDetail(int review_bno) throws Exception;
 	
@@ -33,7 +38,7 @@ public interface ReviewService {
 	
 	// 리뷰 삭제
 	public int reviewDelete(int review_bno) throws Exception;
-
+	
 	// 댓글 관련 ==================================================================
 	
 	// 리뷰에 해당하는 댓글 등록하기
@@ -48,9 +53,20 @@ public interface ReviewService {
 	public int updateReplyCount(int review_bno) throws Exception;
 	
 	// 댓글 번호에 해당하는 댓글 삭제하기
-	public int replyDelete(int reply_bno) throws Exception;	
+	public int replyDelete(int imsi_bno) throws Exception;	
 	
 	// 댓글 번호에 해당하는 댓글 수정하기
-	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception; 	
+	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception; 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

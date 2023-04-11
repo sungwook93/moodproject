@@ -48,7 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewDAO.productList(productDTO);
 	}
-
+	
 	// 타입에 따른 상품명 찾기
 	@Override
 	public List<ProductDTO> searchname(String produt_type) throws Exception {
@@ -56,13 +56,20 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.searchname(produt_type);
 	}
 
+	// 타입에 따른 상품명 찾기2
+	@Override
+	public List<ProductDTO> searchname2(String produt_type) throws Exception {
+		// TODO Auto-generated method stub
+		return reviewDAO.searchname2(produt_type);
+	}
+	
 	// 리뷰 상세페이지 보여주기 
 	@Override
 	public ReviewDTO reviewDetail(int review_bno) throws Exception {
 		
 		return reviewDAO.reviewDetail(review_bno);
 	}
-	
+
 	// 리뷰 수정	
 	@Override
 	public int reviewUpdate(ReviewDTO reviewDTO) throws Exception {
@@ -76,7 +83,7 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewDAO.reviewDelete(review_bno);
 	}
-	
+
 	// 리뷰에 해당하는 댓글 등록하기
 	@Override
 	public int reviewCommentRegister(ReviewCommentDTO reviewCommentDTO) throws Exception {
@@ -106,9 +113,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	// 댓글 번호에 해당하는 댓글 삭제하기
 	@Override
-	public int replyDelete(int reply_bno) throws Exception {
+	public int replyDelete(int imsi_bno) throws Exception {
 		
-		return reviewDAO.replyDelete(reply_bno);
+		return reviewDAO.replyDelete(imsi_bno);
 	}
 	
 	// 댓글 번호에 해당하는 댓글 수정하기
@@ -117,6 +124,10 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewDAO.replyUpdate(reviewCommentDTO);
 	}
+
+
+	
+
 
 	
 	

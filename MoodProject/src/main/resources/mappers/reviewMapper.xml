@@ -109,8 +109,8 @@
 	<!-- 리뷰에 해당하는 댓글 등록하기 -->
 	<insert id = "reviewCommentRegister" parameterType = "com.edu.review.dto.ReviewCommentDTO">
 		<![CDATA[
-			insert into t_reviewcomment (reply_bno, review_bno, userID, reply_content, reply_regDate)
-			select ifnull(max(reply_bno),0) + 1, #{review_bno}, #{userID}, #{reply_content}, now() from t_reviewcomment where review_bno = #{review_bno};
+			insert into t_reviewcomment (reply_bno, imsi_bno, review_bno, userID, reply_content, reply_regDate)
+			select ifnull(max(reply_bno),0) + 1, ifnull(max(imsi_bno),0) + 1, #{review_bno}, #{userID}, #{reply_content}, now() from t_reviewcomment where review_bno = #{review_bno};
 		]]>
 	</insert>
 	
@@ -124,7 +124,7 @@
 	<!-- 리뷰 댓글 목록 가져오기 -->
 	<select id = "commentList" parameterType = "Integer" resultType = "com.edu.review.dto.ReviewCommentDTO">
 		<![CDATA[
-			select * from t_reviewcomment where review_bno = #{review_bno} order by reply_bno;
+			select * from t_reviewcomment where review_bno = #{review_bno} order by imsi_bno;
 		]]>
 	</select>
 	
@@ -138,14 +138,14 @@
 	<!-- 댓글 삭제 -->
 	<delete id = "replyDelete" parameterType = "int">
 		<![CDATA[
-			delete from t_reviewcomment where reply_bno = #{reply_bno};
+			delete from t_reviewcomment where imsi_bno = #{imsi_bno};
 		]]>
 	</delete>
 	
 	<!-- 댓글 수정하기 -->
 	<update id = "replyUpdate" parameterType = "com.edu.review.dto.ReviewCommentDTO">
 		<![CDATA[
-			update t_reviewcomment set reply_content = #{reply_content}, userID = #{userID} where review_bno = #{review_bno} and reply_bno =#{reply_bno};
+			update t_reviewcomment set reply_content = #{reply_content}, userID = #{userID}, reply_bno = #{reply_bno} where review_bno = #{review_bno} and imsi_bno =#{imsi_bno};
 		]]>
 	</update>
 	

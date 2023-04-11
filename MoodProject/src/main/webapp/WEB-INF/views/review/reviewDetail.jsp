@@ -124,7 +124,7 @@
 														<a id="commentUpdateB${status.count}" style = "display:none; width: 30px;" onclick="fn_updateComment(${status.count});"> 등록</a>
 														<a id="commentUpdateA${status.count}" onclick="fn_updateOpen(${status.count});"> 수정</a>
 														<a> | </a>
-														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${reviewDTO.review_bno});"> 삭제</a>
+														<a id="commentDeleteA" onclick="fn_deleteComment(${status.count}, ${reviewDTO.review_bno});"> 삭제</a>
 													</c:if>
 													<!-- 글쓴이면 자기글 수정 삭제 가능  -->
 													<c:if test="${member1.grade != 7 and member1.userID != reviewDTO.userID}">

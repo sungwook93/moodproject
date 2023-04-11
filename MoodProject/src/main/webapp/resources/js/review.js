@@ -222,9 +222,12 @@ function fn_reviewUpdate() {
  	 	
  }
 
- // 댓글 삭제 
+// 댓글 삭제 
  
- function fn_deleteComment(reply_bno, review_bno) {
+ function fn_deleteComment(status, review_bno) {
+	
+	let reply_bno = status;
+	
 	
 	if(!confirm("\댓글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
 		alert("댓글 삭제를 취소하셨습니다.");
@@ -248,16 +251,16 @@ function fn_reviewUpdate() {
 	}
 }
  
- 
 // 댓글 수정
 function fn_updateComment(status) {
 	
+	let reply_bno = status;
+	
 	let	review_bno		= $("#review_bno").val();
 	let	reply_content = $("#"+status).val();
-	let	reply_bno = $("#reply_bno").val();
 	let	userID = $("#userID1").val();
 	
-	alert(review_bno + ":" + reply_content + ":" + reply_bno);
+	alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status);
 	
 	$.ajax({
 		type:			"POST",

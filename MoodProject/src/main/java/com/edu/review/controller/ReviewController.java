@@ -70,7 +70,7 @@ public class ReviewController {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("reviewList", reviewService.reviewList(sCri));
-		mav.setViewName("/reveiw/reviewRegisterForm");
+		mav.setViewName("/review/reviewRegisterForm");
 		return mav;	
 	}
 	

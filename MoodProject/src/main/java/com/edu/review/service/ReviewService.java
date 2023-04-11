@@ -5,6 +5,7 @@ import java.util.List;
 import com.edu.common.util.SearchCriteria;
 import com.edu.order.dto.CartDTO;
 import com.edu.product.dto.ProductDTO;
+import com.edu.review.dto.ReviewCommentDTO;
 import com.edu.review.dto.ReviewDTO;
 
 public interface ReviewService {
@@ -32,6 +33,24 @@ public interface ReviewService {
 	
 	// 리뷰 삭제
 	public int reviewDelete(int review_bno) throws Exception;
+
+	// 댓글 관련 ==================================================================
 	
+	// 리뷰에 해당하는 댓글 등록하기
+	public int reviewCommentRegister(ReviewCommentDTO reviewCommentDTO) throws Exception;
+	
+	// 게시글 번호에 해당하는 댓글 수 구하기
+	public int commentListCount(int review_bno) throws Exception;
+	
+	public List<ReviewCommentDTO> commentList(int review_bno) throws Exception;
+	
+	// 리뷰 리스트 제목에 댓글 수 표시
+	public int updateReplyCount(int review_bno) throws Exception;
+	
+	// 댓글 번호에 해당하는 댓글 삭제하기
+	public int replyDelete(int reply_bno) throws Exception;	
+	
+	// 댓글 번호에 해당하는 댓글 수정하기
+	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception; 	
 	
 }

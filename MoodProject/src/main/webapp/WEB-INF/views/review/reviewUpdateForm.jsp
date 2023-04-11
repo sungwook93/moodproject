@@ -46,8 +46,15 @@
 							<input type="text" class="form-control" id="review_subject" name="review_subject"  value="${reviewDTO.review_subject}"/>
 						</div>
 						<label class="col-sm-1 control-label">리뷰 별점</label>
-						<div class="col-sm-3">
-							<input type="number" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="${reviewDTO.review_star}" style = "width:160px;" />
+						<div class="col-sm-2">
+							<select id="review_star" class="form-control">
+								<option disabled selected>리뷰 별점</option>
+								<option value="1" <c:if test="${reviewDTO.review_star == 1}">selected</c:if>>★</option>
+								<option value="2" <c:if test="${reviewDTO.review_star == 2}">selected</c:if>>★★</option>
+								<option value="3" <c:if test="${reviewDTO.review_star == 3}">selected</c:if>>★★★</option>
+								<option value="4" <c:if test="${reviewDTO.review_star == 4}">selected</c:if>>★★★★</option>
+								<option value="5" <c:if test="${reviewDTO.review_star == 5}">selected</c:if>>★★★★★</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">	
@@ -75,7 +82,7 @@
 						<label class="col-sm-1 control-label"  for="productKindD">상품 이름</label>
 							<div class="col-sm-3">	
 								<select class="form-control" id="product_name" name="product_name">
-									<option disabled selected>${reviewDTO.product_name}</option>
+									<option <c:if test="${reviewDTO.product_name == reviewDTO.product_name}">selected</c:if>>${reviewDTO.product_name}</option>
 								</select>
 							</div>
 					</div>	
@@ -119,6 +126,13 @@
 		      font-family: 'Sunflower','Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체';
 		   }   
 		</style>	
+		<script>
+		function maxLengthCheck(object){
+		    if (object.value.length > object.maxLength){
+		        object.value = object.value.slice(0, object.maxLength);
+		    }    
+		}
+		</script>
 	</html>
 
 

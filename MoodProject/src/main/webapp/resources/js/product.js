@@ -499,7 +499,7 @@ function fn_order(){
 	if(userID != null && userID != ""){	
  	location.href = "/order/bills?product_amount=" + product_amount + "&userID=" + userID +"&product_code=" + product_code 
  	+"&product_color=" + product_color +"&product_size=" + product_size +"&product_name=" + product_name +
- 	"&product_type=" + product_type + "&product_price=" + product_price + "&cart_num=" + 999;	
+ 	"&product_type=" + product_type + "&product_price=" + product_price + "&cartCount=" + 1;	
 	}
 	else {alert("로그인을 해주세요");
 		  modal.style.display = "flex"}

@@ -82,9 +82,9 @@ public class BoardServiceImpl implements BoardService {
 	// 댓글 번호에 해당하는 댓글 삭제하기
 	//-----------------------------------------------------------------------------------------------------------
 	@Override
-	public int replyDelete(int reply_bno) throws Exception {
+	public int replyDelete(int imsi_bno) throws Exception {
 		
-		return boardDAO.replyDelete(reply_bno);
+		return boardDAO.replyDelete(imsi_bno);
 	}
 	
 	//-----------------------------------------------------------------------------------------------------------

@@ -197,9 +197,9 @@ public class BoardController {
 	//-----------------------------------------------------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
-	public String replyDelete(int reply_bno, int qna_bno) throws Exception {
+	public String replyDelete(int imsi_bno, int qna_bno) throws Exception {
 			
-		if(boardService.replyDelete(reply_bno) == 1) {
+		if(boardService.replyDelete(imsi_bno) == 1) {
 				return "Y";
 			} else {
 				return "N";

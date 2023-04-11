@@ -116,9 +116,9 @@ public class BoardDAOImpl implements BoardDAO {
 	// 댓글 번호에 해당하는 댓글 삭제하기
 	//-----------------------------------------------------------------------------------------------------------
 	@Override
-	public int replyDelete(int reply_bno) throws Exception {
+	public int replyDelete(int imsi_bno) throws Exception {
 		
-		return sqlSession.delete(Namespace + ".replyDelete", reply_bno);
+		return sqlSession.delete(Namespace + ".replyDelete", imsi_bno);
 	}
 	
 	//-----------------------------------------------------------------------------------------------------------

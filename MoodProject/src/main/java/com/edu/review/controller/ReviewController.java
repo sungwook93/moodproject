@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edu.board.dto.CommentDTO;
 import com.edu.common.util.PageMaker;
 import com.edu.common.util.SearchCriteria;
 import com.edu.order.dto.CartDTO;
@@ -62,16 +63,14 @@ public class ReviewController {
 	// 리뷰 등록화면 불러오기
 	//-----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/reviewRegisterForm", method = RequestMethod.GET)
-	public ModelAndView reviewRegisterForm(ProductDTO productDTO) throws Exception {
+	public ModelAndView reviewRegisterForm(SearchCriteria sCri) throws Exception {
 		
 		logger.info("ReviewController 리뷰 등록화면 불러오기");
-		System.out.println(productDTO);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		List<ProductDTO> productList = reviewService.productList(productDTO);
-		mav.addObject("productList", productList);
-
+		mav.addObject("reviewList", reviewService.reviewList(sCri));
+		mav.setViewName("/reveiw/reviewRegisterForm");
 		return mav;	
 	}
 	
@@ -93,7 +92,6 @@ public class ReviewController {
 
 	}
 	
-	
 	//-----------------------------------------------------------------------------------------------------------
 	// 타입에 따른 상품명 찾기
 	//-----------------------------------------------------------------------------------------------------------	
@@ -107,6 +105,23 @@ public class ReviewController {
 		mav.addObject("produt_type", produt_type);
 		mav.addObject("productList", productList);
 		mav.setViewName("/review/reviewRegisterForm");
+		
+		return mav;
+	}
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 타입에 따른 상품명 찾기2
+	//-----------------------------------------------------------------------------------------------------------	
+	@RequestMapping(value="/searchname2" , method=RequestMethod.GET)
+	public ModelAndView searchname2(String produt_type) throws Exception{
+		
+		System.out.println("ReviewController 타입에 따른 상품명 찾기" + produt_type);
+		ModelAndView mav = new ModelAndView();
+		
+		List<ProductDTO> productList = reviewService.searchname(produt_type);
+		mav.addObject("produt_type", produt_type);
+		mav.addObject("productList", productList);
+		mav.setViewName("/review/reviewUpdateForm");
 		
 		return mav;
 	}
@@ -218,9 +233,9 @@ public class ReviewController {
 	//-----------------------------------------------------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
-	public String replyDelete(int reply_bno, int review_bno) throws Exception {
+	public String replyDelete(int imsi_bno, int review_bno) throws Exception {
 			
-		if(reviewService.replyDelete(reply_bno) == 1) {
+		if(reviewService.replyDelete(imsi_bno) == 1) {
 				return "Y";
 			} else {
 				return "N";
@@ -242,6 +257,4 @@ public class ReviewController {
 			}
 			
 	} 
-	
-	
 }

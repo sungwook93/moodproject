@@ -222,11 +222,13 @@ function fn_reviewUpdate() {
  	 	
  }
 
-// 댓글 삭제 
+ // 댓글 삭제 
  
- function fn_deleteComment(status, review_bno) {
+ function fn_deleteComment(status, review_bno, imsi_bno ) {
 	
 	let reply_bno = status;
+	
+	alert("imsi_bno" + imsi_bno + "             " + "reply_bno" + reply_bno + "             " + "review_bno" + review_bno);
 	
 	
 	if(!confirm("\댓글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
@@ -236,7 +238,7 @@ function fn_reviewUpdate() {
 		$.ajax({
 			type: "POST",
 			url: "/review/replyDelete",
-			data: {review_bno:review_bno, reply_bno:reply_bno},
+			data: {review_bno:review_bno, reply_bno:reply_bno, imsi_bno:imsi_bno},
 			success: function(data) {
 				if(data == "Y") {
 					alert("댓글의 삭제가 완료되었습니다.");
@@ -251,21 +253,20 @@ function fn_reviewUpdate() {
 	}
 }
  
+ 
 // 댓글 수정
-function fn_updateComment(status) {
+function fn_updateComment(status, imsi_bno, review_bno) {
 	
 	let reply_bno = status;
-	
-	let	review_bno		= $("#review_bno").val();
 	let	reply_content = $("#"+status).val();
 	let	userID = $("#userID1").val();
 	
-	alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status);
+	alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status + "imsi_bno" + imsi_bno);
 	
 	$.ajax({
 		type:			"POST",
 		url:			"/review/replyUpdate",
-		data:			{review_bno:review_bno, reply_content:reply_content, reply_bno:reply_bno, userID:userID},
+		data:			{review_bno:review_bno, reply_content:reply_content, reply_bno:reply_bno, userID:userID, imsi_bno:imsi_bno},
 		success:		function(data) {
 			if(data == "Y") {
 				alert("댓글 수정이 완료되었습니다.");
@@ -284,11 +285,11 @@ function fn_updateComment(status) {
 
 // 댓글 수정창 
 
-function fn_updateOpen(reply_bno) {
+function fn_updateOpen(reply_bno, imsi_bno) {
 
 	let status = reply_bno;
 
-  	alert($("#" + status).val() + "입니다.");	
+  	alert($("#" + status).val() + "입니다." + " imsi_bno는 " + imsi_bno + " reply_bno는 " + reply_bno);	
   
 	 	$("#" + status).attr("readonly",false);
 		$("#" + status).focus();

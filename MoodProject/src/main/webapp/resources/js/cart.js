@@ -604,6 +604,11 @@ function fn_orderComplete() {
                 var postnum = $("#deliveryPostnum").val();             //우편번호
                 var phone = $("#deliveryPhone").val();                //전화번호
                 var order_memo = $("#orderMemo").val() //배송메모
+                let product_code = $("#product_code").val() //배송메모
+                let product_amount = $("#product_amount").val() //배송메모
+                let product_size = $("#product_size").val() //배송메모
+                
+               // alert(product_code + product_amount + product_size);
                 
                 var checkbox = document.querySelectorAll("input[name='cartNum']:checked"); //체크된 장바구니 번호 input
             var cartNumList = [];                                           //넘겨줄 장바구니 배열
@@ -625,6 +630,9 @@ function fn_orderComplete() {
                 formData.append("order_memo", order_memo);                //수령인 배송 메모
                 formData.append("paymethod", "카카오페이");               //결제수단
                 formData.append("totalbill", totalBill);               //총주문금액
+                formData.append("product_code", product_code);               //총주문금액
+                formData.append("product_amount", product_amount);               //총주문금액
+                formData.append("product_size", product_size);               //총주문금액
                 
                 //alert(formData.get("cartNumberList"));
                 //alert(formData.get("userID"));
@@ -633,6 +641,9 @@ function fn_orderComplete() {
                 //alert(formData.get("postnum"));
                 //alert(formData.get("order_phone"));
                 //alert(formData.get("order_memo"));
+                alert(formData.get("product_code"));
+                alert(formData.get("product_amount"));
+                alert(formData.get("product_size"));
                 
                 //ajax로 formData를 넘겨준다.
                 $.ajax({

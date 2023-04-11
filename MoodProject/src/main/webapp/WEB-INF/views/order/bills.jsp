@@ -14,7 +14,6 @@
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 		
 			<script src="${contextPath}/resources/js/cart.js"></script>
-			<script src="${contextPath}/resources/js/directpay.js"></script>
 			<link href="${contextPath}/resources/css/cart.css" rel="stylesheet" type="text/css">
 			
 			<!-- 다음 API -->
@@ -314,11 +313,13 @@
 				<input type="hidden" id="address1" value="${member1.address1}"/>
 				<input type="hidden" id="address2" value="${member1.address2}"/>
 				<input type="hidden" id="postnum" value="${member1.postnum}"/>
-				
+				<input type="hidden" id="product_code" value="${cartList[0].product_code}"/>
+				<input type="hidden" id="product_amount" value="${cartList[0].product_amount}"/>
+				<input type="hidden" id="product_size" value="${cartList[0].product_size}"/>
 			</div>
 			<div style="display:none;">
 				<c:forEach items="${cartList}" var="list">
-					<input type="checkbox" name="cartNum" id="cart_num" value="${list.cart_num}" checked/>
+					<input type="checkbox" name="cartNum" value="${list.cart_num}" checked/>
 				</c:forEach>
 			</div>
 			<!-- 배송지 관련 스크립트에서 사용할 hidden input -->

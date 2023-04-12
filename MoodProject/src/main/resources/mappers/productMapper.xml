@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.edu.product">
+
+	
+	<!-- 검색조건 -->
+	<sql id="search">
+		<if test="keyword != null">
+			And product_name LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
+	
+	<!-- 정렬조건 -->
+	<sql id="array">
+		<if test="array_type != null">
+			<if test="array_type == 'r'.toString()">
+				ORDER BY product_date DESC
+			</if>
+			<if test="array_type == 'l'.toString()">
+				ORDER BY product_price
+			</if>
+			<if test="array_type == 'h'.toString()">
+				ORDER BY product_price DESC
+			</if>
+		</if>
+	</sql>
+	
+	<!-- Type별 List 불러오기 + 정렬 + 검색 -->
+	<!-- foreach 같은 문장에 CDATA를 쓰면 안먹힌다 주의!!! 이것때문에 엄청고생 -->
+	<select id="typeList" parameterType="Map" resultType="com.edu.product.dto.ProductDTO">
+		select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg
+		from (select product_code, product_type, product_color, product_size, product_price, product_date, product_name, star_avg,
+		row_number() over( 
+			<include refid="array"/>
+		) as rNum from t_product where product_color in
+								<foreach collection="colorList" item="color" open="(" close=")" separator=",">
+									#{color}
+								</foreach>
+								 and product_type in  
+								<foreach collection="typeList" item="item" open="(" close=")" separator=",">
+								 #{item}
+								</foreach>
+		
+		<include refid="search"/>
+		) bpd
+		where rNUM BETWEEN (#{perPageNum} * #{page} - 8) and (#{perPageNum} * #{page}) 
+	</select>
+	
+	<!-- Type + 전체 별 전체 데이터 갯수 -->
+	<select id="totalCount" parameterType="Map" resultType="Integer">
+
+			select count(*) from t_product where product_color in
+											<foreach collection="colorList" item="color" open="(" close=")" separator=",">
+												#{color}
+											</foreach>
+										    and product_type in  
+											<foreach collection="typeList" item="item" open="(" close=")" separator=",">
+											 #{item}
+											</foreach>
+										   	and 1=1
+		<include refid="search"/>
+	</select>
+	
+	<!-- 리스트에 쓰일 대표이미지 가져오기 -->
+	<select id="ImageName" parameterType="String" resultType="String">
+		<![CDATA[
+			select images01 from t_images where product_code = #{product_code}
+		]]>
+	</select>
+	
+	<!-- 상품 상페 정보 불러오기 -->
+	<select id="productDetail" parameterType="String" resultType="com.edu.product.dto.ProductDTO">
+		SELECT * FROM t_product WHERE product_code = #{product_code};
+	</select>
+	
+	<!-- 상품 이미지 리스트 -->
+	<select id="ImagesName" parameterType="String" resultType="com.edu.product.dto.ImagesDTO">
+		Select * from t_images where product_code = #{product_code};
+	</select>
+	
+	<!-- 추천상품 리스트 -->
+	<select id="productrecommend" parameterType="com.edu.product.dto.ProductDTO"  resultType="com.edu.product.dto.ProductDTO">
+		select * from t_product where product_color = #{product_color} 
+								and   product_type  = #{product_type}
+								and   product_code  != #{product_code}
+	</select>
+	
+	<!-- 마지막 상품코드 가져오기 -->
+	<select id="getProductCode" parameterType="String" resultType="String">
+		select product_code from t_product where product_type = #{product_type} order by product_code DESC LIMIT 1 
+	</select>
+	
+	
+	<!-- 상품등록하기 -->
+	<insert id="productRegister" parameterType="com.edu.product.dto.ProductDTO">
+		insert into t_product(product_code, product_type, product_color, product_size, product_name, product_price, product_date, star_sum, star_avg)
+		values (#{product_code}, #{product_type}, #{product_color}, #{product_size}, #{product_name}, #{product_price}, now(), 0, 0)
+	</insert>
+	
+	<!-- 이미지dto 등록 -->
+	<insert id="imagesRegister" parameterType="com.edu.product.dto.ImagesDTO">
+		insert into t_images(product_code, images01, images02, images03, images04)
+		values (#{product_code}, #{images01}, #{images02}, #{images03}, #{images04})
+	</insert>
+	
+	<!-- 상품 업데이트 -->
+	<update id="productUpdate" parameterType="com.edu.product.dto.ProductDTO">
+		update t_product
+		set product_name = #{product_name}, product_price = #{product_price}, product_color = #{product_color}, product_type = #{product_type}, product_size = #{product_size}
+		where product_code = #{product_code}
+	</update>
+	
+	<!-- 상품 삭제 -->
+	<delete id="productDelete" parameterType="String">
+		delete from t_product where product_code = #{product_code}
+	</delete>
+	
+	<!-- 상품이미지명 전체 가져오기 -->
+	<select id="images" parameterType="String" resultType="com.edu.product.dto.ImagesDTO">
+			SELECT * FROM t_images WHERE product_code = #{product_code};
+	</select>
+
+	<!-- 상품이미지 수정 -->
+	<update id="imagesUpdate" parameterType="com.edu.product.dto.ImagesDTO">
+		update t_images
+		set product_code = #{product_code}, images01 = #{images01}, images02 = #{images02},
+		images03 = #{images03}, images04 = #{images04}
+		where product_code = #{product_code}
+	</update>
+	
+	
+
+</mapper>

@@ -316,7 +316,7 @@
 				<input type="hidden" id="product_code" value="${cartList[0].product_code}"/>
 				<input type="hidden" id="product_amount" value="${cartList[0].product_amount}"/>
 				<input type="hidden" id="product_size" value="${cartList[0].product_size}"/>
-				<input type="hidden" id="product_name" value="${cartList[0].product_name}"/>
+				
 			</div>
 			<div style="display:none;">
 				<c:forEach items="${cartList}" var="list">

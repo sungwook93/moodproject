@@ -1,0 +1,174 @@
+@charset "UTF-8";
+#bgcolorarea {
+	width:78%;
+	height:50%;
+	z-index:0;
+	background-color:white;
+	position:absolute;
+	left:10%;
+}
+
+#reply_content3 {
+	color:green !important;
+}
+#contentcss {width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+#contetncss > p > span {
+	font-style:italic;!impoartant; 
+	font-size:20px;!important;
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+#boardDetailBtn {
+	font-family: 'Sunflower', sans-serif;
+	text-align: center;
+}
+
+
+#boardTitle {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	text-align: center;
+	font-family: 'Sunflower', sans-serif;
+}
+
+
+#boardTitle a {
+	font-size: 30px;
+	color: black;
+	margin: 0 20px 0 20px;
+	padding-bottom: 3px;
+	color: white;
+}
+#boardTitle a:hover {
+	text-decoration: none;
+	border-bottom: 2px solid;
+}
+#selectedA {
+	border-bottom: 2px solid;
+	padding-bottom: 3px;
+}
+
+-------------------
+#registerBtnBox {
+	text-align: right;
+
+}
+
+#boardTable {
+	width: 100%;
+	margin-bottom: 40px;
+	border-top : 3px solid black;
+}
+#boardTable td {
+	border-bottom: 1px dotted #ccc;
+}
+#boardTable thead tr {
+	border-bottom: 1px solid #7f7f7f !important;
+}
+#boardTable tr {
+	height: 40px;
+}
+.boardNo {
+	width: 5%;
+	text-align: center;
+	font-family: 'Sunflower', sans-serif;
+}
+.boardTitle {
+	width: 60%;
+
+}
+
+.boardDate {
+	text-align: center;
+	width : 25%;
+	font-family: 'Sunflower', sans-serif;
+}
+.boardUser {
+	width: 15%
+	text-align: center;
+	font-family: 'Sunflower', sans-serif;
+}
+
+.boardTitle a {
+	color: #000;
+}
+#boardSearchBox {
+	text-align: center;
+}
+#boardSearchBox > * {
+	display: inline-block;
+}
+#searchType {
+	font-size: 13px;
+}
+#boardSearchBoxDiv {
+	border-bottom: 2px solid #7f7f7f;
+	margin-left: 10px;
+	background-color: #d4c6bb;
+}
+#searchKeyword {
+	border:none;
+	width: 200px;
+}
+#searchBtn {
+	background-color: white;
+	border: none;
+	color: #5b5b5b;
+}
+
+#boardUpdateBtn {
+	text-align: center;
+	font-family: 'Sunflower', sans-serif;
+}
+#registerFormBtnDiv {
+	text-align: center;
+	font-family: 'Sunflower', sans-serif;
+}
+#boardDetailCommentList {
+	width: 100%;
+}
+.comment15 {
+	width: 15%;
+}
+.commentLabel {
+	text-align: center;
+	vertical-align : top;
+	padding-right: 20px;
+}
+
+
+.comment70 {
+	width: 70%;
+}
+.comment70 table {
+	width: 100%;
+}
+.comment70 table tr {
+	border-bottom: 1px dotted #5a5a5c;
+}
+.comment70 table td {
+	padding: 10px 0 15px 10px;
+}
+
+.comment15 table {
+	width: 100%;
+}
+.comment15 table tr {
+	border-bottom: 1px dotted #5a5a5c;
+}
+.comment15 table td {
+	padding: 10px 0 15px 10px;
+}
+.commentButton {
+	width: 15%;
+}
+.commentButton button {
+	width: 80%;
+	height: 100%;
+}
+
+
+
+
+
+

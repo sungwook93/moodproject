@@ -52,12 +52,12 @@
 	</select>
 	
 	<!-- 리뷰 등록하기 -->
-	<select id = "reviewRegister" parameterType = "com.edu.review.dto.ReviewDTO">
+	<insert id = "reviewRegister" parameterType = "com.edu.review.dto.ReviewDTO">
 		<![CDATA[ 
 		insert into t_review(review_bno, userID, review_subject, review_content, product_type, product_name, review_date, review_star)
 		select ifnull(max(review_bno), 0) +1, #{userID}, #{review_subject}, #{review_content}, #{product_type}, #{product_name}, now(), #{review_star} from t_review
 		]]>
-	</select>
+	</insert>
 			
 	<select id="productList" resultType="com.edu.review.dto.ReviewDTO" parameterType = "com.edu.product.dto.ProductDTO">
 		<![CDATA[

@@ -128,7 +128,6 @@
 				</div>
 			</div>
 			<div class="form-group" id="mypagebuttonbox">
-				
 				<button type="submit" id="updateinfo" style="display:none;">수정하기</button>
 				<button type="button" id="registerbtn">회원탈퇴</button>
 			</div>
@@ -137,7 +136,7 @@
 	
 	<!-- 게시글 관련 테이블 -->
 	<div class="container" style="text-align:center; margin-right:100px;">
-		<table id="membertable3">
+		<table id="membertable3" style=" margin-bottom:500px;">
 			<tr class="thead">
 				<td style="width:10%;">게시글번호</td>
 				<td style="width:50%;">게시글제목</td>
@@ -146,7 +145,7 @@
 			<c:forEach var="board" items="${boardList}">
 			<tr>
 				<td>${board.qna_bno}</td>
-				<td><a href="#">${board.qna_subject}</a></td>
+				<td><a href="/board/boardDetail?qna_bno=${board.qna_bno}">${board.qna_subject}</a></td>
 				<td>${board.qna_regDate}</td>
 			</tr>
 			</c:forEach>
@@ -155,7 +154,7 @@
 	
 	<!-- 구매내역 테이블 -->
 	<div class="container" style="text-align:center; margin-right:100px;">
-		<table id="membertable2">
+		<table id="membertable2" style=" margin-bottom:500px;">
 			<tr class="thead">
 				<td style="width:10%;">상품번호</td>
 				<td style="width:10%;">상품수량</td>
@@ -166,8 +165,8 @@
 			<c:forEach var="order" items="${orderList}">
 			<tr>
 				<td>${order.product_code}</td>
-				<td><a href="#">${order.product_amount}</a></td>
-				<td>${order.product_name}</td>
+				<td>${order.product_amount}</td>
+				<td><a href="/order/orderCompleteDetail?order_num=${order.order_num}">${order.product_name}</a></td>
 				<td>${order.product_size}</td>
 				<td>${order.order_date}</td>
 			</tr>

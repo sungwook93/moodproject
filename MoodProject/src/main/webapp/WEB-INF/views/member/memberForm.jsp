@@ -131,7 +131,7 @@
 			</div>
 			
 		</form>
-			<div  id="joinInfo">
+			<div class="container" id="joinInfo" onclick="fn_joininfo()">
 					<strong>[사용자 개인 정보 수집 및 이용 안내]</strong>
 					<h5>
 					정보통신망법 제50조와 동법시행령 61조

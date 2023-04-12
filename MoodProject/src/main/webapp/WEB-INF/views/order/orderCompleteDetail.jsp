@@ -28,8 +28,9 @@
 				<h1>주문 내역</h1>
 				<h4>${orderDTO.order_num}</h4>
 			</div>
+			<div class="container" style="display:flex;">
 			
-			<div class="container" style="text-align:center;">
+			<div>
 						<!-- 주문자 정보 -->
 					<h3><strong>주문자 정보</strong></h3>	
 						<table class="orderTable orderTableOrderDTO">
@@ -63,50 +64,7 @@
 								</td>
 							</tr>
 						</table>
-					<h3><strong>같이 주문한 상품 정보</strong></h3>
-						<!-- 주문 상품 정보 -->
-						<table class="orderTable" id="orderTableProduct">
-							<thead>
-								<tr id="orderTableProductTh">
-									<th colspan="2" id="orderTableProductName">상품/옵션 정보</th>
-									<th>상품 가격</th>
-									<th>상품평</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${orderDetailList}" var="list">
-									<tr>
-										<td>
-											<img src="/image/displayImage?name=${list.product_code}"/>
-										</td>
-										<td class="orderTableProductNameTd">
-											<a href="/product/productDetail?product_code=${list.product_code}&reviewPageNum=1">${list.product_name}</a>
-											<div>
-												<p>옵션: ${list.product_size}</p>
-												<p>수량: ${list.product_amount}</p>
-											</div>
-										</td>
-										<td>
-											<fmt:formatNumber value="${list.product_price}" pattern="#,###원"/>
-										</td>
-										<td>
-											<c:choose>
-												<c:when test="${list.review_yn == 'N' and list.userID == member1.userID}">
-													<!-- <a href="/review/reviewRegisterForm?product_code=${list.product_code}&order_num=${list.order_num}">리뷰 작성하기</a> -->
-													<button type="button" class="btn btn-secondary" onclick="location.href='/review/reviewRegisterForm'" style = "float : right;" ><strong>리뷰작성하기</strong></button>
-												</c:when>
-												<c:when test="${list.review_yn == 'Y'}">
-													<a href="/review/reviewDetail?product_code=${list.product_code}&order_num=${list.order_num}&userID=${list.userID}">작성된 리뷰 보기</a>
-												</c:when>
-												<c:otherwise>
-													작성된 리뷰 없음
-												</c:otherwise>
-											</c:choose>
-										</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+					
 						<!-- 배송, 결제 정보 -->
 					<h3><strong>배송지 정보</strong></h3>
 						<table class="orderTable orderTableOrderDTO">
@@ -200,7 +158,53 @@
 						</table>
 						
 			</div>
-			
+			<div>
+				<h3><strong>같이 주문한 상품 정보</strong></h3>
+						<!-- 주문 상품 정보 -->
+						<table class="orderTable" id="orderTableProduct">
+							<thead>
+								<tr id="orderTableProductTh">
+									<th colspan="2" id="orderTableProductName">상품/옵션 정보</th>
+									<th>상품 가격</th>
+									<th>상품평</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${orderDetailList}" var="list">
+									<tr>
+										<td>
+											<img src="/image/displayImage?name=${list.product_code}"/>
+										</td>
+										<td class="orderTableProductNameTd">
+											<a href="/product/productDetail?product_code=${list.product_code}&reviewPageNum=1">${list.product_name}</a>
+											<div>
+												<p>옵션: ${list.product_size}</p>
+												<p>수량: ${list.product_amount}</p>
+											</div>
+										</td>
+										<td>
+											<fmt:formatNumber value="${list.product_price}" pattern="#,###원"/>
+										</td>
+										<td>
+											<c:choose>
+												<c:when test="${list.review_yn == 'N' and list.userID == member1.userID}">
+													<!-- <a href="/review/reviewRegisterForm?product_code=${list.product_code}&order_num=${list.order_num}">리뷰 작성하기</a> -->
+													<button type="button" class="btn btn-secondary" onclick="location.href='/review/reviewRegisterForm'" style = "float : right;" ><strong>리뷰작성하기</strong></button>
+												</c:when>
+												<c:when test="${list.review_yn == 'Y'}">
+													<a href="/review/reviewDetail?product_code=${list.product_code}&order_num=${list.order_num}&userID=${list.userID}">작성된 리뷰 보기</a>
+												</c:when>
+												<c:otherwise>
+													작성된 리뷰 없음
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+			</div>
+			</div>
 			
 			<!-- 하단 메뉴 -->
 			<jsp:include page="../common/footer.jsp" flush="false"/>			

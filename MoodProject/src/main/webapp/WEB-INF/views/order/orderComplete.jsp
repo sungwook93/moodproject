@@ -104,12 +104,12 @@
 					</div>
 					
 					<!-- 결제 요약 -->
-					<div class="col-sm-4" id="orderSumaryDiv">
+					<div class="col-sm-4" id="orderSumaryDiv" style="padding:0;">
 						<table id="orderListTable">
 							<thead>
 								<tr>
-									<th id="orderProductNameTh"><strong>상품 이름</strong></th>
-									<th><strong>상품 가격</strong></th>
+									<th style="background:#9a9a9a; color:white;" id="orderProductNameTh"><strong>상품 이름</strong></th>
+									<th style="background:#9a9a9a; color:white;"><strong>상품 가격</strong></th>
 								</tr>
 							</thead>
 							<tbody>

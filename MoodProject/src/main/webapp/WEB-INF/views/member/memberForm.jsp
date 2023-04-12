@@ -39,7 +39,7 @@
 				<label for="id" class="col-sm-5 control-label">아이디</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" id="userID" name="userID" maxlength="20" placeholder="아이디 입력"/>
-					<strong id="idcheckmsg" style = "color: red;">&nbsp;&nbsp;ID 중복 여부를 확인해주세요.</strong>
+					<strong id="idcheckmsg" style = "color:white;">&nbsp;&nbsp;ID 중복 여부를 확인해주세요.</strong>
 					<strong><span id ="confirmMsgID"></span></strong>
 				</div>
 				<div class = "col-sm-2">

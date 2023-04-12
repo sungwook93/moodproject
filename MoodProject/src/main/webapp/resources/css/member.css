@@ -68,6 +68,14 @@ table tr td {
 #memInfo{
 	text-align:center;
 }
+table {
+	border:10px solid #9a9a9a;
+}
+table .thead td {
+	background:#9a9a9a;
+	color:white;
+	border:none;
+}
 button {
 	border:none;
 	background-color: #d4c6bb;
@@ -89,7 +97,8 @@ button {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: rgba(186,165,147,0.5);
+            background-color: #c1c1c1;
+            z-index:5;
         }
         #membermodal .membermodal-window {
            	text-align:center;
@@ -99,7 +108,7 @@ button {
             margin-left:auto;
             margin-right:auto;
             margin-top:80px;
-            background-color: rgba(186,165,147,0.9);
+            background-color: #9a9a9a;
             border-radius:50px;
         }
         #membermodal .title {
@@ -126,6 +135,7 @@ button {
         }  
 		.btn-light {
 			color:black;
+			background:#9a9a9a;
 		}
 
   

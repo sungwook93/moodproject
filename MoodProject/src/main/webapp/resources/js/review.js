@@ -12,7 +12,16 @@
 	let review_star = $("#review_star").val();
 	let	product_type	= $("#product_type").val();
 	let product_name = $("#product_name").val();
+	let file = document.getElementById("file");
 
+	
+	//파일수를 제한을 둔다.
+	if(file.files.length > 2){
+		alert("사진은 2장까지만 등록할수 있습니다.");
+		file.focus();
+		return false;
+	}
+	
 	
 	// 제목 항목에 값이 없으면 입력하도록 한다.
 	if($("#review_subject").val() == "") {
@@ -54,22 +63,57 @@
 		return false;
 	}
 	
-	alert(review_subject + userID + review_content + review_star + product_type + product_name);
+	//alert(review_subject + userID + review_content + review_star + product_type + product_name);
+	alert(file);
 	
 	$.ajax({
 		type:		"POST",
 		url:		"/review/reviewRegister",
 		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 		success:	function(data) {
-			if(data == "Y") {
-				alert("리뷰를 등록하였습니다.");
-				location.href = "/review/reviewList?page=1";
+			if(data != 0) {
+				//alert("리뷰를 등록하였습니다.");
+				//location.href = "/review/reviewList?page=1";
+				alert("등록 리뷰번호 ==" + data);
+				
+				//이미지 등록을위한 form데이터 객체 생성
+				let formData = new FormData();
+				
+				//업로드 된 이미지만큼 반복문으로 formdata에 넣어준다.
+				//set은 리셋되면서 추가하는거지만 append는 리셋하지않고 계속 추가한다.
+				alert(file.files.length);
+				for(let i = 0; i<file.files.length; i++){
+				formData.append("files", file.files[i]);
+				}
+				
+				formData.append("review_bno", data);
+				
+				$.ajax({
+					type: "post",
+					url: "/image/reviewUpload",
+					processData: false,
+					contentType: false,
+					data: formData,
+					dataType: "json",
+					success: function(data){
+					
+					 location.href="/review/reviewList?page=1";
+					},
+					error: function(data){
+							alert("상품 이미지 등록에 실패하였습니다.");
+					}
+				
+				}); // end - 리뷰 이미지 ajax 
+				
+				
+				
+				
 			}
 		},
 		error:		function(data) {
 			alert("리뷰를 등록하는데 실패하였습니다!");
 		}
-	});
+	});//end - 글작성ajax
 	
 } 
 

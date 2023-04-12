@@ -90,7 +90,7 @@
 							<!-- name = "file"의 변수명과 컨트롤러의 MultipartFile file과 일치해야 한다. -->
 							<div class = "form-group">
 								<div class = "col-sm-6">
-									<input type = "file" class = "btn btn-default" name = "file" style = "width: 600px;"/>
+									<input type = "file" id="file" class = "btn btn-default" name = "file" style = "width: 600px;" multiple/>
 								</div>
 								<div class = "col-sm-2">
 									<input type = "submit" class = "btn btn-default" value = "파일 올리기"/>

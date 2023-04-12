@@ -122,6 +122,13 @@ function fn_productRegister(){
 	//product_price + "product_color" + product_color +  "product_type" + product_type
 	//+ "file" + file);
 	
+	//파일수를 제한을 둔다.
+	if(file.files.length > 4){
+		alert("사진은 4장까지만 등록할수 있습니다.");
+		file.focus();
+		return false;
+	}
+	
 	//상품 이름 입력을 확인한다.
 	if(product_name.length == 0) { //이름이 없으면
 		alert("상품 이름은 필수 등록 항목입니다. 상품 이름을 입력해주세요.");
@@ -258,6 +265,13 @@ function fn_productUpdate(){
 	//alert("product_name" + product_name +  "product_size" +  product_size + "product_price"+
 	//product_price + "product_color" + product_color +  "product_type" + product_type
 	//+ "file" + file);
+	
+	//파일수를 제한을 둔다.
+	if(file.files.length > 4){
+		alert("사진은 4장까지만 등록할수 있습니다.");
+		file.focus();
+		return false;
+	}
 	
 	//상품 이름 입력을 확인한다.
 	if(product_name.length == 0) { //이름이 없으면

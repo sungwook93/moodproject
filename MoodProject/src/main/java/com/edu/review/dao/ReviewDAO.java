@@ -6,6 +6,7 @@ import com.edu.common.util.SearchCriteria;
 import com.edu.product.dto.ProductDTO;
 import com.edu.review.dto.ReviewCommentDTO;
 import com.edu.review.dto.ReviewDTO;
+import com.edu.review.dto.ReviewImagesDTO;
 
 public interface ReviewDAO {
 
@@ -54,7 +55,13 @@ public interface ReviewDAO {
 	public int replyDelete(int imsi_bno) throws Exception;	
 	
 	// 댓글 번호에 해당하는 댓글 수정하기
-	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception; 	
+	public int replyUpdate(ReviewCommentDTO reviewCommentDTO) throws Exception;
+
+	// 작성한 글의 번호를 가져온다.
+	public int review_bno(ReviewDTO reviewDTO)throws Exception;
+
+	// 리뷰사진등록
+	public int imagesRegister(ReviewImagesDTO reviewImagesDTO)throws Exception; 	
 	
 	
 	

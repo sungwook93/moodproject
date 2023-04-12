@@ -327,7 +327,7 @@ public class MemberControllerImpl implements MemberController {
 			
 			int result = memberService.memberUpdate(memberDTO);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("/main");
+			mav.setViewName("/member/myPageForm");
 			return mav;
 			
 			

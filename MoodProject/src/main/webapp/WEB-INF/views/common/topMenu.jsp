@@ -35,7 +35,7 @@
 
 <div id="sticky-content">
 	<c:choose>
-			<c:when test="${isLogOn==true && member1 != null && member1 !=''}"><!-- MemberControllerImpl에 세션에 담김 -->
+			<c:when test="${isLogOn==true && member1 != null}"><!-- MemberControllerImpl에 세션에 담김 -->
 				<c:choose>
 					<c:when test="${member1.grade ==7 }"><!-- 관리자상태창 -->
 						<li><a href="/member/logout.do">로그아웃</a><a href="/member/myPageForm.do?userID=${member1.userID }">마이페이지</a><a href="/member/adminForm.do?product_type=bed">관리자페이지</a><a href="/order/cartForm.do?userID=${member1.userID}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>

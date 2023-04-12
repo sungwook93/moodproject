@@ -153,10 +153,10 @@
 								<td class="orderPrice" id="deliveryFee">
 									<c:choose>
 										<c:when test="${orderSum > 50000}">
-											<fmt:formatNumber value="0" pattern="#,###원"/>
+											<fmt:formatNumber value="5000" pattern="#,###원"/>
 										</c:when>
 										<c:otherwise>
-											<fmt:formatNumber value="5000" pattern="#,###원"/>
+											<fmt:formatNumber value="3000" pattern="#,###원"/>
 										</c:otherwise>
 									</c:choose>
 								</td>

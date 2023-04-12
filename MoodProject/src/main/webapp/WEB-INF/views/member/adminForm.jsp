@@ -43,16 +43,15 @@
 		<div class="container" id="typecheckbox">
 				<label id="naming" for="type"></label>
 				<form name="myform">
-				<label><input type="radio" name="type" id="bed" value="bed" onclick="Radio_Checked()"<c:if test="${type=='bed'}">checked</c:if>>침실</label>
-				<label><input type="radio" name="type" id="living" value="living" onclick="Radio_Checked()"<c:if test="${type=='living'}">checked</c:if>>거실</label>
-				<label><input type="radio" name="type" id="bath" value="bath" onclick="Radio_Checked()"<c:if test="${type=='bath'}">checked</c:if>>욕실</label>
+				<label><input type="radio" name="type" id="bed" value="bed" onclick="Radio_Checked()">침실</label>
+				<label><input type="radio" name="type" id="living" value="living" onclick="Radio_Checked()">거실</label>
+				<label><input type="radio" name="type" id="bath" value="bath" onclick="Radio_Checked()">욕실</label>
 				
 				
 				</form>
 		</div>
 		<!-- 상품 관련 테이블 -->
 		<table id="admintable" style="text-align:center;">
-			<a href="https://analytics.google.com/analytics/web/#/p359593049/reports/reportinghub">통계사이트로가기</a>
 			<tr class="thead">
 				<td style="width:10%;">상품번호</td>
 				<td style="width:50%;">상품이름</td>
@@ -114,9 +113,9 @@
 		<table id="admintable3">
 			
 			<tr class="thead">
-				<td style="width:15%;">게시글번호</td>
-				<td style="width:60%;">게시글제목</td>
-				<td style="width:25%;">작성일자</td>
+				<td style="width:10%;">게시글번호</td>
+				<td style="width:50%;">게시글제목</td>
+				<td style="width:20%;">작성일자</td>
 			</tr>
 			<c:forEach var="board" items="${boardList}">
 			<tr>

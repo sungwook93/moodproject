@@ -3,7 +3,7 @@
 	function Radio_Checked() {
 
     if(document.myform.type[0].checked) {
-    	
+    	$("#bed").checked;
 		location.href = "/member/adminForm.do?product_type=bed&page=1";
     }
     if(document.myform.type[1].checked) {
@@ -11,7 +11,7 @@
 		location.href = "/member/adminForm.do?product_type=living&page=1";
     }
     if(document.myform.type[2].checked) {
-  		
+   
 		location.href = "/member/adminForm.do?product_type=bath&page=1";
     }
    }

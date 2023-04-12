@@ -150,6 +150,16 @@
 	</update>
 	
 	
+	<select id="review_bno" parameterType="com.edu.review.dto.ReviewDTO" resultType = "Integer">
+		select Max(review_bno)
+		from t_review
+	</select>
+	
+	<insert id="imagesRegister" parameterType="com.edu.review.dto.ReviewImagesDTO">
+		insert into t_reviewimages(review_bno, images01, images02)
+		values (#{review_bno}, #{images01}, #{images02})
+	</insert>
+	
 	
 </mapper>
 

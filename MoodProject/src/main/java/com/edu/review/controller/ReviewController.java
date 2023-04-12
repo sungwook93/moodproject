@@ -79,15 +79,20 @@ public class ReviewController {
 	//-----------------------------------------------------------------------------------------------------------	
 	@ResponseBody
 	@RequestMapping(value = "/reviewRegister", method = RequestMethod.POST)
-	public String reviewRegister(ReviewDTO reviewDTO) throws Exception {
+	public int reviewRegister(ReviewDTO reviewDTO) throws Exception {
 		
 		System.out.println("ReviewController 리뷰 등록하기");
 		
 	
 		if(reviewService.reviewRegister(reviewDTO) == 1) {
-			return "Y";
+			
+		int result	 = reviewDAO.review_bno(reviewDTO);
+		
+		System.out.println(result);
+			
+			return result;
 		}else {
-			return "N";
+			return 0;
 		}
 
 	}

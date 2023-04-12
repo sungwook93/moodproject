@@ -72,6 +72,18 @@
 							<input type="text" class="form-control" id="product_name" name="product_name" value = "${reviewDTO.product_name}" readonly/>
 						</div>
 					</div>	
+					<table>
+						<tr>
+							<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
+								<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg"/>
+							</td></c:if>
+							<c:if test="${imagesList.images02 != null}" >
+							<td class="subImg1">
+								<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg"/>
+							</td>
+							</c:if>
+						</tr>
+					</table>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">내  용</label>
 						<div class="col-sm-10">

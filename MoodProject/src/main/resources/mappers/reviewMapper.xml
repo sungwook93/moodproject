@@ -160,6 +160,11 @@
 		values (#{review_bno}, #{images01}, #{images02})
 	</insert>
 	
+	<select id= "ImagesName" parameterType="Integer" resultType="com.edu.review.dto.ReviewImagesDTO">
+		select *
+		from t_reviewimages
+		where review_bno = #{review_bno}
+	</select>
 	
 </mapper>
 

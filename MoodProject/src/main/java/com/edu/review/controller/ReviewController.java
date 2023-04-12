@@ -17,10 +17,12 @@ import com.edu.board.dto.CommentDTO;
 import com.edu.common.util.PageMaker;
 import com.edu.common.util.SearchCriteria;
 import com.edu.order.dto.CartDTO;
+import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 import com.edu.review.dao.ReviewDAO;
 import com.edu.review.dto.ReviewCommentDTO;
 import com.edu.review.dto.ReviewDTO;
+import com.edu.review.dto.ReviewImagesDTO;
 import com.edu.review.service.ReviewService;
 
 
@@ -149,6 +151,13 @@ public class ReviewController {
 		// 리뷰 리스트 제목에 댓글 수 표시
 		mav.addObject(reviewService.updateReplyCount(review_bno)); 
 		
+		//리뷰 번호를 이용해 이미지 리스트를 가져온다.
+		ReviewImagesDTO reviewimagesDTO = reviewDAO.ImagesName(review_bno);
+		
+		//이미지 리스트릉 모델에 담는다
+		mav.addObject("imagesList" , reviewimagesDTO);
+		
+		
 		return mav;
 		
 	}
@@ -165,6 +174,8 @@ public class ReviewController {
 		mav.addObject("reviewDTO", reviewDTO);
 		
 		mav.setViewName("/review/reviewUpdateForm");
+		
+		
 		
 		return mav;
 		

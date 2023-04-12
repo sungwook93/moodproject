@@ -35,7 +35,7 @@
 				</div>
 				<div>
 					<table id="subImg3">
-						<tr>
+							<tr>
 							<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
 								<img src="/image/displayImage?name=${imagesList.images01}" id="img1" class="subImg"/>
 							</td></c:if>

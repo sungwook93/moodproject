@@ -72,6 +72,13 @@
 		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 		success:	function(data) {
 			if(data != 0) {
+				alert(file.files.length + "확인1");
+				
+				if(file.files.length == 0 || file.files.length == null){
+					alert("확인");
+					location.href = "/review/reviewList?page=1";
+				} else {
+				
 				//alert("리뷰를 등록하였습니다.");
 				//location.href = "/review/reviewList?page=1";
 				alert("등록 리뷰번호 ==" + data);
@@ -105,8 +112,7 @@
 				
 				}); // end - 리뷰 이미지 ajax 
 				
-				
-				
+				}
 				
 			}
 		},

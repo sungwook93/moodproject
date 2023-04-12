@@ -1,27 +1,6 @@
 @charset "UTF-8";
 
 /*관리자 페이지*/
-label input {
-  display: inline-flex;
-  align-items: center;
-}
-
-
-input[type='radio']:checked {
-  appearance: none;
-  width: 0.9rem;
-  height: 0.9rem;
-  border-radius: 100%;
-  margin-right: 0.1rem;
-}
-
-input[type='radio'] {
-  background-color: $white-color;
-  border: 2px solid black;
-}
-input[type='radio']:checked {
-  background-color: #9a9a9a;
-}
 #listRemoveBtn {
 	background-color: #69737A;
 	border: none;
@@ -39,12 +18,6 @@ table {
 	width:800px; !important;
 	display:inline-block;
 	text-align:center;	
-	border:10px solid #9a9a9a;
-}
-table .thead td {
-	background:#9a9a9a;
-	color:white;
-	border:none;
 }
 table tr td {
 	border:1px solid black;

@@ -306,7 +306,7 @@ $(document).ready(function() {
 	});
 	
 });
-	
+
 //아이디 중복 검사 함수
 function fn_idCheck(){
 

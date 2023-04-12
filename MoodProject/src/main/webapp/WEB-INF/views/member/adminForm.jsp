@@ -52,7 +52,7 @@
 		</div>
 		<!-- 상품 관련 테이블 -->
 		<table id="admintable" style="text-align:center;">
-			<a href="https://analytics.google.com/analytics/web/#/p359593049/reports/reportinghub">통계사이트로가기</a>
+			
 			<tr class="thead">
 				<td style="width:10%;">상품번호</td>
 				<td style="width:50%;">상품이름</td>

@@ -125,6 +125,7 @@
 				<label class="col-sm-5 control-label">가입일자</label>
 				<div class="col-sm-3">
 				<input type="text" class="form-control" id="joinDate" name="joinDate" maxlength="20" value="${member1.joinDate}" readonly/>
+				<input type="hidden" class="form-control" id="grade" name="grade" maxlength="20" value="${member1.grade}" readonly/>
 				</div>
 			</div>
 			<div class="form-group" id="mypagebuttonbox">
@@ -206,6 +207,7 @@
 	 </div> 		
 				<div>
 					<input type="hidden" id = "userID" value="${member1.userID }">
+					<input type="hidden" id="userGrade" value="${member1.grade}"/>
 				</div>
 	
 	<jsp:include page ="../common/footer.jsp"></jsp:include>

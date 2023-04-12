@@ -92,7 +92,7 @@ $(document).ready(function() {
  
  $(document).ready(function() {
  	
- 	
+ 	 
 	
 	
 	//datepicker 달력 
@@ -468,7 +468,7 @@ $(document).ready(function() {
   			document.getElementById('address2').readOnly = false; 
   			document.getElementById('phone').readOnly = false; 
   			document.getElementById('age').readOnly = false; 
-  			document.getElementById('gender').readOnly = false; 
+  			
   			document.getElementById('email').readOnly = false; 
   		});
 });

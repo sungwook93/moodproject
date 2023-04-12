@@ -50,7 +50,7 @@
 				
 				</form>
 		</div>
-		<!-- 상품 관련 테이블 -->
+		<!-- 상품 관련 테이블 --><!-- 주석 -->
 		<table id="admintable" style="text-align:center;">
 			<tr class="thead">
 				<td style="width:10%;">상품번호</td>

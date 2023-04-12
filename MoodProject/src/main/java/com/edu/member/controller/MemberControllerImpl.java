@@ -302,8 +302,8 @@ public class MemberControllerImpl implements MemberController {
 			//장바구니 번호가져오기
 			
 			//구매정보 가져오기
+			mav.addObject("userUpdate",session);
 			mav.addObject("orderList",memberDAO.orderList(userID));
-			
 			mav.setViewName("/member/myPageForm");	// 
 			//System.out.println(userID+"!");
 			return mav;

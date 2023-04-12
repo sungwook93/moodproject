@@ -103,13 +103,11 @@
 													
 													<c:if test="${member1.grade == 7 or member1.userID == comment.userID }">
 														${comment.userID}&nbsp; :&nbsp;&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #c1c1c1; border: none; width: 600px;" readonly/>
-														<a id="commentUpdateB${status.count}" style = "display:none; width: 30px;" onclick="fn_updateComment(${status.count},${comment.imsi_bno}, ${comment.qna_bno});"> 등록</a>
-														<a id="commentUpdateA${status.count}" onclick="fn_updateOpen(${status.count}, ${comment.imsi_bno});"> 수정</a>
+														<a id="commentUpdateB${status.count}" style = "display:none; width: 30px;" onclick="fn_updateComment(${status.count});"> 등록</a>
+														<a id="commentUpdateA${status.count}" onclick="fn_updateOpen(${status.count});"> 수정</a>
 														<a> | </a>
-														<a id="commentDeleteA" onclick="fn_deleteComment(${status.count}, ${boardDTO.qna_bno}, ${comment.imsi_bno});"> 삭제</a>
+														<a id="commentDeleteA" onclick="fn_deleteComment(${comment.reply_bno}, ${boardDTO.qna_bno});"> 삭제</a>
 													</c:if>
-													<input type="hidden" id="imsi_bno" value="${comment.imsi_bno}"/>
-													<input type="hidden" id="reply_bno" value="${comment.reply_bno}"/>
 													<!-- 글쓴이면 자기글 수정 삭제 가능  -->
 													<c:if test="${member1.grade != 7 and member1.userID != comment.userID}">
 														${comment.userID}&nbsp; :&nbsp;&nbsp;<input type = "text" id = "${status.count}" value = "${comment.reply_content}" style = "background-color: #c1c1c1; border: none; width: 600px;" readonly/>
@@ -118,7 +116,6 @@
 													<input type="hidden" id="qna_bno" value="${comment.qna_bno}"/>
 													<input type="hidden" id="userID1" value="${member1.userID}"/>
 													<input type="hidden" id="statuscount" value="${status.count}"/>
-													<input type="hidden" id="imsi_bno" value="${comment.imsi_bno}"/>
 												</td>
 											</tr>
 										</c:forEach>

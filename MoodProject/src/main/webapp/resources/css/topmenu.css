@@ -1,0 +1,245 @@
+@charset "UTF-8";
+
+
+/* top menu */
+input:checked {
+	background:black;
+}
+
+#loginbtn:hover {
+	cursor: pointer;
+}
+ body {
+	background-color: #c1c1c1;
+	color:black;
+ }
+/**/
+*{
+	padding:0;margin:0
+}
+li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	font-size:14px;
+	color:black !important;
+}
+a:hover {
+	color:black;
+	text-decoration:none;
+}
+#myNav {
+	margin-bottom:10px;
+	height:80px;
+	
+}
+#searchdiv {
+	border:none;
+	border-radius:30px;	
+	background:white;
+	bottom:40px;
+	position:relative;
+	
+}
+
+#keyword2 {
+	width:500px;
+	position:relative;
+	z-index:3;
+	bottom:0;
+	border:none;
+	height:40px;
+}
+#keyword2:focus {
+	outline:none;
+}
+/*스티키*/
+
+#sticky-content {
+	 background-color: #9a9a9a;
+	color: #d4c6bb;
+	height:50px;
+	padding:20px;
+	text-align:right;
+}
+#sticky-content a {
+	padding-left:20px;
+	padding-right:20px;
+}	
+#sticky-btn {  
+       position:sticky;
+       top:0px;
+       padding-left:0;
+       padding-top:30px;
+       z-index:1;
+       width:50px;
+}
+#sticky-btn button{
+	width:50px;
+	height:50px;
+	border:none;
+	background-color: #c1c1c1;
+	font-size:1.5em;
+}
+#collapse-content {
+	position:fixed;
+	left:0;
+	top:0;
+	width:0px;
+	height:900px;
+	background-color: #9a9a9a;
+	z-index:3;
+	overflow:hidden;
+	transition-property: width;
+    transition-duration: 0.5s, 2s;
+    white-space: nowrap;
+    
+}
+
+#close-area {
+	position:relative;
+	left:270px;
+	height:20px;
+	top:40px;
+	z-index:3;s
+}
+#close-area:hover {
+	cursor:pointer;
+}
+#nav1 {
+	position:relative;
+	bottom:80px;
+	height:50px;
+	
+}
+/*네브2*/
+#nav2 {
+	text-align:right;
+	height:40px;
+	width:300px;
+	position:relative;
+	bottom:140px;
+	left:1000px;
+}
+#nav2 li {
+	height:40px;
+}
+#nav2 li a{
+	margin-right:20px;
+}
+
+/*네브3*/
+#nav3 {
+	background-color: #c1c1c1;
+	height:40px;	
+	width:100%;
+	text-align: center;
+	position:relative;
+	bottom:60px;
+	z-index:2;
+}
+#login {
+	margin-left:100px;
+	padding:50px;
+}
+.menu {
+  width: 480px;
+  overflow: hidden;
+  text-align:center;
+  margin: 0 auto;
+  
+}
+
+.menu > li {
+  width: 160px;
+  float: left;
+  line-height: 40px;
+  background-color: #c1c1c1;
+  color:black;
+  position:relative;
+  text-align:center;
+}
+.submenu > li {
+  line-height: 50px;
+   background-color: #9a9a9a;
+}
+
+.submenu {
+  height: 0; /*ul의 높이를 안보이게 처리*/
+  overflow: hidden;
+}
+
+	/*네브2 호버*/
+.menu > li:hover {
+ background-color: #9a9a9a;
+  transition-duration: 0.5s;
+}
+
+.menu > li:hover .submenu {
+  height: auto; /*서브메뉴 li한개의 높이 50*5*/
+  transition-duration: 1s;
+}  
+
+
+/*모달 로그인 */
+
+ #modal.modal-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(193,193,193,0.9); 
+            z-index:10;
+        }
+        #modal .modal-window {
+           	text-align:center;
+            width: 400px;
+            height: 400px;
+            position: relative;
+            top: -100px;
+            padding: 10px;
+            background-color:  rgba(154,154,154,0.5);
+            border-radius:50px;
+          
+        }
+        #modal .title {
+            padding-left: 10px;
+            display: inline;
+            color: white;
+            
+        }
+        #modal .title h2 {
+            display: inline;
+        }
+        #modal .close-area {
+            display: inline;
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        #modal .content {
+            margin-top: 20px;
+            padding: 0px 70px;
+            color: white;
+        }  
+		.btn-light {
+			color:black;
+		}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

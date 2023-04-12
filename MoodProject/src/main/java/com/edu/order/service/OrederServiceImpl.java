@@ -156,7 +156,6 @@ public class OrederServiceImpl implements OrderService {
 				orderDTO.setProduct_code(cartDTO.getProduct_code());
 				orderDTO.setProduct_amount(cartDTO.getProduct_amount());
 				orderDTO.setProduct_size(cartDTO.getProduct_size());
-				orderDTO.setProduct_name(cartDTO.getProduct_name());
 				
 				//t_orderProduct 테이블에 등록한다.
 				count += orderDAO.addOrderProduct(orderDTO);

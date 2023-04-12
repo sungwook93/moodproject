@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+#userjoin {
+	text-align:center;
+	overflow:hidden;
+}
+#updatepage,#updateinfo,#registerbtn {
+	background-color: #69737A;
+	border: none;
+	color:white;
+	border-radius:50px;
+	padding:4px;
+}
+
+#userjoin input {
+	background-color: #d4c6bb;
+	border:none;
+	border-bottom:1px solid black;
+	margin-bottom:30px;
+}
+#idCheck {
+	background-color: #d4c6bb;
+	border:none;
+	border-bottom:1px solid black;
+}
+#userjointitle {
+	text-align:center;
+	margin-bottom:50px;
+}
+#joinButtonBox {
+	margin-top:30px;
+	text-align:center;
+}
+#joinButtonBox button {
+	width:200px;
+	display :inline-block;
+}
+#joinInfo {
+	background-color: white;
+	border-radius:30px;
+}
+
+/*mypage*/
+table {
+	width:800px; !important;
+	display:inline-block;
+	text-align:center;	
+}
+table tr td {
+	border:1px solid black;
+	width:800px;
+}
+#membertitle *{
+	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
+}
+#membertitle2 *{
+	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
+}
+#membertitle3 *{
+	display:inline-block;
+	padding-left:50px;
+	padding-right:50px;
+}
+#memInfo{
+	text-align:center;
+}
+table {
+	border:10px solid #9a9a9a;
+}
+table .thead td {
+	background:#9a9a9a;
+	color:white;
+	border:none;
+}
+button {
+	border:none;
+	background-color: #d4c6bb;
+}
+#searchpostnum {
+	width:130px;
+}
+#idCheck {
+	width:130px;
+}
+/*모달 회원탈퇴 */
+ #membermodal.membermodal-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #c1c1c1;
+            z-index:5;
+        }
+        #membermodal .membermodal-window {
+           	text-align:center;
+            width: 400px;
+            height: 450px;
+            position: relative;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:80px;
+            background-color: #9a9a9a;
+            border-radius:50px;
+        }
+        #membermodal .title {
+            padding-left: 10px;
+            display: inline;
+            color: white;
+            
+        }
+        #membermodal .title h2 {
+            display: inline;
+        }
+        #membermodal .memberclose-area {
+            display: inline;
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        #membermodal .content {
+            margin-top: 20px;
+            padding: 0px 70px;
+            color: white;
+        }  
+		.btn-light {
+			color:black;
+			background:#9a9a9a;
+		}
+
+  

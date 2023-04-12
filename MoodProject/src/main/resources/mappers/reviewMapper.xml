@@ -13,7 +13,7 @@
 				AND review_subject LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'c'.toString()">
-				AND product_name LIKE CONCAT('%', #{keyword}, '%')
+				AND review_content LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'u'.toString()">
 				AND userID LIKE CONCAT('%', #{keyword}, '%')

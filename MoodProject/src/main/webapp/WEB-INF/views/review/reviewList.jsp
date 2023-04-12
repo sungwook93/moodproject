@@ -117,7 +117,7 @@
 		
 			
 			<!-- 스크립트에서 사용할 hidden 요소 -->
-			<form id="formList" action="/review/reviewList?page=1" method="get">
+			<form id="formList" action="/board/boardList?page=1" method="get">
 				<input type='hidden' name='searchType'	value='${searchType}'/>
 				<input type="hidden" name="keyword"		value="${keyword}"/>
 			</form>		

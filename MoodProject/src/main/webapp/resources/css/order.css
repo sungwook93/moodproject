@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+
+#deliveryDetail {
+	border:5px solid #9a9a9a;
+	width:40%;
+	position:relative;
+	left:10%;
+	top:100px;
+	margin-bottom:300px;
+}
+#deliveryDetailtable tr td{
+	padding-bottom:30px;
+	
+}
+#deliveryDetailtable tr{
+	border-bottom:1px solid #9a9a9a;
+}
+#detailviewdiv p{
+	background:white;
+	margin-bottom:10px;
+	position:relative;
+	bottom:0px;
+	left:10px;
+}
+#orderSumaryDiv {
+	position:sticky;
+	top:50px;
+	margin-left:12%;
+	margin-top:100px;
+	background:white;
+	border:8px solid #9a9a9a;
+}
+#userorderinfoview p{
+	background:white;
+	margin-bottom:10px;
+	position:relative;
+	bottom:0px;
+	left:10px;
+}
+#orderListTable {
+	width:100%;
+}
+#orderListTable tr td {
+	border:1px solid black;
+}
+#orderListTable tr th{
+	border:1px solid black;
+}
+#AfterCareTable {
+	border: 1px solid black;
+	position:relative;
+	top:70px;
+	width:100%;
+	height:50px;
+}
+#AfterCareTable button {
+	width:100%;
+	height:50px;
+}

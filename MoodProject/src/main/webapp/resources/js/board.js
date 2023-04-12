@@ -278,9 +278,7 @@ $(document).ready(function() {
  
  // 댓글 삭제 
  
- function fn_deleteComment(status, qna_bno, imsi_bno) {
-	
-	let reply_bno = status;
+ function fn_deleteComment(reply_bno, qna_bno) {
 	
 	if(!confirm("\댓글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
 		alert("댓글 삭제를 취소하셨습니다.");
@@ -289,7 +287,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "/board/replyDelete",
-			data: {qna_bno:qna_bno, reply_bno:reply_bno, imsi_bno:imsi_bno},
+			data: {qna_bno:qna_bno, reply_bno:reply_bno},
 			success: function(data) {
 				if(data == "Y") {
 					alert("댓글의 삭제가 완료되었습니다.");
@@ -306,11 +304,11 @@ $(document).ready(function() {
 
 
 // 댓글 수정
-function fn_updateComment(status, imsi_bno, qna_bno) {
+function fn_updateComment(status) {
 	
-	let reply_bno = status;
-	
+	let	qna_bno		= $("#qna_bno").val();
 	let	reply_content = $("#"+status).val();
+	let	reply_bno = $("#reply_bno").val();
 	let	userID = $("#userID1").val();
 	
 	alert(qna_bno + ":" + reply_content + ":" + reply_bno);
@@ -318,7 +316,7 @@ function fn_updateComment(status, imsi_bno, qna_bno) {
 	$.ajax({
 		type:			"POST",
 		url:			"/board/replyUpdate",
-		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, userID:userID, imsi_bno:imsi_bno},
+		data:			{qna_bno:qna_bno, reply_content:reply_content, reply_bno:reply_bno, userID:userID},
 		success:		function(data) {
 			if(data == "Y") {
 				alert("댓글 수정이 완료되었습니다.");
@@ -339,7 +337,7 @@ function fn_updateComment(status, imsi_bno, qna_bno) {
 
 // 댓글 수정창 
 
-function fn_updateOpen(reply_bno, imsi_bno) {
+function fn_updateOpen(reply_bno) {
 
 	let status = reply_bno;
 

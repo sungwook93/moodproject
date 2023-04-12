@@ -41,6 +41,8 @@
 		
 		<div class="container" id="pdtable"> 
 		<div class="container" id="typecheckbox">
+			<br/><br/>
+			<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister"><br/>
 				<label id="naming" for="type"></label>
 				<form name="myform">
 				<label><input type="radio" name="type" id="bed" value="bed" onclick="Radio_Checked()"<c:if test="${type=='bed'}">checked</c:if>>침실</label>
@@ -50,6 +52,7 @@
 				
 				</form>
 		</div>
+		
 		<!-- 상품 관련 테이블 -->
 		<table id="admintable" style="text-align:center;">
 			
@@ -68,7 +71,6 @@
 		
 		</table>
 		<div class="container"  id="productBottom">
-		<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister">
 		<!-- 페이징 처리 -->
 			<div class="col-sm-12" align="center">
 				<ul class="btn-group pagination">

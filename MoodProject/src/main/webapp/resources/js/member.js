@@ -2,6 +2,10 @@
  *	
  */
  
+//주문서작성 페이지 동의안내서 열기닫기
+function fn_joininfo(){
+	$("#joinInfo").css("height", "246px");
+}
 $(document).ready(function() {
 	
 	//처음 페이지들어갈시 상품관리메뉴만보이게

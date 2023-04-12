@@ -96,7 +96,27 @@ public class ReviewImageController {
 		return new ResponseEntity<ReviewImagesDTO>(reviewImagesDTO, HttpStatus.OK);
 	}
 
-	
+	//리뷰 이미지 수정하기.
+	@ResponseBody 
+	@RequestMapping(value = "/updateImage1", method = RequestMethod.POST)
+	public ResponseEntity<ReviewImagesDTO> updateImage1(MultipartFile[] files, int review_bno) throws Exception{
+		
+		System.out.println("ReviewImageController의 updateImage");
+		
+		// 이미지를 업로드 한다.
+		ReviewImagesDTO reviewImagesDTO = ReviewUploadFile.uploadImage(uploadPath, files, review_bno);
+		
+		// reviewImagesDTO에 리뷰번호 세팅
+		reviewImagesDTO.setReview_bno(review_bno);
+		
+		//reviewImagesDTO를 업데이트해준다.
+		int result = reviewDAO.imagesUpdate(reviewImagesDTO);
+		if(result == 1) {
+			System.out.println("db에 이미지 데이터 업데이트 성공");
+		}
+		
+		return new ResponseEntity<ReviewImagesDTO>(reviewImagesDTO, HttpStatus.OK);
+	}
 	
 	
 	

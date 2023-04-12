@@ -157,7 +157,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectOne(Namespace + ".ImagesName", review_bno);
 	}
 
-
+	// 리뷰이미지 수정
+	@Override
+	public int imagesUpdate(ReviewImagesDTO reviewImagesDTO) throws Exception {
+		
+		System.out.println("ReviewDAOImpl 리뷰이미지 수정" + reviewImagesDTO);
+		
+		return sqlSession.update(Namespace +".imagesUpdate", reviewImagesDTO );
+	}
 	
 
 	

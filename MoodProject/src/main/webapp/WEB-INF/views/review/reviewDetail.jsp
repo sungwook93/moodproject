@@ -72,25 +72,49 @@
 							<input type="text" class="form-control" id="product_name" name="product_name" value = "${reviewDTO.product_name}" readonly/>
 						</div>
 					</div>	
-					<table>
-						<tr>
-							<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
-								<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg"/>
-							</td></c:if>
-							<c:if test="${imagesList.images02 != null}" >
-							<td class="subImg1">
-								<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg"/>
-							</td>
-							</c:if>
-						</tr>
-					</table>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">리뷰 사진</label>	
+						<div class="col-sm-2">
+						<table>
+							<tr>
+								<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
+									<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
+								</td></c:if>
+								<c:if test="${imagesList.images02 != null}" >
+								<td class="subImg1">
+									<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg" style = "height: 350px; width : 470px;"/>
+								</td>
+								</c:if>
+							</tr>
+						</table>
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">내  용</label>
 						<div class="col-sm-10">
 							<textarea class="form-control" id="review_content" name="review_content" rows="10" cols="160"  readonly>${reviewDTO.review_content}</textarea>
 						</div>
-
-					
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label">첨부 파일</label>
+						
+						<form class = "form-horizontal" action = "${contextPath }/util/upload/uploadForm" method = "post" enctype = "multipart/form-data" target = "iframe1">
+							<!-- name = "file"의 변수명과 컨트롤러의 MultipartFile file과 일치해야 한다. -->
+							<div class = "form-group">
+								<div class = "col-sm-6">
+									<input type = "file" id="file" class = "btn btn-default" name = "file" style = "width: 600px;" multiple/>
+								</div>
+							</div>
+							
+							<!-- iframe에 업로드한 결과를 출력한다. 
+							<div class = "form-group">
+								<div class = "col-sm-10">
+									<iframe name = "iframe1"></iframe>
+								</div>
+							</div>
+							-->
+						</form>
+						
 					</div>
 				<div id="boardDetailBtn">
 					<button type="button" class="btn btn-light" onclick="location.href='/review/reviewList?page=1'">

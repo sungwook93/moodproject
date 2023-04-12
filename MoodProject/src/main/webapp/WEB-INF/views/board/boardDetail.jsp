@@ -36,7 +36,7 @@
 			<h2 style = "text-align: center; font-family: 'Sunflower', sans-serif;">Q & A Detail</h2>
 			<br/>
 			<br/>
-				<!-- 주석 추가2 -->
+				<!-- 주석 추가23 -->
 				<div class="container">
 				<!-- 게시글 작성 부분 -->
 				<form class="form-horizontal">

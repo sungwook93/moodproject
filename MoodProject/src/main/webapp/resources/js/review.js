@@ -179,28 +179,59 @@ function fn_reviewUpdate() {
 	let	product_type	= $("#product_type").val();
 	let	product_name	= $("#product_name").val();
 	let	review_star	= $("#review_star").val();
+	let file = document.getElementById("file");
 	
 	//alert(review_bno + ":" + review_subject + ":" + userID + ":" + review_content + ":" + product_type + ":" + product_name + ":" + review_star);
+	
+	if(confirm("게시글을 등록하시겠습니까? ")){
 	
 		$.ajax({
 			type:			"POST",
 			url:			"/review/reviewUpdate",
 			data:			{review_bno:review_bno, review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 			success:		function(data) {
-				if(data == "Y") {
-					alert("리뷰 수정이 완료되었습니다.");
-					location.href="/review/reviewList?page=1";
-				} else {
-					alert("리뷰 수정이 되지 않았습니다.\n\n잠시 후에 다시 해주십시오." + data);
-				}
-			},
-			error:			function(data) {
-				alert("실패" + data);
-				console.log(data);
-			}
-		});
+				if(data != 0) {
+					if(file.files.length == 0 || file.files.length == null){ // 이미지 변경 없을 때 
+						alert("리뷰 수정이 완료되었습니다.");
+						location.href="/review/reviewList?page=1";
+					
+					} else {
+					//이미지 등록을 위한 form데이터 객체 생성
+					let formData = new FormData();
+					
+					// 업로드 된 이미지만큼 반복문으로 FormData에 넣어준다.
+					for(let i = 0; i < file.files.length; i++) {
+						formData.append("files",file.files[i]);
+					}
+					
+					// formData에 리뷰번호를 넣어준다.
+					formData.append("review_bno", data);
+					
+						// 이미지 수정 ajax
+						$.ajax({
+							type: "post",
+							url: "/image/updateImage1",
+							processData: false,
+							contentType: false,
+							data: formData,
+							dataType: "json",
+							success: function(data){
+								alert("리뷰 수정이 완료되었습니다.");
+								location.href="/review/reviewList?page=1";
+							
+							} // End - 이미지 수정 success 	
+							
+						}); // End - 이미지 수정 ajax
+						
+					} // End - if
+				
+				} // End - success	
+			} // End - if
+		}); // End - ajax문
+	
+	} // End - if문
 
-} 
+} // End - function fn_reviewUpdate() 
 
 
 

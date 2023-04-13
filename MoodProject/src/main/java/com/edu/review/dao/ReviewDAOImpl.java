@@ -150,7 +150,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.insert(Namespace + ".imagesRegister",reviewImagesDTO);
 	}
 
+	// 리뷰 사진리스트 가져오기
+	@Override
+	public ReviewImagesDTO ImagesName(int review_bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(Namespace + ".ImagesName", review_bno);
+	}
 
+	// 리뷰이미지 수정
+	@Override
+	public int imagesUpdate(ReviewImagesDTO reviewImagesDTO) throws Exception {
+		
+		System.out.println("ReviewDAOImpl 리뷰이미지 수정" + reviewImagesDTO);
+		
+		return sqlSession.update(Namespace +".imagesUpdate", reviewImagesDTO );
+	}
 	
 
 	

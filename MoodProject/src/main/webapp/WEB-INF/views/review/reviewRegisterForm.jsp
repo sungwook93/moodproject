@@ -84,7 +84,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-1 control-label">리뷰 사진</label>
+						<label class="col-sm-1 control-label">첨부 파일</label>
 						
 						<form class = "form-horizontal" action = "${contextPath }/util/upload/uploadForm" method = "post" enctype = "multipart/form-data" target = "iframe1">
 							<!-- name = "file"의 변수명과 컨트롤러의 MultipartFile file과 일치해야 한다. -->

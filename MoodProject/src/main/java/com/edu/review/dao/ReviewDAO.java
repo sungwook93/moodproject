@@ -61,9 +61,13 @@ public interface ReviewDAO {
 	public int review_bno(ReviewDTO reviewDTO)throws Exception;
 
 	// 리뷰사진등록
-	public int imagesRegister(ReviewImagesDTO reviewImagesDTO)throws Exception; 	
+	public int imagesRegister(ReviewImagesDTO reviewImagesDTO)throws Exception;
 	
+	// 리뷰 사진리스트 가져오기
+	public ReviewImagesDTO ImagesName(int review_bno)throws Exception; 	
 	
+	// 리뷰이미지 수정
+	public int imagesUpdate(ReviewImagesDTO reviewImagesDTO) throws Exception;
 	
 	
 	

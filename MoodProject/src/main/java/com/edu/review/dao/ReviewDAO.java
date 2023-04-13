@@ -1,6 +1,7 @@
 package com.edu.review.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.edu.common.util.SearchCriteria;
 import com.edu.product.dto.ProductDTO;
@@ -71,6 +72,12 @@ public interface ReviewDAO {
 	
 	//리뷰번호 해당하는 리뷰번호 전체를 가져온다
 	public ReviewImagesDTO getImagesName(int review_bno) throws Exception;
+
+	//리뷰 등록여부
+	public int reviewYN(Map<String,Object> param)throws Exception;
+	
+	//리뷰등록 상품 타입이름가져오기
+	public ProductDTO productReviewdata(String product_code)throws Exception;
 	
 	
 	

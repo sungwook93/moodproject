@@ -189,7 +189,9 @@
 											<c:choose>
 												<c:when test="${list.review_yn == 'N' and list.userID == member1.userID}">
 													<!-- <a href="/review/reviewRegisterForm?product_code=${list.product_code}&order_num=${list.order_num}">리뷰 작성하기</a> -->
-													<button type="button" class="btn btn-secondary"  onclick="fn_reviewRegisterForm(${list.product_name},${list.product_order_num});" style = "float : right;" ><strong>리뷰작성하기</strong></button>
+													<button type="button" class="btn btn-secondary"  
+													onclick="location.href = '/review/reviewRegisterForm?product_code=${list.product_code}&order_num=${list.order_num}'"
+													style = "float : right;" ><strong>리뷰작성하기</strong></button>
 												</c:when>
 												<c:when test="${list.review_yn == 'Y'}">
 													<a href="/review/reviewDetail?product_code=${list.product_code}&order_num=${list.order_num}&userID=${list.userID}">작성된 리뷰 보기</a>

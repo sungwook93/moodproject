@@ -111,7 +111,7 @@
 	<select id="getOrderDTODetail" resultType="com.edu.order.dto.OrderDTO">
 		<![CDATA[
 		SELECT op.order_num, op.userID, op.orderProduct_num, op.product_code, op.product_amount,  op.product_size, 
-		p.product_name, p.product_price, op.review_yn
+		p.product_name, p.product_price, op.review_yn, p.product_type
 		FROM t_orderProduct op, t_product p 
 		WHERE op.product_code = p.product_code and op.order_num = #{order_num}
 		]]>

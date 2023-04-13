@@ -1,6 +1,7 @@
 package com.edu.review.dao;
 
-import java.util.List; 
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -171,6 +172,21 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public ReviewImagesDTO getImagesName(int review_bno) throws Exception {
 		
 		return sqlSession.selectOne(Namespace + ".images", review_bno);
+	}
+	
+	//리뷰 등록여부
+	@Override
+	public int reviewYN(Map<String,Object> param) throws Exception {
+		
+		return sqlSession.update(Namespace + ".reviewYN",param);
+	}
+	
+	//리뷰등록 상품 타입이름가져오기
+	@Override
+	public ProductDTO productReviewdata(String product_code) throws Exception {
+		
+		
+		return sqlSession.selectOne(Namespace + ".productReviewdata",product_code);
 	}
 	
 	

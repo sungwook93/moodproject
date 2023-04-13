@@ -13,6 +13,8 @@
 	let	product_type	= $("#product_type").val();
 	let product_name = $("#product_name").val();
 	let file = document.getElementById("file");
+	let order_num = $("#order_num").val();
+	let product_code = $("#product_code").val();
 
 	
 	//파일수를 제한을 둔다.
@@ -51,17 +53,7 @@
 	}
 	
 	
-	if($("#product_type").val() == null) {
-		alert("상품 타입은 필수 입력 항목입니다.");
-		$("#product_type").focus();
-		return false;
-	}
 	
-	if($("#product_name").val() == null) {
-		alert("상품 이름은 필수 입력 항목입니다.");
-		$("#product_name").focus();
-		return false;
-	}
 	
 	//alert(review_subject + userID + review_content + review_star + product_type + product_name);
 	//alert(file);
@@ -69,7 +61,8 @@
 	$.ajax({
 		type:		"POST",
 		url:		"/review/reviewRegister",
-		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
+		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name,
+		 order_num:order_num, product_code:product_code },
 		success:	function(data) {
 			if(data != 0) {
 				//alert(file.files.length + "확인1");

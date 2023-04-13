@@ -182,8 +182,19 @@
 			SELECT * FROM t_reviewimages WHERE review_bno = #{review_bno};
 	</select>	
 	
+	<!-- 리뷰여부 확인 -->
+	<update id="reviewYN" parameterType="Map">
+		UPDATE t_orderproduct 
+		set review_yn ='Y'
+		WHERE order_num=#{order_num} and product_code=#{product_code}
+	</update>
 	
-	
+	<!-- 리뷰등록 상품 타입이름가져오기 -->
+	<select id="productReviewdata" parameterType="String" resultType="com.edu.product.dto.ProductDTO">
+		SELECT product_name,product_type 
+		FROM t_product 
+		WHERE product_code=#{product_code}
+	</select>
 </mapper>
 
 

@@ -1,6 +1,8 @@
 package com.edu.review.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,6 +19,8 @@ import com.edu.board.dto.CommentDTO;
 import com.edu.common.util.PageMaker;
 import com.edu.common.util.SearchCriteria;
 import com.edu.order.dto.CartDTO;
+import com.edu.order.dto.OrderDTO;
+import com.edu.order.service.OrderService;
 import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 import com.edu.review.dao.ReviewDAO;
@@ -37,6 +41,9 @@ public class ReviewController {
 	
 	@Inject
 	private	ReviewDAO reviewDAO;
+	
+	@Inject
+	private OrderService orderService;
 
 	//-----------------------------------------------------------------------------------------------------------
 	// 리뷰 목록 보여주기
@@ -65,12 +72,19 @@ public class ReviewController {
 	// 리뷰 등록화면 불러오기
 	//-----------------------------------------------------------------------------------------------------------	
 	@RequestMapping(value="/reviewRegisterForm", method = RequestMethod.GET)
-	public ModelAndView reviewRegisterForm(SearchCriteria sCri) throws Exception {
+	public ModelAndView reviewRegisterForm(long order_num,String product_code,SearchCriteria sCri) throws Exception {
 		
 		logger.info("ReviewController 리뷰 등록화면 불러오기");
 		
 		ModelAndView mav = new ModelAndView();
 		
+		mav.addObject("order_num",order_num);
+		mav.addObject("product_code",product_code);
+		
+		//리뷰등록 상품 타입이름가져오기
+		ProductDTO productDTO=reviewDAO.productReviewdata(product_code);
+		
+		mav.addObject("productDTO",productDTO);
 		mav.addObject("reviewList", reviewService.reviewList(sCri));
 		mav.setViewName("/review/reviewRegisterForm");
 		return mav;	
@@ -81,11 +95,17 @@ public class ReviewController {
 	//-----------------------------------------------------------------------------------------------------------	
 	@ResponseBody
 	@RequestMapping(value = "/reviewRegister", method = RequestMethod.POST)
-	public int reviewRegister(ReviewDTO reviewDTO) throws Exception {
+	public int reviewRegister(long order_num,String product_code,ReviewDTO reviewDTO) throws Exception {
 		
 		System.out.println("ReviewController 리뷰 등록하기");
 		
+		System.out.println("order_num:"+order_num+",product_code:"+product_code);
 		
+		Map<String,Object> param= new HashMap<String,Object>();
+		param.put("product_code",product_code);
+		param.put("order_num",order_num);
+		//리뷰 등록여부
+		reviewDAO.reviewYN(param);
 		
 		if(reviewService.reviewRegister(reviewDTO) == 1) {
 			

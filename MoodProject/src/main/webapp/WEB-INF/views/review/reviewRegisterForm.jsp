@@ -57,22 +57,13 @@
 						<!-- 상품 관련 -->
 						<label class="col-sm-1 control-label">상품 목록</label>
 						<div class="col-sm-3">	
-							<select class="form-control" id="product_type" onchange="fn_typename()">
-								<option disabled selected>선택해주세요.</option>
-								<option value="living" <c:if test="${produt_type == 'living'}">selected</c:if>>Living</option>
-								<option value="bed" <c:if test="${produt_type == 'bed'}">selected</c:if>>Bed</option>
-								<option value="bath" <c:if test="${produt_type == 'bath'}">selected</c:if>>Bath</option>
-							</select>
+							<input type="text" class="form-control" value="${productDTO.product_type }" readonly/>
 						</div>
-
+							<input type="hidden" id="order_num" value="${order_num }"/>
+							<input type="hidden" id="product_code" value="${product_code }"/>
 						<label class="col-sm-1 control-label">상품 이름</label>
 						<div class="col-sm-3">	
-							<select class="form-control" id="product_name">
-								<option disabled selected>선택해주세요.</option>
-								<c:forEach items="${productList}" var="product">
-								<option id="product_name">${product.product_name}</option>
-								</c:forEach>
-							</select>
+							<input type="text" class="form-control" value="${productDTO.product_name}" readonly/>
 						</div>
 					</div>
 					

@@ -166,7 +166,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.update(Namespace +".imagesUpdate", reviewImagesDTO );
 	}
 	
-
+	//리뷰번호 해당하는 리뷰번호 전체를 가져온다
+	@Override
+	public ReviewImagesDTO getImagesName(int review_bno) throws Exception {
+		
+		return sqlSession.selectOne(Namespace + ".images", review_bno);
+	}
 	
 	
 	

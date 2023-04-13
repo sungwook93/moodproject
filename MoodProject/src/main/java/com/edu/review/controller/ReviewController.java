@@ -109,6 +109,9 @@ public class ReviewController {
 		
 		if(reviewService.reviewRegister(reviewDTO) == 1) {
 			
+		reviewDAO.star_sum(reviewDTO);
+		reviewDAO.star_avg(reviewDTO);
+			
 		int result	 = reviewDAO.review_bno(reviewDTO);
 		
 		System.out.println(result);

@@ -13,7 +13,7 @@ public class OrderDTO {
 	private String order_phone; //받는 사람 번호
 	private Timestamp order_date; //주문 날짜
 	private String order_memo; //배송 메모
-	private int orderProduct_bno; 
+	private int orderProduct_num; 
 	private String product_code; //상품 코드
 	private int product_amount; //상품 수량
 	private String product_size; //상품 사이즈
@@ -32,10 +32,10 @@ public class OrderDTO {
 		this.totalbill = totalbill;
 	}
 	public int getOrderProduct_bno() {
-		return orderProduct_bno;
+		return orderProduct_num;
 	}
-	public void setOrderProduct_bno(int orderProduct_bno) {
-		this.orderProduct_bno = orderProduct_bno;
+	public void setOrderProduct_bno(int orderProduct_num) {
+		this.orderProduct_num = orderProduct_num;
 	}
 	public long getOrder_num() {
 		return order_num;
@@ -142,7 +142,7 @@ public class OrderDTO {
 	public String toString() {
 		return "OrderDTO [order_num=" + order_num + ", userID=" + userID + ", address1=" + address1 + ", address2="
 				+ address2 + ", postnum=" + postnum + ", order_name=" + order_name + ", order_phone=" + order_phone
-				+ ", order_date=" + order_date + ", order_memo=" + order_memo + ", orderProduct_bno=" + orderProduct_bno
+				+ ", order_date=" + order_date + ", order_memo=" + order_memo + ", orderProduct_bno=" + orderProduct_num
 				+ ", product_code=" + product_code + ", product_amount=" + product_amount + ", product_size="
 				+ product_size + ", product_price=" + product_price + ", product_name=" + product_name + ", paymethod="
 				+ paymethod + ", review_yn=" + review_yn + ", totalbill=" + totalbill + "]";

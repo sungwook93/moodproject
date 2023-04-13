@@ -53,7 +53,7 @@ public interface OrderDAO {
 	//주문완료 번호에 해당하는 orderDTO 객체 가져오기(t_order)
 	public OrderDTO getOrderDTO(long order_num) throws Exception;
 
-
+	
 	
 	//주문완료영역 controller에서 바로타고 온부분
 	//회원 아이디에 해당하는 모든 t_orderProduct 데이터 가져오기

@@ -13,7 +13,7 @@ public class OrderDTO {
 	private String order_phone; //받는 사람 번호
 	private Timestamp order_date; //주문 날짜
 	private String order_memo; //배송 메모
-	private int orderProduct_bno; 
+	private int orderProduct_num; 
 	private String product_code; //상품 코드
 	private int product_amount; //상품 수량
 	private String product_size; //상품 사이즈
@@ -22,21 +22,6 @@ public class OrderDTO {
 	private String paymethod; //결제수단
 	private String review_yn = "N"; //리뷰 작성 유무 (기본적으로는 N)
 	private long totalbill; //총 주문 가격
-	
-	
-	
-	public long getTotalbill() {
-		return totalbill;
-	}
-	public void setTotalbill(long totalbill) {
-		this.totalbill = totalbill;
-	}
-	public int getOrderProduct_bno() {
-		return orderProduct_bno;
-	}
-	public void setOrderProduct_bno(int orderProduct_bno) {
-		this.orderProduct_bno = orderProduct_bno;
-	}
 	public long getOrder_num() {
 		return order_num;
 	}
@@ -48,30 +33,6 @@ public class OrderDTO {
 	}
 	public void setUserID(String userID) {
 		this.userID = userID;
-	}
-	public String getProduct_code() {
-		return product_code;
-	}
-	public void setProduct_code(String product_code) {
-		this.product_code = product_code;
-	}
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-	public int getProduct_amount() {
-		return product_amount;
-	}
-	public void setProduct_amount(int product_amount) {
-		this.product_amount = product_amount;
-	}
-	public String getProduct_size() {
-		return product_size;
-	}
-	public void setProduct_size(String product_size) {
-		this.product_size = product_size;
 	}
 	public String getAddress1() {
 		return address1;
@@ -85,21 +46,6 @@ public class OrderDTO {
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-	
-	
-	public String getOrder_phone() {
-		return order_phone;
-	}
-	public void setOrder_phone(String order_phone) {
-		this.order_phone = order_phone;
-	}
-	
-	public int getProduct_price() {
-		return product_price;
-	}
-	public void setProduct_price(int product_price) {
-		this.product_price = product_price;
-	}
 	public String getPostnum() {
 		return postnum;
 	}
@@ -112,18 +58,59 @@ public class OrderDTO {
 	public void setOrder_name(String order_name) {
 		this.order_name = order_name;
 	}
+	public String getOrder_phone() {
+		return order_phone;
+	}
+	public void setOrder_phone(String order_phone) {
+		this.order_phone = order_phone;
+	}
 	public Timestamp getOrder_date() {
 		return order_date;
 	}
 	public void setOrder_date(Timestamp order_date) {
 		this.order_date = order_date;
 	}
-	
 	public String getOrder_memo() {
 		return order_memo;
 	}
 	public void setOrder_memo(String order_memo) {
 		this.order_memo = order_memo;
+	}
+	public int getOrderProduct_num() {
+		return orderProduct_num;
+	}
+	public void setOrderProduct_num(int orderProduct_num) {
+		this.orderProduct_num = orderProduct_num;
+	}
+	public String getProduct_code() {
+		return product_code;
+	}
+	public void setProduct_code(String product_code) {
+		this.product_code = product_code;
+	}
+	public int getProduct_amount() {
+		return product_amount;
+	}
+	public void setProduct_amount(int product_amount) {
+		this.product_amount = product_amount;
+	}
+	public String getProduct_size() {
+		return product_size;
+	}
+	public void setProduct_size(String product_size) {
+		this.product_size = product_size;
+	}
+	public int getProduct_price() {
+		return product_price;
+	}
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	public String getPaymethod() {
 		return paymethod;
@@ -131,22 +118,30 @@ public class OrderDTO {
 	public void setPaymethod(String paymethod) {
 		this.paymethod = paymethod;
 	}
-	
 	public String getReview_yn() {
 		return review_yn;
 	}
 	public void setReview_yn(String review_yn) {
 		this.review_yn = review_yn;
 	}
+	public long getTotalbill() {
+		return totalbill;
+	}
+	public void setTotalbill(long totalbill) {
+		this.totalbill = totalbill;
+	}
 	@Override
 	public String toString() {
 		return "OrderDTO [order_num=" + order_num + ", userID=" + userID + ", address1=" + address1 + ", address2="
 				+ address2 + ", postnum=" + postnum + ", order_name=" + order_name + ", order_phone=" + order_phone
-				+ ", order_date=" + order_date + ", order_memo=" + order_memo + ", orderProduct_bno=" + orderProduct_bno
+				+ ", order_date=" + order_date + ", order_memo=" + order_memo + ", orderProduct_num=" + orderProduct_num
 				+ ", product_code=" + product_code + ", product_amount=" + product_amount + ", product_size="
 				+ product_size + ", product_price=" + product_price + ", product_name=" + product_name + ", paymethod="
 				+ paymethod + ", review_yn=" + review_yn + ", totalbill=" + totalbill + "]";
 	}
 	
+	
+	
+
 	
 }

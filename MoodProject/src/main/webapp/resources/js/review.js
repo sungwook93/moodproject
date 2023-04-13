@@ -75,11 +75,11 @@
 				//alert(file.files.length + "확인1");
 				
 				if(file.files.length == 0 || file.files.length == null){
-					//alert("확인");
+					alert("리뷰 등록이 완료되었습니다.");
 					location.href = "/review/reviewList?page=1";
 				} else {
 				
-				//alert("리뷰를 등록하였습니다.");
+				alert("리뷰를 등록하였습니다.");
 				//location.href = "/review/reviewList?page=1";
 				//alert("등록 리뷰번호 ==" + data);
 				
@@ -103,7 +103,7 @@
 					data: formData,
 					dataType: "json",
 					success: function(data){
-					
+					alert("상품 이미지를 등록하였습니다.");
 					 location.href="/review/reviewList?page=1";
 					},
 					error: function(data){
@@ -128,7 +128,7 @@ function fn_typename(){
  //alert("확인");
  	let typename = document.getElementById("product_type");
  	let produt_type  = typename.options[typename.selectedIndex].value;
- 	//alert(produt_type);
+ 	alert(produt_type);
  	
  	location.href = "/review/searchname?produt_type=" + produt_type;
  		
@@ -162,7 +162,7 @@ function fn_typename2(){
  //alert("확인");
  	let typename = document.getElementById("product_type");
  	let produt_type  = typename.options[typename.selectedIndex].value;
- 	//alert(produt_type);
+ 	alert(produt_type);
  	
  	location.href = "/review/searchname2?produt_type=" + produt_type; 
  		
@@ -181,16 +181,16 @@ function fn_reviewUpdate() {
 	let	review_star	= $("#review_star").val();
 	let file = document.getElementById("file");
 	
-	//alert(review_bno + ":" + review_subject + ":" + userID + ":" + review_content + ":" + product_type + ":" + product_name + ":" + review_star);
 	
-	if(confirm("게시글을 등록하시겠습니까? ")){
+	if(confirm("리뷰를 수정하시겠습니까? ")){
 	
 		$.ajax({
 			type:			"POST",
 			url:			"/review/reviewUpdate",
 			data:			{review_bno:review_bno, review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 			success:		function(data) {
-				if(data != 0) {
+
+				if(data == "Y") {
 					if(file.files.length == 0 || file.files.length == null){ // 이미지 변경 없을 때 
 						alert("리뷰 수정이 완료되었습니다.");
 						location.href="/review/reviewList?page=1";
@@ -205,11 +205,11 @@ function fn_reviewUpdate() {
 					}
 					
 					// formData에 리뷰번호를 넣어준다.
-					formData.append("review_bno", data);
+					formData.append("review_bno", review_bno);
 					
 						// 이미지 수정 ajax
 						$.ajax({
-							type: "post",
+							type: "POST",
 							url: "/image/updateImage1",
 							processData: false,
 							contentType: false,
@@ -289,7 +289,7 @@ function fn_reviewUpdate() {
  	let reply_content = $("#reply_content").val();
  	let userID = $("#userID1").val();
  	
- 	//alert(reply_content + " : " + userID);
+ 	alert(reply_content + " : " + userID);
  	
  	if($("#reply_content").val() == "") {
  		alert("댓글 내용을 입력해주세요");
@@ -320,7 +320,7 @@ function fn_reviewUpdate() {
 	
 	let reply_bno = status;
 	
-	//alert("imsi_bno" + imsi_bno + "             " + "reply_bno" + reply_bno + "             " + "review_bno" + review_bno);
+	alert("imsi_bno" + imsi_bno + "             " + "reply_bno" + reply_bno + "             " + "review_bno" + review_bno);
 	
 	
 	if(!confirm("\댓글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
@@ -353,7 +353,7 @@ function fn_updateComment(status, imsi_bno, review_bno) {
 	let	reply_content = $("#"+status).val();
 	let	userID = $("#userID1").val();
 	
-	//alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status + "imsi_bno" + imsi_bno);
+	alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status + "imsi_bno" + imsi_bno);
 	
 	$.ajax({
 		type:			"POST",
@@ -381,7 +381,7 @@ function fn_updateOpen(reply_bno, imsi_bno) {
 
 	let status = reply_bno;
 
-  	//alert($("#" + status).val() + "입니다." + " imsi_bno는 " + imsi_bno + " reply_bno는 " + reply_bno);	
+  	alert($("#" + status).val() + "입니다." + " imsi_bno는 " + imsi_bno + " reply_bno는 " + reply_bno);	
   
 	 	$("#" + status).attr("readonly",false);
 		$("#" + status).focus();
@@ -404,7 +404,7 @@ $(document).ready(function() {
 	$("#searchBtn").click(function() {
 		var typeStr		= $("#searchType").find(":selected").val();
 		var keywordStr	= $("#searchKeyword").val();
-		//alert(typeStr + ":" + keywordStr);
+		alert(typeStr + ":" + keywordStr);
 		
 		// 서버로 전송하기 전에, name 속성에 값을 넣어준다.
 		formObj.find("[name='searchType']").val(typeStr);

@@ -123,6 +123,10 @@ public class ReviewImageController {
 		
 		System.out.println("ReviewImageController의 updateImage");
 		
+		//해당 리뷰번호를 먼저 없앤다.
+		deleteImage1(review_bno);
+		System.out.println("중간 점검" + review_bno);
+		
 		// 이미지를 업로드 한다.
 		ReviewImagesDTO reviewImagesDTO = ReviewUploadFile.uploadImage(uploadPath, files, review_bno);
 		

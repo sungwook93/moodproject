@@ -116,10 +116,14 @@ public class ReviewImageController {
 		
 		return review_bno;
 	}
+	
+	
 	//리뷰 이미지 수정하기.
 	@ResponseBody 
 	@RequestMapping(value = "/updateImage1", method = RequestMethod.POST)
 	public ResponseEntity<ReviewImagesDTO> updateImage1(MultipartFile[] files, int review_bno) throws Exception{
+		
+		
 		
 		System.out.println("ReviewImageController의 updateImage");
 		

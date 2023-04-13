@@ -85,7 +85,8 @@ public class ReviewController {
 		
 		System.out.println("ReviewController 리뷰 등록하기");
 		
-	
+		
+		
 		if(reviewService.reviewRegister(reviewDTO) == 1) {
 			
 		int result	 = reviewDAO.review_bno(reviewDTO);

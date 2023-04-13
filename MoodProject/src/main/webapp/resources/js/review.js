@@ -190,7 +190,7 @@ function fn_reviewUpdate() {
 			url:			"/review/reviewUpdate",
 			data:			{review_bno:review_bno, review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 			success:		function(data) {
-				if(data != 0) {
+				if(data != "N") {
 					if(file.files.length == 0 || file.files.length == null){ // 이미지 변경 없을 때 
 						alert("리뷰 수정이 완료되었습니다.");
 						location.href="/review/reviewList?page=1";

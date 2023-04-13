@@ -43,7 +43,7 @@ public class ReviewImageController {
 	}	
 	
 	@RequestMapping(value="/displayImage1", method=RequestMethod.GET)
-	public ResponseEntity<byte[]> displayImage(String name) throws Exception{
+	public ResponseEntity<byte[]> displayImage(String name, Integer review_bno) throws Exception{
 	
 		System.out.println("ImageController의 displayImage 불러오기.... 이름: " + name);
 		

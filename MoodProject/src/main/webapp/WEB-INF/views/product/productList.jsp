@@ -15,6 +15,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +25,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>	
 	
+	<script src="https://kit.fontawesome.com/2367b3dda5.js" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<link href="${contextPath}/resources/css/productcss/productList.css" rel="stylesheet" type="text/css">
 	<script src="${contextPath}/resources/js/product.js"></script>
@@ -81,6 +84,37 @@
 										<a href="/product/productDetail?product_code=${product.product_code}"><img src = "${contextPath}/image/displayImage?name=${product.product_code}" /></a><br/><br/>
 										<a href="/product/productDetail?product_code=${product.product_code}"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
 										<a href="/product/productDetail?product_code=${product.product_code}">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										<a href="/product/productDetail?product_code=${product.product_code}" > 
+			                              <c:choose>
+			                              <c:when test="${product.star_avg == 0 }">
+			                               <c:forEach begin="1" end="5">
+			                                          <span class="fa fa-star-o" style="color: #69737A;"></span>
+	                                       </c:forEach>
+			                              </c:when>
+			                              <c:otherwise>
+			                                 <c:choose>
+			                                    <c:when test="${product.star_avg / 1 != 0}">
+			                                       <c:forEach begin="1" end="${product.star_avg / 1}">
+			                                          <span class="fa fa-star checked" style="color: #69737A;"></span>
+			                                       </c:forEach>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                    <c:when test="${product.star_avg % 1 != 0}">
+			                                       <span class="fa fa-star-half-o checked" style="color: #69737A;"> </span>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                 <c:when test="${product.star_avg / 1 != 0}">
+			                                    <c:forEach begin="1" end="${5-(product.star_avg / 1)}">
+			                                          <span class="fa fa-star-o" style="color: #69737A;"></span>
+			                                       </c:forEach>
+			                                    </c:when>   
+			                                 </c:choose>
+			                                 <strong>${product.star_avg }</strong>
+			                              </c:otherwise>
+			                              </c:choose>
+			                              </a>
 										</div>
 									</td>
 						</c:forEach>
@@ -91,6 +125,37 @@
 										<a href="/product/productDetail?product_code=${product.product_code}"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
 										<a href="/product/productDetail?product_code=${product.product_code}"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
 										<a href="/product/productDetail?product_code=${product.product_code}">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										<a href="/product/productDetail?product_code=${product.product_code}" > 
+			                              <c:choose>
+			                              <c:when test="${product.star_avg == 0 }">
+			                                <c:forEach begin="1" end="5">
+			                                          <span class="fa fa-star-o" style="color: #69737A;"></span>
+	                                       </c:forEach>
+			                              </c:when>
+			                              <c:otherwise>
+			                                 <c:choose>
+			                                    <c:when test="${product.star_avg / 1 != 0}">
+			                                       <c:forEach begin="1" end="${product.star_avg / 1}">
+			                                          <span class="fa fa-star checked" style="color: #69737A;"></span>
+			                                       </c:forEach>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                    <c:when test="${product.star_avg % 1 != 0}">
+			                                       <span class="fa fa-star-half-o checked" style="color: #69737A;"> </span>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                 <c:when test="${product.star_avg / 1 != 0}">
+			                                    <c:forEach begin="1" end="${5-(product.star_avg / 1)}">
+			                                          <span class="fa fa-star-o" style="color: #69737A;"></span>
+			                                       </c:forEach>
+			                                    </c:when>   
+			                                 </c:choose>
+			                                 <strong>${product.star_avg }</strong>
+			                              </c:otherwise>
+			                              </c:choose>
+			                              </a>
 										</div>
 									</td>
 						</c:forEach>
@@ -102,6 +167,37 @@
 										<a href="/product/productDetail?product_code=${product.product_code}"><img src = "${contextPath }/image/displayImage?name=${product.product_code}" /></a><br/><br/>
 										<a href="/product/productDetail?product_code=${product.product_code}"><strong>상 품 명 : ${product.product_name}</strong></a><br/>
 										<a href="/product/productDetail?product_code=${product.product_code}">가  격 : <fmt:formatNumber value="${product.product_price}" pattern="#,###원"/></a><br/>			
+										<a href="/product/productDetail?product_code=${product.product_code}" > 
+			                              <c:choose>
+			                              <c:when test="${product.star_avg == 0 }">
+			                                <c:forEach begin="1" end="5">
+			                                          <span class="fa fa-star-o" style="color: #69737A;"></span>
+	                                       </c:forEach>
+			                              </c:when>
+			                              <c:otherwise>
+			                                 <c:choose>
+			                                    <c:when test="${product.star_avg / 1 != 0}">
+			                                       <c:forEach begin="1" end="${product.star_avg / 1}">
+			                                          <span class="fa fa-star checked" style="color: #69737A;"></span>
+			                                       </c:forEach>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                    <c:when test="${product.star_avg % 1 != 0}">
+			                                       <span class="fa fa-star-half-o checked" style="color: #69737A;"> </span>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                 <c:when test="${product.star_avg / 1 != 0}">
+			                                    <c:forEach begin="1" end="${5-(product.star_avg / 1)}">
+			                                          <span class="fa fa-star-o" style="color: #69737A;"></span>
+			                                       </c:forEach>
+			                                    </c:when>   
+			                                 </c:choose>
+			                                 <strong>${product.star_avg }</strong>
+			                              </c:otherwise>
+			                              </c:choose>
+			                              </a>
 										</div>
 									</td>
 						</c:forEach>

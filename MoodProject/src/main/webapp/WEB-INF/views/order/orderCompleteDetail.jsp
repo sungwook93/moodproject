@@ -158,15 +158,15 @@
 						</table>
 						
 			</div>
-			<div>
+			<div style="width:500px; margin-left:100px;">
 				<h3><strong>같이 주문한 상품 정보</strong></h3>
 						<!-- 주문 상품 정보 -->
-						<table class="orderTable" id="orderTableProduct">
-							<thead>
-								<tr id="orderTableProductTh">
-									<th colspan="2" id="orderTableProductName">상품/옵션 정보</th>
-									<th>상품 가격</th>
-									<th>상품평</th>
+						<table class="orderTable" id="orderTableProduct" style="width:500px !important;">
+							<thead style="width:500px !important;">
+								<tr id="orderTableProductTh" style="width:500px !important;">
+									<th colspan="2" id="orderTableProductName" style="width:300px;">상품/옵션 정보</th>
+									<th style="width:80px;">상품 가격</th>
+									<th style="width:100px;">상품평</th>
 								</tr>
 							</thead>
 							<tbody>

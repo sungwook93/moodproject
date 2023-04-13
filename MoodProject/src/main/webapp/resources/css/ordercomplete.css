@@ -4,16 +4,19 @@ table {
 	border:5px solid #9a9a9a;
 	display:inline-block;
 	text-align:center;	
-	width:auto;
-	height:auto;
+	
 }
 .orderTableOrderDTO20 {
 	background:#9a9a9a;
 	color:white;
 }
-#orderTableProductTh th {
+#orderTableProduct {
+	border-right:12px solid #9a9a9a;
+}
+#orderTableProductTh th{
 	background:#9a9a9a;
 	color:white;
+	
 }
 #orderTableBill {
 	border:none;
@@ -22,7 +25,10 @@ table {
 	border:none;
 }
 table tr td {
-	border:1px solid #9a9a9a;
+	border:2px solid #9a9a9a;
+}
+table tr th {
+	border:2px solid #9a9a9a;
 }
 img {
 	object-fit:fill;

@@ -64,7 +64,7 @@
 	}
 	
 	//alert(review_subject + userID + review_content + review_star + product_type + product_name);
-	alert(file);
+	//alert(file);
 	
 	$.ajax({
 		type:		"POST",
@@ -72,23 +72,23 @@
 		data:		{review_subject:review_subject, userID:userID, review_content:review_content, review_star:review_star, product_type:product_type, product_name:product_name},
 		success:	function(data) {
 			if(data != 0) {
-				alert(file.files.length + "확인1");
+				//alert(file.files.length + "확인1");
 				
 				if(file.files.length == 0 || file.files.length == null){
-					alert("확인");
+					//alert("확인");
 					location.href = "/review/reviewList?page=1";
 				} else {
 				
 				//alert("리뷰를 등록하였습니다.");
 				//location.href = "/review/reviewList?page=1";
-				alert("등록 리뷰번호 ==" + data);
+				//alert("등록 리뷰번호 ==" + data);
 				
 				//이미지 등록을위한 form데이터 객체 생성
 				let formData = new FormData();
 				
 				//업로드 된 이미지만큼 반복문으로 formdata에 넣어준다.
 				//set은 리셋되면서 추가하는거지만 append는 리셋하지않고 계속 추가한다.
-				alert(file.files.length);
+				//alert(file.files.length);
 				for(let i = 0; i<file.files.length; i++){
 				formData.append("files", file.files[i]);
 				}
@@ -128,7 +128,7 @@ function fn_typename(){
  //alert("확인");
  	let typename = document.getElementById("product_type");
  	let produt_type  = typename.options[typename.selectedIndex].value;
- 	alert(produt_type);
+ 	//alert(produt_type);
  	
  	location.href = "/review/searchname?produt_type=" + produt_type;
  		
@@ -162,7 +162,7 @@ function fn_typename2(){
  //alert("확인");
  	let typename = document.getElementById("product_type");
  	let produt_type  = typename.options[typename.selectedIndex].value;
- 	alert(produt_type);
+ 	//alert(produt_type);
  	
  	location.href = "/review/searchname2?produt_type=" + produt_type; 
  		
@@ -180,7 +180,7 @@ function fn_reviewUpdate() {
 	let	product_name	= $("#product_name").val();
 	let	review_star	= $("#review_star").val();
 	
-	alert(review_bno + ":" + review_subject + ":" + userID + ":" + review_content + ":" + product_type + ":" + product_name + ":" + review_star);
+	//alert(review_bno + ":" + review_subject + ":" + userID + ":" + review_content + ":" + product_type + ":" + product_name + ":" + review_star);
 	
 		$.ajax({
 			type:			"POST",
@@ -247,7 +247,7 @@ function fn_reviewUpdate() {
  	let reply_content = $("#reply_content").val();
  	let userID = $("#userID1").val();
  	
- 	alert(reply_content + " : " + userID);
+ 	//alert(reply_content + " : " + userID);
  	
  	if($("#reply_content").val() == "") {
  		alert("댓글 내용을 입력해주세요");
@@ -278,7 +278,7 @@ function fn_reviewUpdate() {
 	
 	let reply_bno = status;
 	
-	alert("imsi_bno" + imsi_bno + "             " + "reply_bno" + reply_bno + "             " + "review_bno" + review_bno);
+	//alert("imsi_bno" + imsi_bno + "             " + "reply_bno" + reply_bno + "             " + "review_bno" + review_bno);
 	
 	
 	if(!confirm("\댓글을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
@@ -311,7 +311,7 @@ function fn_updateComment(status, imsi_bno, review_bno) {
 	let	reply_content = $("#"+status).val();
 	let	userID = $("#userID1").val();
 	
-	alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status + "imsi_bno" + imsi_bno);
+	//alert(review_bno + ":" + reply_content + ":" + "reply_bno" + ":" + reply_bno + "status" + ":"  + status + "imsi_bno" + imsi_bno);
 	
 	$.ajax({
 		type:			"POST",
@@ -339,7 +339,7 @@ function fn_updateOpen(reply_bno, imsi_bno) {
 
 	let status = reply_bno;
 
-  	alert($("#" + status).val() + "입니다." + " imsi_bno는 " + imsi_bno + " reply_bno는 " + reply_bno);	
+  	//alert($("#" + status).val() + "입니다." + " imsi_bno는 " + imsi_bno + " reply_bno는 " + reply_bno);	
   
 	 	$("#" + status).attr("readonly",false);
 		$("#" + status).focus();
@@ -362,7 +362,7 @@ $(document).ready(function() {
 	$("#searchBtn").click(function() {
 		var typeStr		= $("#searchType").find(":selected").val();
 		var keywordStr	= $("#searchKeyword").val();
-		alert(typeStr + ":" + keywordStr);
+		//alert(typeStr + ":" + keywordStr);
 		
 		// 서버로 전송하기 전에, name 속성에 값을 넣어준다.
 		formObj.find("[name='searchType']").val(typeStr);

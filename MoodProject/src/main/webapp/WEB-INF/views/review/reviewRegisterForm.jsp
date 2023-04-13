@@ -57,13 +57,13 @@
 						<!-- 상품 관련 -->
 						<label class="col-sm-1 control-label">상품 목록</label>
 						<div class="col-sm-3">	
-							<input type="text" class="form-control" value="${productDTO.product_type }" readonly/>
+							<input type="text" class="form-control" id="product_type" value="${productDTO.product_type }" readonly/>
 						</div>
 							<input type="hidden" id="order_num" value="${order_num }"/>
 							<input type="hidden" id="product_code" value="${product_code }"/>
 						<label class="col-sm-1 control-label">상품 이름</label>
 						<div class="col-sm-3">	
-							<input type="text" class="form-control" value="${productDTO.product_name}" readonly/>
+							<input type="text" class="form-control" id="product_name" value="${productDTO.product_name}" readonly/>
 						</div>
 					</div>
 					

@@ -16,7 +16,7 @@
 	let order_num = $("#order_num").val();
 	let product_code = $("#product_code").val();
 
-	
+	alert(product_type+","+product_name);
 	//파일수를 제한을 둔다.
 	if(file.files.length > 2){
 		alert("사진은 2장까지만 등록할수 있습니다.");

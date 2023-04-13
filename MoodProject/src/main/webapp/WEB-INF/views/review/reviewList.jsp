@@ -66,7 +66,7 @@
 									<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${review.review_subject}
 										<small><b>[&nbsp;${review.reply_count}&nbsp;]</b></small></div>
 									</td>
-									<td class="reviewTitle"><a href="/review/reviewDetail?review_bno=${review.review_bno}" style = "color: black;">${review.review_content}</a></td>
+									<td class="reviewTitle"><a href="/review/reviewDetail?review_bno=${review.review_bno}&product_type=${review.product_type}&product_name=${review.product_name}" style = "color: black;">${review.review_content}</a></td>
 									<td class="reviewUser">${review.userID}</td>
 									<td class="reviewDate"><fmt:formatDate value="${review.review_date}" pattern="yyyy년 MM월 dd일"/></td>
 									<td class="reviewStar"><fmt:formatNumber value="${review.review_star}" pattern="#,###"/></td>

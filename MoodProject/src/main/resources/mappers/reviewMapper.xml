@@ -13,7 +13,7 @@
 				AND review_subject LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'c'.toString()">
-				AND review_content LIKE CONCAT('%', #{keyword}, '%')
+				AND product_name LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="searchType == 'u'.toString()">
 				AND userID LIKE CONCAT('%', #{keyword}, '%')
@@ -39,9 +39,9 @@
 
 	<!-- 전체 페이지 가져오기 -->
 	<select id = "reviewListTotalCount"  parameterType="com.edu.common.util.SearchCriteria"  resultType = "Integer">
-		<![CDATA[
-			select count(*) from t_review where 1=1;
-		]]>
+		select count(*) from t_review where 1=1
+
+		<include refid="searchMySQL"/>
 	</select>
 	
 	<!-- 리뷰 전체 리스트 가져오기 -->

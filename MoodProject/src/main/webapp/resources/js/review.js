@@ -241,31 +241,42 @@ function fn_reviewUpdate() {
 	if(!confirm("\n리뷰을 삭제하시겠습니까?\n\n삭제하려면 [확인]버튼을 누르시고, 아니면 [취소]버튼을 누르십시오.")) {
 		alert("리뷰 삭제를 취소하셨습니다.");
 	} else {	// [확인]버튼을 눌렀을 경우
+	
 		$.ajax({
-			type:			"POST",
-			url:			"/review/reviewDelete",
-			data:			{review_bno:review_bno},
-			success:		function(data) {
-				if(data == "Y") {
-					alert("리뷰 삭제가 완료되었습니다.");
-					location.href = "/review/reviewList?page=1";
-				}else {
-					alert("리뷰 삭제 안됨." + data);
+					type:"post",
+					url:"/image/deleteImage1",
+					data: {review_bno:review_bno},
+					success: function(data){
+					alert("review_bno ==>" + data);	
+					
+					
+			$.ajax({
+				type:			"POST",
+				url:			"/review/reviewDelete",
+				data:			{review_bno:review_bno},
+				success:		function(data) {
+					if(data == "Y") {
+						alert("리뷰 삭제가 완료되었습니다.");
+						location.href = "/review/reviewList?page=1";
+					}else {
+						alert("리뷰 삭제 안됨." + data);
+					}
+				},
+				error:			function(data) {
+					alert("리뷰 삭제하는데 문제가 발생하였습니다." + data);
+	
+				},
+				done:			function(data) {
+					alert("요청 성공");
+				},
+				fail:			function(data) {
+					alert("요청 실패");
+				},
+				always:			function(data) {
+					alert("요청 완료");
 				}
-			},
-			error:			function(data) {
-				alert("리뷰 삭제하는데 문제가 발생하였습니다." + data);
-
-			},
-			done:			function(data) {
-				alert("요청 성공");
-			},
-			fail:			function(data) {
-				alert("요청 실패");
-			},
-			always:			function(data) {
-				alert("요청 완료");
-			}
+			});
+		}
 		});
 	}
  }

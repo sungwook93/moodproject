@@ -16,6 +16,11 @@
 			<link href="${contextPath}/resources/css/review.css" rel="stylesheet" type="text/css">
 			<script src="${contextPath}/resources/js/review.js"></script>
 		   
+		   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			
+			<script src="https://kit.fontawesome.com/2367b3dda5.js" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>	
+		   
 		   <!-- font -->
 		   <link rel="preconnect" href="https://fonts.googleapis.com">
 		   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,44 +43,154 @@
 			</div>
 			
 			<div class="container">
-				<!-- 게시글 작성 버튼 -->
+				<!-- 게시글 작성 버튼 
 				<div id="registerBtnBox">
 					<button type="button" class="btn btn-secondary" onclick="location.href='/review/reviewRegisterForm'" style = "float : right;" ><strong>리뷰작성하기</strong></button>
 					<br/>	
 				</div>
+				-->
 				<br/>
 					<!-- 글 목록 -->
-					<table id="boardTable">
-						<thead>
-							<tr>
-								<th class="reviewNo">No</th>
-								<th class= "reviewTitle">상품 정보</th>
-						    	<th class="reviewTitle">제목</th>
-						    	<th class="reviewTitle">내용</th>
-						    	<th class="reviewUser">작성자</th>
-						    	<th class="reviewDate">작성일자</th>
-						    	<th class="reviewStar">평점</th>
-							</tr>
-						</thead>
-						<tbody>	
-							<c:forEach var="review" items="${reviewList}">
-								<tr>
-									<td class="reviewNo">${review.review_bno}</td> 
-									<td class="reviewTitle">${review.product_type}&nbsp;&nbsp;/&nbsp;&nbsp;${review.product_name}</td>
+					<div id="container">
+						<table>
+					<tr class="reviewList">
+						<c:forEach items="${reviewList}" var="review" begin="0" end ="2">
 									<td>
-									<div class = "boardSubjcet" style = "display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; text-overflow: ellipsis;" >${review.review_subject}
-										<small><b>[&nbsp;${review.reply_count}&nbsp;]</b></small></div>
+										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 400px;">
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><img src="/image/displayImage1?review_bno=${review.review_bno}" style = "width: 350px; height: 350px;"/></a><br/><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.review_subject}</strong></a><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>상 품 정 보 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.product_type}&nbsp;&nbsp;/&nbsp;&nbsp;${review.product_name}</strong></a><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>작&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp; 자 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.userID}</strong></a><br/>	
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}">
+										<c:choose>
+			                              <c:when test="${review.review_star == 0 }">
+			                                 <c:forEach begin="1" end="5">
+                                                   <span class="fa fa-star-o" style="color: orange;"></span>
+                                          	</c:forEach>
+			                              </c:when>
+			                              <c:otherwise>
+			                              별&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;점 &nbsp;&nbsp;:&nbsp;&nbsp; 
+			                                 <c:choose>
+			                                    <c:when test="${review.review_star / 1 != 0}">
+			                                       <c:forEach begin="1" end="${review.review_star/ 1}">
+			                                          <span class="fa fa-star checked" style="color: orange;"></span>
+			                                       </c:forEach>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                    <c:when test="${review.review_star % 1 != 0}">
+			                                       <span class="fa fa-star-half-o checked" style="color: orange;"> </span>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                 <c:when test="${review.review_star / 1 != 0}">
+			                                    <c:forEach begin="1" end="${5-(review.review_star / 1)}">
+			                                          <span class="fa fa-star-o" style="color: orange;"></span>
+			                                       </c:forEach>
+			                                    </c:when>   
+			                                 </c:choose>
+			                                 <strong>(${review.review_star })</strong>
+			                              </c:otherwise>
+			                              </c:choose>
+										</a><br/>
+										</div>
+										<br/><br/>
 									</td>
-									<td class="reviewTitle"><a href="/review/reviewDetail?review_bno=${review.review_bno}&product_type=${review.product_type}&product_name=${review.product_name}" style = "color: black;">${review.review_content}</a></td>
-									<td class="reviewUser">${review.userID}</td>
-									<td class="reviewDate"><fmt:formatDate value="${review.review_date}" pattern="yyyy년 MM월 dd일"/></td>
-									<td class="reviewStar"><fmt:formatNumber value="${review.review_star}" pattern="#,###"/></td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-			
-
+						</c:forEach>
+					<tr class="reviewList">
+						<c:forEach items="${reviewList}" var="review" begin="3" end ="5">
+									<td>
+										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 400px;">
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><img src="/image/displayImage1?review_bno=${review.review_bno}" style = "width: 350px; height: 350px;"/></a><br/><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.review_subject}</strong></a><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>상 품 정 보 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.product_type}&nbsp;&nbsp;/&nbsp;&nbsp;${review.product_name}</strong></a><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>작&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp; 자 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.userID}</strong></a><br/>	
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}">
+										<c:choose>
+			                              <c:when test="${review.review_star == 0 }">
+			                                 <c:forEach begin="1" end="5">
+                                                   <span class="fa fa-star-o" style="color: orange;"></span>
+                                          	</c:forEach>
+			                              </c:when>
+			                              <c:otherwise>
+			                              별&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;점 &nbsp;&nbsp;:&nbsp;&nbsp; 
+			                                 <c:choose>
+			                                    <c:when test="${review.review_star / 1 != 0}">
+			                                       <c:forEach begin="1" end="${review.review_star/ 1}">
+			                                          <span class="fa fa-star checked" style="color: orange;"></span>
+			                                       </c:forEach>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                    <c:when test="${review.review_star % 1 != 0}">
+			                                       <span class="fa fa-star-half-o checked" style="color: orange;"> </span>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                 <c:when test="${review.review_star / 1 != 0}">
+			                                    <c:forEach begin="1" end="${5-(review.review_star / 1)}">
+			                                          <span class="fa fa-star-o" style="color: orange;"></span>
+			                                       </c:forEach>
+			                                    </c:when>   
+			                                 </c:choose>
+			                                 <strong>(${review.review_star })</strong>
+			                              </c:otherwise>
+			                              </c:choose>
+										</a><br/>
+										</div>
+										<br/><br/>
+									</td>
+						</c:forEach>
+					</tr>
+					<tr class="reviewList">
+						<c:forEach items="${reviewList}" var="review" begin="6" end ="8">
+									<td>
+										<div class = "pl" style = "white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 400px;">
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><img src="/image/displayImage1?review_bno=${review.review_bno}" style = "width: 350px; height: 350px;"/></a><br/><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.review_subject}</strong></a><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>상 품 정 보 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.product_type}&nbsp;&nbsp;/&nbsp;&nbsp;${review.product_name}</strong></a><br/>
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}"><strong>작&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp; 자 &nbsp;&nbsp;:&nbsp;&nbsp; ${review.userID}</strong></a><br/>	
+										<a href="/review/reviewDetail?review_bno=${review.review_bno}">
+										<c:choose>
+			                              <c:when test="${review.review_star == 0 }">
+			                                 <c:forEach begin="1" end="5">
+                                                   <span class="fa fa-star-o" style="color: orange;"></span>
+                                          	</c:forEach>
+			                              </c:when>
+			                              <c:otherwise>
+			                              별&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;점 &nbsp;&nbsp;:&nbsp;&nbsp; 
+			                                 <c:choose>
+			                                    <c:when test="${review.review_star / 1 != 0}">
+			                                       <c:forEach begin="1" end="${review.review_star/ 1}">
+			                                          <span class="fa fa-star checked" style="color: orange;"></span>
+			                                       </c:forEach>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                    <c:when test="${review.review_star % 1 != 0}">
+			                                       <span class="fa fa-star-half-o checked" style="color: orange;"> </span>
+			                                    </c:when>
+			                                 </c:choose>
+			                                 <c:choose>
+			                                 <c:when test="${review.review_star / 1 != 0}">
+			                                    <c:forEach begin="1" end="${5-(review.review_star / 1)}">
+			                                          <span class="fa fa-star-o" style="color: orange;"></span>
+			                                       </c:forEach>
+			                                    </c:when>   
+			                                 </c:choose>
+			                                 <strong>(${review.review_star })</strong>
+			                              </c:otherwise>
+			                              </c:choose>
+										</a><br/>
+										</div>
+										<br/><br/>
+									</td>
+						</c:forEach>
+					</tr>
+				</table>
+			</div>
+			<br/>
+			<br/>			
 					<!-- 검색종류  -->
 					<div id="boardSearchBox">
 						<div>
@@ -92,18 +207,19 @@
 							<button id="searchBtn" class="glyphicon glyphicon-search" style = "background-color: #c1c1c1;"></button>
 					</div>
 					
-					<br/>
-					<div class="col-sm-12" align="center">
+					<br/><br/>
+
+			<!-- 페이징 처리 -->
+			<div class="col-sm-12" align="center">
 						<ul class="btn-group pagination">
 							<c:if test="${pageMaker.prev}">
 								<li>
 									<a href='<c:url value="/review/reviewList?page=${pageMaker.startPage-1}&searchType=${searchType}&keyword=${keyword}"/>'><span class="glyphicon glyphicon-chevron-left"></span></a>
 								</li>
 							</c:if>
-				
 							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
 								<li>
-									<a href='<c:url value="/review/reviewList?page=${pageNum}&searchType=${searchType}&keyword=${keyword}"/>'><i>${pageNum}</i></a>
+									<a href="<c:url value='/review/reviewList?page=${pageNum}&searchType=${searchType}&keyword=${keyword}'/>"><i>${pageNum}</i></a>
 								</li>
 							</c:forEach>
 				
@@ -114,13 +230,12 @@
 							</c:if>
 						</ul>
 					</div>
-		
-			
 			<!-- 스크립트에서 사용할 hidden 요소 -->
 			<form id="formList" action="/review/reviewList?page=1" method="get">
 				<input type='hidden' name='searchType'	value='${searchType}'/>
 				<input type="hidden" name="keyword"		value="${keyword}"/>
 			</form>		
+			
 		</div>		
 			<!-- 하단 메뉴바 -->
 			<jsp:include page = "../common/footer.jsp" flush = "false"/>

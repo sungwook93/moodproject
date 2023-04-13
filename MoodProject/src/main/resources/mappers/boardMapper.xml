@@ -32,24 +32,22 @@
 			<include refid="searchMySQL"/>
 			<![CDATA[
 			) brd
-			WHERE rNUM BETWEEN (#{perPageNum} * #{page} - 11) and (#{perPageNum} * #{page})
+			WHERE rNUM BETWEEN (#{perPageNum} * #{page} - 7) and (#{perPageNum} * #{page} + 1)
 			ORDER BY qna_bno DESC;
 		]]>
 	</select>
 	
 	<!-- 게시글 총 갯수 가져오기 -->
 	<select id = "totalCount" parameterType = "com.edu.common.util.SearchCriteria" resultType="Integer">
-		<![CDATA[
 			select count(*)
-			from t_board where 1=1;
-		]]>
+			from t_board where 1=1
+			<include refid="searchMySQL"/>
 	</select>
 	
 	<!-- 게시글 전체 리스트 가져오기 -->
 	<select id = "totalList" resultType = "com.edu.board.dto.BoardDTO">
-		<![CDATA[
-			select * from t_board order by qna_bno desc;
-		]]>
+			select * from t_board order by qna_bno
+			<include refid="searchMySQL"/>
 	</select>
 	
 	<!-- 게시글 등록 처리하기 -->

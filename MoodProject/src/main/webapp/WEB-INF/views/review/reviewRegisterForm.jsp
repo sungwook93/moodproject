@@ -57,16 +57,24 @@
 						<!-- 상품 관련 -->
 						<label class="col-sm-1 control-label">상품 목록</label>
 						<div class="col-sm-3">	
-							<input type="text" class="form-control" id="product_type" value="${productDTO.product_type }" readonly/>
+							<select class="form-control" id="product_type" onchange="fn_typename()">
+								<option disabled selected>선택해주세요.</option>
+								<option value="living" <c:if test="${produt_type == 'living'}">selected</c:if>>Living</option>
+								<option value="bed" <c:if test="${produt_type == 'bed'}">selected</c:if>>Bed</option>
+								<option value="bath" <c:if test="${produt_type == 'bath'}">selected</c:if>>Bath</option>
+							</select>
 						</div>
-							<input type="hidden" id="order_num" value="${order_num }"/>
-							<input type="hidden" id="product_code" value="${product_code }"/>
+
 						<label class="col-sm-1 control-label">상품 이름</label>
 						<div class="col-sm-3">	
-							<input type="text" class="form-control" id="product_name" value="${productDTO.product_name}" readonly/>
+							<select class="form-control" id="product_name">
+								<option disabled selected>선택해주세요.</option>
+								<c:forEach items="${productList}" var="product">
+								<option id="product_name">${product.product_name}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
-					
 					<div class="form-group">
 						<label class="col-sm-1 control-label">내  용</label>
 						<div class="col-sm-10">
@@ -83,18 +91,7 @@
 								<div class = "col-sm-6">
 									<input type = "file" id="file" class = "btn btn-default" name = "file" style = "width: 600px;" multiple/>
 								</div>
-								<div class = "col-sm-2">
-									<input type = "submit" class = "btn btn-default" value = "파일 올리기"/>
-								</div>
 							</div>
-							
-							<!-- iframe에 업로드한 결과를 출력한다. 
-							<div class = "form-group">
-								<div class = "col-sm-10">
-									<iframe name = "iframe1"></iframe>
-								</div>
-							</div>
-							-->
 						</form>
 						
 					</div>

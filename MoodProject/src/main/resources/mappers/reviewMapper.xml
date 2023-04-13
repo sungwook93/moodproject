@@ -32,21 +32,19 @@
 			<include refid="searchMySQL"/>
 			<![CDATA[
 			) brd
-			WHERE rNUM BETWEEN (#{perPageNum} * #{page} - 11) and (#{perPageNum} * #{page})
-			ORDER BY review_bno DESC;
+			WHERE rNUM BETWEEN (#{perPageNum} * #{page} - 8) and (#{perPageNum} * #{page})
+			ORDER BY review_bno desc;
 		]]>
 	</select>
 
 	<!-- 전체 페이지 가져오기 -->
 	<select id = "reviewListTotalCount"  parameterType="com.edu.common.util.SearchCriteria"  resultType = "Integer">
-		select count(*) from t_review where 1=1
-
-		<include refid="searchMySQL"/>
+			select count(*) from t_review where 1=1
+			<include refid="searchMySQL"/>
 	</select>
 	
 	<!-- 리뷰 전체 리스트 가져오기 -->
 	<select id = "totalList" resultType = "com.edu.review.dto.ReviewDTO">
-
 			select * from t_review order by review_bno
 			<include refid="searchMySQL"/>
 	</select>
@@ -58,22 +56,6 @@
 		select ifnull(max(review_bno), 0) +1, #{userID}, #{review_subject}, #{review_content}, #{product_type}, #{product_name}, now(), #{review_star} from t_review
 		]]>
 	</insert>
-	
-	<!-- 별점 합산하기 -->
-	<update id="star_sum" parameterType="com.edu.review.dto.ReviewDTO">
-		update t_product set review_count = review_count + 1, star_sum = star_sum + #{review_star}
-		where product_name=#{product_name}
-	</update>
-	
-	<!-- 별점 평균 -->
-	<update id="star_avg" parameterType="com.edu.review.dto.ReviewDTO">
-		<![CDATA[
-		UPDATE t_product 
-		SET star_avg = ROUND(star_sum / review_count, 1)
-		WHERE product_name = #{product_name};
-		]]>
-	</update>
-	
 			
 	<select id="productList" resultType="com.edu.review.dto.ReviewDTO" parameterType = "com.edu.product.dto.ProductDTO">
 		<![CDATA[
@@ -172,12 +154,14 @@
 	</select>
 	
 	<!--  리뷰사진등록 -->
+	
 	<insert id="imagesRegister" parameterType="com.edu.review.dto.ReviewImagesDTO">
 		insert into t_reviewimages(review_bno, images01, images02)
 		values (#{review_bno}, #{images01}, #{images02})
 	</insert>
-	
+
 	<!-- 리뷰 사진리스트 가져오기 -->	
+	
 	<select id= "ImagesName" parameterType="Integer" resultType="com.edu.review.dto.ReviewImagesDTO">
 		select *
 		from t_reviewimages
@@ -185,31 +169,22 @@
 	</select>
 	
 	<!-- 리뷰 이미지 수정 -->
+	
 	<update id = "imagesUpdate" parameterType = "com.edu.review.dto.ReviewImagesDTO">
 		<![CDATA[
 		update t_reviewimages
 		set review_bno = #{review_bno}, images01 = #{images01}, images02 = #{images02}
 		where review_bno = #{review_bno}
 		]]>
-	</update>	
+	</update>
 	
 	<!-- 리뷰 전체 가져오기 -->
 	<select id="images" parameterType="Integer" resultType="com.edu.review.dto.ReviewImagesDTO">
 			SELECT * FROM t_reviewimages WHERE review_bno = #{review_bno};
-	</select>	
+	</select>
 	
-	<!-- 리뷰여부 확인 -->
-	<update id="reviewYN" parameterType="Map">
-		UPDATE t_orderproduct 
-		set review_yn ='Y'
-		WHERE order_num=#{order_num} and product_code=#{product_code}
-	</update>
-	
-	<!-- 리뷰등록 상품 타입이름가져오기 -->
-	<select id="productReviewdata" parameterType="String" resultType="com.edu.product.dto.ProductDTO">
-		SELECT product_name,product_type 
-		FROM t_product 
-		WHERE product_code=#{product_code}
+	<select id = "ImagesName1" parameterType="Integer" resultType="String">
+			select images01 from t_reviewimages where review_bno = #{review_bno};
 	</select>
 	
 	

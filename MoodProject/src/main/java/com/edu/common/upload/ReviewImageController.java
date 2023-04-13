@@ -95,17 +95,27 @@ public class ReviewImageController {
 		
 		return new ResponseEntity<ReviewImagesDTO>(reviewImagesDTO, HttpStatus.OK);
 	}
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// 이미지 삭제하기
+	@ResponseBody
+	@RequestMapping(value = "/deleteImage1", method = RequestMethod.POST)
+	public int deleteImage1(int review_bno) throws Exception {
+		
+		System.out.println("ReviewImageController의 deleteImage 불러오기 " + review_bno);
+		
+		// 리뷰 번호에 해당하는 reviewImagesDTO를 가져오기
+		ReviewImagesDTO reviewImagesDTO = reviewDAO.getImagesName(review_bno);
+		System.out.println("reviewImagesDTO:=============== " + reviewImagesDTO);
+		
+		// 해당 이미지를 삭제하기 위해 상품코드에 따른 경로를 세팅한다.
+		String savedPath = uploadPath + "\\review\\";
+		
+		//파일을 삭제한다.
+		if(reviewImagesDTO.getImages01() != null) new File(savedPath + reviewImagesDTO.getImages01()).delete();
+		if(reviewImagesDTO.getImages02() != null) new File(savedPath + reviewImagesDTO.getImages02()).delete();
+		
+		return review_bno;
+	}
 	//리뷰 이미지 수정하기.
 	@ResponseBody 
 	@RequestMapping(value = "/updateImage1", method = RequestMethod.POST)

@@ -39,7 +39,7 @@
 		url:		"/board/boardRegister",
 		data:		{qna_subject:qna_subject, userID:userID, qna_content:qna_content},
 		success:	function(data) {
-		alert(1);
+		//alert(1);
 			if(data == "Y") {
 				alert("게시글을 등록하였습니다.");
 				// 게시글 등록이 완료되면, 게시글 목록 화면으로 이동한다.
@@ -63,7 +63,7 @@ function fn_boardUpdate() {
 	let	userID	= $("#userID").val();
 	let	qna_content	= $("#qna_content").val();
 	
-	alert(qna_bno + ":" + qna_subject + ":" + userID + ":" + qna_content);
+	//alert(qna_bno + ":" + qna_subject + ":" + userID + ":" + qna_content);
 	
 	$.ajax({
 		type:			"POST",
@@ -251,7 +251,7 @@ $(document).ready(function() {
  	let reply_content = $("#reply_content").val();
  	let userID = $("#userID1").val();
  	
- 	alert(reply_content + " : " + userID);
+ 	//alert(reply_content + " : " + userID);
  	
  	if($("#reply_content").val() == "") {
  		alert("댓글 내용을 입력해주세요");
@@ -311,7 +311,7 @@ function fn_updateComment(status) {
 	let	reply_bno = $("#reply_bno").val();
 	let	userID = $("#userID1").val();
 	
-	alert(qna_bno + ":" + reply_content + ":" + reply_bno);
+	//alert(qna_bno + ":" + reply_content + ":" + reply_bno);
 	
 	$.ajax({
 		type:			"POST",
@@ -341,7 +341,7 @@ function fn_updateOpen(reply_bno) {
 
 	let status = reply_bno;
 
-  	alert($("#" + status).val() + "입니다.");	
+  	//alert($("#" + status).val() + "입니다.");	
   
 	 	$("#" + status).attr("readonly",false);
 		$("#" + status).focus();
@@ -363,7 +363,7 @@ $(document).ready(function() {
 	$("#searchBtn").click(function() {
 		var typeStr		= $("#searchType").find(":selected").val();
 		var keywordStr	= $("#searchKeyword").val();
-		alert(typeStr + ":" + keywordStr);
+		//alert(typeStr + ":" + keywordStr);
 		
 		// 서버로 전송하기 전에, name 속성에 값을 넣어준다.
 		formObj.find("[name='searchType']").val(typeStr);

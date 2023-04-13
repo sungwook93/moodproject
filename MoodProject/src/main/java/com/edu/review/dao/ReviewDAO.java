@@ -69,7 +69,8 @@ public interface ReviewDAO {
 	// 리뷰이미지 수정
 	public int imagesUpdate(ReviewImagesDTO reviewImagesDTO) throws Exception;
 	
-	
+	//리뷰번호 해당하는 리뷰번호 전체를 가져온다
+	public ReviewImagesDTO getImagesName(int review_bno) throws Exception;
 	
 	
 	

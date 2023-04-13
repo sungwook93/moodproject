@@ -78,6 +78,14 @@ public interface ReviewDAO {
 	
 	//리뷰등록 상품 타입이름가져오기
 	public ProductDTO productReviewdata(String product_code)throws Exception;
+
+	//리뷰별점 합계
+	public int star_sum(ReviewDTO reviewDTO)throws Exception;
+	
+	//리뷰별점 평균
+	public int star_avg(ReviewDTO reviewDTO)throws Exception;
+	
+	
 	
 	
 	

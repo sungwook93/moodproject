@@ -189,6 +189,26 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.selectOne(Namespace + ".productReviewdata",product_code);
 	}
 	
+	//리뷰별점 합계
+	@Override
+	public int star_sum(ReviewDTO reviewDTO) throws Exception {
+		
+		System.out.println("ReviewDAOImpl 리뷰별점 합계");
+		
+		return sqlSession.update(Namespace + ".star_sum",reviewDTO);
+	}
+	
+	//리뷰별점 평균
+	@Override
+	public int star_avg(ReviewDTO reviewDTO) throws Exception {
+		
+		System.out.println("ReviewDAOImpl 리뷰별점 평균");
+		
+		return sqlSession.update(Namespace + ".star_avg",reviewDTO);
+	}
+	
+	
+	
 	
 	
 	

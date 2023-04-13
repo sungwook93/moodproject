@@ -76,7 +76,7 @@
 #keywordbutton{
 	width: 75px;
 	height: 50px;
-	background-color: peru;
+	background-color: #8D999E;
 	color: white;
 	border: none;
 	
@@ -101,8 +101,13 @@
 }
 #productradio{
 	float:left;
-	
 }
 
+input[type='radio']:checked{
+	background-color: #8D999E;
+}
 
+input[type='checkbox']:checked{
+	background-color: #8D999E;
+}
 

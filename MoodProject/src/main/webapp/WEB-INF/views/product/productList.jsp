@@ -50,14 +50,14 @@
 		<div id="typebox">
 			<div id="colorcheckbox">
 				<label id="naming" for="color">색상:</label>
-				<label><input type="checkbox" name="color" value="white" <c:if test="${fn:contains(color, 'white')}">checked</c:if>>white</label>
+				<label><input type="checkbox" name="color" value="white"  <c:if test="${fn:contains(color, 'white')}">checked</c:if>>white</label>
 				<label><input type="checkbox" name="color" value="black" <c:if test="${fn:contains(color, 'black')}">checked</c:if>>black</label>
-				<label><input type="checkbox" name="color" value="gray" <c:if test="${fn:contains(color, 'gray')}">checked</c:if>>gray</label>
+				<label><input type="checkbox" name="color" value="gray"  <c:if test="${fn:contains(color, 'gray')}">checked</c:if>>gray</label>
 			</div>
 			<div id="typecheckbox">
 				<label id="naming" for="type">제품:</label>
 				<label><input type="checkbox" name="type" value="bed" <c:if test="${fn:contains(type, 'bed')}">checked</c:if>>침실</label>
-				<label><input type="checkbox" name="type" value="living" <c:if test="${fn:contains(type, 'living')}">checked</c:if>>거실</label>
+				<label><input type="checkbox" name="type" value="living"  <c:if test="${fn:contains(type, 'living')}">checked</c:if>>거실</label>
 				<label><input type="checkbox" name="type" value="bath" <c:if test="${fn:contains(type, 'bath')}">checked</c:if>>욕실</label>
 			</div>
 			<div id="productradio">

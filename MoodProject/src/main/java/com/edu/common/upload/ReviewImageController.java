@@ -96,6 +96,16 @@ public class ReviewImageController {
 		return new ResponseEntity<ReviewImagesDTO>(reviewImagesDTO, HttpStatus.OK);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//리뷰 이미지 수정하기.
 	@ResponseBody 
 	@RequestMapping(value = "/updateImage1", method = RequestMethod.POST)

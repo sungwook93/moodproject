@@ -32,6 +32,7 @@
 	<input type="hidden" id="isLogOnT" value="${isLogOn}"/>
 	<input type="hidden" id="userIDT" value="${member1.userID}"/>
 	<input type="hidden" id="userGrade" value="${member1.grade}"/>
+	
 </div>
 
 <div id="sticky-content">

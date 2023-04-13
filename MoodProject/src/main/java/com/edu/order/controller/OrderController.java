@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.order.dto.CartDTO;
 import com.edu.order.service.OrderService;
-import com.edu.product.dto.ProductDTO;
 import com.edu.order.dao.OrderDAO;
 import com.edu.order.dto.OrderDTO;
 

@@ -4,9 +4,13 @@
  
  
 //리뷰 작성하기
-function fn_reviewRegisterForm(){
+function fn_reviewRegisterForm(order_num, product_code){
  
-alert("확인");
+alert(order_num);
+alert(product_code);
+
+
+
+
  
- 
- }
+}

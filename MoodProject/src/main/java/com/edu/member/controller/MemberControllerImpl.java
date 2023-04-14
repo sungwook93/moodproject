@@ -379,7 +379,7 @@ public class MemberControllerImpl implements MemberController {
 			int result = memberService.removeMember(userID);
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("result", "removeMember");
-			mav.setViewName("/main");
+			mav.setViewName("redirect:/member/adminForm.do?product_type=bed");
 			return mav;
 		}//End - 아이디에 해당하는 회원 정보 삭제하기
 

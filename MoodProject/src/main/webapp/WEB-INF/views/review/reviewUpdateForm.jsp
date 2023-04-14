@@ -85,7 +85,7 @@
 									<option <c:if test="${reviewDTO.product_name == reviewDTO.product_name}">selected</c:if>>${reviewDTO.product_name}</option>
 								</select>
 							</div>
-					</div>	
+					</div>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">리뷰 사진</label>	
 						<div class="col-sm-2">
@@ -102,7 +102,7 @@
 							</tr>
 						</table>
 						</div>
-					</div>
+					</div>	
 					<div class="form-group">
 						<label class="col-sm-1 control-label">내  용</label>
 						<div class="col-sm-10">

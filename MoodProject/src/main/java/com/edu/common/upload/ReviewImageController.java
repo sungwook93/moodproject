@@ -45,9 +45,13 @@ public class ReviewImageController {
 	@RequestMapping(value="/displayImage1", method=RequestMethod.GET)
 	public ResponseEntity<byte[]> displayImage(String name, Integer review_bno) throws Exception{
 	
-		System.out.println("ImageController의 displayImage 불러오기.... 이름: " + name);
+		System.out.println("ReviewImageController의 displayImage 불러오기.... 이름: " + review_bno);
 		
 		String path = uploadPath + "\\review\\";
+		
+		if(review_bno != null) {
+			name = reviewDAO.ImagesName1(review_bno);
+		}
 		
 		System.out.println("파일에 따른 경로: " + path);
 		
@@ -72,13 +76,15 @@ public class ReviewImageController {
 		}
 		
 		return result;
+		
+		
 	}// end
 	
 	//리뷰 이미지 업로드한다.
 	@ResponseBody
 	@RequestMapping(value="/reviewUpload", method=RequestMethod.POST)
-	public ResponseEntity<ReviewImagesDTO> reviewUpload(MultipartFile[] files, int review_bno)throws Exception{
-		System.out.println("ImageController의 updateImage 처리하기....리뷰 번호: " + review_bno + ", 파일이름: " + files[0].getOriginalFilename());
+	public ResponseEntity<ReviewImagesDTO> reviewUpload(MultipartFile[] files, int review_bno) throws Exception{
+		System.out.println("ReviewImageController의 updateImage 처리하기....리뷰 번호: " + review_bno + ", 파일이름: " + files[0].getOriginalFilename());
 		
 		//이미지를 업로드후 db에 입력하기위해 imagesDTO 타입으로 받는다.
 		ReviewImagesDTO reviewImagesDTO = ReviewUploadFile.uploadImage(uploadPath, files, review_bno);
@@ -95,7 +101,6 @@ public class ReviewImageController {
 		
 		return new ResponseEntity<ReviewImagesDTO>(reviewImagesDTO, HttpStatus.OK);
 	}
-	
 	// 이미지 삭제하기
 	@ResponseBody
 	@RequestMapping(value = "/deleteImage1", method = RequestMethod.POST)
@@ -116,14 +121,11 @@ public class ReviewImageController {
 		
 		return review_bno;
 	}
-	
-	
+
 	//리뷰 이미지 수정하기.
 	@ResponseBody 
 	@RequestMapping(value = "/updateImage1", method = RequestMethod.POST)
 	public ResponseEntity<ReviewImagesDTO> updateImage1(MultipartFile[] files, int review_bno) throws Exception{
-		
-		
 		
 		System.out.println("ReviewImageController의 updateImage");
 		
@@ -145,8 +147,6 @@ public class ReviewImageController {
 		
 		return new ResponseEntity<ReviewImagesDTO>(reviewImagesDTO, HttpStatus.OK);
 	}
-	
-	
 	
 	
 	

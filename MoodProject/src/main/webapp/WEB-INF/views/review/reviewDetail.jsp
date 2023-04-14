@@ -71,22 +71,28 @@
 						<div class="col-sm-3">	
 							<input type="text" class="form-control" id="product_name" name="product_name" value = "${reviewDTO.product_name}" readonly/>
 						</div>
-					</div>	
+					</div>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">리뷰 사진</label>	
 						<div class="col-sm-2">
-						<table>
-							<tr>
-								<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
-									<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
-								</td></c:if>
-								<c:if test="${imagesList.images02 != null}" >
-								<td class="subImg1">
-									<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg" style = "height: 350px; width : 470px;"/>
-								</td>
-								</c:if>
-							</tr>
-						</table>
+							<div style = "background-color: #EEEEEE; height: 350px; width: 940px; border-radius: 5px;">
+							<table>
+								<tr>
+									<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
+										<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
+									</td></c:if>
+									<c:if test="${imagesList.images02 != null}" >
+									<td class="subImg1">
+										<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg" style = "height: 350px; width : 470px;"/>
+									</td>
+									</c:if>
+									<!-- 수정해야함 -->
+									<c:if test="${imagesList.images01 != null && imagesList.images02 != null}" ><td class="subImg1">
+										<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
+									</td></c:if>
+								</tr>
+							</table>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">

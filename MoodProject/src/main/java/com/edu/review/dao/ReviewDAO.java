@@ -85,8 +85,8 @@ public interface ReviewDAO {
 	//리뷰별점 평균
 	public int star_avg(ReviewDTO reviewDTO)throws Exception;
 	
-	
-	
+	// 리스트에 이미지 뿌려주기 
+	public String ImagesName1(int review_bno) throws Exception;
 	
 	
 	

@@ -207,7 +207,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return sqlSession.update(Namespace + ".star_avg",reviewDTO);
 	}
 	
-	
+	// 리스트에 이미지 뿌려주기 
+	@Override
+	public String ImagesName1(int review_bno) throws Exception {
+		
+		return sqlSession.selectOne(Namespace + ".ImagesName1", review_bno);
+	}	
 	
 	
 	

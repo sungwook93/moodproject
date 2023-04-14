@@ -32,7 +32,7 @@
 			<include refid="searchMySQL"/>
 			<![CDATA[
 			) brd
-			WHERE rNUM BETWEEN (#{perPageNum} * #{page} - 7) and (#{perPageNum} * #{page} + 1)
+			WHERE rNUM BETWEEN (#{perPageNum} * #{page} - 8) and (#{perPageNum} * #{page})
 			ORDER BY qna_bno DESC;
 		]]>
 	</select>

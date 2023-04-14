@@ -223,6 +223,7 @@ $(document).ready(function() {
 		
 		if(!checked) {
 			alert("개인정보 수집에 동의하셔야 합니다.");
+			$("#joinInfo").css("height", "246px");
 			$("#agreements").focus();
 			return false;
 		}

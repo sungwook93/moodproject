@@ -137,6 +137,8 @@ function fn_removeMember(userID) {
 		//location.reload("/member/adminForm.do?product_type=bed");
 		location.href=("/member/removeMember2.do?userID="+userID);
 		
+		
+		
 	}
 }
 

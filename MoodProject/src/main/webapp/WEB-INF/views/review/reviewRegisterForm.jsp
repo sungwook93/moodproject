@@ -83,9 +83,6 @@
                         <div class = "col-sm-6">
                            <input type = "file" id="file" class = "btn btn-default" name = "file" style = "width: 600px;" multiple/>
                         </div>
-                        <div class = "col-sm-2">
-                           <input type = "submit" class = "btn btn-default" value = "파일 올리기"/>
-                        </div>
                      </div>
                      
                      <!-- iframe에 업로드한 결과를 출력한다. 
@@ -101,7 +98,7 @@
                <br/>
                <div class="form-group">
                   <div id="registerFormBtnDiv">
-                     <button type="button" class="btn btn-light" onclick="location.href='/review/reviewList'" style = "width: 80px;"><strong>Back</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                     <button type="button" class="btn btn-light" onclick="location.href='/order/orderCompleteDetail?order_num='+${order_num}" style = "width: 80px;"><strong>Back</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
                      <button type="reset"  class="btn btn-light"><strong>다시 입력</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
                      <button type="button" class="btn btn-light" onclick="fn_reviewRegister();"><strong>리뷰 등록</strong></button>
                   </div>

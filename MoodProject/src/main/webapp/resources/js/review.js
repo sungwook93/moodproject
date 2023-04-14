@@ -16,7 +16,7 @@
 	let order_num = $("#order_num").val();
 	let product_code = $("#product_code").val();
 
-	alert(product_type+","+product_name);
+	//alert(product_type+","+product_name);
 	//파일수를 제한을 둔다.
 	if(file.files.length > 2){
 		alert("사진은 2장까지만 등록할수 있습니다.");
@@ -24,6 +24,12 @@
 		return false;
 	}
 	
+	//파일수를 제한을 둔다.
+	if(file.files.length == 0){
+		alert("사진은 필수사항입니다.");
+		file.focus();
+		return false;
+	}
 	
 	// 제목 항목에 값이 없으면 입력하도록 한다.
 	if($("#review_subject").val() == "") {

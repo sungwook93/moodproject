@@ -102,24 +102,9 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-1 control-label">첨부 파일</label>
 						
-						<form class = "form-horizontal" action = "${contextPath }/util/upload/uploadForm" method = "post" enctype = "multipart/form-data" target = "iframe1">
-							<!-- name = "file"의 변수명과 컨트롤러의 MultipartFile file과 일치해야 한다. -->
-							<div class = "form-group">
-								<div class = "col-sm-6">
-									<input type = "file" id="file" class = "btn btn-default" name = "file" style = "width: 600px;" multiple/>
-								</div>
-							</div>
-							
-							<!-- iframe에 업로드한 결과를 출력한다. 
-							<div class = "form-group">
-								<div class = "col-sm-10">
-									<iframe name = "iframe1"></iframe>
-								</div>
-							</div>
-							-->
-						</form>
+						
+						
 						
 					</div>
 				<div id="boardDetailBtn">

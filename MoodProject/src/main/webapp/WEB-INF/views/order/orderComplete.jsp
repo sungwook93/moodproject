@@ -178,7 +178,7 @@
 						<table id="AfterCareTable"> 
 							<tr>
 								<td><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><button type="button" style="color:#9a9a9a; background:white;">상품추가구매</button></a></td>
-								<td><button type="button" style="color:white; background:#9a9a9a;" onclick="fn_myorderpage()">나의구매현황</button></td>
+								<td><button type="button" style="color:white; background:#9a9a9a;" onclick="fn_myorderpage()">마이페이지이동</button></td>
 							</tr>
 						</table>
 					</div>

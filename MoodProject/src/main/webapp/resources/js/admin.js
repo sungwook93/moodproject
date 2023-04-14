@@ -134,7 +134,7 @@ function fn_removeMember(userID) {
 		alert("회원 정보 삭제를 취소하셨습니다.");
 	} else { // 삭제를 동의하면 삭제에 대한 url요청을 한다.
 		alert("회원 정보를 삭제합니다.");
-		location.href = "/member/removeMember.do?userID="+ userID;
+		location.href = "/member/removeMember2.do?userID="+ userID;
 	}
 }
 

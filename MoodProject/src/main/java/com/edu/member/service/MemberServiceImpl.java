@@ -102,6 +102,18 @@ public class MemberServiceImpl implements MemberService {
 
 	} // End - 아이디에 해당하는 회원 정보 삭제하기()	
 	
+
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 삭제하기2
+	//-----------------------------------------------------------------------------------------------------------
+	@Override
+	public int removeMember2(String userID) throws DataAccessException {
+
+		logger.info("MemberServiceImpl 아이디에 해당하는 회원 정보 삭제하기() 시작");
+		return memberDAO.deleteMember(userID);
+
+	} // End - 아이디에 해당하는 회원 정보 삭제하기()	
+	
 	
 	//관리자페이지 상품정보 가져오기
 	@Override

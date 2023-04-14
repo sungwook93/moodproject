@@ -96,8 +96,8 @@
 	
 	<!-- 상품등록하기 -->
 	<insert id="productRegister" parameterType="com.edu.product.dto.ProductDTO">
-		insert into t_product(product_code, product_type, product_color, product_size, product_name, product_price, product_date, star_sum, star_avg)
-		values (#{product_code}, #{product_type}, #{product_color}, #{product_size}, #{product_name}, #{product_price}, now(), 0, 0)
+		insert into t_product(product_code, product_type, product_color, product_size, product_name, product_price, product_date, star_sum, star_avg, review_count)
+		values (#{product_code}, #{product_type}, #{product_color}, #{product_size}, #{product_name}, #{product_price}, now(), 0, 0, 0)
 	</insert>
 	
 	<!-- 이미지dto 등록 -->

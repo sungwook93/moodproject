@@ -51,7 +51,6 @@
 					<div class="form-group">
 						<div id="registerFormBtnDiv">
 							<button type="button" class="btn btn-light" onclick="location.href='/board/boardList?page=1'" style = "width: 80px;"><strong>Back</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="reset"  class="btn btn-light"><strong>다시 입력</strong></button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-light" onclick="fn_boardRegister();"><strong>게시글 등록</strong></button>
 						</div>
 					</div>

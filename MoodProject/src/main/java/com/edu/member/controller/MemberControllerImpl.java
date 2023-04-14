@@ -358,6 +358,8 @@ public class MemberControllerImpl implements MemberController {
 			return mav;
 		}//End - 아이디에 해당하는 회원 정보 삭제하기
 
+		
+		
 		//-----------------------------------------------------------------------------------------------------------
 		// 관리자 화면 불러오기
 		//-----------------------------------------------------------------------------------------------------------
@@ -406,6 +408,8 @@ public class MemberControllerImpl implements MemberController {
 			return mav;
 		} // End - 관리자 화면 불러오기()
 }
+
+
 //<!-- Google tag (gtag.js) -->
 //<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NRHYLJTPK"></script>
 //<script>

@@ -55,8 +55,6 @@
 					<div class="form-group">
 						<br/>
 						<div id="boardUpdateBtn">
-							<button type="reset"  class="btn btn-light">
-								<span> 다시 입력</span>
 							</button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-light" onclick="fn_boardUpdate();">
 								<span> 게시글 수정</span>

@@ -76,6 +76,12 @@ public class MemberControllerImpl implements MemberController {
 
 			logger.info("MemberControllerImpl 회원가입 화면 불러오기() 시작");
 			
+			// 회원가입화면으로갈시 세션값을 초기화
+			HttpSession session = request.getSession();
+			session.removeAttribute("member1");
+			session.removeAttribute("isLogOn");
+			
+			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("/member/memberForm");	// 회원가입화면
 			return mav;
@@ -113,9 +119,7 @@ public class MemberControllerImpl implements MemberController {
 		      System.out.println("memberDTO: " + memberDTO);
 		      response.setContentType("text/html;charset=UTF-8");
 		      
-		      HttpSession session = request.getSession();
-		      session.setAttribute("member1",    memberDTO);
-		      session.setAttribute("isLogOn", true);
+		      
 		      
 		      //아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
 		      //List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(memberDTO.getUserID());
@@ -126,9 +130,13 @@ public class MemberControllerImpl implements MemberController {
 		      // 사용자가 입력한 회원정보를 서비스에게 넘겨주어서 처리하게 한다.
 		      result = memberService.addMember(memberDTO);
 		      
+		      HttpSession session = request.getSession();
+		      session.setAttribute("member1",    memberDTO);
+		      session.setAttribute("isLogOn", true);
+		      
 		      // 회원가입 처리후 회원전체목록 페이지로 이동한다.
-		      ModelAndView mav = new ModelAndView("redirect:/main.do");
-
+		      ModelAndView mav = new ModelAndView();
+		      mav.setViewName("/main");
 		      return mav;
 		   } // End - 회원가입 처리하기   		
 		
@@ -374,12 +382,17 @@ public class MemberControllerImpl implements MemberController {
 			//HttpSession session = request.getSession();
 			//session.removeAttribute("member1");
 			//session.removeAttribute("isLogOn");
+			
+			// 세션값 받기
+			HttpSession session = request.getSession();
+			session.setAttribute("member1", 	memberDTO);
+			session.setAttribute("isLogOn", true);
 					
 			request.setCharacterEncoding("UTF-8");
 			int result = memberService.removeMember(userID);
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("result", "removeMember");
-			mav.setViewName("/main");
+			mav.setViewName("redirect:/member/adminForm.do?product_type=bed");
 			return mav;
 		}//End - 아이디에 해당하는 회원 정보 삭제하기
 

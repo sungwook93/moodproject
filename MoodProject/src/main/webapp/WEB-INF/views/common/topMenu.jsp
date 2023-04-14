@@ -158,7 +158,7 @@
 	            <div class="content form-group" style="margin-top:50px;">
 	            	<button type = "reset" class = "btn btn-light">Re-enter</button>
 					<button type = "submit" class = "btn btn-light" id = "submit">Login</button>
-					<button type = "button" class = "btn btn-light">Join</button>
+					<button type = "button" class = "btn btn-light" onclick="location.href='/member/memberForm.do'">Join</button>
 	            </div>
 	        </div>
 	   	</div>

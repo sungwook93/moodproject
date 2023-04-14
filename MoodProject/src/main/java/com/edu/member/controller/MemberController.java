@@ -69,6 +69,13 @@ public interface MemberController {
 	public ModelAndView removeMember(@RequestParam("userID") String userID, 	
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
+	
+	//-----------------------------------------------------------------------------------------------------------
+	// 아이디에 해당하는 회원 정보 삭제하기 -- 개인계정
+	//-----------------------------------------------------------------------------------------------------------
+	public ModelAndView removeMember2(@RequestParam("userID") String userID, 	
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
+		
 	//관리자페이지불러오기
 	public ModelAndView adminForm(AdminCriteria aCri,String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

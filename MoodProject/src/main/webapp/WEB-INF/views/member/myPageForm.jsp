@@ -137,7 +137,7 @@
 	</div>
 	
 	<!-- 게시글 관련 테이블 -->
-	<div class="container" style="text-align:center; margin-right:100px;">
+	<div class="container" style="text-align:center;">
 		<table id="membertable3" style=" margin-bottom:500px;">
 			<tr class="thead">
 				<td style="width:10%;">게시글번호</td>
@@ -155,7 +155,7 @@
 	</div>
 	
 	<!-- 구매내역 테이블 -->
-	<div class="container" style="text-align:center; margin-right:100px;">
+	<div class="container" style="text-align:center;">
 		<table id="membertable2" style=" margin-bottom:500px;">
 			<tr class="thead">
 				<td style="width:10%;">상품번호</td>
@@ -165,7 +165,7 @@
 				<td style="width:20%;">구매일자</td>
 			</tr>
 			<c:forEach var="order" items="${orderList}">
-			<tr>
+			<tr style="width:100%;">
 				<td>${order.product_code}</td>
 				<td>${order.product_amount}</td>
 				<td><a href="/order/orderCompleteDetail?order_num=${order.order_num}">${order.product_name}</a></td>

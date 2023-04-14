@@ -357,6 +357,31 @@ public class MemberControllerImpl implements MemberController {
 			mav.setViewName("/main");
 			return mav;
 		}//End - 아이디에 해당하는 회원 정보 삭제하기
+		
+		//-----------------------------------------------------------------------------------------------------------
+		// 아이디에 해당하는 회원 정보 삭제하기 - 관리자
+		//-----------------------------------------------------------------------------------------------------------
+		@Override
+		@RequestMapping(value = "/removeMember2.do", method = RequestMethod.GET)
+		public ModelAndView removeMember2(String userID, HttpServletRequest request, HttpServletResponse response)
+				throws Exception {
+					
+			logger.info("MemberControllerImpl 아이디에 해당하는 회원 정보 삭제하기기() 시작");
+			logger.info("JSP에서 넘겨준 회원아이디 : " + userID);
+					
+					
+			// 관리자는 회원정보삭제후 세션값이 없어지면안된다
+			//HttpSession session = request.getSession();
+			//session.removeAttribute("member1");
+			//session.removeAttribute("isLogOn");
+					
+			request.setCharacterEncoding("UTF-8");
+			int result = memberService.removeMember(userID);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("result", "removeMember");
+			mav.setViewName("/main");
+			return mav;
+		}//End - 아이디에 해당하는 회원 정보 삭제하기
 
 		//-----------------------------------------------------------------------------------------------------------
 		// 관리자 화면 불러오기

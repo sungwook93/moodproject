@@ -178,13 +178,13 @@
 						<table id="AfterCareTable"> 
 							<tr>
 								<td><a href="/product/productList?product_color=white&product_type=bed,bath,living&page=1&array_type=r"><button type="button" style="color:#9a9a9a; background:white;">상품추가구매</button></a></td>
-								<td><a href="/member/myPageForm.do?userID=${member1.userID}"><button type="button" style="color:white; background:#9a9a9a;">나의구매현황</button></a></td>
+								<td><button type="button" style="color:white; background:#9a9a9a;" onclick="fn_myorderpage()">나의구매현황</button></td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
-			
+			<input type="hidden" id = "userID" value="${member1.userID }">
 			
 			<!-- 하단 메뉴 -->
 			<jsp:include page="../common/footer.jsp" flush="false"/>			

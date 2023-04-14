@@ -293,13 +293,11 @@ public class MemberControllerImpl implements MemberController {
 			ModelAndView mav = new ModelAndView();
 			
 			
+			
 			//qna 해당아이디에 속한 것만 가지고 온다
 			mav.addObject("boardList", memberDAO.boardUserList(userID));
 			System.out.println(memberDAO.boardUserList(userID));
 			//System.out.println(mav+"1");
-			
-			
-			//장바구니 번호가져오기
 			
 			//구매정보 가져오기
 			mav.addObject("userUpdate",session);

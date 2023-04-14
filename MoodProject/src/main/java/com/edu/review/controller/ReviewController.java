@@ -57,6 +57,9 @@ public class ReviewController {
 		List<ReviewDTO> reviewList = reviewService.reviewList(sCri);
 		mav.addObject("reviewList", reviewList);
 		
+		mav.addObject("searchType",	sCri.getSearchType());
+		mav.addObject("keyword",	sCri.getKeyword());
+		
 		// 전체 페이지 가져오기
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(sCri);

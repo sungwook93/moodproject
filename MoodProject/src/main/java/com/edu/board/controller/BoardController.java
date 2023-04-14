@@ -42,6 +42,9 @@ public class BoardController {
 		List<BoardDTO> boardList = boardService.boardList(sCri);
 		mav.addObject("boardList", boardList);
 
+		mav.addObject("searchType",	sCri.getSearchType());
+		mav.addObject("keyword",	sCri.getKeyword());
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(sCri);
 

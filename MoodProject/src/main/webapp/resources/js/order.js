@@ -18,8 +18,8 @@ alert(product_code);
 function fn_myorderpage() {
 	
 	let userID = document.getElementById('userID').value;
-	let ordernameid= document.getElementById('ordernameid').value;
-	alert(userID);
+	//let ordernameid= document.getElementById('ordernameid').value;
+	//alert(userID);
 	location.href="/member/myPageForm.do?userID="+userID;
 	
 	//처음 페이지들어갈시 상품관리메뉴만보이게

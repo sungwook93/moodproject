@@ -56,6 +56,33 @@
 		select ifnull(max(review_bno), 0) +1, #{userID}, #{review_subject}, #{review_content}, #{product_type}, #{product_name}, now(), #{review_star} from t_review
 		]]>
 	</insert>
+	
+	<!-- 리뷰별점 합계 -->
+	<update id="star_sum" parameterType = "com.edu.review.dto.ReviewDTO">
+		<![CDATA[ 
+		UPDATE t_product 
+		set review_count = review_count + 1, star_sum = star_sum + #{review_star} 
+		WHERE product_name = #{product_name};
+		]]>
+	</update>
+	
+	<!-- 리뷰별점 평균 -->
+	<update id="star_avg" parameterType = "com.edu.review.dto.ReviewDTO">
+		<![CDATA[ 
+		UPDATE t_product 
+		SET star_avg = ROUND(star_sum / review_count, 1)
+		WHERE product_name = #{product_name};
+		]]>
+	</update>
+	
+	<!-- 리뷰등록 상품 타입이름가져오기 -->
+	<select id="productReviewdata" resultType="String" parameterType = "String">
+		<![CDATA[
+		SELECT product_name, product_type 
+		FROM t_product 
+		WHERE product_code=#{product_code} 
+		]]>
+	</select>
 			
 	<select id="productList" resultType="com.edu.review.dto.ReviewDTO" parameterType = "com.edu.product.dto.ProductDTO">
 		<![CDATA[

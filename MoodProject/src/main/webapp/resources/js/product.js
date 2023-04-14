@@ -381,7 +381,7 @@ function fn_productDelete(product_code){
 						data: {product_code:data},
 						success: function(data){
 							//alert(data);
-							location.href="/main.do";
+							location.href="/product/productList?product_type=" + data + "&array_type=r&product_color=white,black,gray";
 						}
 						
 					});

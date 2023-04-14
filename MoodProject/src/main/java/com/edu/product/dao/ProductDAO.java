@@ -48,6 +48,9 @@ public interface ProductDAO {
 
 	// 상품이미지 수정
 	public int imagesUpdate(ImagesDTO imagesDTO)throws Exception;
+	
+	// 상품타입 얻어오기
+	public String productfindType(String product_code)throws Exception;
 
 
 	

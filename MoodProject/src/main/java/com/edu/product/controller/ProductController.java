@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.common.util.PageMaker;
 import com.edu.common.util.ProductCriteria;
+import com.edu.product.dao.ProductDAO;
 import com.edu.product.dto.ImagesDTO;
 import com.edu.product.dto.ProductDTO;
 import com.edu.product.service.ProductService;
@@ -32,6 +33,9 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	ProductDAO productDAO;
 	
 	//카테고리에 따른(상품 타입) 상품 리스트 페이지 이동 + 정렬 방식에 따른 상품 리스트 데이터 함께 넘기기
 	@RequestMapping(value="productList", method=RequestMethod.GET)
@@ -219,15 +223,21 @@ public class ProductController {
 	//상품 삭제하기
 	@ResponseBody
 	@RequestMapping(value="/productDelete", method=RequestMethod.POST)
-	public int productDelete(String product_code) throws Exception{
+	public String productDelete(String product_code) throws Exception{
 	
 		System.out.println("ajax에서 넘어온 값" + product_code);
+		
+		String product_type = productDAO.productfindType(product_code);
+		
 		int result = productService.productDelete(product_code);
 		
+		
+		
+		
 		if (result <= 0) {// 실패함
-			return 0;
+			return "N";
 		}else
-		return result;
+		return product_type;
 	}
 	
 	

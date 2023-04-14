@@ -132,5 +132,12 @@
 	</update>
 	
 	
+	<!-- 상품타입 가져오기 -->
+	<select id="productfindType" parameterType="String" resultType ="String" >
+	select product_type
+	from t_product
+	where product_code = #{product_code}
+	</select>
+	
 
 </mapper>

@@ -123,6 +123,13 @@ public class ProductDAOImpl implements ProductDAO {
 		return sqlSession.update(Namespace + ".imagesUpdate", imagesDTO);
 	}
 
+	//상품 타입가져오기
+	@Override
+	public String productfindType(String product_code) throws Exception {
+		System.out.println("ProductDAOImpl의 상품 타입가져오기....." + product_code);
+		return sqlSession.selectOne(Namespace + ".productfindType", product_code);
+	}
+
 	
 	
 

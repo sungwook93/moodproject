@@ -76,6 +76,7 @@ public class ProductController {
 		mav.addObject("pageMaker", pageMaker);
 		
 		
+		
 		//상품 색상, 검색 키워드, 상품 타입, 상품수를 담아서 보내준다(page 처리를 위해)
 		mav.addObject("color", pCri.getProduct_color());
 		mav.addObject("type" , pCri.getProduct_type());

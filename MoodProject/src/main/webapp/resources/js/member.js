@@ -8,6 +8,7 @@ function fn_joininfo(){
 }
 $(document).ready(function() {
 	
+	
 	//처음 페이지들어갈시 상품관리메뉴만보이게
 	$("#membertitle2").css("display", "none");
 	$("#membertitle3").css("display", "none");

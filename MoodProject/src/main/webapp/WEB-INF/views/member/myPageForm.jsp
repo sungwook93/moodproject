@@ -33,8 +33,9 @@
 	<div class="container">
 	<div class="container" style="text-align:center;">
 		<div id="membertitle"><h4 id="titlesection1">작성한글</h4><h1 id="titlesection2">회원정보</h1><h4 id="titlesection3">주문내역</h4></div>
-		<div id="membertitle2"><h4 id="titlesection4">회원정보</h4><h1 id="titlesection5">주문내역</h1><h4 id="titlesection6">작성한글</h4></div>
+		<div id="membertitle2" ><h4 id="titlesection4">회원정보</h4><h1 id="titlesection5">주문내역</h1><h4 id="titlesection6">작성한글</h4></div>
 		<div id="membertitle3"><h4 id="titlesection7">주문내역</h4><h1 id="titlesection8">작성한글</h1><h4 id="titlesection9">회원정보</h4></div>
+		<div id="membertitle2" style="display:none;"><label><input type="chedckbox" style="display:none;" name="ordernameid" id="ordernameid" value="l" <c:if test="${membertitle2=='l'}">checked</c:if>><h4 id="titlesection4">회원정보</h4><h1 id="titlesection5">주문내역</h1><h4 id="titlesection6">작성한글</h4></label></div>
 	</div>
 	<div class="container" id="membertable" style="text-align:center;">
 		<form class="form-horizontal" method="post" id="memInfo" name="memInfo" action="${contextPath}/member/memberUpdate.do">

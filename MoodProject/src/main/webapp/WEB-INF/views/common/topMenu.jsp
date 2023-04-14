@@ -67,7 +67,7 @@
 	  	<li><a href="/product/productList?product_color=gray&product_type=bed,bath,living&page=1&array_type=r">GRAY</a></li>
 	  	<li><h1>BOARD</h1></li>
 	  	<li><a href="/board/boardList?page=1">Q&A</a></li>
-	  	<li>REVIEW</li>
+	  	<li><a href="/review/reviewList?page=1">REVIEW</a></li>
 	  </ul>
 </div>   
     

@@ -86,10 +86,6 @@
 										<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg" style = "height: 350px; width : 470px;"/>
 									</td>
 									</c:if>
-									<!-- 수정해야함 -->
-									<c:if test="${imagesList.images01 != null && imagesList.images02 != null}" ><td class="subImg1">
-										<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
-									</td></c:if>
 								</tr>
 							</table>
 							</div>

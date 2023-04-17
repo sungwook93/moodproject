@@ -52,6 +52,9 @@ public class ReviewImageController {
 		if(review_bno != null) {
 			name = reviewDAO.ImagesName1(review_bno);
 		}
+		if(reviewDAO.ImagesName1(review_bno) == null) {
+			name = "no.jpg";
+		}
 		
 		System.out.println("파일에 따른 경로: " + path);
 		

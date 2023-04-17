@@ -50,11 +50,12 @@ public class ReviewImageController {
 		String path = uploadPath + "\\review\\";
 		
 		if(review_bno != null) {
+			if(reviewDAO.ImagesName1(review_bno) == null) {
+				name = "no.jpg";
+			}else	
 			name = reviewDAO.ImagesName1(review_bno);
 		}
-		if(reviewDAO.ImagesName1(review_bno) == null) {
-			name = "no.jpg";
-		}
+		
 		
 		System.out.println("파일에 따른 경로: " + path);
 		

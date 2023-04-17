@@ -46,9 +46,23 @@
 							<input type="text" class="form-control" id="review_subject" name="review_subject"  value="${reviewDTO.review_subject}" readonly/>
 						</div>
 						<label class="col-sm-1 control-label">리뷰 별점</label>
-						<div class="col-sm-3">
-							<input type="number" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="${reviewDTO.review_star}" style = "width:160px;" readonly/>
-						</div>
+			                  <div class="col-sm-3">
+			                     <c:if test = "${reviewDTO.review_star == 1}">
+			                     <input type="text" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="★" style = "width:160px;" readonly/>
+			                     </c:if>   
+			                     <c:if test = "${reviewDTO.review_star == 2}">
+			                     <input type="text" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="★★" style = "width:160px;" readonly/>
+			                     </c:if>
+			                     <c:if test = "${reviewDTO.review_star == 3}">
+			                     <input type="text" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="★★★" style = "width:160px;" readonly/>
+			                     </c:if>
+			                     <c:if test = "${reviewDTO.review_star == 4}">
+			                     <input type="text" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="★★★★" style = "width:160px;" readonly/>
+			                     </c:if>
+			                     <c:if test = "${reviewDTO.review_star == 5}">
+			                     <input type="text" class="form-control" id="review_star" name="review_star" min = "1" max="5" value="★★★★★" style = "width:160px;" readonly/>
+			                     </c:if>
+			                  </div>
 					</div>
 					<div class="form-group">	
 						<label class="col-sm-1 control-label">아이디</label>
@@ -72,25 +86,33 @@
 							<input type="text" class="form-control" id="product_name" name="product_name" value = "${reviewDTO.product_name}" readonly/>
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-1 control-label">리뷰 사진</label>	
-						<div class="col-sm-2">
-							<div style = "background-color: #EEEEEE; height: 350px; width: 940px; border-radius: 5px;">
-							<table>
-								<tr>
-									<c:if test="${imagesList.images01 != null}" ><td class="subImg1">
-										<img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
-									</td></c:if>
-									<c:if test="${imagesList.images02 != null}" >
-									<td class="subImg1">
-										<img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg" style = "height: 350px; width : 470px;"/>
-									</td>
-									</c:if>
-								</tr>
-							</table>
-							</div>
-						</div>
-					</div>
+						<div class="form-group">
+		                  <label class="col-sm-1 control-label">리뷰 사진</label>   
+		                  <div class="col-sm-2">
+		                     <div style = "background-color: #EEEEEE; height: 350px; width: 940px; border-radius: 5px;">
+		                     <table>
+		                        <tr>
+		                           <c:if test="${imagesList.images01 != null}" >
+		                           <td class="subImg1">
+		                              <img src="/image/displayImage1?name=${imagesList.images01}" id="img1" class="subImg" style = "height: 350px; width : 470px;"/>
+		                           </td>
+		                           </c:if>
+		                           <c:if test="${imagesList.images01 == null || imagesList.images02 == null}">
+		                           <td class="subImg1">
+		                              <img src = "/image/displayImage1?name=no.jpg" style = "width: 350px; height: 350px; position: center;"/>
+		                           </td>
+		                           </c:if>
+		                           <c:if test="${imagesList.images02 != null}" >
+		                           <td class="subImg1">
+		                              <img src="/image/displayImage1?name=${imagesList.images02}" id="img2" class="subImg" style = "height: 350px; width : 470px;"/>
+		                           </td>
+		                           </c:if>
+		                           
+		                        </tr>
+		                     </table>
+		                     </div>
+		                  </div>
+		               </div>
 					<div class="form-group">
 						<label class="col-sm-1 control-label">내  용</label>
 						<div class="col-sm-10">

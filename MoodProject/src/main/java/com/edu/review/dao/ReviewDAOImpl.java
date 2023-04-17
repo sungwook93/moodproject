@@ -212,7 +212,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public String ImagesName1(int review_bno) throws Exception {
 		
 		return sqlSession.selectOne(Namespace + ".ImagesName1", review_bno);
-	}	
+	}
+	
+	
 	
 	
 	

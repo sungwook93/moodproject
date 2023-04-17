@@ -218,8 +218,7 @@
 	<select id = "ImagesName1" parameterType="Integer" resultType="String">
 			select images01 from t_reviewimages where review_bno = #{review_bno};
 	</select>
-	
-	
+
 </mapper>
 
 

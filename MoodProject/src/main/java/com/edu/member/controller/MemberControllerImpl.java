@@ -134,7 +134,6 @@ public class MemberControllerImpl implements MemberController {
       
       //-----------------------------------------------------------------------------------------------------------
       // 로그인 처리
-      // member => 로그인 창에서 보내온 정보, memberDTO => DB에서 가져온 정보
       //-----------------------------------------------------------------------------------------------------------
       @Override
       @RequestMapping(value="/login.do", method=RequestMethod.POST)
@@ -309,7 +308,7 @@ public class MemberControllerImpl implements MemberController {
 
       
       //----------------------------------------------------------------------------------------------------------
-      // 마이페이지 아이디에 해당하는 마이페이지의 내용(비밀번호, 이름 등)을 수정 요청하기
+      // 마이페이지 수정 
       //----------------------------------------------------------------------------------------------------------
       @ResponseBody
       @RequestMapping(value = "/memberUpdate.do", method = RequestMethod.POST)
@@ -390,12 +389,11 @@ public class MemberControllerImpl implements MemberController {
       //-----------------------------------------------------------------------------------------------------------
       @Override
       @RequestMapping(value="/adminForm.do", method=RequestMethod.GET)
-      public ModelAndView adminForm(AdminCriteria aCri,String product_code,String qna_bno,String userID,HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+      public ModelAndView adminForm(AdminCriteria aCri,String product_code,String qna_bno,String userID,HttpServletRequest request,
+    		  HttpServletResponse response) throws Exception {
          logger.info("MemberControllerImpl 회원가입 화면 불러오기() 시작");
          
          ModelAndView mav = new ModelAndView();
-
          // map 형식을 담기위해 설정해둔다. 이유는 type쪽을 배열로 넘겨주기위해서 가공을 해야한다.
          // type을 배열로 담을려는 이유는 mapper에 where in을 넣어야 하는데 mybatis 부분의 where in은 foreach를 써야하므로
          // 문자열을 배열로 바꾼다.

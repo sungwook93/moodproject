@@ -75,7 +75,7 @@
 
 
 	<!-- 상품 출력 -->
-			<div class = "container producbox">
+			<div class = "container producbox" >
 				<table>
 					<tr class="productList">
 						<c:forEach items="${productList}" var="product" begin="0" end ="2">

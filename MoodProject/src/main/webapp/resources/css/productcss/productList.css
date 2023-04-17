@@ -2,6 +2,9 @@
 
 /* productList */
 
+.pl a{
+	font-size: 17px;
+}
 
 .arraybox {
    justify-content: center;   

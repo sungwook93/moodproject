@@ -71,7 +71,7 @@
 			</div>
 		</div>
 	
-		<h1><c:if test="${totalCount == 0 }">해당 상품이 없습니다.</c:if></h1>
+		<h1 style="text-align:center;"><c:if test="${totalCount == 0 }">해당 상품이 없습니다.</c:if></h1>
 
 
 	<!-- 상품 출력 -->

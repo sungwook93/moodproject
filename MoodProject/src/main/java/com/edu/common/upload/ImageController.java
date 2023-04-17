@@ -99,7 +99,8 @@ public class ImageController {
 	@ResponseBody
 	@RequestMapping(value="/uploadImage", method=RequestMethod.POST)
 	public ResponseEntity<ImagesDTO> uploadImage(MultipartFile[] files, String product_code)throws Exception{
-		System.out.println("ImageController의 updateImage 처리하기.... 상품 코드: " + product_code + ", 파일이름: " + files[0].getOriginalFilename());
+		System.out.println("ImageController의 updateImage 처리하기.... 상품 코드: " + 
+							product_code + ", 파일이름: " + files[0].getOriginalFilename());
 		
 		//이미지를 업로드후 db에 입력하기위해 imagesDTO 타입으로 받는다.
 		ImagesDTO imagesDTO = UploadFile.uploadImage(uploadPath, files, product_code);

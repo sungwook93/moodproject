@@ -198,11 +198,8 @@ public class OrderController {
 					List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(orderDTO.getUserID());
 					 session.setAttribute("member1OrderDetail",    orderDetailList);
 					 System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList); 
-					
 					 return orderDTO.getOrder_num();
 				}
-				
-			
 				//orderDTO로 주문 완료 테이블에 데이터를 등록한다.
 				if(orderService.addOrder(cartNumberList, orderDTO) == cartNumberList.length && cartNumberList[0] != 0) { //성공시
 				

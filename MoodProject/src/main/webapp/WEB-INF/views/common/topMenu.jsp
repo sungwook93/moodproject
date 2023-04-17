@@ -31,9 +31,10 @@
 <div>
 	<input type="hidden" id="isLogOnT" value="${isLogOn}"/>
 	<input type="hidden" id="userIDT" value="${member1.userID}"/>
-	<input type="hidden" id="userGrade" value="${member1.grade}"/>
-	
 </div>
+
+
+	<input type="hidden" id="userGrade" value="${member1.grade}"/>
 
 <div id="sticky-content">
 	<c:choose>
@@ -50,7 +51,7 @@
 			<c:otherwise> <!-- 로그인 안했을시 login join이보이는부분 -->
 				<li><a style="width:160px;" id="loginbtn">login</a><a style="width:160px;"href="${contextPath}/member/memberForm.do" >join</a></li>
 			</c:otherwise>
-		</c:choose>	
+	</c:choose>	
 </div>
 <!-- 스티키 콜랩스 네비바 -->
 <div id="sticky-btn"><button type="button" onclick="fn_collapsebtn()"><span class="glyphicon glyphicon-align-justify"></span></button></div> 
@@ -149,11 +150,13 @@
 	            
 	            <div class = "form-group">
 		            <div style="padding-top:20px;"><h4>ID</h4></div>
-		            <div class="content"><input type = "text" class = "form-control" id = "loginUserID" name ="userID" maxlength="20" placeholder="아이디"/></div>
+		            <div class="content"><input type = "text" class = "form-control" id = "loginUserID" name ="userID" maxlength="20" 
+		            placeholder="아이디"/></div>
 		        </div>
 		        <div class = "form-group">    
 		            <div><h4>PASSWORD</h4></div>
-		            <div class="content"><input type = "password" class = "form-control" id = "pwd" name ="pwd" maxlength="20" placeholder="비밀번호" onkeypress="if( event.keyCode == 13 ){submit}"/></div>
+		            <div class="content"><input type = "password" class = "form-control" id = "pwd" name ="pwd" maxlength="20"
+		             placeholder="비밀번호" onkeypress="if( event.keyCode == 13 ){submit}"/></div>
 	            </div> 
 	            <div class="content form-group" style="margin-top:50px;">
 	            	<button type = "reset" class = "btn btn-light">Re-enter</button>

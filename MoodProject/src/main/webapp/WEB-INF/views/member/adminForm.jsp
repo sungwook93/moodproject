@@ -76,7 +76,8 @@
 				<ul class="btn-group pagination">
 					<c:if test="${pageMaker.prev}">
 						<li>
-							<a href='<c:url value="/member/adminForm.do?product_type=${type}?page=${pageMakerf.startPage-1}"/>'><span class="glyphicon glyphicon-chevron-left"></span></a>
+							<a href='<c:url value="/member/adminForm.do?product_type=${type}?page=${pageMakerf.startPage-1}"/>'>
+							<span class="glyphicon glyphicon-chevron-left"></span></a>
 						</li>
 					</c:if>
 		
@@ -88,7 +89,8 @@
 				
 					<c:if test="${pageMaker.next}">
 						<li>
-							<a href='<c:url value="/member/adminForm.do?product_type=${type}?page=${pageMaker.endPage+1}"/>'><span class="glyphicon glyphicon-chevron-right"></span></a>
+							<a href='<c:url value="/member/adminForm.do?product_type=${type}?page=${pageMaker.endPage+1}"/>'>
+							<span class="glyphicon glyphicon-chevron-right"></span></a>
 						</li>
 					</c:if>
 				</ul>

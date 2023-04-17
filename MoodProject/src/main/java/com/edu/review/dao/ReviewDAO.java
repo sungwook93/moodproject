@@ -88,6 +88,8 @@ public interface ReviewDAO {
 	// 리스트에 이미지 뿌려주기 
 	public String ImagesName1(int review_bno) throws Exception;
 	
+
+	
 	
 	
 	

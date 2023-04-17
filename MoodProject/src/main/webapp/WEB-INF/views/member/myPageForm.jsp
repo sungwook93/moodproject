@@ -155,7 +155,7 @@
 	</div>
 	
 	<!-- 구매내역 테이블 -->
-	<div class="container" style="text-align:center;">
+	<div class="container" style="text-align:center; width:100%;">
 		<table id="membertable2" style=" margin-bottom:500px;">
 			<tr class="thead">
 				<td style="width:10%;">상품번호</td>
@@ -164,15 +164,22 @@
 				<td style="width:20%;">상품사이즈</td>
 				<td style="width:20%;">구매일자</td>
 			</tr>
-			<c:forEach var="order" items="${orderList}">
-			<tr style="width:100%;">
-				<td>${order.product_code}</td>
-				<td>${order.product_amount}</td>
-				<td><a href="/order/orderCompleteDetail?order_num=${order.order_num}">${order.product_name}</a></td>
-				<td>${order.product_size}</td>
-				<td>${order.order_date}</td>
-			</tr>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${not empty orderList}">
+					<c:forEach var="order" items="${orderList}">
+					<tr style="width:100%;">
+						<td style="width:10%;">${order.product_code}</td>
+						<td style="width:10%;">${order.product_amount}</td>
+						<td style="width:40%;"><a href="/order/orderCompleteDetail?order_num=${order.order_num}">${order.product_name}</a></td>
+						<td style="width:20%;">${order.product_size}</td>
+						<td style="width:20%;">${order.order_date}</td>
+					</tr>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<td colspan='5' style="width:100%;">주문내역이없습니다</td>
+				</c:otherwise>
+			</c:choose>	
 		</table>
 	</div>
 	

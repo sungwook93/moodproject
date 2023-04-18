@@ -194,7 +194,7 @@
 													style = "float : right;" ><strong>리뷰작성하기</strong></button>
 												</c:when>
 												<c:when test="${list.review_yn == 'Y'}">
-													<a href="/review/reviewDetail?product_code=${list.product_code}&order_num=${list.order_num}&userID=${list.userID}">작성된 리뷰 보기</a>
+													<a href="/review/reviewList">작성된 리뷰 보기</a>
 												</c:when>
 												<c:otherwise>
 													작성된 리뷰 없음

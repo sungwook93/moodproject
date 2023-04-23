@@ -71,7 +71,7 @@
 		]]>
 	</select>
 	
-	<!-- 상품 상페 정보 불러오기 -->
+	<!-- 상품 상세 정보 불러오기 -->
 	<select id="productDetail" parameterType="String" resultType="com.edu.product.dto.ProductDTO">
 		SELECT * FROM t_product WHERE product_code = #{product_code};
 	</select>

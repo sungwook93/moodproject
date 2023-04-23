@@ -86,6 +86,7 @@ public class ImageController {
 			MediaType mType = mediaMap.get(extentionName.toUpperCase()); //확장자로 미디어타입을 가져온다
 			header.setContentType(mType); //가져온 미디어 타입으로 세팅
 			
+			//FileCopyUtils.copyToByteArray File의 내용을 byte[]에 담아 보낸다.
 			result = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 			
 		} catch (Exception e) {

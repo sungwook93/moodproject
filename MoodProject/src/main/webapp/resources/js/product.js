@@ -37,7 +37,8 @@
  	//alert(type);
  	//alert(keyword);
  	
- 	location.href="/product/productList?product_color="+color+"&product_type="+type+"&page=1"+"&array_type="+array + "&keyword=" + keyword;
+ 	location.href="/product/productList?product_color="+color+
+ 	"&product_type="+type+"&page=1"+"&array_type="+array + "&keyword=" + keyword;
  
 }
 

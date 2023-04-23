@@ -41,7 +41,8 @@ public class ProductController {
 	@RequestMapping(value="productList", method=RequestMethod.GET)
 	public ModelAndView productList(ProductCriteria pCri)throws Exception{		
 		logger.info("ProductController의 productList 불러오기....");
-		System.out.println("상품타입: " + pCri.getProduct_type() +"상품색상: " + pCri.getProduct_color() + ", 현재페이지: " + pCri.getPage());
+		System.out.println("상품타입: " + pCri.getProduct_type() +"상품색상: " 
+		+ pCri.getProduct_color() + ", 현재페이지: " + pCri.getPage());
 		
 		ModelAndView mav = new ModelAndView(); 
 		

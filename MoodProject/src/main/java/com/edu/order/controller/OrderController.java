@@ -197,9 +197,9 @@ public class OrderController {
 				orderDAO.addOrderProduct(orderDTO); 
 				HttpSession session = request.getSession();
 				List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(orderDTO.getUserID());
-				 session.setAttribute("member1OrderDetail",    orderDetailList);
-				 System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList); 
-				 return orderDTO.getOrder_num();
+				session.setAttribute("member1OrderDetail",    orderDetailList);
+				System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList); 
+				return orderDTO.getOrder_num();
 			}
 			
 			//orderDTO로 주문 완료 테이블에 데이터를 등록한다.

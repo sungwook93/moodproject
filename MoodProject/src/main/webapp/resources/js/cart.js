@@ -531,12 +531,12 @@ function fn_orderComplete() {
                 
                 //수령인 정보, 주문 정보들을 준비한다
                 let formData = new FormData();                      //데이터를 담아줄 FormData
-                var order_name = $("#deliveryName").val();             //수령인 이름
-                var address1 = $("#deliveryAddress1").val();          //배송지1
-                var address2 = $("#deliveryAddress2").val();          //배송지2
-                var postnum = $("#deliveryPostnum").val();             //우편번호
-                var phone = $("#deliveryPhone").val();                //전화번호
-                var order_memo = $("#orderMemo").val() //배송메모
+                let order_name = $("#deliveryName").val();             //수령인 이름
+                let address1 = $("#deliveryAddress1").val();          //배송지1
+                let address2 = $("#deliveryAddress2").val();          //배송지2
+                let postnum = $("#deliveryPostnum").val();             //우편번호
+                let phone = $("#deliveryPhone").val();                //전화번호
+                let order_memo = $("#orderMemo").val() //배송메모
                 let product_code = $("#product_code").val() //배송메모
                 let product_amount = $("#product_amount").val() //배송메모
                 let product_size = $("#product_size").val() //배송메모

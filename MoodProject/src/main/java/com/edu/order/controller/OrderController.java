@@ -192,26 +192,14 @@ public class OrderController {
 			
 			// 바로 주문하기
 			if(cartNumberList[0] == 0) {
-				//아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
 				orderDAO.addOrder(orderDTO);
 				orderDAO.addOrderProduct(orderDTO); 
-				HttpSession session = request.getSession();
-				List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(orderDTO.getUserID());
-				session.setAttribute("member1OrderDetail",    orderDetailList);
-				System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList); 
 				return orderDTO.getOrder_num();
 			}
 			
 			//orderDTO로 주문 완료 테이블에 데이터를 등록한다.
 			// 장바구니에서 주문하기
 			if(orderService.addOrder(cartNumberList, orderDTO) == cartNumberList.length && cartNumberList[0] != 0) { //성공시
-			
-			//아이디로 t_orderProduct 테이블에서 데이터를 리스트형으로 받아와서 세션에 넣어준다(productDetail에서 사용하기 위해)
-			HttpSession session = request.getSession();
-		    List<OrderDTO> orderDetailList = orderDAO.getOrderDetailById(orderDTO.getUserID());
-		    session.setAttribute("member1OrderDetail",    orderDetailList);
-		    System.out.println("로그인한 회원의 주문 리스트: " + orderDetailList);
-		    
 			return orderDTO.getOrder_num();
 			
 		} else {

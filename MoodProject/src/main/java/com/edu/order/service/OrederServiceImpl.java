@@ -120,7 +120,7 @@ public class OrederServiceImpl implements OrderService {
 		} else { //건수가 있으면
 			System.out.println("주문 건수 있음");
 			
-			//가장 큰 주문번호 + 1 한 값을 가져와 리턴한다.\
+			//가장 큰 주문번호 + 1 한 값을 가져와 리턴한다.
 			return orderDAO.getMaxOrderNum();
 			
 		}

@@ -552,7 +552,7 @@ function fn_orderComplete() {
             //alert(cartNumList);
             
             
-            //데이터들을 formData에 담아준다.
+           		//데이터들을 formData에 담아준다.
            		formData.append("cartNumberList", cartNumList);          //장바구니 번호 배열
                 formData.append("userID", userID);                      //회원 아이디
                 formData.append("order_name", order_name);                //수령인 이름

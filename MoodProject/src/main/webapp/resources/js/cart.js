@@ -563,10 +563,10 @@ function fn_orderComplete() {
                 formData.append("order_memo", order_memo);                //수령인 배송 메모
                 formData.append("paymethod", "카카오페이");               //결제수단
                 formData.append("totalbill", totalBill);               //총주문금액
-                formData.append("product_code", product_code);               //총주문금액
-                formData.append("product_amount", product_amount);               //총주문금액
-                formData.append("product_size", product_size);               //총주문금액
-                formData.append("product_name", product_name);               //총주문금액
+                formData.append("product_code", product_code);               //상품코드
+                formData.append("product_amount", product_amount);               //상품수량
+                formData.append("product_size", product_size);               //상품사이즈
+                formData.append("product_name", product_name);               //상품이름
                 
                 //alert(formData.get("cartNumberList"));
                 //alert(formData.get("userID"));

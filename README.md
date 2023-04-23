@@ -1,6 +1,6 @@
 # moodproject(가구 쇼핑몰)
 - Spring + Jsp 로 만든 팀프로젝트(3명)입니다.  
-<br/><br/><br/>
+<br/><br/>
 # 사용한 기술
 - Frontend
   - HTML/css

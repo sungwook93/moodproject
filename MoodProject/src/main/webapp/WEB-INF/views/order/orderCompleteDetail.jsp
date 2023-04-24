@@ -188,7 +188,6 @@
 										<td>
 											<c:choose>
 												<c:when test="${list.review_yn == 'N' and list.userID == member1.userID}">
-													<!-- <a href="/review/reviewRegisterForm?product_code=${list.product_code}&order_num=${list.order_num}">리뷰 작성하기</a> -->
 													<button type="button" class="btn btn-secondary"
 													onclick="location.href = '/review/reviewRegisterForm?product_code=${list.product_code}&order_num=${list.order_num}'"
 													style = "float : right;" ><strong>리뷰작성하기</strong></button>

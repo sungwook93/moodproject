@@ -182,17 +182,17 @@ public class OrderController {
 	//주문 완료 처리후 주문 번호 리턴 (t_cart 데이터 +알파 를 t_order 테이블로 옮기기)
 	@ResponseBody
 	@RequestMapping(value="/orderComplete", method=RequestMethod.POST)
-	public long orderComplete(int[] cartNumberList, OrderDTO orderDTO, HttpServletRequest request) throws Exception {
-		System.out.println("OrderController의 orderComplete.... 회원 아이디: " + orderDTO.getUserID() + "장바구니 번호: " + cartNumberList[0]);	
-		System.out.println("확인해보장=========" + orderDTO);
+	public long orderComplete(int[] cartNumberList, OrderDTO orderDTO) throws Exception {
 		
 		//orderDTO에 order_num을 계산해서 세팅한다.
 		orderDTO.setOrder_num(orderService.getOrder_num());
 		System.out.println("주문번호: " + orderDTO.getOrder_num());
 			
-			// 바로 주문하기
+			//바로 주문하기
 			if(cartNumberList[0] == 0) {
+				// 주문자 정보 테이블에 데이터 등록
 				orderDAO.addOrder(orderDTO);
+				// 상품 주문 테이블에 데이터 등록
 				orderDAO.addOrderProduct(orderDTO); 
 				return orderDTO.getOrder_num();
 			}

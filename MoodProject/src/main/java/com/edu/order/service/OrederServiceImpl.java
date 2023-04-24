@@ -139,9 +139,7 @@ public class OrederServiceImpl implements OrderService {
 		if(orderDAO.addOrder(orderDTO) == 1) { //성공하면
 			//System.out.println("확인!!!!!!!!!");
 			//System.out.println(cartNumberList[0]+"!!!!!!!!!!!!!!!");
-			int count = 0;
-			
-			
+			int count = 0;		
 			
 			//반복문을 통해 장바구니 번호에 해당하는 cartDTO를 가져와서 해당 데이터로 orderDTO를 세팅한 후
 			for(int i = 0; i < cartNumberList.length; i++) {
@@ -149,8 +147,6 @@ public class OrederServiceImpl implements OrderService {
 				//장바구니 번호에 해당하는 cartDTO를 가져온다.
 				//System.out.println("장바구니번호: " + cartNumberList[i]);
 				CartDTO cartDTO = orderDAO.cartNumList(cartNumberList[i]);
-				
-				//
 				
 				//orderProductDTO에 값을 세팅한다.
 				orderDTO.setProduct_code(cartDTO.getProduct_code());

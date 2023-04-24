@@ -107,7 +107,7 @@
 		]]>
 	</select>
 	
-		<!-- 해당 주문 완료 번호의 t_orderProduct의 orderDTO 리스트 가져오기 -->
+	<!-- 해당 주문 완료 번호의 t_orderProduct의 orderDTO 리스트 가져오기 -->
 	<select id="getOrderDTODetail" resultType="com.edu.order.dto.OrderDTO">
 		<![CDATA[
 		SELECT op.order_num, op.userID, op.orderProduct_num, op.product_code, op.product_amount,  op.product_size, 

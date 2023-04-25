@@ -37,6 +37,6 @@
   - 리뷰 이미지 CRUD
  <br/><br/><br/> 
 # 구현 화면
-- 상품리스트
+<상품리스트>
 ![image](https://user-images.githubusercontent.com/128371999/234237091-8d188293-d670-4369-9115-9ece58ae8951.png)
 

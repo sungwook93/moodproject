@@ -37,8 +37,11 @@
   - 리뷰 이미지 CRUD
  <br/><br/><br/> 
 # 구현 화면
+- 상품리스트
 ![image](https://user-images.githubusercontent.com/128371999/234237530-3c317a25-5223-49ef-90fa-b2e074caeb91.png)
+- 상품디테일
 ![image](https://user-images.githubusercontent.com/128371999/234237664-a65eb5e7-89f1-4c6a-b69b-89e3316ea2c4.png)
+- 상품디테일에 관련된 추천상품
 ![image](https://user-images.githubusercontent.com/128371999/234237808-e4cd3441-3e98-4a88-a077-d04cfd9e167e.png)
 
 

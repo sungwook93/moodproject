@@ -43,5 +43,7 @@
 ![image](https://user-images.githubusercontent.com/128371999/234237664-a65eb5e7-89f1-4c6a-b69b-89e3316ea2c4.png)
 - 상품디테일에 관련된 추천상품
 ![image](https://user-images.githubusercontent.com/128371999/234237808-e4cd3441-3e98-4a88-a077-d04cfd9e167e.png)
+- 상품 수정
+![image](https://user-images.githubusercontent.com/128371999/234238215-ff74e69d-92ab-43f2-8e7b-d7386f687463.png)
 
 

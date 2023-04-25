@@ -43,7 +43,15 @@
 ![image](https://user-images.githubusercontent.com/128371999/234237664-a65eb5e7-89f1-4c6a-b69b-89e3316ea2c4.png)
 - 상품디테일에 관련된 추천상품
 ![image](https://user-images.githubusercontent.com/128371999/234237808-e4cd3441-3e98-4a88-a077-d04cfd9e167e.png)
+- 상품 등록
+![image](https://user-images.githubusercontent.com/128371999/234238449-d1356b97-ae0c-4f33-93d4-a71415f89fc6.png)
 - 상품 수정
 ![image](https://user-images.githubusercontent.com/128371999/234238215-ff74e69d-92ab-43f2-8e7b-d7386f687463.png)
+- 상품 삭제
+![image](https://user-images.githubusercontent.com/128371999/234238641-a59152d1-08b8-49ba-97d0-92a3fd448f63.png)
+- 장바구니
+![image](https://user-images.githubusercontent.com/128371999/234238792-cdfa6cfb-d904-4f5e-80d6-4d05db2b97df.png)
+- 결제 페이지
+![image](https://user-images.githubusercontent.com/128371999/234238945-29ad9ac0-8f14-4307-b362-63153ba70c05.png)
 
 

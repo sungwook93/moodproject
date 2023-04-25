@@ -35,3 +35,6 @@
 - 리뷰 게시판
   - 리뷰 CRUD
   - 리뷰 이미지 CRUD
+  
+  ![image](https://user-images.githubusercontent.com/128371999/234211808-ed1fc120-84b3-4634-91e9-6f5e6ff3e7b1.png)
+

@@ -42,4 +42,11 @@
   - 상품이미지
   - 상품별점 구현
 ![image](https://user-images.githubusercontent.com/128371999/234235438-2f1e5481-ce56-4ddc-8217-321aac9b09cd.png)
+<br/>
+- 상품 디테일
+  - 상품 구매 구현
+  - 상품 장바구니 구현
+  - 상품수정 구현
+  - 상품삭제 구현
+![image](https://user-images.githubusercontent.com/128371999/234235975-a73ee8fe-4bc1-4cc0-a790-b2b7661665d8.png)
 

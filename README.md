@@ -37,11 +37,9 @@
   - 리뷰 이미지 CRUD
  <br/><br/><br/> 
 # 구현 화면
-- 상품
-  - 상품검색
-  - 카테고리별 상품 조회
-  - 상품 CRUD
-  - 상품이미지 CRUD
-  - 상품 디테일 페이지
-
+- 상품리스트
+  - 상품검색 구현
+  - 상품이미지
+  - 상품별점 구현
+![image](https://user-images.githubusercontent.com/128371999/234235438-2f1e5481-ce56-4ddc-8217-321aac9b09cd.png)
 

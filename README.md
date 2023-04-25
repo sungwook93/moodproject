@@ -38,5 +38,6 @@
  <br/><br/><br/> 
 # 구현 화면
 ![image](https://user-images.githubusercontent.com/128371999/234237530-3c317a25-5223-49ef-90fa-b2e074caeb91.png)
+![image](https://user-images.githubusercontent.com/128371999/234237664-a65eb5e7-89f1-4c6a-b69b-89e3316ea2c4.png)
 
 

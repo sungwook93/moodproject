@@ -43,5 +43,5 @@
     +상품이미지
     +상품 별점처리
 <br/>
-![image](https://user-images.githubusercontent.com/128371999/234231248-54ffa648-56e9-4550-8e57-7db8213b164a.png)
+
 

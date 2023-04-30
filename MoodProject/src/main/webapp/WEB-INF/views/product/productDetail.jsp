@@ -9,12 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<link href="${contextPath}/resources/css/productcss/productDetail.css" rel="stylesheet" type="text/css">
-	<script src="${contextPath}/resources/js/product.js"></script>
+	<script src="${contextPath}/resources/js/product.js" charset="utf-8"></script>
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +66,7 @@
 					<span id="size">규격&nbsp>&nbsp${product.product_size }</span>
 					<c:choose>
 						<c:when test="${member1.grade == 7}">
+							<input type="button" onclick="location.href='/product/productRegisterForm'" value="상품등록" id="productregister">
 							<input type="button" onclick="location.href='/product/productUpdateForm?product_code='+'${product.product_code}'" value="상품수정" id="productupdate" >
 							<input type="button" onclick="fn_productDelete('${product.product_code}')"value="상품삭제" id="productdelete">
 						</c:when>
